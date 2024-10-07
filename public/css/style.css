@@ -8,7 +8,7 @@ body {
 }
 
 ::selection {
-    background-color: #027c56 !important;
+    background-color: #fe8a29 !important;
     color: white;
 }
 .accent-color {
@@ -134,7 +134,7 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
 
 /* =============sidebar ============= */
 .gradient-border {
-    /* border: 3px solid transparent; 
+    /* border: 3px solid transparent;
     border-image: linear-gradient(180deg, #fcb37680 0%, #fe8a2980 100%);
     border-width: 3px;
     padding: 3px; */
@@ -147,4 +147,8 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
     background-origin: padding-box, border-box;
     width: 100%;
     /* padding: 12px; */
+}
+
+.sidebar-bg {
+    width: calc(100% - 8px);
 }

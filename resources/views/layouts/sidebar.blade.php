@@ -10,9 +10,9 @@
 </button>
 
 <aside id="default-sidebar"
-    class="fixed top-0 left-0 z-40 w-64 h-[88vh] transition-transform -translate-x-full  sm:translate-x-0 mt-[100px] ml-[20px]     "
+    class="fixed top-0 left-0 z-40 w-64 max-h-[88vh] h-full transition-transform -translate-x-full  sm:translate-x-0  md:ml-[20px]  mt-[10vh]    "
     aria-label="Sidebar">
-    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800] gradient-border rounded-2xl">
+    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 gradient-border rounded-2xl">
         <ul class="space-y-2 font-medium">
             <li>
                 <a href="#"
@@ -101,6 +101,11 @@
                 </a>
             </li>
         </ul>
+    </div>
+    <div>
+
+        <img class=" absolute bottom-1 opacity-50 grayscale sidebar-bg left-1/2 -translate-x-1/2"
+            src="{{ asset('assets/sidebar-bg.png') }}" alt="Hen">
     </div>
 </aside>
 
