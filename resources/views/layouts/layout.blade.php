@@ -14,9 +14,9 @@
 
 <body>
 
-    @include('layouts.navbar')
+    {{-- @include('layouts.navbar')
 
-    @include('layouts.sidebar')
+    @include('layouts.sidebar') --}}
 
     @yield('content')
 

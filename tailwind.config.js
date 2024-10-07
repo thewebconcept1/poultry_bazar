@@ -10,6 +10,12 @@ module.exports = {
             colors: {
                 customOrangeLight: "#FCB376",
                 customOrangeDark: "#FE8A29",
+                customGrayColor: "#F0F0F3",
+                customGrayColorDark: "#A4A4AA",
+                customBlackColor: "#333333",
+            },
+            fontSize: {
+                custom16: "16px", // Add your custom font size here
             },
         },
     },
