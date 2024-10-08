@@ -96,7 +96,7 @@
     </style>
 
 
-    <div class="relative w-screen h-screen">
+    <div class="relative w-full h-full">
         <div>
             <div class="absolute z-20 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                 <img id="henImage" class="w-[500px] object-contain" style="transform: rotateY(360deg)"
@@ -108,9 +108,9 @@
         </div>
 
         <div id="mainContent"
-            class="flex justify-between h-[100%] pb-20 pt-[10vh] mx-[50px] lg:mx-[100px] xl:mx-[180px] z-50 relative transition-all duration-700">
+            class="flex justify-between h-[100vh] pb-20 pt-[10vh] mx-[50px] lg:mx-[100px] xl:mx-[180px] z-50 relative transition-all duration-700">
             <div id="loginDiv"
-                class="max-w-[600px] animate-slideout px-8 flex flex-col justify-center items-center h-full w-full rounded-2xl transition-all duration-700 ease-in-out"
+                class="max-w-[600px] p-12 animate-slideout px-8 flex flex-col justify-center items-center h-full w-full rounded-2xl transition-all duration-700 ease-in-out"
                 style="box-shadow: 0px 0px 8px 0px #00000026; background:rgba(255, 255, 255, 0.389)">
                 <div class="w-full">
                     <div>
@@ -151,8 +151,8 @@
                         Start your new journey with us and join <br> our community
                     </p>
                 </div>
-                <button id="switchToLoginBtn"
-                    class="gradient-bg w-[300px] text-white rounded-full text-lg font-semibold h-14 mt-40">
+                <button id="switchToLoginBtn" type="button"
+                    class="w-full mt-40 text-lg font-semibold text-white rounded-full gradient-bg h-14">
                     Get Access
                 </button>
             </div>
@@ -162,7 +162,7 @@
         </div>
 
         <div id="signupSection"
-            class="flex justify-between h-[100%] pb-20 pt-[10vh] mx-[50px] lg:mx-[100px] xl:mx-[180px] z-50 relative hidden ">
+            class="flex justify-between h-[100vh] pb-20 pt-[10vh] mx-[50px] lg:mx-[100px] xl:mx-[180px] z-50 relative hidden ">
             <div class="flex flex-col justify-center items-center h-full w-full relative z-50 max-w-[600px]">
                 <div id="welcomeDiv">
                     <h2 class="text-[60px] text-customOrangeDark font-bold leading-none">
@@ -172,16 +172,16 @@
                         Become a member and start your journey with <br> Poultry Bazar
                     </p>
                     <button id="backToLoginBtn" type="button"
-                        class="w-full mt-40 text-lg text-white rounded-full gradient-bg font-semi-bold h-14">Login</button>
+                        class="w-full mt-40 text-lg font-semibold text-white rounded-full gradient-bg h-14">Login</button>
                 </div>
             </div>
             <!-- Signup Form Section (Initially hidden) -->
-            <div class="max-w-[600px] animate-slideIn px-8 flex flex-col justify-center items-center h-full w-full rounded-2xl transition-all duration-700 ease-in-out"
+            <div class="max-w-[600px] animate-slideIn px-8 flex flex-col justify-center items-center h-[100%] w-[100%] rounded-2xl transition-all duration-700 ease-in-out"
                 style="box-shadow: 0px 0px 8px 0px #00000026; background:rgba(255, 255, 255, 0.389)">
-                <div class="w-full ">
+                <div class="w-full h-screen m-5 ">
                     <form id="signupForm" action="">
                         <h1 class="text-customBlackColor font-bold text-[44px] text-center">Get Access</h1>
-                        <div class="mt-20 ">
+                        <div class="">
                             <div>
                                 <label for="email" class="block text-sm text-customGrayColorDark">Email</label>
                                 <input type="email" id="email"
@@ -206,7 +206,7 @@
                         </div>
                     </form>
                 </div>
-                <div id="extraSection" class="hidden w-full mx-auto">
+                <div id="extraSection" class="hidden w-full h-screen mx-auto">
                     <h2 class="mb-6 text-4xl font-bold text-center">Select Panel</h2>
                     <div class="grid grid-cols-1 gap-6 mb-8 text-center sm:grid-cols-2">
                         <!-- Market Box 1 -->
@@ -331,7 +331,7 @@
             </div>
         </div>
 
-        <div class="absolute flex justify-center w-screen bottom-5">
+        <div class="absolute flex justify-center w-full bottom-5">
             <p class="text-sm text-black">Powered by <span class="text-customOrangeDark">Poul3yBazar</span> & Developed by
                 <a target="_blank" class="text-blue-500" href="https://thewebconcept.com/">TheWebConcept</a>.
             </p>
