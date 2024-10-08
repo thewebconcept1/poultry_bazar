@@ -1,75 +1,102 @@
 @extends('layouts.layout')
 @section('content')
-<style>
-    /* Keyframes for fade and slide animations */
-    @keyframes fadeOut {
-        from {
-            opacity: 1;
-        }
-        to {
-            opacity: 0;
-        }
-    }
+    <style>
+        /* Keyframes for fade and slide animations */
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
-        to {
-            opacity: 1;
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
-    }
 
-    @keyframes slideInLeft {
-        from {
-            transform: translateX(-100%);
-            opacity: 0;
+        #welcomeDiv {
+            /* By default, apply fadeIn when the element loads */
+            animation: fadeIn 1s ease-in-out forwards;
         }
-        to {
-            transform: translateX(0);
-            opacity: 1;
+
+        @keyframes moveLeftRight {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            50% {
+                transform: translateX(10%);
+            }
+
+            100% {
+                transform: translateX(0%);
+                opacity: 1;
+            }
         }
-    }
 
-    @keyframes slideOutRight {
-        from {
-            transform: translateX(0);
-            opacity: 1;
+        .animate-moveLeftRight {
+            animation: moveLeftRight 1.5s ease-in-out;
+            animation-delay: 0.5s;
+            /* Delay before the animation starts */
         }
-        to {
-            transform: translateX(100%);
-            opacity: 0;
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
-    }
 
-    /* Adding classes to control animation */
-    .fadeOut {
-        animation: fadeOut 0.7s ease forwards;
-    }
+        .animate-slideIn {
+            animation: slideIn 1.2s ease-out;
+            animation-delay: 0s;
+            /* Form slides in after half a second */
+            animation-fill-mode: forwards;
+            /* Keeps the final state after animation */
+        }
 
-    .fadeIn {
-        animation: fadeIn 0.7s ease forwards;
-    }
+        @keyframes slideOut {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
 
-    .slideInLeft {
-        animation: slideInLeft 0.7s ease forwards;
-    }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
 
-    .slideOutRight {
-        animation: slideOutRight 0.7s ease forwards;
-    }
+        .animate-slideout {
+            animation: slideOut 1.1s ease-in;
+            animation-delay: 0s;
+            /* Form slides in after half a second */
+            animation-fill-mode: forwards;
+        }
 
-    /* Utility classes to hide/show sections after animation */
-    .hiddenContent {
-        display: none;
-    }
-</style>
+        /* Use this class to trigger the fade-out animation */
+    </style>
 
 
     <div class="relative w-screen h-screen">
         <div>
             <div class="absolute z-20 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                <img id="henImage" class="w-[500px] object-contain" style="transform: rotateY(180deg)"
+                <img id="henImage" class="w-[500px] object-contain" style="transform: rotateY(360deg)"
                     src="{{ asset('assets/hen-avatar-withbg.png') }}" alt="hen">
             </div>
             <div class="absolute z-10 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
@@ -77,34 +104,15 @@
             </div>
         </div>
 
-        <div id="mainContent"
-            class="flex justify-between h-[100%] pb-20 pt-[10vh] mx-[50px] lg:mx-[100px] xl:mx-[180px] z-50 relative transition-all duration-700">
-            <!-- Welcome Section -->
-            <div id="welcomeDiv"
-                class="flex flex-col justify-center items-center h-full w-full relative z-50 max-w-[600px] transition-all duration-700 ease-in-out">
-                <div>
-                    <h2 class="text-[60px] text-customOrangeDark font-bold leading-none">
-                        <span class="text-[50px]">Welcome to</span><br> Poultry Bazar
-                    </h2>
-                    <p class="flex justify-start mt-4 font-normal text-black text-custom16">
-                        Start your new journey with us and join <br> our community
-                    </p>
-                </div>
-                <button id="switchToLoginBtn"
-                    class="gradient-bg w-[300px] text-white rounded-full text-lg font-semibold h-14 mt-40">
-                    Get Access
-                </button>
-            </div>
-
-            <!-- Login Form Section -->
+        <div id="mainContent"  class="flex justify-between h-[100%] pb-20 pt-[10vh] mx-[50px] lg:mx-[100px] xl:mx-[180px] z-50 relative transition-all duration-700">
             <div id="loginDiv"
-                class="max-w-[600px] px-8 flex flex-col justify-center items-center h-full w-full rounded-2xl transition-all duration-700 ease-in-out"
+                class="max-w-[600px] animate-slideout px-8 flex flex-col justify-center items-center h-full w-full rounded-2xl transition-all duration-700 ease-in-out"
                 style="box-shadow: 0px 0px 8px 0px #00000026; background:rgba(255, 255, 255, 0.389)">
                 <div class="w-full">
                     <div>
                         <h1 class="text-customBlackColor font-bold text-[44px] text-center">Log in</h1>
                     </div>
-                    <form action="">
+                    <form id="animatedForm" action="">
                         <div class="mt-20">
                             <div>
                                 <label for="email" class="block text-sm text-customGrayColorDark">Email</label>
@@ -128,19 +136,52 @@
                     </form>
                 </div>
             </div>
+            <!-- Welcome Section -->
+            <div id="welcomeDiv"
+                class="flex flex-col justify-center items-center h-full w-full relative z-50 max-w-[600px] transition-all duration-700 ease-in-out">
+                <div>
+                    <h2 class="text-[60px] text-customOrangeDark font-bold leading-none">
+                        <span class="text-[50px]">Welcome to</span><br> Poultry Bazar
+                    </h2>
+                    <p class="flex justify-start mt-4 font-normal text-black text-custom16">
+                        Start your new journey with us and join <br> our community
+                    </p>
+                </div>
+                <button id="switchToLoginBtn"
+                    class="gradient-bg w-[300px] text-white rounded-full text-lg font-semibold h-14 mt-40">
+                    Get Access
+                </button>
+            </div>
+
+            <!-- Login Form Section -->
+
         </div>
 
         <div id="signupSection"
             class="flex justify-between h-[100%] pt-[7vh] pb-12 mx-[50px] lg:mx-[100px] xl:mx-[180px] z-50 relative hidden">
+            <div class="flex flex-col justify-center items-center h-full w-full relative z-50 max-w-[600px]">
+                <div id="welcomeDiv">
+                    <h2 class="text-[60px] text-customOrangeDark font-bold leading-none">
+                        <span class="text-[50px]">Join Us at</span><br> Poultry Bazar
+                    </h2>
+                    <p class="flex justify-start mt-4 font-normal text-black text-custom16">
+                        Become a member and start your journey with <br> Poultry Bazar
+                    </p>
+                    <button id="backToLoginBtn" type="submit"
+                        class="w-full mt-8 text-lg text-white rounded-full gradient-bg font-semi-bold h-14">Login</button>
+
+                </div>
+
+            </div>
             <!-- Signup Form Section (Initially hidden) -->
-            <div class="max-w-[600px] px-8 flex flex-col justify-center items-center h-full w-full rounded-2xl"
+            <div class="max-w-[600px] px-8 flex flex-col justify-center animate-slideIn items-center h-full w-full rounded-2xl"
                 style="box-shadow: 0px 0px 8px 0px #00000026; background:rgba(255, 255, 255, 0.389)">
                 <div class="w-full">
                     <div>
                         <h1 class="text-customBlackColor font-bold text-[44px] text-center">Get Access</h1>
                     </div>
                     <form action="">
-                        <div class="mt-20">
+                        <div class="mt-20 ">
                             <div>
                                 <label for="" class="block text-sm text-customGrayColorDark">Email</label>
                                 <input type="text"
@@ -173,21 +214,6 @@
                     </form>
                 </div>
             </div>
-
-            <div class="flex flex-col justify-center items-center h-full w-full relative z-50 max-w-[600px]">
-                <div>
-                    <h2 class="text-[60px] text-customOrangeDark font-bold leading-none">
-                        <span class="text-[50px]">Join Us at</span><br> Poultry Bazar
-                    </h2>
-                    <p class="flex justify-start mt-4 font-normal text-black text-custom16">
-                        Become a member and start your journey with <br> Poultry Bazar
-                    </p>
-                    <button id="backToLoginBtn" type="submit"
-                        class="w-full mt-8 text-lg text-white rounded-full gradient-bg font-semi-bold h-14">Login</button>
-
-                </div>
-
-            </div>
         </div>
 
         <div class="absolute flex justify-center w-screen bottom-5">
@@ -197,51 +223,66 @@
         </div>
     </div>
 
+@section('js')
     <script>
-        const switchToLoginBtn = document.getElementById('switchToLoginBtn');
-        const mainContent = document.getElementById('mainContent');
-        const signupSection = document.getElementById('signupSection');
-        const henImage = document.getElementById('henImage');
-        const welcomeDiv = document.getElementById('welcomeDiv');
-        const loginDiv = document.getElementById('loginDiv');
-        const backToLoginBtn = document.getElementById('backToLoginBtn'); // New button for switching back
+        $(document).ready(function() {
+            const $switchToLoginBtn = $('#switchToLoginBtn');
+            const $mainContent = $('#mainContent');
+            const $signupSection = $('#signupSection');
+            const $henImage = $('#henImage');
+            const $welcomeDiv = $('#welcomeDiv');
+            const $loginDiv = $('#loginDiv');
+            const $backToLoginBtn = $('#backToLoginBtn'); // New button for switching back
 
-        switchToLoginBtn.addEventListener('click', function() {
-            // Flip the positions of the welcome and login divs with animation
-            welcomeDiv.classList.toggle('order-last');
-            loginDiv.classList.toggle('order-first');
-            mainContent.classList.add('fadeOut');
+            $switchToLoginBtn.on('click', function() {
+                // Flip the positions of the welcome and login divs with animation
+                $welcomeDiv.toggleClass('order-last');
+                $loginDiv.toggleClass('order-first');
+                $mainContent.addClass('fadeOut');
 
-        // Animate the hen image flip
-        henImage.style.transition = "transform 0.6s ease";
-        henImage.style.transform = "rotateY(0deg)";
+                // Animate the hen image flip
+                $henImage.css({
+                    'transition': 'transform 1s ease',
+                    'transform': 'rotateY(180deg)'
+                });
 
-            // Transition between login form and signup form
-            setTimeout(() => {
-                mainContent.classList.add('hidden');
-                signupSection.classList.remove('hidden');
-                signupSection.classList.add('slideInLeft');
-            }, 700); // Wait for animation to complete before switching
+                // Transition between login form and signup form
+                setTimeout(function() {
+                    $mainContent.addClass('hidden');
+                    $signupSection.removeClass('hidden');
+                    $signupSection.addClass('slideInLeft');
+                }, 700); // Wait for animation to complete before switching
+            });
 
-            // Animate the image flip
-        });
+            $backToLoginBtn.on('click', function() {
+                // Reverse the transition to go back to the login form
+                $signupSection.addClass('hidden');
+                $mainContent.removeClass('hidden');
+                $signupSection.addClass('slideOutRight');
 
-        backToLoginBtn.addEventListener('click', function() {
-            // Reverse the transition to go back to the login form
-            signupSection.classList.add('hidden');
-            mainContent.classList.remove('hidden');
-            signupSection.classList.add('slideOutRight');
+                // Animate the hen image flip back
+                $henImage.css({
+                    'transition': 'transform 1s ease',
+                    'transform': 'rotateY(360deg)'
+                });
 
-// Animate the hen image flip back
-henImage.style.transition = "transform 0.6s ease";
-henImage.style.transform = "rotateY(180deg)";
+                // Animate the image flip back to the original state
+                setTimeout(function() {
+                    $signupSection.addClass('hiddenContent');
+                    $mainContent.removeClass('hiddenContent');
+                    $mainContent.addClass('fadeIn');
+                }, 700);
+            });
+            $(document).ready(function() {
+                $('input').on('focus', function() {
+                    $(this).addClass('input-slide-in');
+                });
 
-            // Animate the image flip back to the original state
-            setTimeout(() => {
-            signupSection.classList.add('hiddenContent');
-            mainContent.classList.remove('hiddenContent');
-            mainContent.classList.add('fadeIn');
-        }, 700);
+                $('input').on('blur', function() {
+                    $(this).removeClass('input-slide-in').addClass('input-slide-out');
+                });
+            });
         });
     </script>
+@endsection
 @endsection

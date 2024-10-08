@@ -29,6 +29,7 @@
             $('#datatable').DataTable();
         });
     </script>
+    @yield('js')
 </body>
 
 </html>
