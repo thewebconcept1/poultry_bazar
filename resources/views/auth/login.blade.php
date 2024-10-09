@@ -96,7 +96,7 @@
     </style>
 
 
-    <div class="relative w-full  h-full">
+    <div class="relative w-full h-full">
         <div class="w-7xl">
             <div>
                 <div class="absolute z-20 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
@@ -152,7 +152,7 @@
                         </p>
                     </div>
                     <button id="switchToLoginBtn" type="button"
-                        class="lg:w-full w-1/2 mt-10 lg:mt-40 text-lg font-semibold text-white rounded-full gradient-bg h-14">
+                        class="w-1/2 mt-10 text-lg font-semibold text-white rounded-full lg:w-full lg:mt-40 gradient-bg h-14">
                         Get Access
                     </button>
                 </div>
@@ -172,7 +172,7 @@
                             Become a member and start your journey with <br> Poultry Bazar
                         </p>
                         <button id="backToLoginBtn" type="button"
-                            class="lg:w-full w-1/2 mt-10 lg:mt-40 text-lg font-semibold text-white rounded-full gradient-bg h-14">Login</button>
+                            class="w-1/2 mt-10 text-lg font-semibold text-white rounded-full lg:w-full lg:mt-40 gradient-bg h-14">Login</button>
                     </div>
                 </div>
                 <!-- Signup Form Section (Initially hidden) -->
@@ -206,7 +206,7 @@
                             </div>
                         </form>
                     </div>
-                    <div id="extraSection" class="hidden w-full h-full mx-auto flex justify-center flex-col">
+                    <div id="extraSection" class="flex flex-col justify-center hidden w-full h-full mx-auto">
                         <h2 class="mb-6 text-4xl font-bold text-center">Select Panel</h2>
                         <div class="grid grid-cols-1 gap-6 mb-8 text-center sm:grid-cols-2">
                             <!-- Market Box 1 -->
@@ -217,7 +217,7 @@
                                     <img class="" src="{{ asset('assets/icons/market update.png') }}"
                                         alt="Market icon">
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
-                                    <button
+                                    <button id="openModalBtn"
                                         class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
                                         View info
                                     </button>
@@ -288,6 +288,72 @@
                 </div>
             </div>
 
+            <div id="modalOverlay" class="fixed inset-0 z-40 hidden bg-black opacity-50"></div>
+
+<!-- Modal -->
+<div id="modal"
+    class="fixed inset-0 z-50 flex items-center justify-center hidden overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
+    <div class="relative w-auto max-w-lg mx-auto my-6">
+        <!-- Modal content -->
+        <div
+            class="relative flex flex-col w-full bg-white h-[100%] rounded-[40px] shadow-lg outline-none modal-content focus:outline-none">
+            <!-- Icon at the top -->
+            <div class="absolute transform -translate-x-1/2 -top-12 left-1/2">
+                <div class="flex items-center justify-center w-24 h-24 rounded-full">
+                    <div>
+                        <img class="" src="{{ asset('assets/icons/Group 44.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- Modal header -->
+            <div class="flex items-start justify-between pt-16 ms-10 ">
+                <h3 class="text-3xl font-extrabold">Market Rates</h3>
+                <button id="closeModalBtn"
+                    class="float-right p-1 ml-auto text-3xl font-semibold leading-none text-black bg-transparent border-0 outline-none focus:outline-none">
+                    <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="relative flex-auto p-10 mb-7">
+                <p class="text-2xl leading-relaxed text-justify text-gray-400">
+                    Stay informed with live updates on the latest poultry market rates. This feature provides users with
+                    real-time price trends for chickens across different regions. Gain insights to make informed decisions
+                    on buying and selling, helping you maximize your profits in a competitive market.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+            <div id="modalOverlay" class="fixed inset-0 z-40 hidden bg-black opacity-25"></div>
+
+            <script>
+                const modal = document.getElementById('modal');
+                const modalOverlay = document.getElementById('modalOverlay');
+                const openModalBtn = document.getElementById('openModalBtn');
+                const closeModalBtn = document.getElementById('closeModalBtn');
+
+                // Function to open modal
+                function openModal() {
+                    modal.classList.remove('hidden');
+                    modalOverlay.classList.remove('hidden');
+                }
+
+                // Function to close modal
+                function closeModal() {
+                    modal.classList.add('hidden');
+                    modalOverlay.classList.add('hidden');
+                }
+
+                // Event listeners
+                openModalBtn.addEventListener('click', openModal);
+                closeModalBtn.addEventListener('click', closeModal);
+                closeModalBtnFooter.addEventListener('click', closeModal);
+                modalOverlay.addEventListener('click', closeModal);
+            </script>
 
             <!-- Modal toggle -->
             {{-- <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
@@ -333,7 +399,7 @@
                 </div>
             </div>
 
-            <div class="absolute hidden md:block flex justify-center w-full bottom-5">
+            <div class="absolute flex justify-center hidden w-full md:block bottom-5">
                 <p class="text-sm text-black">Powered by <span class="text-customOrangeDark">Poul3yBazar</span> &
                     Developed by
                     <a target="_blank" class="text-blue-500" href="https://thewebconcept.com/">TheWebConcept</a>.
