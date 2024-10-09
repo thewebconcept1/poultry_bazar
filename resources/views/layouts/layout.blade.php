@@ -21,6 +21,7 @@
     @yield('content')
 
     <script src="{{ asset('javascript/jquery.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('javascript/canvas.js') }}"></script>
     <script type="text/javascript" src="{{ asset('DataTables/DataTables-1.13.8/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('javascript/script.js') }}"></script>
