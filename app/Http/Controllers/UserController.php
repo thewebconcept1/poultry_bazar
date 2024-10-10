@@ -55,4 +55,13 @@ class UserController extends Controller
             return $this->errorResponse($e);
         }
     }
+
+    public function logout(Request $request)
+    {
+        $request->session()->forget('user_details');
+        $request->session()->regenerate();
+
+        return redirect('/login');
+    }
+
 }
