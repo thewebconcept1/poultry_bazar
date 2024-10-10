@@ -7,9 +7,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['custom_auth'])->group(function () {
 
     Route::get('/', function () {
-        return view('layouts.layout');
+        return view('dashboard');
     });
-    
 });
 
 Route::get('/login', function () {
