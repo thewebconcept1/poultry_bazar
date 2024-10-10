@@ -1,16 +1,183 @@
-    <nav class="bg-gradient-to-b from-customOrangeLight to-customOrangeDark  h-[8vh]  px-10 fixed w-full ">
-        <div class="relative h-full w-full">
-            <div class="flex h-full items-center">
+    <nav class="fixed w-full p-4 px-10 bg-gradient-to-b from-customOrangeLight to-customOrangeDark ">
+
+        <div class="flex items-center justify-between mx-auto">
+            <div class="flex items-center h-full">
                 <img class="h-[60%]" src="{{ asset('assets/logo-icon.svg') }}" alt="Logo">
             </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
+                        class="flex items-center px-3 py-2 space-x-1 text-white bg-transparent border rounded-full">
+                        <img src="{{ asset('assets/Rectangle 1887.png') }}" alt="USA flag"
+                            class="w-5 h-5 rounded-full" />
+                        <span>USA</span>
 
-            <div class="h-full">
-                <svg class="h-[90%] absolute bottom-0 right-10" viewBox="0 0 80 83" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M28.6184 6.75445C29.1463 5.21136 30.3992 3.06034 31.4008 1.9745C32.4032 0.888652 33.9563 0 34.8522 0C36.5153 0 41.223 4.27449 42.8329 7.24613C43.7042 8.85466 43.7837 8.8495 46.0551 7.03086C47.3358 6.00529 49.4667 5.16658 50.7915 5.16658C53.7667 5.16658 54.4164 7.2005 53.9291 14.9908L53.5865 20.4657L57.9524 21.8667C63.4426 23.6285 69.5765 29.0431 72.3166 34.5472C76.2942 42.5365 80.4436 66.2089 77.7035 65.2798C76.9515 65.024 76.0125 61.5814 75.0321 55.4771C73.1701 43.8962 70.8649 36.6345 67.63 32.1568C58.9227 20.104 33.118 19.0225 22.0141 30.2443C19.3621 32.9249 15.1916 40.512 15.1721 42.6923C15.1611 43.8901 22.0023 47.1201 27.4011 48.466C33.0588 49.8765 34.8048 52.7181 32.7323 57.1433C31.3923 60.0021 31.4084 60.4043 33.0537 65.1661C35.2574 71.5469 35.9739 78.3693 34.6949 80.8019C33.5698 82.9418 31.0683 83.2423 29.5794 81.4159C28.994 80.6986 26.7007 80.0571 24.1891 79.909C20.1649 79.6722 19.7022 79.4182 18.3825 76.7281L16.9495 73.8055L16.3615 76.1873C16.0319 77.5245 16.0797 81.5692 16.3443 85.5293H13.685C13.6123 84.3312 13.5656 83.1419 13.553 82.0497C13.4828 75.9057 13.2493 74.8552 11.7799 74.0544C9.72003 72.9324 9.47386 67.7442 11.2732 63.3621C12.4254 60.5549 12.3864 60.4206 9.87315 58.5288C7.56795 56.7945 6.98086 56.6964 4.46333 57.6229C2.90933 58.1947 1.25381 58.4203 0.784313 58.1249C-1.07507 56.9556 2.73929 47.7668 6.25335 44.9536C8.33437 43.2874 8.35467 43.1651 7.08153 40.0617C6.30833 38.1793 5.87859 35.063 6.02833 32.4324C6.25927 28.3654 6.51475 27.8754 9.01197 26.694C11.0329 25.7382 11.7478 24.8315 11.7613 23.2066C11.7841 20.4752 13.2197 18.9441 15.7558 18.9441C17.5146 18.9441 17.7015 18.5489 17.7015 14.8307C17.7015 12.5005 18.2725 9.88626 19.0187 8.803C20.5659 6.55381 24.0876 6.27051 26.2083 8.22434C27.5407 9.4514 27.7344 9.33343 28.6184 6.75445ZM82.9996 85.5293C82.512 83.412 82.0138 81.1068 81.5754 78.9075C80.4554 73.2854 79.3227 68.4658 79.0596 68.198C78.7965 67.9302 78.1857 68.1137 77.7027 68.6053C77.0962 69.2227 77.514 72.7946 79.0571 80.1725C79.4404 82.0045 79.8215 83.8363 80.172 85.5293H82.9996ZM43.3303 12.0554C42.7187 12.0554 41.0699 10.1558 39.6665 7.8334C35.6499 1.19004 33.612 1.463 30.7748 9.02602C29.137 13.3909 27.6904 13.8706 24.7237 11.0332C21.9845 8.41378 20.7698 9.92673 20.2394 16.6183C19.8223 21.8813 19.78 21.958 17.2785 21.958C14.953 21.958 14.7052 22.2456 14.3177 25.3972C13.9464 28.4179 13.586 28.8898 11.3569 29.2756C9.19216 29.651 8.77849 30.1462 8.54417 32.6468C8.27093 35.559 10.5254 43.0549 11.6742 43.0549C12.0049 43.0549 12.7079 41.4067 13.2375 39.3918C16.3032 27.7248 28.7073 19.8052 43.9165 19.8052C50.0242 19.8052 50.5326 19.6666 51.0064 17.8678C51.7559 15.0201 51.6493 7.74988 50.8575 7.74988C50.4827 7.74988 48.8864 8.71861 47.3096 9.90262C45.7327 11.0866 43.9427 12.0554 43.3303 12.0554ZM34.6204 45.6382C32.5199 44.4938 32.3914 40.8754 34.4089 39.6794C36.4147 38.4902 36.8258 38.5341 38.3671 40.1022C41.3744 43.1642 38.3324 47.66 34.6204 45.6382ZM30.6758 54.2853C31.6537 53.3148 30.1843 52.4925 22.3542 49.6319C18.6321 48.2723 14.031 46.9772 12.1293 46.7541C9.05342 46.3933 8.4232 46.6491 6.41915 49.0731C3.79419 52.2488 3.39236 54.7365 5.6468 53.8539C9.07204 52.5149 20.7241 52.421 25.315 53.6963C27.874 54.4067 30.2866 54.6719 30.6758 54.2853ZM18.4011 59.0609C24.6476 60.0779 31.4084 57.6625 25.5265 56.5155C24.2466 56.2658 20.8637 55.8146 18.0077 55.5124C9.819 54.647 10.1599 57.7202 18.4011 59.0609ZM32.1655 78.7387C33.3743 77.9775 32.4497 71.6734 30.2511 65.6923C29.3307 63.1873 28.319 61.2163 28.0034 61.311C27.6879 61.4066 24.5351 61.6158 20.9973 61.776L14.5656 62.067L13.5953 65.3616C11.999 70.7874 12.2266 71.3419 16.172 71.6373C19.4095 71.8784 19.7817 72.1539 20.4517 74.8018C21.1555 77.5823 21.3162 77.6813 24.354 77.187C26.5256 76.8331 28.1083 77.088 29.3815 77.9956C30.4034 78.725 31.6562 79.0591 32.1655 78.7387Z"
-                        fill="white" fill-opacity="0.5" />
-                </svg>
+                        <div id="dropdown"
+                            class="z-10 hidden text-left bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                aria-labelledby="dropdownDefaultButton">
+                                <li>
+
+                                    <a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pakistan</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">India</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">England</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+                <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification"
+                    class="relative inline-flex items-center text-sm font-medium text-center text-gray-500 hover:text-gray-900 focus:outline-none dark:hover:text-white dark:text-gray-400"
+                    type="button">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                        </path>
+                    </svg>
+                    <span
+                        class="absolute flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-500 rounded-full -top-1 -right-1">
+                        4
+                    </span>
+                </button>
+                <!-- Dropdown menu -->
+                <div id="dropdownNotification"
+                    class="z-20 hidden w-full max-w-sm bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-800 dark:divide-gray-700"
+                    aria-labelledby="dropdownNotificationButton">
+                    <div
+                        class="block px-4 py-2 font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 dark:bg-gray-800 dark:text-white">
+                        Notifications
+                    </div>
+                    <div class="divide-y divide-gray-100 dark:divide-gray-700">
+                        <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex-shrink-0">
+                                <img class="rounded-full w-11 h-11" src="/docs/images/people/profile-picture-1.jpg"
+                                    alt="Jese image">
+                                <div
+                                    class="absolute flex items-center justify-center w-5 h-5 -mt-5 bg-blue-600 border border-white rounded-full ms-6 dark:border-gray-800">
+                                    <svg class="w-2 h-2 text-white" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                                        <path
+                                            d="M1 18h16a1 1 0 0 0 1-1v-6h-4.439a.99.99 0 0 0-.908.6 3.978 3.978 0 0 1-7.306 0 .99.99 0 0 0-.908-.6H0v6a1 1 0 0 0 1 1Z" />
+                                        <path
+                                            d="M4.439 9a2.99 2.99 0 0 1 2.742 1.8 1.977 1.977 0 0 0 3.638 0A2.99 2.99 0 0 1 13.561 9H17.8L15.977.783A1 1 0 0 0 15 0H3a1 1 0 0 0-.977.783L.2 9h4.239Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="w-full ps-3">
+                                <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">New message from <span
+                                        class="font-semibold text-gray-900 dark:text-white">Jese Leos</span>: "Hey,
+                                    what's up? All set for the presentation?"</div>
+                                <div class="text-xs text-blue-600 dark:text-blue-500">a few moments ago</div>
+                            </div>
+                        </a>
+                        <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex-shrink-0">
+                                <img class="rounded-full w-11 h-11" src="/docs/images/people/profile-picture-2.jpg"
+                                    alt="Joseph image">
+                                <div
+                                    class="absolute flex items-center justify-center w-5 h-5 -mt-5 bg-gray-900 border border-white rounded-full ms-6 dark:border-gray-800">
+                                    <svg class="w-2 h-2 text-white" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                                        <path
+                                            d="M6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Zm11-3h-2V5a1 1 0 0 0-2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 0 0 2 0V9h2a1 1 0 1 0 0-2Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="w-full ps-3">
+                                <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400"><span
+                                        class="font-semibold text-gray-900 dark:text-white">Joseph Mcfall</span> and
+                                    <span class="font-medium text-gray-900 dark:text-white">5 others</span> started
+                                    following you.
+                                </div>
+                                <div class="text-xs text-blue-600 dark:text-blue-500">10 minutes ago</div>
+                            </div>
+                        </a>
+                        <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <div class="flex-shrink-0">
+                                <img class="rounded-full w-11 h-11" src="/docs/images/people/profile-picture-3.jpg"
+                                    alt="Bonnie image">
+                                <div
+                                    class="absolute flex items-center justify-center w-5 h-5 -mt-5 bg-red-600 border border-white rounded-full ms-6 dark:border-gray-800">
+                                    <svg class="w-2 h-2 text-white" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                                        <path
+                                            d="M17.947 2.053a5.209 5.209 0 0 0-3.793-1.53A6.414 6.414 0 0 0 10 2.311 6.482 6.482 0 0 0 5.824.5a5.2 5.2 0 0 0-3.8 1.521c-1.915 1.916-2.315 5.392.625 8.333l7 7a.5.5 0 0 0 .708 0l7-7a6.6 6.6 0 0 0 2.123-4.508 5.179 5.179 0 0 0-1.533-3.793Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="w-full ps-3">
+                                <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400"><span
+                                        class="font-semibold text-gray-900 dark:text-white">Bonnie Green</span> and
+                                    <span class="font-medium text-gray-900 dark:text-white">141 others</span> love
+                                    your story. See it and view more stories.
+                                </div>
+                                <div class="text-xs text-blue-600 dark:text-blue-500">44 minutes ago</div>
+                            </div>
+                        </a>
+
+
+                    </div>
+                    <a href="#"
+                        class="block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white">
+                        <div class="inline-flex items-center ">
+                            <svg class="w-4 h-4 text-gray-500 me-2 dark:text-gray-400" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">
+                                <path
+                                    d="M10 0C4.612 0 0 5.336 0 7c0 1.742 3.546 7 10 7 6.454 0 10-5.258 10-7 0-1.664-4.612-7-10-7Zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
+                            </svg>
+                            View all
+                        </div>
+                    </a>
+                </div>
+
+                <button  id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" class="flex items-center space-x-2">
+                    <div class="text-right ">
+                        <div class="text-sm font-semibold text-white">Lorem Ipsum</div>
+                        <div class="text-[10px] text-white">Administrator</div>
+                    </div>
+                    <img class="h-[50px] w-[50px]" src="{{ asset('assets/profille img.png') }}" alt="">
+                </button>
+                <div id="dropdownAvatar"
+                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                    <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                        <div>Bonnie Green</div>
+                        <div class="font-medium truncate">name@flowbite.com</div>
+                    </div>
+                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                        aria-labelledby="dropdownUserAvatarButton">
+                        <li>
+                            <a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                        </li>
+                    </ul>
+                    <div class="py-2">
+                        <a href="#"
+                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
+                            out</a>
+                    </div>
+                </div>
 
             </div>
         </div>

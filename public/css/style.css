@@ -143,6 +143,7 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
     width: 100%;
 }
 
+
 .sidebar-bg {
     width: calc(100% - 8px);
 }
