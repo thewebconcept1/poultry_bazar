@@ -31,7 +31,7 @@ class UserController extends Controller
             $user = User::with(
                 'city:city_name,city_province'
             )
-            ->where('email', $email)->first();
+                ->where('email', $email)->first();
 
             if ($user && Hash::check($password, $user->password)) {
                 // Create a session for the user
@@ -42,8 +42,8 @@ class UserController extends Controller
                     'email' => $user->email,
                     'user_role' => $user->user_role,
                     'city_id' => $user->city_id,
-                    'city_name' => $user->city->city_name,
-                    'city_province' => $user->city->city_province,
+                    'city_name' => $user->city->city_name ?? null,
+                    'city_province' => $user->city->city_province ?? null,
                 ]]);
 
                 return response()->json(['success' => true, 'message' => 'Login successful', 'user_details' => session('user_details')]);
@@ -51,7 +51,6 @@ class UserController extends Controller
                 // Authentication failed
                 return response()->json(['success' => false, 'message' => 'Invalid credentials'], 401);
             }
-
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
