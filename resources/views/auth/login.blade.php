@@ -138,7 +138,7 @@
 
                                 <button type="submit" id="loginbutton"
                                     class="w-full mt-8 text-lg text-white rounded-full gradient-bg font-semi-bold h-14">
-                                    <div class=" text-center hidden" id="spinner">
+                                    <div class="hidden text-center " id="spinner">
                                         <svg aria-hidden="true"
                                             class="w-5 h-5 mx-auto text-center text-gray-200 animate-spin fill-white"
                                             viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -226,35 +226,17 @@
                     </div>
                     <div id="extraSection" class="flex flex-col justify-center hidden w-full h-full mx-auto">
                         <h2 class="mb-6 text-4xl font-bold text-center">Select Panel</h2>
-                        <div class="grid grid-cols-1 gap-6 mb-8 text-center sm:grid-cols-2 relative z-10">
+                        <div class="relative z-10 grid grid-cols-1 gap-6 mb-8 text-center sm:grid-cols-2">
                             <!-- Market Box 1 -->
                             <div class="relative">
                                 <input type="checkbox" name="market" id="market1" class="sr-only peer" checked>
                                 <label for="market1"
                                     class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
-                                    <img class="" src="{{ asset('assets/icons/market update.png') }}"
-                                        alt="Market icon">
+                                    <img src="{{ asset('assets/icons/market update.png') }}" alt="Market icon">
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
                                     <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
-                                        class="w-full
-                                        h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full
-                                        text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
-                                        View info
-                                    </button>
-                                </label>
-                                <div
-                                    class="absolute w-6 h-6 transition-all border-2 border-gray-300 rounded-full top-4 right-4 peer-checked:border-customOrangeDark peer-checked:bg-customOrangeDark">
-                                </div>
-                            </div>
-
-                            <!-- Market Box 2 -->
-                            <div class="relative z-30">
-                                <input type="checkbox" name="market" id="market2" class="sr-only peer">
-                                <label for="market2"
-                                    class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
-                                    <img class="" src="{{ asset('assets/icons/pos.png') }}" alt="Market icon">
-                                    <h3 class="mb-2 text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
-                                    <button
+                                        data-modal-text="Stay informed with live updates on the latest poultry market rates. This feature provides users with real-time price trends for chickens across different regions. Gain insights to make informed decisions on buying and selling, helping you maximize your profits in a competitive market."
+                                        data-modal-image="{{ asset('assets/icons/market update.png') }}"
                                         class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
                                         View info
                                     </button>
@@ -264,14 +246,37 @@
                                 </div>
                             </div>
 
-                            <!-- Market Box 3 -->
-                            <div class="relative z-30">
-                                <input type="checkbox" name="market" id="market3" class="sr-only peer">
-                                <label for="market3"
+
+                            <!-- Market Box 2 -->
+                            <div class="relative">
+                                <input type="checkbox" name="market" id="market2" class="sr-only peer">
+                                <label for="market2"
                                     class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
-                                    <img class="" src="{{ asset('assets/icons/floks.png') }}" alt="Market icon">
-                                    <h3 class="mb-2 text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
-                                    <button
+                                    <img src="{{ asset('assets/icons/pos.png') }}" alt="Market icon">
+                                    <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
+                                    <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
+                                        data-modal-text="Simplify your sales and financial management with an integrated Point of Sale system. Whether you're selling live birds, this feature tracks sales, generates invoices, and provides insights into daily transactions. It’s designed to streamline in-store with ease. Additionally, a free printer and initial receipt roll will be provided by POUL3Y to help you get started smoothly."
+                                        data-modal-image="{{ asset('assets/icons/pos.png') }}"
+                                        class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
+                                        View info
+                                    </button>
+                                </label>
+                                <div
+                                    class="absolute w-6 h-6 transition-all border-2 border-gray-300 rounded-full top-4 right-4 peer-checked:border-customOrangeDark peer-checked:bg-customOrangeDark">
+                                </div>
+                            </div>
+
+
+                            <!-- Market Box 3 -->
+                            <div class="relative">
+                                <input type="checkbox" name="market" id="market2" class="sr-only peer">
+                                <label for="market2"
+                                    class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
+                                    <img src="{{ asset('assets/icons/floks.png') }}" alt="Market icon">
+                                    <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
+                                    <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
+                                        data-modal-text="Manage the health, productivity, and expenses of your flocks with ease using comprehensive flock management tools. The following features are in support to improve flock health, streamline operations, and optimize profitability while managing financial aspects effectively."
+                                        data-modal-image="{{ asset('assets/icons/floks.png') }}"
                                         class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
                                         View info
                                     </button>
@@ -283,13 +288,14 @@
 
                             <!-- Market Box 4 -->
                             <div class="relative">
-                                <input type="checkbox" name="market" id="market4" class="sr-only peer">
-                                <label for="market4"
-                                    class="block h-full z-30 p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
-                                    <img class="" src="{{ asset('assets/icons/e-commerce.png') }}"
-                                        alt="Market icon">
-                                    <h3 class="mb-2 text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
-                                    <button
+                                <input type="checkbox" name="market" id="market2" class="sr-only peer">
+                                <label for="market2"
+                                    class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
+                                    <img src="{{ asset('assets/icons/e-commerce.png') }}" alt="Market icon">
+                                    <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
+                                    <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
+                                        data-modal-text="Expand your business reach with the E-Commerce module, allowing you to buy and sell poultry products online. This module simplifies online trading, making it easy to reach new customers and streamline operations."
+                                        data-modal-image="{{ asset('assets/icons/e-commerce.png') }}"
                                         class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
                                         View info
                                     </button>
@@ -314,7 +320,7 @@
 
     <!-- Modal -->
     <div id="modal"
-        class="fixed hidden inset-0 z-50 flex items-center justify-center  overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
+        class="fixed inset-0 z-50 flex items-center justify-center hidden overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
         <div class="relative w-auto max-w-lg mx-auto my-4">
             <!-- Modal content -->
             <div
@@ -343,36 +349,6 @@
         </div>
     </div>
     <div id="modalOverlay" class="fixed inset-0 z-[52] hidden bg-black opacity-75"></div>
-
-    {{-- <script>
-                const modal = document.getElementById('modal');
-                const modalOverlay = document.getElementById('modalOverlay');
-                const openModalBtn = document.getElementById('openModalBtn');
-                const closeModalBtn = document.getElementById('closeModalBtn');
-
-                // Function to open modal
-                function openModal() {
-                    modal.classList.remove('hidden');
-                    modalOverlay.classList.remove('hidden');
-                }
-
-                // Function to close modal
-                function closeModal() {
-                    modal.classList.add('hidden');
-                    modalOverlay.classList.add('hidden');
-                }
-
-                // Event listeners
-                openModalBtn.addEventListener('click', openModal);
-                closeModalBtn.addEventListener('click', closeModal);
-                closeModalBtnFooter.addEventListener('click', closeModal);
-                modalOverlay.addEventListener('click', closeModal);
-            </script> --}}
-
-    <!-- Modal toggle -->
-    {{-- <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-    Toggle modal
-  </button> --}}
 
     <!-- Main modal -->
     <div id="default-modal" tabindex="-1" aria-hidden="true"
@@ -422,6 +398,34 @@
 
 
 @section('js')
+    <script>
+        document.querySelectorAll('[data-modal-target="modal"]').forEach(button => {
+            button.addEventListener('click', function() {
+                // Get the modal content element
+                const modal = document.getElementById('modal');
+
+                // Get the data attributes for the modal content
+                const modalText = this.getAttribute('data-modal-text');
+                const modalImage = this.getAttribute('data-modal-image');
+
+                // Update the modal content
+                modal.querySelector('.modal-content p').textContent = modalText;
+                modal.querySelector('.modal-content img').src = modalImage;
+
+                // Show the modal
+                modal.classList.remove('hidden');
+            });
+        });
+
+        // Close the modal when clicking outside of it or on close button (if any)
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+    </script>
+
     <script>
         $(document).ready(function() {
             $("#loginForm").submit(function(event) {
