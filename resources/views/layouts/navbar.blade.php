@@ -144,7 +144,8 @@
                     </a>
                 </div>
 
-                <button  id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" class="flex items-center space-x-2">
+                <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar"
+                    class="flex items-center space-x-2">
                     <div class="text-right ">
                         <div class="text-sm font-semibold text-white">Lorem Ipsum</div>
                         <div class="text-[10px] text-white">Administrator</div>
