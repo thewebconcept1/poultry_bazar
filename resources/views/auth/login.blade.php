@@ -180,7 +180,7 @@
             </div>
 
             <div id="signupSection"
-                class="flex flex-col lg:flex-row items-center lg:justify-between h-[100vh] pb-20 pt-[10vh] mx-[50px] lg:mx-[100px] xl:mx-[180px] z-20 relative hidden ">
+                class="flex flex-col lg:flex-row items-center lg:justify-between h-[100vh] lg:h-[900px] xl:h-[900px] pb-20 pt-[10vh] mx-[50px] lg:mx-[100px]  z-20 relative hidden max-w-[1600px] xl:mx-auto ">
                 <div class="flex flex-col justify-center items-center h-full w-full relative z-40 max-w-[600px]">
                     <div id="welcomeDiv" class="flex flex-col items-center">
                         <h2 class="text-[60px] text-customOrangeDark font-bold leading-none">
