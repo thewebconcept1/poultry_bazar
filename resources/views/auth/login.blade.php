@@ -269,8 +269,8 @@
 
                             <!-- Market Box 3 -->
                             <div class="relative">
-                                <input type="checkbox" name="market" id="market2" class="sr-only peer">
-                                <label for="market2"
+                                <input type="checkbox" name="market" id="market3" class="sr-only peer">
+                                <label for="market3"
                                     class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
                                     <img src="{{ asset('assets/icons/floks.png') }}" alt="Market icon">
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
@@ -288,8 +288,8 @@
 
                             <!-- Market Box 4 -->
                             <div class="relative">
-                                <input type="checkbox" name="market" id="market2" class="sr-only peer">
-                                <label for="market2"
+                                <input type="checkbox" name="market" id="market4" class="sr-only peer">
+                                <label for="market4"
                                     class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
                                     <img src="{{ asset('assets/icons/e-commerce.png') }}" alt="Market icon">
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
