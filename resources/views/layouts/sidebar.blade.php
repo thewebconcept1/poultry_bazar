@@ -270,36 +270,36 @@
             <div class="flex items-center justify-between w-full h-full p-6 bg-orange-100 border-4 shadow-sm border-customOrangeLight rounded-xl">
                 <div>
                     <h2 class="mb-1 text-sm font-medium text-gray-400">Operators</h2>
-                    <p class="text-3xl font-bold text-gray-800">72</p>
+                    <p class="text-2xl font-bold text-gray-800 xl:text-3xl">72</p>
                 </div>
-                <div class="flex w-20 h-20 p-5 align-middle rounded-full bg-customOrangeDark">
-                    <img class="w-10 h-10" src="{{ asset('assets/icons/dashborad icons1.png') }}" alt="">
+                <div class="flex h-20 p-5 align-middle rounded-full min-w-20 bg-customOrangeDark">
+                    <img class="h-10 min-w-10" src="{{ asset('assets/icons/dashborad icons1.png') }}" alt="">
                 </div>
             </div>
             <div class="flex items-center justify-between w-full h-full p-6 bg-orange-100 border-4 shadow-sm border-customOrangeLight rounded-xl">
                 <div>
                     <h2 class="mb-1 text-sm font-medium text-gray-400">Cities</h2>
-                    <p class="text-3xl font-bold text-gray-800">5,732</p>
+                    <p class="text-2xl font-bold text-gray-800 xl:text-3xl">5,732</p>
                 </div>
-                <div class="w-20 h-20 p-5 rounded-full bg-customOrangeDark">
+                <div class="h-20 p-5 rounded-full min-w-20 bg-customOrangeDark">
                     <img class="w-10 h-10" src="{{ asset('assets/icons/dashborad icons2.png') }}" alt="">
                 </div>
             </div>
             <div class="flex items-center justify-between w-full h-full p-6 bg-orange-100 border-4 shadow-sm border-customOrangeLight rounded-xl">
                 <div>
                     <h2 class="mb-1 text-sm font-medium text-gray-400">Blogs</h2>
-                    <p class="text-3xl font-bold text-gray-800">5,732</p>
+                    <p class="text-2xl font-bold text-gray-800 xl:text-3xl">5,732</p>
                 </div>
-                <div class="w-20 h-20 p-5 rounded-full bg-customOrangeDark">
+                <div class="h-20 p-5 rounded-full min-w-20 bg-customOrangeDark">
                     <img class="w-10 h-10" src="{{ asset('assets/icons/dashborad icons3.png') }}" alt="">
                 </div>
             </div>
             <div class="flex items-center justify-between w-full h-full p-6 bg-orange-100 border-4 shadow-sm border-customOrangeLight rounded-xl">
                 <div>
                     <h2 class="mb-1 text-sm font-medium text-gray-400">Diseases</h2>
-                    <p class="text-3xl font-bold text-gray-800">10</p>
+                    <p class="text-2xl font-bold text-gray-800 xl:text-3xl">10</p>
                 </div>
-                <div class="w-20 h-20 p-5 rounded-full bg-customOrangeDark">
+                <div class="h-20 p-5 rounded-full min-w-20 bg-customOrangeDark">
                     <img class="w-10 h-10" src="{{ asset('assets/icons/dashborad icons4.png') }}" alt="">
                 </div>
             </div>
