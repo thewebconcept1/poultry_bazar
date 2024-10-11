@@ -14,11 +14,11 @@
 
 <body>
 
-    {{-- @include('layouts.navbar')
+    @include('layouts.navbar')
 
-    @include('layouts.sidebar') --}}
+    @include('layouts.sidebar')
 
-    @yield('content')
+
 
     <script src="{{ asset('javascript/jquery.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
