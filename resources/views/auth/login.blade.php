@@ -138,7 +138,7 @@
 
                                 <button type="submit" id="loginbutton"
                                     class="w-full mt-8 text-lg text-white rounded-full gradient-bg font-semi-bold h-14">
-                                    <div class="hidden text-center " id="spinner">
+                                    <div class=" text-center hidden" id="spinner">
                                         <svg aria-hidden="true"
                                             class="w-5 h-5 mx-auto text-center text-gray-200 animate-spin fill-white"
                                             viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -180,7 +180,7 @@
             </div>
 
             <div id="signupSection"
-                class="flex flex-col lg:flex-row items-center lg:justify-between h-[100vh] pb-20 pt-[10vh] mx-[50px] lg:mx-[100px] xl:mx-[180px]  relative hidden ">
+                class="flex flex-col lg:flex-row items-center lg:justify-between h-[100vh] pb-20 pt-[10vh] mx-[50px] lg:mx-[100px] xl:mx-[180px] z-20 relative hidden ">
                 <div class="flex flex-col justify-center items-center h-full w-full relative z-40 max-w-[600px]">
                     <div id="welcomeDiv" class="flex flex-col items-center">
                         <h2 class="text-[60px] text-customOrangeDark font-bold leading-none">
@@ -224,9 +224,9 @@
                             </div>
                         </form>
                     </div>
-                    <div id="extraSection" class="relative z-30 flex flex-col justify-center hidden w-full h-full mx-auto">
+                    <div id="extraSection" class="flex flex-col justify-center hidden w-full h-full mx-auto">
                         <h2 class="mb-6 text-4xl font-bold text-center">Select Panel</h2>
-                        <div class="grid grid-cols-1 gap-6 mb-8 text-center sm:grid-cols-2">
+                        <div class="grid grid-cols-1 gap-6 mb-8 text-center sm:grid-cols-2 relative z-10">
                             <!-- Market Box 1 -->
                             <div class="relative">
                                 <input type="checkbox" name="market" id="market1" class="sr-only peer" checked>
@@ -236,7 +236,9 @@
                                         alt="Market icon">
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
                                     <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
-                                        class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
+                                        class="w-full
+                                        h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full
+                                        text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
                                         View info
                                     </button>
                                 </label>
@@ -283,7 +285,7 @@
                             <div class="relative">
                                 <input type="checkbox" name="market" id="market4" class="sr-only peer">
                                 <label for="market4"
-                                    class="z-30 block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
+                                    class="block h-full z-30 p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
                                     <img class="" src="{{ asset('assets/icons/e-commerce.png') }}"
                                         alt="Market icon">
                                     <h3 class="mb-2 text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
@@ -312,7 +314,7 @@
 
     <!-- Modal -->
     <div id="modal"
-        class="fixed inset-0 z-50 flex items-center justify-center hidden overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
+        class="fixed hidden inset-0 z-50 flex items-center justify-center  overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
         <div class="relative w-auto max-w-lg mx-auto my-4">
             <!-- Modal content -->
             <div
@@ -327,6 +329,7 @@
                 <div class="flex items-start justify-between pt-16 ms-10 ">
                     <h3 class="text-3xl font-extrabold">Market Rates</h3>
                 </div>
+                <!-- Modal body -->
                 <div class="relative flex-auto p-10 mb-5">
                     <p class="text-xl leading-relaxed text-justify text-gray-400">
                         Stay informed with live updates on the latest poultry market rates. This feature provides
@@ -339,7 +342,39 @@
             </div>
         </div>
     </div>
-    <div id="modalOverlay" class="fixed inset-0 z-[48] hidden bg-black opacity-75"></div>
+    <div id="modalOverlay" class="fixed inset-0 z-[52] hidden bg-black opacity-75"></div>
+
+    {{-- <script>
+                const modal = document.getElementById('modal');
+                const modalOverlay = document.getElementById('modalOverlay');
+                const openModalBtn = document.getElementById('openModalBtn');
+                const closeModalBtn = document.getElementById('closeModalBtn');
+
+                // Function to open modal
+                function openModal() {
+                    modal.classList.remove('hidden');
+                    modalOverlay.classList.remove('hidden');
+                }
+
+                // Function to close modal
+                function closeModal() {
+                    modal.classList.add('hidden');
+                    modalOverlay.classList.add('hidden');
+                }
+
+                // Event listeners
+                openModalBtn.addEventListener('click', openModal);
+                closeModalBtn.addEventListener('click', closeModal);
+                closeModalBtnFooter.addEventListener('click', closeModal);
+                modalOverlay.addEventListener('click', closeModal);
+            </script> --}}
+
+    <!-- Modal toggle -->
+    {{-- <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+    Toggle modal
+  </button> --}}
+
+    <!-- Main modal -->
     <div id="default-modal" tabindex="-1" aria-hidden="true"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full max-w-2xl max-h-full p-4">
