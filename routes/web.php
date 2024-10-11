@@ -9,7 +9,6 @@ Route::middleware(['custom_auth'])->group(function () {
     Route::get('/', function () {
         return view('dashboard');
     });
-    
 });
 
 Route::get('/login', function () {
