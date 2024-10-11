@@ -160,7 +160,7 @@
                 </div>
                 <!-- Welcome Section -->
                 <div id="welcomeDiv"
-                    class="flex flex-col xl:justify-center items-center h-full w-full relative z-50 max-w-[600px] transition-all duration-700 ease-in-out">
+                    class="flex flex-col xl:justify-center items-center h-full w-full relative z-40 max-w-[600px] transition-all duration-700 ease-in-out">
                     <div>
                         <h2 class="text-[60px] text-customOrangeDark font-bold leading-none">
                             <span class="text-[50px]">Welcome to</span><br> Poultry Bazar
@@ -181,7 +181,7 @@
 
             <div id="signupSection"
                 class="flex flex-col lg:flex-row items-center lg:justify-between h-[100vh] pb-20 pt-[10vh] mx-[50px] lg:mx-[100px] xl:mx-[180px] z-50 relative hidden ">
-                <div class="flex flex-col justify-center items-center h-full w-full relative z-50 max-w-[600px]">
+                <div class="flex flex-col justify-center items-center h-full w-full relative z-40 max-w-[600px]">
                     <div id="welcomeDiv" class="flex flex-col items-center">
                         <h2 class="text-[60px] text-customOrangeDark font-bold leading-none">
                             <span class="text-[50px]">Join Us at</span><br> Poultry Bazar
@@ -235,8 +235,10 @@
                                     <img class="" src="{{ asset('assets/icons/market update.png') }}"
                                         alt="Market icon">
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
-                                    <button id="openModalBtn"
-                                        class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
+                                    <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
+                                        class="w-full
+                                        h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full
+                                        text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
                                         View info
                                     </button>
                                 </label>
@@ -306,38 +308,28 @@
                 </div>
             </div>
 
-            <div id="modalOverlay" class="fixed inset-0 z-40 hidden bg-black opacity-50"></div>
+            <div id="modalOverlay" class="fixed inset-0 z-[48] hidden bg-black opacity-50"></div>
 
             <!-- Modal -->
             <div id="modal"
-                class="fixed inset-0 z-50 flex items-center justify-center hidden overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
-                <div class="relative w-auto max-w-lg mx-auto my-6">
+                class="fixed hidden inset-0 z-50 flex items-center justify-center  overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
+                <div class="relative w-auto max-w-lg mx-auto my-4">
                     <!-- Modal content -->
                     <div
                         class="relative flex flex-col w-full bg-white h-[100%] rounded-[40px] shadow-lg outline-none modal-content focus:outline-none">
                         <!-- Icon at the top -->
-                        <div class="absolute transform -translate-x-1/2 -top-12 left-1/2">
-                            <div class="flex items-center justify-center w-24 h-24 rounded-full">
-                                <div>
-                                    <img class="" src="{{ asset('assets/icons/Group 44.png') }}" alt="">
-                                </div>
+                        <div class="absolute transform -translate-x-1/2 -top-20 left-1/2">
+                            <div>
+                                <img class="w-36 h-36" src="{{ asset('assets/icons/Group 44.png') }}" alt="icon">
                             </div>
                         </div>
                         <!-- Modal header -->
                         <div class="flex items-start justify-between pt-16 ms-10 ">
                             <h3 class="text-3xl font-extrabold">Market Rates</h3>
-                            <button id="closeModalBtn"
-                                class="float-right p-1 ml-auto text-3xl font-semibold leading-none text-black bg-transparent border-0 outline-none focus:outline-none">
-                                <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M6 18L18 6M6 6l12 12"></path>
-                                </svg>
-                            </button>
                         </div>
                         <!-- Modal body -->
-                        <div class="relative flex-auto p-10 mb-7">
-                            <p class="text-2xl leading-relaxed text-justify text-gray-400">
+                        <div class="relative flex-auto p-10 mb-5">
+                            <p class="text-xl leading-relaxed text-justify text-gray-400">
                                 Stay informed with live updates on the latest poultry market rates. This feature provides
                                 users with
                                 real-time price trends for chickens across different regions. Gain insights to make informed
@@ -348,9 +340,9 @@
                     </div>
                 </div>
             </div>
-            <div id="modalOverlay" class="fixed inset-0 z-40 hidden bg-black opacity-25"></div>
+            <div id="modalOverlay" class="fixed inset-0 z-[48] hidden bg-black opacity-25"></div>
 
-            <script>
+            {{-- <script>
                 const modal = document.getElementById('modal');
                 const modalOverlay = document.getElementById('modalOverlay');
                 const openModalBtn = document.getElementById('openModalBtn');
@@ -373,7 +365,7 @@
                 closeModalBtn.addEventListener('click', closeModal);
                 closeModalBtnFooter.addEventListener('click', closeModal);
                 modalOverlay.addEventListener('click', closeModal);
-            </script>
+            </script> --}}
 
             <!-- Modal toggle -->
             {{-- <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
@@ -503,7 +495,7 @@
                     $mainContent.addClass('hidden'); // Hide the main content
                     $signupSection.removeClass('hidden').addClass(
                         'slideInLeft'); // Show the signup section
-                }, 700); // Wait for animation to complete before switching
+                }, 100); // Wait for animation to complete before switching
             });
 
             // Switch back to Login Form
@@ -519,7 +511,7 @@
                     $signupSection.addClass('hidden');
                     $mainContent.removeClass('hidden fadeOut').addClass(
                         'fadeIn'); // Show the login section
-                }, 700);
+                }, 100);
             });
 
             // Input focus animation
