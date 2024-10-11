@@ -1,5 +1,18 @@
-@extends('layouts.layout')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@yield('title', '') - Poultry Bazar</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/DataTables-1.13.8/css/jquery.dataTables.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+
+<body>
     <style>
         /* Keyframes for fade and slide animations */
         .hidden {
@@ -100,8 +113,9 @@
         <div class="w-7xl">
             <div>
                 <div class="absolute z-20 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                    <img id="henImage" class="xl:w-[500px] object-contain lg:w-[30vw]" style="transform: rotateY(360deg)"
-                        src="{{ asset('assets/hen-avatar-withbg.png') }}" alt="hen">
+                    <img id="henImage" class="xl:w-[500px] object-contain lg:w-[30vw]"
+                        style="transform: rotateY(360deg)" src="{{ asset('assets/hen-avatar-withbg.png') }}"
+                        alt="hen">
                 </div>
                 <div class="absolute z-10 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                     <div style="box-shadow: 0px 0px 179px 300px #FCB276A0;"></div>
@@ -127,7 +141,8 @@
                                         placeholder="Enter your email" name="email">
                                 </div>
                                 <div class="mt-5">
-                                    <label for="password" class="block text-sm text-customGrayColorDark">Password</label>
+                                    <label for="password"
+                                        class="block text-sm text-customGrayColorDark">Password</label>
                                     <input type="password" id="password"
                                         class="w-full mt-1 bg-white border border-customGrayColorDark rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm"
                                         placeholder="Enter your password" name="password">
@@ -207,14 +222,16 @@
                                         placeholder="Enter your email">
                                 </div>
                                 <div>
-                                    <label for="confirmEmail" class="block mt-5 text-sm text-customGrayColorDark">Confirm
+                                    <label for="confirmEmail"
+                                        class="block mt-5 text-sm text-customGrayColorDark">Confirm
                                         Email</label>
                                     <input type="email" id="confirmEmail"
                                         class="w-full mt-1 bg-white border border-gray-400 rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm"
                                         placeholder="Confirm your email">
                                 </div>
                                 <div class="mt-5">
-                                    <label for="password" class="block text-sm text-customGrayColorDark">Password</label>
+                                    <label for="password"
+                                        class="block text-sm text-customGrayColorDark">Password</label>
                                     <input type="password" id="password"
                                         class="w-full mt-1 bg-white border border-customGrayColorDark rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm"
                                         placeholder="Enter your password">
@@ -363,8 +380,8 @@
                         data-modal-hide="default-modal">
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                         </svg>
                         <span class="sr-only">Close modal</span>
                     </button>
@@ -397,7 +414,18 @@
     </div>
 
 
-@section('js')
+    <script src="{{ asset('javascript/jquery.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('javascript/canvas.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('DataTables/DataTables-1.13.8/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('javascript/script.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#datatable').DataTable();
+        });
+    </script>
+
+
     <script>
         document.querySelectorAll('[data-modal-target="modal"]').forEach(button => {
             button.addEventListener('click', function() {
@@ -549,5 +577,6 @@
             });
         });
     </script>
-@endsection
-@endsection
+</body>
+
+</html>

@@ -1,7 +1,4 @@
 @extends('layouts.layout')
-@include('layouts.navbar')
-
-@include('layouts.sidebar')
 @section('content')
     <div class="mx-6 my-4 min-h-[88vh]">
         @php
