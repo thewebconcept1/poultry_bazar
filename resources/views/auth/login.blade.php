@@ -1,5 +1,18 @@
-@extends('layouts.layout')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@yield('title', '') - Poultry Bazar</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/DataTables-1.13.8/css/jquery.dataTables.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+
+<body>
     <style>
         /* Keyframes for fade and slide animations */
         .hidden {
@@ -100,17 +113,18 @@
         <div class="w-7xl">
             <div>
                 <div class="absolute z-20 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                    <img id="henImage" class="xl:w-[500px] object-contain w-[30vw]" style="transform: rotateY(360deg)"
-                        src="{{ asset('assets/hen-avatar-withbg.png') }}" alt="hen">
+                    <img id="henImage" class="xl:w-[500px] object-contain lg:w-[30vw]"
+                        style="transform: rotateY(360deg)" src="{{ asset('assets/hen-avatar-withbg.png') }}"
+                        alt="hen">
                 </div>
                 <div class="absolute z-10 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                     <div style="box-shadow: 0px 0px 179px 300px #FCB276A0;"></div>
                 </div>
             </div>
             <div id="mainContent"
-                class="flex flex-col-reverse lg:flex-row items-center lg:justify-between h-[100vh] pb-20 pt-[10vh] mx-[50px] lg:mx-[100px] xl:mx-[180px] z-50 relative transition-all duration-700">
+                class="flex flex-col-reverse lg:flex-row items-center lg:justify-between h-[100vh] pb-20 pt-[10vh] mx-[10px] lg:mx-[100px] xl:mx-auto z-50 relative transition-all duration-700 max-w-[1600px]">
                 <div id="loginDiv"
-                    class="max-w-[600px] my-2 p-12 animate-slideout px-8 flex flex-col justify-center items-center h-full w-full rounded-2xl transition-all duration-700 ease-in-out"
+                    class="max-w-[600px] my-2 p-12 animate-slideout px-8 flex flex-col justify-center items-center h-full xl:h-[800px] w-full rounded-2xl transition-all duration-700 ease-in-out"
                     style="box-shadow: 0px 0px 8px 0px #00000026; background:rgba(255, 255, 255, 0.389)">
                     <div class="w-full">
                         <div>
@@ -127,7 +141,8 @@
                                         placeholder="Enter your email" name="email">
                                 </div>
                                 <div class="mt-5">
-                                    <label for="password" class="block text-sm text-customGrayColorDark">Password</label>
+                                    <label for="password"
+                                        class="block text-sm text-customGrayColorDark">Password</label>
                                     <input type="password" id="password"
                                         class="w-full mt-1 bg-white border border-customGrayColorDark rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm"
                                         placeholder="Enter your password" name="password">
@@ -138,7 +153,7 @@
 
                                 <button type="submit" id="loginbutton"
                                     class="w-full mt-8 text-lg text-white rounded-full gradient-bg font-semi-bold h-14">
-                                    <div class=" text-center hidden" id="spinner">
+                                    <div class="hidden text-center " id="spinner">
                                         <svg aria-hidden="true"
                                             class="w-5 h-5 mx-auto text-center text-gray-200 animate-spin fill-white"
                                             viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -180,7 +195,7 @@
             </div>
 
             <div id="signupSection"
-                class="flex flex-col lg:flex-row items-center lg:justify-between h-[100vh] pb-20 pt-[10vh] mx-[50px] lg:mx-[100px] xl:mx-[180px] z-50 relative hidden ">
+                class="flex flex-col lg:flex-row items-center lg:justify-between h-[100vh] lg:h-[900px] xl:h-[900px] pb-20 pt-[10vh] mx-[50px] lg:mx-[100px]  z-20 relative hidden max-w-[1600px] xl:mx-auto ">
                 <div class="flex flex-col justify-center items-center h-full w-full relative z-40 max-w-[600px]">
                     <div id="welcomeDiv" class="flex flex-col items-center">
                         <h2 class="text-[60px] text-customOrangeDark font-bold leading-none">
@@ -207,14 +222,16 @@
                                         placeholder="Enter your email">
                                 </div>
                                 <div>
-                                    <label for="confirmEmail" class="block mt-5 text-sm text-customGrayColorDark">Confirm
+                                    <label for="confirmEmail"
+                                        class="block mt-5 text-sm text-customGrayColorDark">Confirm
                                         Email</label>
                                     <input type="email" id="confirmEmail"
                                         class="w-full mt-1 bg-white border border-gray-400 rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm"
                                         placeholder="Confirm your email">
                                 </div>
                                 <div class="mt-5">
-                                    <label for="password" class="block text-sm text-customGrayColorDark">Password</label>
+                                    <label for="password"
+                                        class="block text-sm text-customGrayColorDark">Password</label>
                                     <input type="password" id="password"
                                         class="w-full mt-1 bg-white border border-customGrayColorDark rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm"
                                         placeholder="Enter your password">
@@ -226,35 +243,17 @@
                     </div>
                     <div id="extraSection" class="flex flex-col justify-center hidden w-full h-full mx-auto">
                         <h2 class="mb-6 text-4xl font-bold text-center">Select Panel</h2>
-                        <div class="grid grid-cols-1 gap-6 mb-8 text-center sm:grid-cols-2">
+                        <div class="relative z-10 grid grid-cols-1 gap-6 mb-8 text-center sm:grid-cols-2">
                             <!-- Market Box 1 -->
                             <div class="relative">
                                 <input type="checkbox" name="market" id="market1" class="sr-only peer" checked>
                                 <label for="market1"
                                     class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
-                                    <img class="" src="{{ asset('assets/icons/market update.png') }}"
-                                        alt="Market icon">
+                                    <img src="{{ asset('assets/icons/market update.png') }}" alt="Market icon">
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
                                     <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
-                                        class="w-full
-                                        h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full
-                                        text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
-                                        View info
-                                    </button>
-                                </label>
-                                <div
-                                    class="absolute w-6 h-6 transition-all border-2 border-gray-300 rounded-full top-4 right-4 peer-checked:border-customOrangeDark peer-checked:bg-customOrangeDark">
-                                </div>
-                            </div>
-
-                            <!-- Market Box 2 -->
-                            <div class="relative">
-                                <input type="checkbox" name="market" id="market2" class="sr-only peer">
-                                <label for="market2"
-                                    class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
-                                    <img class="" src="{{ asset('assets/icons/pos.png') }}" alt="Market icon">
-                                    <h3 class="mb-2 text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
-                                    <button
+                                        data-modal-text="Stay informed with live updates on the latest poultry market rates. This feature provides users with real-time price trends for chickens across different regions. Gain insights to make informed decisions on buying and selling, helping you maximize your profits in a competitive market."
+                                        data-modal-image="{{ asset('assets/icons/market update.png') }}"
                                         class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
                                         View info
                                     </button>
@@ -264,14 +263,37 @@
                                 </div>
                             </div>
 
+
+                            <!-- Market Box 2 -->
+                            <div class="relative">
+                                <input type="checkbox" name="market" id="market2" class="sr-only peer">
+                                <label for="market2"
+                                    class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
+                                    <img src="{{ asset('assets/icons/pos.png') }}" alt="Market icon">
+                                    <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
+                                    <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
+                                        data-modal-text="Simplify your sales and financial management with an integrated Point of Sale system. Whether you're selling live birds, this feature tracks sales, generates invoices, and provides insights into daily transactions. It’s designed to streamline in-store with ease. Additionally, a free printer and initial receipt roll will be provided by POUL3Y to help you get started smoothly."
+                                        data-modal-image="{{ asset('assets/icons/pos.png') }}"
+                                        class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
+                                        View info
+                                    </button>
+                                </label>
+                                <div
+                                    class="absolute w-6 h-6 transition-all border-2 border-gray-300 rounded-full top-4 right-4 peer-checked:border-customOrangeDark peer-checked:bg-customOrangeDark">
+                                </div>
+                            </div>
+
+
                             <!-- Market Box 3 -->
                             <div class="relative">
                                 <input type="checkbox" name="market" id="market3" class="sr-only peer">
                                 <label for="market3"
                                     class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
-                                    <img class="" src="{{ asset('assets/icons/floks.png') }}" alt="Market icon">
-                                    <h3 class="mb-2 text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
-                                    <button
+                                    <img src="{{ asset('assets/icons/floks.png') }}" alt="Market icon">
+                                    <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
+                                    <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
+                                        data-modal-text="Manage the health, productivity, and expenses of your flocks with ease using comprehensive flock management tools. The following features are in support to improve flock health, streamline operations, and optimize profitability while managing financial aspects effectively."
+                                        data-modal-image="{{ asset('assets/icons/floks.png') }}"
                                         class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
                                         View info
                                     </button>
@@ -286,10 +308,11 @@
                                 <input type="checkbox" name="market" id="market4" class="sr-only peer">
                                 <label for="market4"
                                     class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
-                                    <img class="" src="{{ asset('assets/icons/e-commerce.png') }}"
-                                        alt="Market icon">
-                                    <h3 class="mb-2 text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
-                                    <button
+                                    <img src="{{ asset('assets/icons/e-commerce.png') }}" alt="Market icon">
+                                    <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
+                                    <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
+                                        data-modal-text="Expand your business reach with the E-Commerce module, allowing you to buy and sell poultry products online. This module simplifies online trading, making it easy to reach new customers and streamline operations."
+                                        data-modal-image="{{ asset('assets/icons/e-commerce.png') }}"
                                         class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
                                         View info
                                     </button>
@@ -307,120 +330,130 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div id="modalOverlay" class="fixed inset-0 z-[48] hidden bg-black opacity-50"></div>
+    {{-- <div id="modalOverlay" class="fixed inset-0 z-[48] hidden bg-black opacity-50"></div> --}}
 
-            <!-- Modal -->
-            <div id="modal"
-                class="fixed hidden inset-0 z-50 flex items-center justify-center  overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
-                <div class="relative w-auto max-w-lg mx-auto my-4">
-                    <!-- Modal content -->
-                    <div
-                        class="relative flex flex-col w-full bg-white h-[100%] rounded-[40px] shadow-lg outline-none modal-content focus:outline-none">
-                        <!-- Icon at the top -->
-                        <div class="absolute transform -translate-x-1/2 -top-20 left-1/2">
-                            <div>
-                                <img class="w-36 h-36" src="{{ asset('assets/icons/Group 44.png') }}" alt="icon">
-                            </div>
-                        </div>
-                        <!-- Modal header -->
-                        <div class="flex items-start justify-between pt-16 ms-10 ">
-                            <h3 class="text-3xl font-extrabold">Market Rates</h3>
-                        </div>
-                        <!-- Modal body -->
-                        <div class="relative flex-auto p-10 mb-5">
-                            <p class="text-xl leading-relaxed text-justify text-gray-400">
-                                Stay informed with live updates on the latest poultry market rates. This feature provides
-                                users with
-                                real-time price trends for chickens across different regions. Gain insights to make informed
-                                decisions
-                                on buying and selling, helping you maximize your profits in a competitive market.
-                            </p>
-                        </div>
+    <!-- Modal -->
+    <div id="modal"
+        class="fixed inset-0 z-50 flex items-center justify-center hidden overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
+        <div class="relative w-auto max-w-lg mx-auto my-4">
+            <!-- Modal content -->
+            <div
+                class="relative flex flex-col w-full bg-white h-[100%] rounded-[40px] shadow-lg outline-none modal-content focus:outline-none">
+                <!-- Icon at the top -->
+                <div class="absolute transform -translate-x-1/2 -top-20 left-1/2">
+                    <div>
+                        <img class="w-36 h-36" src="{{ asset('assets/icons/Group 44.png') }}" alt="icon">
                     </div>
                 </div>
-            </div>
-            <div id="modalOverlay" class="fixed inset-0 z-[48] hidden bg-black opacity-25"></div>
-
-            {{-- <script>
-                const modal = document.getElementById('modal');
-                const modalOverlay = document.getElementById('modalOverlay');
-                const openModalBtn = document.getElementById('openModalBtn');
-                const closeModalBtn = document.getElementById('closeModalBtn');
-
-                // Function to open modal
-                function openModal() {
-                    modal.classList.remove('hidden');
-                    modalOverlay.classList.remove('hidden');
-                }
-
-                // Function to close modal
-                function closeModal() {
-                    modal.classList.add('hidden');
-                    modalOverlay.classList.add('hidden');
-                }
-
-                // Event listeners
-                openModalBtn.addEventListener('click', openModal);
-                closeModalBtn.addEventListener('click', closeModal);
-                closeModalBtnFooter.addEventListener('click', closeModal);
-                modalOverlay.addEventListener('click', closeModal);
-            </script> --}}
-
-            <!-- Modal toggle -->
-            {{-- <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-    Toggle modal
-  </button> --}}
-
-            <!-- Main modal -->
-            <div id="default-modal" tabindex="-1" aria-hidden="true"
-                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative w-full max-w-2xl max-h-full p-4">
-                    <!-- Modal content -->
-                    <div class="relative bg-white h-[400px] mb-24 rounded-lg shadow dark:bg-gray-800">
-                        <!-- Modal header -->
-                        <div class="flex items-center justify-between p-4 rounded-t md:p-5 dark:border-gray-600">
-                            <button type="button"
-                                class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto dark:hover:bg-gray-600 dark:hover:text-white"
-                                data-modal-hide="default-modal">
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    fill="none" viewBox="0 0 14 14">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                </svg>
-                                <span class="sr-only">Close modal</span>
-                            </button>
-                        </div>
-                        <!-- Modal body -->
-                        <div class="flex justify-center space-y-2 md:p-5">
-                            <img class="h-[100%] " src="{{ asset('assets/Group 1000006301.png') }}" alt="">
-                        </div>
-                        <h1 class="text-2xl font-bold text-center">
-                            Plase wait for conformation <br>
-                            <span>from the admin</span>
-                        </h1>
-                        <h1 class="mt-10 text-center text-1xl text-customGrayColorDark">
-                            Or <br>
-                            <span class="">
-                                Call Us (+92 300 1234567)
-                            </span>
-                        </h1>
-
-
-                    </div>
+                <!-- Modal header -->
+                <div class="flex items-start justify-between pt-16 ms-10 ">
+                    <h3 class="text-3xl font-extrabold">Market Rates</h3>
+                </div>
+                <!-- Modal body -->
+                <div class="relative flex-auto p-10 mb-5">
+                    <p class="text-xl leading-relaxed text-justify text-gray-400">
+                        Stay informed with live updates on the latest poultry market rates. This feature provides
+                        users with
+                        real-time price trends for chickens across different regions. Gain insights to make informed
+                        decisions
+                        on buying and selling, helping you maximize your profits in a competitive market.
+                    </p>
                 </div>
             </div>
+        </div>
+    </div>
+    <div id="modalOverlay" class="fixed inset-0 z-[52] hidden bg-black opacity-75"></div>
 
-            <div class="absolute flex justify-center hidden w-full md:block bottom-5">
-                <p class="text-sm text-black">Powered by <span class="text-customOrangeDark">Poul3yBazar</span> &
-                    Developed by
-                    <a target="_blank" class="text-blue-500" href="https://thewebconcept.com/">TheWebConcept</a>.
-                </p>
+    <!-- Main modal -->
+    <div id="default-modal" tabindex="-1" aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-2xl max-h-full p-4">
+            <!-- Modal content -->
+            <div class="relative bg-white h-[400px] mb-24 rounded-lg shadow dark:bg-gray-800">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 rounded-t md:p-5 dark:border-gray-600">
+                    <button type="button"
+                        class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="default-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="flex justify-center space-y-2 md:p-5">
+                    <img class="h-[100%] " src="{{ asset('assets/Group 1000006301.png') }}" alt="">
+                </div>
+                <h1 class="text-2xl font-bold text-center">
+                    Plase wait for conformation <br>
+                    <span>from the admin</span>
+                </h1>
+                <h1 class="mt-10 text-center text-1xl text-customGrayColorDark">
+                    Or <br>
+                    <span class="">
+                        Call Us (+92 300 1234567)
+                    </span>
+                </h1>
+
+
             </div>
         </div>
     </div>
 
-@section('js')
+    <div class="absolute flex justify-center hidden w-full md:block bottom-5">
+        <p class="text-sm text-black">Powered by <span class="text-customOrangeDark">Poul3yBazar</span> &
+            Developed by
+            <a target="_blank" class="text-blue-500" href="https://thewebconcept.com/">TheWebConcept</a>.
+        </p>
+    </div>
+
+
+    <script src="{{ asset('javascript/jquery.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('javascript/canvas.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('DataTables/DataTables-1.13.8/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('javascript/script.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#datatable').DataTable();
+        });
+    </script>
+
+
+    <script>
+        document.querySelectorAll('[data-modal-target="modal"]').forEach(button => {
+            button.addEventListener('click', function() {
+                // Get the modal content element
+                const modal = document.getElementById('modal');
+
+                // Get the data attributes for the modal content
+                const modalText = this.getAttribute('data-modal-text');
+                const modalImage = this.getAttribute('data-modal-image');
+
+                // Update the modal content
+                modal.querySelector('.modal-content p').textContent = modalText;
+                modal.querySelector('.modal-content img').src = modalImage;
+
+                // Show the modal
+                modal.classList.remove('hidden');
+            });
+        });
+
+        // Close the modal when clicking outside of it or on close button (if any)
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+    </script>
+
     <script>
         $(document).ready(function() {
             $("#loginForm").submit(function(event) {
@@ -544,5 +577,6 @@
             });
         });
     </script>
-@endsection
-@endsection
+</body>
+
+</html>
