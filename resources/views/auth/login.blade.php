@@ -124,7 +124,7 @@
             <div id="mainContent"
                 class="flex flex-col-reverse lg:flex-row items-center lg:justify-between h-[95vh] pb-20 pt-[10vh] mx-[10px] lg:mx-[100px] xl:mx-auto z-50 relative transition-all duration-700 max-w-[1450px]">
                 <div id="loginDiv"
-                    class="max-w-[480px] my-2 p-12 animate-slideout px-8 flex flex-col justify-center items-center h-full xl:h-[600px] w-full rounded-2xl transition-all duration-700 ease-in-out"
+                    class="max-w-[480px] my-2 p-12 animate-slideout px-8 flex flex-col justify-center items-center h-full xl:h-auto w-full rounded-2xl transition-all duration-700 ease-in-out"
                     style="box-shadow: 0px 0px 8px 0px #00000026; background:rgba(255, 255, 255, 0.389)">
                     <div class="w-full">
                         <div>
