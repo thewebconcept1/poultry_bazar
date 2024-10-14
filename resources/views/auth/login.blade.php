@@ -113,7 +113,7 @@
         <div class="w-5xl p-5">
             <div>
                 <div class="absolute z-20 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                    <img id="henImage" class="xl:w-[450px] o    bject-contain lg:w-[30vw]"
+                    <img id="henImage" class="xl:w-[460px] object-contain lg:w-[30vw]"
                         style="transform: rotateY(360deg)" src="{{ asset('assets/hen-avatar-withbg.png') }}"
                         alt="hen">
                 </div>
@@ -122,9 +122,9 @@
                 </div>
             </div>
             <div id="mainContent"
-                class="flex flex-col-reverse lg:flex-row items-center lg:justify-between h-[95vh] pb-20 pt-[10vh] mx-[10px] lg:mx-[100px] xl:mx-auto z-50 relative transition-all duration-700 max-w-[1600px]">
+                class="flex flex-col-reverse lg:flex-row items-center lg:justify-between h-[95vh] pb-20 pt-[10vh] mx-[10px] lg:mx-[100px] xl:mx-auto z-50 relative transition-all duration-700 max-w-[1450px]">
                 <div id="loginDiv"
-                    class="max-w-[530px] my-2 p-12 animate-slideout px-8 flex flex-col justify-center items-center h-full xl:h-[600px] w-full rounded-2xl transition-all duration-700 ease-in-out"
+                    class="max-w-[480px] my-2 p-12 animate-slideout px-8 flex flex-col justify-center items-center h-full xl:h-[600px] w-full rounded-2xl transition-all duration-700 ease-in-out"
                     style="box-shadow: 0px 0px 8px 0px #00000026; background:rgba(255, 255, 255, 0.389)">
                     <div class="w-full">
                         <div>
@@ -177,15 +177,15 @@
                 <div id="welcomeDiv"
                     class="flex flex-col xl:justify-center items-center h-full w-full relative z-40 max-w-[530px] transition-all duration-700 ease-in-out">
                     <div>
-                        <h2 class="text-[60px] text-customOrangeDark font-bold leading-none">
-                            <span class="text-[50px]">Welcome to</span><br> Poultry Bazar
+                        <h2 class="text-[55px] text-customOrangeDark font-bold leading-none">
+                            <span class="text-[45px]">Welcome to</span><br> Poultry Bazar
                         </h2>
                         <p class="flex justify-start mt-4 font-normal text-black text-custom16">
                             Start your new journey with us and join <br> our community
                         </p>
                     </div>
                     <button id="switchToLoginBtn" type="button"
-                        class="w-1/2 mt-10 text-lg font-semibold text-white rounded-full lg:w-[80%] lg:mt-10 gradient-bg h-14">
+                        class="w-1/2 mt-10 text-lg font-semibold text-white rounded-full  lg:w-[70%] lg:mt-10 gradient-bg h-14">
                         Get Access
                     </button>
                 </div>
@@ -195,21 +195,21 @@
             </div>
 
             <div id="signupSection"
-                class="flex flex-col lg:flex-row items-center lg:justify-between h-[100vh] lg:h-[900px] xl:h-[900px] pb-20 pt-[10vh] mx-[50px] lg:mx-[100px]  z-20 relative hidden max-w-[1600px] xl:mx-auto ">
-                <div class="flex flex-col justify-center items-center h-full w-full relative z-40 max-w-[600px]">
-                    <div id="welcomeDiv" class="flex flex-col items-center">
-                        <h2 class="text-[60px] text-customOrangeDark font-bold leading-none">
-                            <span class="text-[50px]">Join Us at</span><br> Poultry Bazar
+                class="flex flex-col justify-center lg:flex-row items-center lg:justify-between min-h-[100vh]  pb-20 pt-1 mx-[50px] lg:mx-[100px]  z-20 relative hidden max-w-[1500px] xl:mx-auto ">
+                <div class="flex flex-col justify-center items-center h-full w-full relative z-40 max-w-[480px]">
+                    <div id="welcomeDiv" class="flex flex-col items-center justify-start">
+                        <h2 class="text-[50px] text-customOrangeDark font-bold leading-none">
+                            <span class="text-[40px]">Join Us at</span><br> Poultry Bazar
                         </h2>
                         <p class="flex justify-start mt-4 font-normal text-black text-custom16">
                             Become a member and start your journey with <br> Poultry Bazar
                         </p>
                         <button id="backToLoginBtn" type="button"
-                            class="w-1/2 mt-10 text-lg font-semibold text-white rounded-full lg:w-full lg:mt-40 gradient-bg h-14">Login</button>
+                            class="w-1/2 mt-10 text-lg font-semibold text-white rounded-full lg:w-full lg:mt-10 gradient-bg h-14">Login</button>
                     </div>
                 </div>
                 <!-- Signup Form Section (Initially hidden) -->
-                <div class="max-w-[600px] animate-slideIn px-8 lg:py-0 py-4 my-2 flex flex-col justify-center items-center h-full w-[100%] rounded-2xl transition-all duration-700 ease-in-out"
+                <div class="max-w-[480px] animate-slideIn px-8 lg:py-0 py-4 my-2 flex flex-col justify-center items-center h-auto w-[100%] rounded-2xl transition-all duration-700 ease-in-out"
                     style="box-shadow: 0px 0px 8px 0px #00000026; background:rgba(255, 255, 255, 0.389)">
                     <div id="signupForm" class="w-full h-full m-5 ">
                         <form id="" action="">
@@ -241,9 +241,9 @@
                             </div>
                         </form>
                     </div>
-                    <div id="extraSection" class="flex flex-col justify-center hidden w-full h-full mx-auto">
+                    <div id="extraSection" class="flex flex-col justify-center hidden w-full h-full mx-auto py-4">
                         <h2 class="mb-6 text-4xl font-bold text-center">Select Panel</h2>
-                        <div class="relative z-10 grid grid-cols-1 gap-6 mb-8 text-center sm:grid-cols-2">
+                        <div class="relative z-10 grid grid-cols-1 gap-4 mb-8 text-center sm:grid-cols-2">
                             <!-- Market Box 1 -->
                             <div class="relative">
                                 <input type="checkbox" name="market" id="market1" class="sr-only peer" checked>
@@ -324,7 +324,7 @@
                         </div>
 
                         <button data-modal-target="default-modal" data-modal-toggle="default-modal"
-                            class="block w-full py-4 text-lg font-semibold text-white transition duration-300 rounded-full gradient-bg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50">
+                            class="block w-full py-3 text-lg font-semibold text-white transition duration-300 rounded-full gradient-bg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50">
                             Get Access
                         </button>
                     </div>
