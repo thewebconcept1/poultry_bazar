@@ -12,6 +12,9 @@ Route::middleware(['custom_auth'])->group(function () {
     Route::get('/operators', function () {
         return view('operators');
     });
+    Route::get('/queries', function () {
+        return view('queries');
+    });
 });
 
 Route::get('/login', function () {
