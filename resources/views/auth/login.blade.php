@@ -195,7 +195,7 @@
             </div>
 
             <div id="signupSection"
-                class="flex flex-col justify-center lg:flex-row items-center lg:justify-between min-h-[100vh]  pb-20 pt-1 mx-[50px] lg:mx-[100px]  z-20 relative hidden max-w-[1500px] xl:mx-auto ">
+                class="flex flex-col justify-center lg:flex-row items-center lg:justify-between min-h-[100vh]   mx-[50px] lg:mx-[100px]  z-20 relative hidden max-w-[1500px] xl:mx-auto ">
                 <div class="flex flex-col justify-center items-center h-full w-full relative z-40 max-w-[480px]">
                     <div id="welcomeDiv" class="flex flex-col items-center justify-start">
                         <h2 class="text-[50px] text-customOrangeDark font-bold leading-none">
