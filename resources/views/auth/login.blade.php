@@ -122,7 +122,7 @@
                 </div>
             </div>
             <div id="mainContent"
-                class="flex flex-col-reverse lg:flex-row items-center lg:justify-between h-full mx-[10px] lg:mx-[100px] xl:mx-auto z-50 relative transition-all duration-700 max-w-[1450px]">
+                class="flex flex-col-reverse lg:flex-row items-center lg:justify-between h-[100vh] mx-[10px] lg:mx-[100px] xl:mx-auto z-50 relative transition-all duration-700 max-w-[1450px]">
                 <div id="loginDiv"
                     class="max-w-[480px] my-2 p-12 animate-slideout px-8 flex flex-col justify-center pt-10 items-center h-full xl:h-auto w-full rounded-2xl transition-all duration-700 ease-in-out"
                     style="box-shadow: 0px 0px 8px 0px #00000026; background:rgba(255, 255, 255, 0.389)">
