@@ -253,7 +253,7 @@
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
                                     <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
                                         data-modal-text="Stay informed with live updates on the latest poultry market rates. This feature provides users with real-time price trends for chickens across different regions. Gain insights to make informed decisions on buying and selling, helping you maximize your profits in a competitive market."
-                                        data-modal-image="{{ asset('assets/icons/market update.png') }}"
+                                        data-modal-image="{{ asset('assets/icons/svginfo1.svg') }}"
                                         class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
                                         View info
                                     </button>
@@ -273,7 +273,7 @@
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
                                     <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
                                         data-modal-text="Simplify your sales and financial management with an integrated Point of Sale system. Whether you're selling live birds, this feature tracks sales, generates invoices, and provides insights into daily transactions. It’s designed to streamline in-store with ease. Additionally, a free printer and initial receipt roll will be provided by POUL3Y to help you get started smoothly."
-                                        data-modal-image="{{ asset('assets/icons/pos.png') }}"
+                                        data-modal-image="{{ asset('assets/icons/svginfo2.svg') }}"
                                         class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
                                         View info
                                     </button>
@@ -293,7 +293,7 @@
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
                                     <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
                                         data-modal-text="Manage the health, productivity, and expenses of your flocks with ease using comprehensive flock management tools. The following features are in support to improve flock health, streamline operations, and optimize profitability while managing financial aspects effectively."
-                                        data-modal-image="{{ asset('assets/icons/floks.png') }}"
+                                        data-modal-image="{{ asset('assets/icons/svginfo3.svg') }}"
                                         class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
                                         View info
                                     </button>
@@ -308,7 +308,7 @@
                                 <input type="checkbox" name="market" id="market4" class="sr-only peer">
                                 <label for="market4"
                                     class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
-                                    <img src="{{ asset('assets/icons/e-commerce.png') }}" alt="Market icon">
+                                    <img src="{{ asset('assets/icons/svginfo4.svg') }}" alt="Market icon">
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
                                     <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
                                         data-modal-text="Expand your business reach with the E-Commerce module, allowing you to buy and sell poultry products online. This module simplifies online trading, making it easy to reach new customers and streamline operations."
