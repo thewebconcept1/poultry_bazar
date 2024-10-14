@@ -110,7 +110,7 @@
 
 
     <div class="relative w-full h-full">
-        <div class="w-5xl p-5">
+        <div class="w-5xl  xl:px-5 xl:p-0 p-5">
             <div>
                 <div class="absolute z-20 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                     <img id="henImage" class="xl:w-[460px] object-contain lg:w-[30vw]"
