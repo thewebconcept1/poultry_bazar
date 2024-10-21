@@ -308,7 +308,7 @@
                                 <input type="checkbox" name="market" id="market4" class="sr-only peer">
                                 <label for="market4"
                                     class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
-                                    <img src="{{ asset('assets/icons/svginfo4 .svg') }}" alt="Market icon">
+                                    <img src="{{ asset('assets/icons/svginfo4.svg') }}" alt="Market icon">
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
                                     <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
                                         data-modal-text="Expand your business reach with the E-Commerce module, allowing you to buy and sell poultry products online. This module simplifies online trading, making it easy to reach new customers and streamline operations."
