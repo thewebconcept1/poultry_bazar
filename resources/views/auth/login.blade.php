@@ -110,7 +110,7 @@
 
 
     <div class="relative w-full h-full">
-        <div class="w-5xl  xl:px-5 xl:p-0 p-5">
+        <div class="p-5 w-5xl xl:px-5 xl:p-0">
             <div>
                 <div class="absolute z-20 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                     <img id="henImage" class="xl:w-[460px] object-contain lg:w-[30vw]"
@@ -241,7 +241,7 @@
                             </div>
                         </form>
                     </div>
-                    <div id="extraSection" class="flex flex-col justify-center hidden w-full h-full mx-auto py-4">
+                    <div id="extraSection" class="flex flex-col justify-center hidden w-full h-full py-4 mx-auto">
                         <h2 class="mb-6 text-4xl font-bold text-center">Select Panel</h2>
                         <div class="relative z-10 grid grid-cols-1 gap-4 mb-8 text-center sm:grid-cols-2">
                             <!-- Market Box 1 -->
@@ -308,7 +308,7 @@
                                 <input type="checkbox" name="market" id="market4" class="sr-only peer">
                                 <label for="market4"
                                     class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
-                                    <img src="{{ asset('assets/icons/svginfo4.svg') }}" alt="Market icon">
+                                    <img src="{{ asset('assets/icons/svginfo4 .svg') }}" alt="Market icon">
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
                                     <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
                                         data-modal-text="Expand your business reach with the E-Commerce module, allowing you to buy and sell poultry products online. This module simplifies online trading, making it easy to reach new customers and streamline operations."
