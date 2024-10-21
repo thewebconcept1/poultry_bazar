@@ -15,8 +15,8 @@
     <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 gradient-border rounded-2xl">
         <ul class="space-y-2 font-medium">
             <li>
-                <a href="#"
-                    class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
+                <a href="../"
+                    class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('/') ? 'active bg-customOrangeDark text-white ' : '' }} ">
                     <svg class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                         <rect x="12.75" y="3" width="1.875" height="4.375" rx="0.9375" fill="black" />
@@ -174,8 +174,9 @@
                 </a>
             </li>
             <li>
-                <a href="#"
-                    class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
+            <li>
+                <a href="./queries"
+                    class="flex items-center p-2 text-gray-900 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('queries') ? 'active bg-customOrangeDark text-white ' : '' }}">
                     <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 20 20">
@@ -264,5 +265,5 @@
 </aside>
 
 <div class="p-4  sm:ml-64 pt-[100px]">
- @yield('content')
+    @yield('content')
 </div>

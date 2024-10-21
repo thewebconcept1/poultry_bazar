@@ -8,8 +8,9 @@
                 <div class="text-[10px] text-black">Administrator</div>
             </div>
         </div>
-        <div id="extraSection" class="flex    w-full h-full mx-auto">
-            <div class="relative z-10 grid grid-cols-2 lg:grid-cols-4 md:grid-cols-1 gap-6 mb-8 text-center xl:grid-cols-4">
+        <div id="extraSection" class="flex   w-full h-full mx-auto">
+            <div
+                class="relative z-10 grid grid-cols-2 lg:grid-cols-4  gap-4 lg:gap-2 xl:gap-6 mb-8 text-center xl:grid-cols-4">
                 <!-- Market Box 1 -->
                 <div class="relative">
                     <input type="checkbox" name="market" id="market1" class="sr-only peer" checked>
@@ -66,4 +67,41 @@
                 </div>
             </div>
         </div>
-    @endsection
+
+        @php
+            $headers = ['Sr.', 'Image', 'Name', ''];
+            $body =
+                "<tr>
+                <td>1</td>
+                <td><img src='" .
+                asset('assets/Profile photo (1) 1.png') .
+                "' alt=''></td>
+                <td>Kurt Weissnat</td>
+                <td clas='flex justify-center w-full'>
+                    <div class='flex gap-4'>
+                        <div class='flex items-center me-4;''>
+                            <input checked id='edit' type='checkbox' class='w-5 h-5 text-blue-600  bg-gray-100 border-gray-300 rounded focus:ring        customOrangeDark '>
+                            <label for='edit' class='ms-2 text-sm font-medium text-gsray-900'>Edit</label>
+                        </div>
+                        <div class='flex items-center me-4;''>
+                            <input checked id='delete' type='checkbox' class='w-5 h-5  text-red-600 bg-gray-100 border-gray-300 rounded focus:ring        customOrangeDark '>
+                            <label for='delete' class='ms-2 text-sm font-medium text-gray-900'>Delete</label>
+                        </div>
+                        <div class='flex items-center me-4;''>
+                            <input checked id='add' type='checkbox' class='w-5 h-5 text-customOrangeDark bg-gray-100 border-gray-300 rounded focus:ring        customOrangeDark '>
+                            <label for='add' class='ms-2 text-sm font-medium text-gray-900'>Add</label>
+                        </div>
+                        <div class='flex items-center me-4;''>
+                            <input checked id='fullAccess' type='checkbox' class='w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring        customOrangeDark '>
+                            <label for='fullAccess' class='ms-2 text-sm font-medium text-gray-900'>Full Access</label>
+                        </div>
+                    </div>
+                </td>
+
+
+        </tr>";
+        @endphp
+
+        <x-table :headers="$headers" :body="$body" />
+    </div>
+@endsection

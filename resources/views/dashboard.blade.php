@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class="h-full p-8 py-2 rounded-lg gradient-border">
+    <div class="min-h-[85vh] p-8 py-2 rounded-lg gradient-border ">
         <h1 class="text-[32px] mt-[10px]  font-bold">Market Panel</h1>
         <div class="grid grid-cols-1 gap-4 mt-10 mb-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2">
             <div

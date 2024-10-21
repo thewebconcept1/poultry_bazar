@@ -4,10 +4,6 @@
         <div>
             <h1 class="text-3xl font-bold ps-5">Operators</h1>
         </div>
-
-        <a href=""></a>
-
-        <a href=""></a>
         @php
             $headers = ['Sr.', 'Image', 'Name', 'Email', 'Phone Number', 'Last Active', 'status', 'Action'];
             $body =
@@ -20,7 +16,7 @@
                 <td>KurtWeissnat@email.com</td>
                 <td>1234564</td>
                 <td>1234564</td>
-                <td>active</td>
+                <td><span class='text-blue-500'>active</span></td>
                 <td>
                     <span class='flex justify-center'><button>
                         <img  src='" .
@@ -33,6 +29,4 @@
 
         <x-table :headers="$headers" :body="$body" />
     </div>
-    <img src="" alt="">
-    <img src="" alt="">
 @endsection
