@@ -147,21 +147,21 @@
                 <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar"
                     class="flex items-center space-x-2">
                     <div class="text-right ">
-                        <div class="text-sm font-semibold text-white">Lorem Ipsum</div>
-                        <div class="text-[10px] text-white">Administrator</div>
+                        <div class="text-sm font-semibold text-white">{{ session('user_details')['name'] }}</div>
+                        <div class="text-[10px] text-white">{{ session('user_details')['user_role'] }}</div>
                     </div>
                     <img class="h-[50px] w-[50px]" src="{{ asset('assets/profille img.png') }}" alt="">
                 </button>
                 <div id="dropdownAvatar"
                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                     <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                        <div>Bonnie Green</div>
-                        <div class="font-medium truncate">name@flowbite.com</div>
+                        <div>{{ session('user_details')['name'] }}</div>
+                        <div class="font-medium truncate text-xs">{{ session('user_details')['email'] }}</div>
                     </div>
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
                         aria-labelledby="dropdownUserAvatarButton">
                         <li>
-                            <a href="#"
+                            <a href="../"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                         </li>
                         <li>
@@ -174,7 +174,7 @@
                         </li>
                     </ul>
                     <div class="py-2">
-                        <a href="#"
+                        <a href="../Logout"
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
                             out</a>
                     </div>
