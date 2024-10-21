@@ -1,4 +1,7 @@
 @extends('layouts.layout')
+@section('title')
+    Operators
+@endsection
 @section('content')
     <div class="w-full pt-10 min-h-[88vh] gradient-border  rounded-lg">
         <div>

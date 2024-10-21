@@ -1,4 +1,7 @@
 @extends('layouts.layout')
+@section('title')
+    Queries
+@endsection
 @section('content')
     <div class="w-full min-h-[88vh] gradient-border space-x-2  rounded-lg">
         <div class="flex items-center p-8 gap-2 ">
@@ -10,7 +13,7 @@
         </div>
         <div id="extraSection" class="flex   w-full h-full mx-auto">
             <div
-                class="relative z-10 grid grid-cols-2 lg:grid-cols-4  gap-4 lg:gap-2 xl:gap-6 mb-8 text-center xl:grid-cols-4">
+                class="relative z-0  grid grid-cols-2 lg:grid-cols-4  gap-4 lg:gap-2 xl:gap-6 mb-8 text-center xl:grid-cols-4">
                 <!-- Market Box 1 -->
                 <div class="relative">
                     <input type="checkbox" name="market" id="market1" class="sr-only peer" checked>

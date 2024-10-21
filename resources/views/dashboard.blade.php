@@ -1,5 +1,8 @@
 @extends('layouts.layout')
 
+@section('title')
+    Dasboard
+@endsection
 @section('content')
     <div class="min-h-[85vh] p-8 py-2 rounded-lg gradient-border ">
         <h1 class="text-[32px] mt-[10px]  font-bold">Market Panel</h1>
