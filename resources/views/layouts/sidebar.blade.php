@@ -9,10 +9,10 @@
 </button>
 
 <aside id="sidebar"
-    class="fixed top-0  z-40   w-64 h-[88v  h]  transition-transform -translate-x-full  sm:translate-x-0  md:ml-[10px]  sm:mt-[100px] overflow-y-auto left-auto "
+    class="fixed top-0  z-40   w-64 h-[88vh]  transition-transform -translate-x-full  sm:translate-x-0  md:ml-[10px]  sm:mt-[100px] overflow-y-auto left-auto "
     aria-label="Sidebar">
     <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 gradient-border rounded-2xl">
-        <ul class="space-y-2 font-medium pb-10">
+        <ul class="pb-10 space-y-2 font-medium">
             <li>
                 <a href="../"
                     class="flex items-center p-2 text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('/') ? 'active bg-customOrangeDark text-white ' : '' }} ">
@@ -30,7 +30,7 @@
             </li>
             <li>
                 <a href="#"
-                    class="flex items-center p-2 text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 22">
                         <g clip-path="url(#clip0_1127_8349)">
@@ -56,7 +56,7 @@
             </li>
             <li>
                 <a href="#"
-                    class="flex items-center p-2 text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 22">
                         <g clip-path="url(#clip0_1127_8349)">
@@ -82,7 +82,7 @@
             </li>
             <li>
                 <a href="#"
-                    class="flex items-center p-2 text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 22">
                         <g clip-path="url(#clip0_1127_8355)">
@@ -110,7 +110,7 @@
             </li>
             <li>
                 <a href="#"
-                    class="flex items-center p-2 text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 22">
                         <g clip-path="url(#clip0_1127_8363)">
@@ -129,7 +129,7 @@
             </li>
             <li>
                 <a href="#"
-                    class="flex items-center p-2 text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22">
                         <g clip-path="url(#clip0_1127_8368)">
@@ -154,7 +154,7 @@
             </li>
             <li>
                 <a href="#"
-                    class="flex items-center p-2 text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 22 22">
@@ -228,8 +228,8 @@
             </li>
             <li>
                 <a href="#"
-                    class="flex items-center p-2 text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
-                    <svg class="flex-shrink-0 w-7 h-7 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
+                    <svg class="flex-shrink-0 text-gray-500 transition duration-75 w-7 h-7 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 22 22">
                         <path
@@ -242,8 +242,8 @@
             </li>
             <li>
                 <a href="../Logout"
-                    class="flex items-center p-2 text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
-                    <svg class="flex-shrink-0 w-7 h-7 text-white transition duration-75  group-hover:text-transparent "
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
+                    <svg class="flex-shrink-0 text-white transition duration-75 w-7 h-7 group-hover:text-transparent "
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 22 22">
                         <path
