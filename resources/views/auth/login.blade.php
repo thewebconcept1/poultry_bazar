@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title', '') - Poultry Bazar</title>
+    <title>Login - Poultry Bazar</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/DataTables-1.13.8/css/jquery.dataTables.css') }}">
@@ -110,7 +110,7 @@
 
 
     <div class="relative w-full h-full">
-        <div class="w-5xl p-5">
+        <div class="p-5 w-5xl xl:px-5 xl:p-0">
             <div>
                 <div class="absolute z-20 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                     <img id="henImage" class="xl:w-[460px] object-contain lg:w-[30vw]"
@@ -122,9 +122,9 @@
                 </div>
             </div>
             <div id="mainContent"
-                class="flex flex-col-reverse lg:flex-row items-center lg:justify-between h-[95vh] pb-20 pt-[10vh] mx-[10px] lg:mx-[100px] xl:mx-auto z-50 relative transition-all duration-700 max-w-[1450px]">
+                class="flex flex-col-reverse lg:flex-row items-center lg:justify-between h-[100vh] mx-[10px] lg:mx-[100px] xl:mx-auto z-50 relative transition-all duration-700 max-w-[1450px]">
                 <div id="loginDiv"
-                    class="max-w-[480px] my-2 p-12 animate-slideout px-8 flex flex-col justify-center items-center h-full xl:h-auto w-full rounded-2xl transition-all duration-700 ease-in-out"
+                    class="max-w-[480px] my-2 p-12 animate-slideout px-8 flex flex-col justify-center pt-10 items-center h-full xl:h-auto w-full rounded-2xl transition-all duration-700 ease-in-out"
                     style="box-shadow: 0px 0px 8px 0px #00000026; background:rgba(255, 255, 255, 0.389)">
                     <div class="w-full">
                         <div>
@@ -195,7 +195,7 @@
             </div>
 
             <div id="signupSection"
-                class="flex flex-col justify-center lg:flex-row items-center lg:justify-between min-h-[100vh]  pb-20 pt-1 mx-[50px] lg:mx-[100px]  z-20 relative hidden max-w-[1500px] xl:mx-auto ">
+                class="flex flex-col justify-center lg:flex-row items-center lg:justify-between min-h-[100vh]   mx-[50px] lg:mx-[100px]  z-20 relative hidden max-w-[1500px] xl:mx-auto ">
                 <div class="flex flex-col justify-center items-center h-full w-full relative z-40 max-w-[480px]">
                     <div id="welcomeDiv" class="flex flex-col items-center justify-start">
                         <h2 class="text-[50px] text-customOrangeDark font-bold leading-none">
@@ -241,7 +241,7 @@
                             </div>
                         </form>
                     </div>
-                    <div id="extraSection" class="flex flex-col justify-center hidden w-full h-full mx-auto py-4">
+                    <div id="extraSection" class="flex flex-col justify-center hidden w-full h-full py-4 mx-auto">
                         <h2 class="mb-6 text-4xl font-bold text-center">Select Panel</h2>
                         <div class="relative z-10 grid grid-cols-1 gap-4 mb-8 text-center sm:grid-cols-2">
                             <!-- Market Box 1 -->
@@ -253,7 +253,7 @@
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
                                     <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
                                         data-modal-text="Stay informed with live updates on the latest poultry market rates. This feature provides users with real-time price trends for chickens across different regions. Gain insights to make informed decisions on buying and selling, helping you maximize your profits in a competitive market."
-                                        data-modal-image="{{ asset('assets/icons/market update.png') }}"
+                                        data-modal-image="{{ asset('assets/icons/svginfo1.svg') }}"
                                         class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
                                         View info
                                     </button>
@@ -273,7 +273,7 @@
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
                                     <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
                                         data-modal-text="Simplify your sales and financial management with an integrated Point of Sale system. Whether you're selling live birds, this feature tracks sales, generates invoices, and provides insights into daily transactions. It’s designed to streamline in-store with ease. Additionally, a free printer and initial receipt roll will be provided by POUL3Y to help you get started smoothly."
-                                        data-modal-image="{{ asset('assets/icons/pos.png') }}"
+                                        data-modal-image="{{ asset('assets/icons/svginfo2.svg') }}"
                                         class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
                                         View info
                                     </button>
@@ -293,7 +293,7 @@
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
                                     <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
                                         data-modal-text="Manage the health, productivity, and expenses of your flocks with ease using comprehensive flock management tools. The following features are in support to improve flock health, streamline operations, and optimize profitability while managing financial aspects effectively."
-                                        data-modal-image="{{ asset('assets/icons/floks.png') }}"
+                                        data-modal-image="{{ asset('assets/icons/svginfo3.svg') }}"
                                         class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
                                         View info
                                     </button>
@@ -308,7 +308,7 @@
                                 <input type="checkbox" name="market" id="market4" class="sr-only peer">
                                 <label for="market4"
                                     class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
-                                    <img src="{{ asset('assets/icons/e-commerce.png') }}" alt="Market icon">
+                                    <img src="{{ asset('assets/icons/svginfo4.svg') }}" alt="Market icon">
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
                                     <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
                                         data-modal-text="Expand your business reach with the E-Commerce module, allowing you to buy and sell poultry products online. This module simplifies online trading, making it easy to reach new customers and streamline operations."
