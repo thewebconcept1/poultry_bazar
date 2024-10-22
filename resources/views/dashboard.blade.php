@@ -48,25 +48,31 @@
                 </div>
             </div>
         </div>
-        <div class="container mx-auto my-3">
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div class=" mx-auto my-3">
+            <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
 
                 <!-- Blogs Section -->
                 <div class="bg-white border-2 rounded-lg shadow-lg border-customOrangeLight">
                     <div class="flex items-center justify-between p-3 mb-4 bg-orange-100 rounded-t-lg">
                         <h1 class="text-sm font-bold text-gray-800">Blogs</h1>
-                        <button class="p-1 text-[10px] shadow-md font-medium text-orange-500 transition-colors bg-white rounded-full ">
-                          Add New
+                        <button
+                            class="py-1 px-2 text-[10px] shadow-md font-medium text-orange-500 transition-colors bg-white rounded-full ">
+                            Add New
                         </button>
-                      </div>
+                    </div>
 
                     <div class="p-2 m-2 space-y-4 rounded-lg border-[2px] ">
                         <!-- Blog Item -->
                         <div class="flex items-start">
-                            <img class="object-cover w-20 h-20 rounded" src="{{ asset('assets/Rectangle 403.jpg') }}" alt="Blog Image">
+                            <img class="object-cover w-20 h-20 rounded flex-shrink-0"
+                                src="{{ asset('assets/Rectangle 403.jpg') }}" alt="Blog Image">
                             <div class="ml-4">
-                                <h3 class="text-xs font-semibold">Lorem ipsum dolor sit amet, consectetur</h3>
-                                <p class="text-[10px] text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <h3 class="text-xs xl:text-[16px] font-semibold">Lorem ipsum dolor sit amet, consectetur
+                                </h3>
+                                <p class="text-[10px] text-gray-600 xl:text-[13px] mt-1">Lorem ipsum dolor sit amet,
+                                    consectetur
+                                    adipiscing
+                                    elit.</p>
                             </div>
                         </div>
                         <!-- Repeat similar blocks for more blogs -->
@@ -74,10 +80,15 @@
                     <div class="p-2 m-2 space-y-4 rounded-lg border-[2px] ">
                         <!-- Blog Item -->
                         <div class="flex items-start">
-                            <img class="object-cover w-20 h-20 rounded" src="{{ asset('assets/Rectangle 403.jpg') }}" alt="Blog Image">
+                            <img class="object-cover w-20 h-20 rounded flex-shrink-0"
+                                src="{{ asset('assets/Rectangle 403.jpg') }}" alt="Blog Image">
                             <div class="ml-4">
-                                <h3 class="text-xs font-semibold">Lorem ipsum dolor sit amet, consectetur</h3>
-                                <p class="text-[10px] text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <h3 class="text-xs xl:text-[16px] font-semibold">Lorem ipsum dolor sit amet, consectetur
+                                </h3>
+                                <p class="text-[10px] text-gray-600 xl:text-[13px] mt-1">Lorem ipsum dolor sit amet,
+                                    consectetur
+                                    adipiscing
+                                    elit.</p>
                             </div>
                         </div>
                         <!-- Repeat similar blocks for more blogs -->
@@ -88,18 +99,24 @@
                 <div class="bg-white border-2 rounded-lg shadow-lg border-customOrangeLight">
                     <div class="flex items-center justify-between p-3 mb-4 bg-orange-100 rounded-t-lg">
                         <h1 class="text-sm font-bold text-gray-800">Diseases</h1>
-                        <button class="p-1 text-[10px] shadow-md font-medium text-orange-500 transition-colors bg-white rounded-full ">
-                          Add New
+                        <button
+                            class="py-1 px-2 text-[10px] shadow-md font-medium text-orange-500 transition-colors bg-white rounded-full ">
+                            Add New
                         </button>
-                      </div>
+                    </div>
 
                     <div class="p-2 m-2 space-y-4 rounded-lg border-[2px] ">
                         <!-- Blog Item -->
                         <div class="flex items-start">
-                            <img class="object-cover w-20 h-20 rounded" src="{{ asset('assets/Rectangle 403.jpg') }}" alt="Blog Image">
+                            <img class="object-cover w-20 h-20 rounded flex-shrink-0"
+                                src="{{ asset('assets/Rectangle 403.jpg') }}" alt="Blog Image">
                             <div class="ml-4">
-                                <h3 class="text-xs font-semibold">Lorem ipsum dolor sit amet, consectetur</h3>
-                                <p class="text-[10px] text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <h3 class="text-xs xl:text-[16px] font-semibold">Lorem ipsum dolor sit amet, consectetur
+                                </h3>
+                                <p class="text-[10px] text-gray-600 xl:text-[13px] mt-1">Lorem ipsum dolor sit amet,
+                                    consectetur
+                                    adipiscing
+                                    elit.</p>
                             </div>
                         </div>
                         <!-- Repeat similar blocks for more blogs -->
@@ -107,10 +124,15 @@
                     <div class="p-2 m-2 space-y-4 rounded-lg border-[2px] ">
                         <!-- Blog Item -->
                         <div class="flex items-start">
-                            <img class="object-cover w-20 h-20 rounded" src="{{ asset('assets/Rectangle 403.jpg') }}" alt="Blog Image">
+                            <img class="object-cover w-20 h-20 rounded flex-shrink-0"
+                                src="{{ asset('assets/Rectangle 403.jpg') }}" alt="Blog Image">
                             <div class="ml-4">
-                                <h3 class="text-xs font-semibold">Lorem ipsum dolor sit amet, consectetur</h3>
-                                <p class="text-[10px] text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <h3 class="text-xs xl:text-[16px] font-semibold">Lorem ipsum dolor sit amet, consectetur
+                                </h3>
+                                <p class="text-[10px] text-gray-600 xl:text-[13px] mt-1">Lorem ipsum dolor sit amet,
+                                    consectetur
+                                    adipiscing
+                                    elit.</p>
                             </div>
                         </div>
                         <!-- Repeat similar blocks for more blogs -->
@@ -121,18 +143,24 @@
                 <div class="bg-white border-2 rounded-lg shadow-lg border-customOrangeLight">
                     <div class="flex items-center justify-between p-3 mb-4 bg-orange-100 rounded-t-lg">
                         <h1 class="text-sm font-bold text-gray-800">Consultancy Videos</h1>
-                        <button class="p-1 text-[10px] shadow-md font-medium text-orange-500 transition-colors bg-white rounded-full ">
-                          Add New
+                        <button
+                            class="py-1 px-2 text-[10px] shadow-md font-medium text-orange-500 transition-colors bg-white rounded-full ">
+                            Add New
                         </button>
-                      </div>
+                    </div>
 
                     <div class="p-2 m-2 space-y-4 rounded-lg border-[2px] ">
                         <!-- Blog Item -->
                         <div class="flex items-start">
-                            <img class="object-cover w-20 h-20 rounded" src="{{ asset('assets/Rectangle 403.jpg') }}" alt="Blog Image">
+                            <img class="object-cover w-20 h-20 rounded flex-shrink-0"
+                                src="{{ asset('assets/Rectangle 403.jpg') }}" alt="Blog Image">
                             <div class="ml-4">
-                                <h3 class="text-xs font-semibold">Lorem ipsum dolor sit amet, consectetur</h3>
-                                <p class="text-[10px] text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <h3 class="text-xs xl:text-[16px] font-semibold">Lorem ipsum dolor sit amet, consectetur
+                                </h3>
+                                <p class="text-[10px] text-gray-600 xl:text-[13px] mt-1">Lorem ipsum dolor sit amet,
+                                    consectetur
+                                    adipiscing
+                                    elit.</p>
                             </div>
                         </div>
                         <!-- Repeat similar blocks for more blogs -->
@@ -140,10 +168,15 @@
                     <div class="p-2 m-2 space-y-4 rounded-lg border-[2px] ">
                         <!-- Blog Item -->
                         <div class="flex items-start">
-                            <img class="object-cover w-20 h-20 rounded" src="{{ asset('assets/Rectangle 403.jpg') }}" alt="Blog Image">
+                            <img class="object-cover w-20 h-20 rounded flex-shrink-0"
+                                src="{{ asset('assets/Rectangle 403.jpg') }}" alt="Blog Image">
                             <div class="ml-4">
-                                <h3 class="text-xs font-semibold">Lorem ipsum dolor sit amet, consectetur</h3>
-                                <p class="text-[10px] text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <h3 class="text-xs xl:text-[16px] font-semibold">Lorem ipsum dolor sit amet, consectetur
+                                </h3>
+                                <p class="text-[10px] text-gray-600 xl:text-[13px] mt-1">Lorem ipsum dolor sit amet,
+                                    consectetur
+                                    adipiscing
+                                    elit.</p>
                             </div>
                         </div>
                         <!-- Repeat similar blocks for more blogs -->
