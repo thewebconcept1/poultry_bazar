@@ -24,7 +24,7 @@
 </head>
 
 <body class="">
-    <div class="w-[1920px] max-w-[1920px] mx-auto  relative">
+    <div class=" max-w-[1920px] mx-auto  relative">
         <div class="relative ">
             <div id="loading">
                 <div class=" text-center z-[9999] h-screen w-screen flex justify-center items-center  ">
