@@ -16,6 +16,9 @@ Route::middleware(['custom_auth'])->group(function () {
         return view('queries');
     });
     Route::get('/Logout', [UserController::class, 'logout']);
+    Route::get('/Cities', function () {
+        return view('cities');
+    });
 });
 
 Route::get('/login', function () {

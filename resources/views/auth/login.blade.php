@@ -175,7 +175,7 @@
                 </div>
                 <!-- Welcome Section -->
                 <div id="welcomeDiv"
-                    class="flex flex-col xl:justify-center items-center h-full w-full relative z-40 max-w-[530px] transition-all duration-700 ease-in-out">
+                    class="flex flex-col lg:justify-center  items-center h-full w-full relative z-40 max-w-[530px] transition-all duration-700 ease-in-out">
                     <div>
                         <h2 class="text-[55px] text-customOrangeDark font-bold leading-none">
                             <span class="text-[45px]">Welcome to</span><br> Poultry Bazar
