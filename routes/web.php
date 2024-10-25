@@ -25,6 +25,9 @@ Route::middleware(['custom_auth'])->group(function () {
     Route::get('/marketupdates', function () {
         return view('marketupdates');
     });
+    Route::get('/blogs', function () {
+        return view('blogs');
+    });
 });
 
 Route::get('/login', function () {
