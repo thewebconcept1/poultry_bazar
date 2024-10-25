@@ -1,2 +1,2 @@
  <button
-     class="gradient-bg w-full py-2 px-3 rounded-full text-white font-semibold shadow-md">{{ $title }}</button>
+     class="w-full px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">{{ $title }}</button>

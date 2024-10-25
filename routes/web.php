@@ -19,6 +19,12 @@ Route::middleware(['custom_auth'])->group(function () {
     Route::get('/Cities', function () {
         return view('cities');
     });
+    Route::get('/markets', function () {
+        return view('markets');
+    });
+    Route::get('/marketupdates', function () {
+        return view('marketupdates');
+    });
 });
 
 Route::get('/login', function () {
