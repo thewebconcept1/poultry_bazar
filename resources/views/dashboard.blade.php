@@ -5,7 +5,7 @@
 @endsection
 @section('content')
     <div class="min-h-[88vh] p-8 py-2 rounded-lg gradient-border ">
-        @if (session('user_details')['user_role'] == 'superadmin')
+        @if (session('user_details')['user_role'] == 'admin')
             <h1 class="text-[32px] mt-[10px]  font-bold">Market Panel</h1>
             <div class="grid grid-cols-1 gap-4 mt-10 mb-4 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2">
                 <div
