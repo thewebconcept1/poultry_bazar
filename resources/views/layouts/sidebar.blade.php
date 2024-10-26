@@ -136,6 +136,7 @@
                         </defs>
                     </svg>
                     <span class="flex-1 ms-3 whitespace-nowrap">Diseases</span>
+                    <img src="{{ asset('assets/icons/block.png') }}" class="w-5 h-5" alt="">
                 </a>
             </li>
             <li>
@@ -161,6 +162,7 @@
                         </defs>
                     </svg>
                     <span class="flex-1 ms-3 whitespace-nowrap">Consultancy Videos</span>
+                    <img src="{{ asset('assets/icons/block.png') }}" class="w-5 h-5" alt="">
                 </a>
             </li>
             <li>
@@ -181,6 +183,7 @@
 
                     </svg>
                     <span class="flex-1 ms-3 whitespace-nowrap">Categories</span>
+                    <img src="{{ asset('assets/icons/block.png') }}" class="w-5 h-5" alt="">
                 </a>
             </li>
             <li>
@@ -249,6 +252,7 @@
 
                     </svg>
                     <span class="flex-1 ms-3 whitespace-nowrap">Settings</span>
+                    <img src="{{ asset('assets/icons/block.png') }}" class="w-5 h-5" alt="">
                 </a>
             </li>
             <li>
