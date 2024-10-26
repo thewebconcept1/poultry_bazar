@@ -5,16 +5,20 @@
 @section('content')
     <div class="w-full pt-10 min-h-[88vh] gradient-border  rounded-lg">
         <div class="flex justify-between px-5">
-            <h1 class="text-3xl font-bold ">Cities</h1>
+            <h1 class="text-3xl font-bold ">Markets</h1>
             <button data-modal-target="city-modal" data-modal-toggle="city-modal"
-                class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Add City + </button>
+                class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Add New + </button>
         </div>
         @php
-            $headers = ['Sr.', 'Name', 'province', 'Action'];
-            $body = "<tr>
+            $headers = ['Sr.', 'Image', 'Markets', 'last Update', 'Action'];
+            $body =
+                "<tr>
                 <td>1</td>
+                <td><img class='rounded-full' src='" .
+                asset('assets/Profile photo (1) 1.png') .
+                "' alt=''></td>
                 <td>Lahore</td>
-                <td>Punjab</td>
+                <td>29/04/49</td>
 
                 <td>
                     <span class='flex gap-4'>
@@ -40,15 +44,27 @@
 
 
         <x-modal id="city-modal">
-            <x-slot name="title">Add Cities</x-slot>
-            <x-slot name="modal_width">max-w-4xl</x-slot>
+            <x-slot name="title">Add </x-slot>
+            <x-slot name="modal_width">max-w-2xl</x-slot>
             <x-slot name="body">
                 <form action="">
-                    <div class="grid grid-cols-2 gap-4">
-                        <x-input id="cityName" label="City Name" placeholder="Enter City" name='city_name'
+                    <div class="">
+                        <div class="flex justify-start gap-2 ">
+                            <label for="fileInput"
+                                class="flex-row w-24 h-24 p-5 border-2 border-gray-300 rounded-md cursor-pointer">
+                                <svg class="text-black w-9 h-9 ms-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                </svg>
+                                <h1 class="text-sm text-center">Upload</h1>
+                            </label>
+                            <input type="file" id="fileInput" class="hidden" />
+                           <div class="w-full mt-7">
+                            <x-input id="Marketname" label="Title:" placeholder="Enter Market Name" name='market_name'
                             type="text"></x-input>
-                        <x-input id="cityProvince" label="city Province" placeholder=" Enter City Province"
-                            name='city_province' type="text"></x-input>
+                           </div>
+
+                        </div>
                     </div>
                     <div class="mt-4">
                         <x-modal-button :title="'Add City'"></x-modal-button>

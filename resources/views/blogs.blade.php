@@ -10,11 +10,19 @@
                 class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Add City + </button>
         </div>
         @php
-            $headers = ['Sr.', 'Name', 'province', 'Action'];
-            $body = "<tr>
+            $headers = ['Sr.', 'Image', 'Title', 'Description', 'Category', 'Date', 'Author', 'Action'];
+            $body =
+                "<tr>
                 <td>1</td>
-                <td>Lahore</td>
-                <td>Punjab</td>
+                 <td><img src='" .
+                asset('assets/Profile photo (1) 1.png') .
+                "' alt=''></td>
+                <td class='text-xs xl:text-[15px]'>Lorem ipsum dollar...</td>
+                <td class='text-xs xl:text-[15px] '>Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Lorem ipsum dolor sit amet... </td>
+                <td class='text-sm xl:text-[15px]'>Category</td>
+                <td  class='text-sm xl:text-[15px]'>Oct 02, 2024 </td>
+                <td  class='text-sm xl:text-[15px]'>Kurt Weissnat</td>
 
                 <td>
                     <span class='flex gap-4'>
@@ -31,6 +39,22 @@
                             <path fill-rule='evenodd' clip-rule='evenodd' d='M23.4905 13.7423C23.7356 13.7423 23.9396 13.9458 23.9396 14.2047V14.4441C23.9396 14.6967 23.7356 14.9065 23.4905 14.9065H13.0493C12.8036 14.9065 12.5996 14.6967 12.5996 14.4441V14.2047C12.5996 13.9458 12.8036 13.7423 13.0493 13.7423H14.8862C15.2594 13.7423 15.5841 13.4771 15.6681 13.1028L15.7642 12.6732C15.9137 12.0879 16.4058 11.6992 16.9688 11.6992H19.5704C20.1273 11.6992 20.6249 12.0879 20.7688 12.6423L20.8718 13.1022C20.9551 13.4771 21.2798 13.7423 21.6536 13.7423H23.4905ZM22.557 22.4932C22.7487 20.7059 23.0845 16.4598 23.0845 16.4169C23.0968 16.2871 23.0545 16.1643 22.9705 16.0654C22.8805 15.9728 22.7665 15.918 22.6409 15.918H13.9025C13.7762 15.918 13.6562 15.9728 13.5728 16.0654C13.4883 16.1643 13.4466 16.2871 13.4527 16.4169C13.4539 16.4248 13.4659 16.5744 13.4861 16.8244C13.5755 17.9353 13.8248 21.0292 13.9858 22.4932C14.0998 23.5718 14.8074 24.2496 15.8325 24.2742C16.6235 24.2925 17.4384 24.2988 18.2717 24.2988C19.0566 24.2988 19.8537 24.2925 20.6692 24.2742C21.7298 24.2559 22.4369 23.59 22.557 22.4932Z' fill='#D11A2A'/>
                             </svg>
                         </button>
+                         <button>
+                          <svg width='37' height='36' viewBox='0 0 37 36' fill='none' xmlns='http://www.w3.org/2000/svg'>
+<path fill-rule='evenodd' clip-rule='evenodd' d='M28.0642 18.5C28.0642 18.126 27.8621 17.8812 27.4579 17.3896C25.9788 15.5938 22.7163 12.25 18.9288 12.25C15.1413 12.25 11.8788 15.5938 10.3996 17.3896C9.99542 17.8812 9.79333 18.126 9.79333 18.5C9.79333 18.874 9.99542 19.1187 10.3996 19.6104C11.8788 21.4062 15.1413 24.75 18.9288 24.75C22.7163 24.75 25.9788 21.4062 27.4579 19.6104C27.8621 19.1187 28.0642 18.874 28.0642 18.5ZM18.9288 21.625C19.7576 21.625 20.5524 21.2958 21.1385 20.7097C21.7245 20.1237 22.0538 19.3288 22.0538 18.5C22.0538 17.6712 21.7245 16.8763 21.1385 16.2903C20.5524 15.7042 19.7576 15.375 18.9288 15.375C18.0999 15.375 17.3051 15.7042 16.719 16.2903C16.133 16.8763 15.8038 17.6712 15.8038 18.5C15.8038 19.3288 16.133 20.1237 16.719 20.7097C17.3051 21.2958 18.0999 21.625 18.9288 21.625Z' fill='url(#paint0_linear_872_5570)'/>
+<circle opacity='0.1' cx='18.4287' cy='18' r='18' fill='url(#paint1_linear_872_5570)'/>
+<defs>
+<linearGradient id='paint0_linear_872_5570' x1='18.9288' y1='12.25' x2='18.9288' y2='24.75' gradientUnits='userSpaceOnUse'>
+<stop stop-color='#FCB376'/>
+<stop offset='1' stop-color='#FE8A29'/>
+</linearGradient>
+<linearGradient id='paint1_linear_872_5570' x1='18.4287' y1='0' x2='18.4287' y2='36' gradientUnits='userSpaceOnUse'>
+<stop stop-color='#FCB376'/>
+<stop offset='1' stop-color='#FE8A29'/>F
+</linearGradient>
+</defs>
+</svg>
+                        </button>
                     </span>
                 </td>
         </tr>";
@@ -40,15 +64,31 @@
 
 
         <x-modal id="city-modal">
-            <x-slot name="title">Add Cities</x-slot>
-            <x-slot name="modal_width">max-w-4xl</x-slot>
+            <x-slot name="title">Add </x-slot>
+            <x-slot name="modal_width">max-w-2xl</x-slot>
             <x-slot name="body">
                 <form action="">
-                    <div class="grid grid-cols-2 gap-4">
-                        <x-input id="cityName" label="City Name" placeholder="Enter City" name='city_name'
+                    <div class="">
+                        <div class="flex justify-start gap-2 ">
+                            <label for="fileInput"
+                                class="flex justify-center p-5 border-2 border-gray-300 rounded-md cursor-pointer w-60 h-50">
+                                <svg class="w-10 h-10 text-black " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                </svg>
+                                <h1 class="text-sm text-center">Upload</h1>
+                            </label>
+                            <input type="file" id="fileInput" class="hidden" />
+                           <div class="w-full ">
+                            <x-input id="Marketname" label="Title:" placeholder="Enter Market Name" name='market_name'
                             type="text"></x-input>
-                        <x-input id="cityProvince" label="city Province" placeholder=" Enter City Province"
-                            name='city_province' type="text"></x-input>
+                            <x-input id="Marketname" label="Title:" placeholder="Enter Market Name" name='market_name'
+                            type="text"></x-input>
+                            <x-input id="Marketname" label="Title:" placeholder="Enter Market Name" name='market_name'
+                            type="text"></x-input>
+                           </div>
+
+                        </div>
                     </div>
                     <div class="mt-4">
                         <x-modal-button :title="'Add City'"></x-modal-button>
