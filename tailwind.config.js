@@ -13,6 +13,7 @@ module.exports = {
                 customGrayColor: "#F0F0F3",
                 customGrayColorDark: "#A4A4AA",
                 customBlackColor: "#333333",
+                'custom-gradient': 'linear-gradient(to right, #ff5733, #ffbd33)',
             },
             fontSize: {
                 custom16: "16px", // Add your custom font size here
