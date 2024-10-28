@@ -238,7 +238,7 @@
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="../setting"
                     class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 text-gray-500 transition duration-75 w-7 h-7 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"

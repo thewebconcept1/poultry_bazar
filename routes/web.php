@@ -37,6 +37,9 @@ Route::middleware(['custom_auth'])->group(function () {
     Route::get('/categories', function () {
         return view('categories');
     });
+    Route::get('/setting', function () {
+        return view('setting');
+    });
 });
 
 Route::get('/login', function () {
