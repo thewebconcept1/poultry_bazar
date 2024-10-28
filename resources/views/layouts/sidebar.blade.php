@@ -119,7 +119,7 @@
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="../diseases"
                     class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -136,11 +136,10 @@
                         </defs>
                     </svg>
                     <span class="flex-1 ms-3 whitespace-nowrap">Diseases</span>
-                    <img src="{{ asset('assets/icons/block.png') }}" class="w-5 h-5" alt="">
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="../consultancyvideos"
                     class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22">
@@ -162,11 +161,10 @@
                         </defs>
                     </svg>
                     <span class="flex-1 ms-3 whitespace-nowrap">Consultancy Videos</span>
-                    <img src="{{ asset('assets/icons/block.png') }}" class="w-5 h-5" alt="">
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="../categories"
                     class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -183,7 +181,6 @@
 
                     </svg>
                     <span class="flex-1 ms-3 whitespace-nowrap">Categories</span>
-                    <img src="{{ asset('assets/icons/block.png') }}" class="w-5 h-5" alt="">
                 </a>
             </li>
             <li>

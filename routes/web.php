@@ -28,6 +28,15 @@ Route::middleware(['custom_auth'])->group(function () {
     Route::get('/blogs', function () {
         return view('blogs');
     });
+    Route::get('/diseases', function () {
+        return view('diseases');
+    });
+    Route::get('/consultancyvideos', function () {
+        return view('consultancyvideos');
+    });
+    Route::get('/categories', function () {
+        return view('categories');
+    });
 });
 
 Route::get('/login', function () {
