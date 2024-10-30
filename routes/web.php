@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +17,11 @@ Route::middleware(['custom_auth'])->group(function () {
         return view('queries');
     });
     Route::get('/Logout', [UserController::class, 'logout']);
-    Route::get('/Cities', function () {
-        return view('cities');
-    });
+
+    Route::get('/Cities', [CityController::class, 'getCities']);
+    Route::post('/saveCities', [CityController::class, 'addCities']);
+    Route::post('/deleteCities', [CityController::class, 'deleteCities']);
+
     Route::get('/markets', function () {
         return view('markets');
     });
