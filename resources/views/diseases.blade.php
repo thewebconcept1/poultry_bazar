@@ -110,7 +110,7 @@ adipiscing elit. Lorem ipsum dolor sit amet... </td>
                                         class="block w-full px-3 py-2 mt-1 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm"></textarea>
                                 </div>
                                 <div class="mt-4">
-                                    <x-modal-button :title="'Add City'"></x-modal-button>
+                                    <x-modal-button :title="'Add Diseases'"></x-modal-button>
                                 </div>
                             </div>
                         </div>

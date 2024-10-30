@@ -249,7 +249,6 @@
 
                     </svg>
                     <span class="flex-1 ms-3 whitespace-nowrap">Settings</span>
-                    <img src="{{ asset('assets/icons/block.png') }}" class="w-5 h-5" alt="">
                 </a>
             </li>
             <li>

@@ -72,11 +72,10 @@
                                 <x-input id="Marketname" label="Title:" placeholder="Enter Market Name" name='market_name'
                                     type="text"></x-input>
                             </div>
-
                         </div>
                     </div>
                     <div class="mt-4">
-                        <x-modal-button :title="'Add City'"></x-modal-button>
+                        <x-modal-button :title="'Add Category'"></x-modal-button>
                     </div>
                 </form>
             </x-slot>
