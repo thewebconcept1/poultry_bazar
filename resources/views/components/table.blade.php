@@ -7,11 +7,12 @@
                 @endforeach
             </tr>
         </thead>
-        <tbody class="border-b border-gray-500">
+        <tbody class="border-b border-gray-500" id="tableBody">
             {{-- <tr class="border-b"> --}}
 
             </tr>
-            {!! $body !!}
+            {{ $tablebody }}
+            {{-- {!! $body !!} --}}
 
         </tbody>
     </table>

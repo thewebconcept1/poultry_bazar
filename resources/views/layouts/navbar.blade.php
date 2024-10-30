@@ -1,4 +1,5 @@
-    <nav class="fixed w-full max-w-[1920px] p-4 px-10 bg-gradient-to-b from-customOrangeLight to-customOrangeDark ">
+    <nav
+        class="fixed w-full max-w-[1920px] p-4 px-10 bg-gradient-to-b from-customOrangeLight to-customOrangeDark z-[150] ">
 
         <div class="flex items-center justify-between mx-auto">
             <div class="flex items-center h-full">
