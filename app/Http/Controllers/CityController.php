@@ -21,7 +21,6 @@ class CityController extends Controller
         $city->save();
 
         return response()->json(['success' => true, 'message' => 'City deleted successfully'], 200);
-
     }
     // delete cities
 
@@ -43,17 +42,14 @@ class CityController extends Controller
                 $city->save();
 
                 return response()->json(['success' => true, 'message' => 'City updated successfully'], 200);
-
-            }else{
+            } else {
                 $city = City::create([
                     'city_name' => $validatedData['city_name'],
                     'city_province' => $validatedData['city_province'],
                 ]);
 
                 return response()->json(['success' => true, 'message' => 'City added successfully'], 200);
-
             }
-
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
         }
@@ -66,7 +62,6 @@ class CityController extends Controller
         $cities = City::where('city_status', 1)->get();
 
         return view('cities', ['cities' => $cities]);
-
     }
     // get cities
 }

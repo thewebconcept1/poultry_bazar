@@ -34,7 +34,8 @@
                                     </svg>
                                 </button>
 
-                                <button>
+
+                                <button class="deleteDataBtn" delId="{{ $city->city_id }}">
                                     <svg width='36' height='36' viewBox='0 0 36 36' fill='none'
                                         xmlns='http://www.w3.org/2000/svg'>
                                         <circle opacity='0.1' cx='18' cy='18' r='18' fill='#DF6F79' />
@@ -43,6 +44,7 @@
                                             fill='#D11A2A' />
                                     </svg>
                                 </button>
+
                             </span>
                         </td>
                     </tr>
@@ -54,7 +56,7 @@
             <x-slot name="title">Add Cities</x-slot>
             <x-slot name="modal_width">max-w-4xl</x-slot>
             <x-slot name="body">
-                <form id="dataForm" action="saveCities" method="post">
+                <form id="postDataForm" action="saveCities" method="post">
                     @csrf
                     <div class="grid grid-cols-2 gap-4">
                         <x-input id="cityName" label="City Name" placeholder="Enter City" name='city_name'
@@ -74,13 +76,10 @@
 @section('js')
     <script>
         // Listen for the custom form submission response event
-        $(document).on("formSubmissionResponse", function(event, response, Alert) {
+        $(document).on("formSubmissionResponse", function(event, response, Alert, SuccessAlert, WarningAlert) {
             if (response.success) {
                 $('.modalCloseBtn').click();
-                Alert;
-            } else {
-                Alert;
-            }
+            } else {}
         });
     </script>
 @endsection
