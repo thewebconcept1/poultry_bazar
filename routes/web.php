@@ -43,6 +43,9 @@ Route::middleware(['custom_auth'])->group(function () {
     Route::get('/setting', function () {
         return view('setting');
     });
+    Route::get('/notification', function () {
+        return view('notification');
+    });
 });
 
 Route::get('/login', function () {
