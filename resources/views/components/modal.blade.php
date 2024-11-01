@@ -10,7 +10,7 @@
             <div class="flex items-center justify-between px-4 py-2  border-b rounded-t gradient-bg ">
                 <h3 class="text-md font-semibold text-white"> {{ $title }} </h3>
                 <button type="button"
-                    class="end-2.5 text-white bg-transparent    text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
+                    class="end-2.5 text-white bg-transparent modalCloseBtn   text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
                     data-modal-hide="{{ $id }}">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 14 14">
