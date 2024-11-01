@@ -9,20 +9,17 @@ use Illuminate\View\Component;
 class Table extends Component
 {
     public $headers;
-    public $body;
 
     /**
      * Create a new component instance.
      *
      * @param array $headers
-     * @param string $body
      * @return void
      */
-    public function __construct($headers, $body)
+    public function __construct($headers)
     {
         $this->headers = $headers;
         // $this->data = $data;
-        $this->body = $body;
     }
 
     /**

@@ -24,7 +24,8 @@
 
                         <td>
                             <span class='flex gap-4'>
-                                <button>
+                                <button class="updateDataBtn" cityName="{{ $city->city_name }}"
+                                    cityProvince="{{ $city->city_province }}">
                                     <svg width='36' height='36' viewBox='0 0 36 36' fill='none'
                                         xmlns='http://www.w3.org/2000/svg'>
                                         <circle opacity='0.1' cx='18' cy='18' r='18' fill='#233A85' />
@@ -75,8 +76,21 @@
 
 @section('js')
     <script>
+        function updateDatafun() {
+
+            $('.updateDataBtn').click(function() {
+                $('#city-modal').removeClass("hidden");
+                $('#city-modal').addClass('flex');
+                $('#cityName').val($(this).attr('cityName'));
+                $('#cityProvince').val($(this).attr('cityProvince'));
+            });
+        }
+        updateDatafun();
+
         // Listen for the custom form submission response event
         $(document).on("formSubmissionResponse", function(event, response, Alert, SuccessAlert, WarningAlert) {
+            console.log(response);
+
             if (response.success) {
                 $('.modalCloseBtn').click();
             } else {}
