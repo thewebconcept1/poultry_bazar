@@ -8,7 +8,7 @@
         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <!-- Modal header -->
             <div class="flex items-center justify-between px-4 py-2  border-b rounded-t gradient-bg ">
-                <h3 class="text-md font-semibold text-white"> {{ $title }} </h3>
+                <h3 class="text-md font-semibold text-white " id="modalTitle"> {{ $title }} </h3>
                 <button type="button"
                     class="end-2.5 text-white bg-transparent modalCloseBtn   text-sm w-8 h-8 ms-auto inline-flex justify-center items-center "
                     data-modal-hide="{{ $id }}">
