@@ -20,7 +20,7 @@ $(document).ready(function () {
         Swal.fire({
             position: "center",
             icon: "success",
-            title: `<span class="font-semibold text-green-600">${message}</span>`,
+            title: `<span class="font-semibold">${message}</span>`,
             showConfirmButton: false,
             timer: 2000,
         });
@@ -48,10 +48,46 @@ $(document).ready(function () {
         $("#tableBody").load(" #tableBody > *", function () {
             // Reinitialize DataTable after loading new data
             $("#datatable").DataTable();
-            delDataFun();
             $("#loading").hide();
+            delDataFun();
+            updateDatafun();
         });
     }
+
+    // function delDataFun() {
+
+    //     $(".deleteDataBtn").click(function () {
+    //         let id = $(this).attr("delId");
+    //         let url = "/deleteCities";
+    //         let csrfToken = $('meta[name="csrf-token"]').attr("content");
+
+    //         $.ajax({
+    //             type: "POST",
+    //             url: url,
+    //             data: {
+    //                 city_id: id,
+    //             },
+    //             headers: {
+    //                 "X-CSRF-TOKEN": csrfToken,
+    //             },
+    //             beforeSend: function () {
+    //                 $("#loading").show();
+    //             },
+
+    //             success: function (response) {
+    //                 // $("#tableBody").load(" #tableBody > *");
+    //                 $("#loading").hide();
+    //                 // Reload the table body content
+    //                 reloadDataTable();
+    //                 $(document).trigger("formSubmissionResponse", [
+    //                     response,
+    //                     SuccessAlert(response.message),
+    //                 ]);
+    //             },
+    //         });
+    //     });
+    // }
+    // delDataFun();
 
     function delDataFun() {
         $(".deleteDataBtn").click(function () {
@@ -59,40 +95,61 @@ $(document).ready(function () {
             let url = "/deleteCities";
             let csrfToken = $('meta[name="csrf-token"]').attr("content");
 
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: {
-                    city_id: id,
-                },
-                headers: {
-                    "X-CSRF-TOKEN": csrfToken,
-                },
-                beforeSend: function () {
-                    $("#loading").show();
-                },
+            // Show SweetAlert confirmation dialog
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If confirmed, proceed with AJAX request to delete
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: {
+                            city_id: id,
+                        },
+                        headers: {
+                            "X-CSRF-TOKEN": csrfToken,
+                        },
+                        beforeSend: function () {
+                            $("#loading").show();
+                        },
+                        success: function (response) {
+                            $("#loading").hide();
+                            reloadDataTable();
 
-                success: function (response) {
-                    // $("#tableBody").load(" #tableBody > *");
-                    $("#loading").hide();
-                    // Reload the table body content
-                    reloadDataTable();
-                    $(document).trigger("formSubmissionResponse", [
-                        response,
-                        SuccessAlert(response.message),
-                    ]);
-                },
+                            const alert = Swal.fire({
+                                title: "Deleted!",
+                                text: response.message,
+                                icon: "success",
+                            });
 
-                // error: function (error) {
-                //     $(document).trigger("formSubmissionResponse", [
-                //         response,
-                //         WarningAlert(response.message),
-                //     ]);
-                // },
+                            $(document).trigger("formSubmissionResponse", [
+                                response,
+                                alert,
+                            ]);
+                        },
+                        error: function (xhr) {
+                            $("#loading").hide();
+                            Swal.fire({
+                                title: "Error!",
+                                text: "There was an error deleting the city.",
+                                icon: "error",
+                            });
+                        },
+                    });
+                }
             });
         });
     }
+
     delDataFun();
+
     // post data ajax request
     $("#postDataForm").submit(function (e) {
         e.preventDefault();
@@ -132,8 +189,8 @@ $(document).ready(function () {
             },
         });
     });
-
     $("#datatable").on("draw", function () {
-        delDataFun(); // Ensures the delete button listener is reattached on draw
+        delDataFun();
+        updateDatafun();
     });
 });

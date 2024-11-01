@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('title')
-    Operators
+    Market Updates
 @endsection
 @section('content')
     <div class="w-full pt-10 min-h-[88vh] gradient-border  rounded-lg">
@@ -14,37 +14,43 @@
         </div>
         @php
             $headers = ['Sr.', 'Markets', 'Rates', 'Open ', 'Close ', 'DOC ', 'Action'];
-            $body = "<tr>
-                <td>1</td>
-               <td>Lahore</td>
-                <td>
-                    <input class='w-20 h-10 text-black rounded-md border-1' type='number' placeholder='00.0'>
-                    </input>
-                    </td>
-                  <td>
-                    <input class='w-20 h-10 text-black rounded-md border-1' type='number' placeholder='00.0'>
-                    </input>
-                    </td>
-                  <td>
-                    <input class='w-20 h-10 text-black rounded-md border-1' type='number' placeholder='00.0'>
-                    </input>
-                    </td>
-                 <td>
-                    <input class='w-20 h-10 text-black rounded-md border-1' type='number' placeholder='00.0'>
-                    </input>
-                    </td>
-
-                <td>
-                    <span class='flex justify-center gap-4'>
-                        <button class='px-5 py-2 font-light text-[#B6B4B4] border-2 border-gray-[#B6B4B4] rounded-full shadow-sm'>Clear</button>
-
-                       <button class='px-5 py-1 text-[13px] font-semibold text-white rounded-full shadow-md gradient-bg'>Update  </button>
-                    </span>
-                </td>
-        </tr>";
         @endphp
 
-        <x-table :headers="$headers" :body="$body" />
+        <x-table :headers="$headers">
+            <x-slot name="tablebody">
+                <tr>
+                    <td>1</td>
+                    <td>Lahore</td>
+                    <td>
+                        <input class='w-20 h-10 text-black rounded-md border-1' type='number' placeholder='00.0'>
+                        </input>
+                    </td>
+                    <td>
+                        <input class='w-20 h-10 text-black rounded-md border-1' type='number' placeholder='00.0'>
+                        </input>
+                    </td>
+                    <td>
+                        <input class='w-20 h-10 text-black rounded-md border-1' type='number' placeholder='00.0'>
+                        </input>
+                    </td>
+                    <td>
+                        <input class='w-20 h-10 text-black rounded-md border-1' type='number' placeholder='00.0'>
+                        </input>
+                    </td>
+
+                    <td>
+                        <span class='flex justify-center gap-4'>
+                            <button
+                                class='px-5 py-2 font-light text-[#B6B4B4] border-2 border-gray-[#B6B4B4] rounded-full shadow-sm'>Clear</button>
+
+                            <button
+                                class='px-5 py-1 text-[13px] font-semibold text-white rounded-full shadow-md gradient-bg'>Update
+                            </button>
+                        </span>
+                    </td>
+                </tr>
+            </x-slot>
+        </x-table>
 
 
         <x-modal id="city-modal">

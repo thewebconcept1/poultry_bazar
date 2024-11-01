@@ -40,7 +40,7 @@
             </li>
             <li>
                 <a href="../markets"
-                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('markets') ? 'active bg-customOrangeDark text-white ' : '' }} ">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 22">
                         <g clip-path="url(#clip0_1127_8349)">
@@ -66,7 +66,7 @@
             </li>
             <li>
                 <a href="../marketupdates"
-                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('marketupdates') ? 'active bg-customOrangeDark text-white ' : '' }} ">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 22">
                         <g clip-path="url(#clip0_1127_8349)">
@@ -92,7 +92,7 @@
             </li>
             <li>
                 <a href="../blogs"
-                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('blogs') ? 'active bg-customOrangeDark text-white ' : '' }} ">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 22">
                         <g clip-path="url(#clip0_1127_8355)">
@@ -120,7 +120,7 @@
             </li>
             <li>
                 <a href="../diseases"
-                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('diseases') ? 'active bg-customOrangeDark text-white ' : '' }} ">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 22 22">
@@ -140,7 +140,7 @@
             </li>
             <li>
                 <a href="../consultancyvideos"
-                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('consultancyvideos') ? 'active bg-customOrangeDark text-white ' : '' }} ">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 22">
                         <g clip-path="url(#clip0_1127_8368)">
@@ -165,7 +165,7 @@
             </li>
             <li>
                 <a href="../categories"
-                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('categories') ? 'active bg-customOrangeDark text-white ' : '' }} ">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 22 22">
@@ -239,7 +239,7 @@
             </li>
             <li>
                 <a href="../setting"
-                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('setting') ? 'active bg-customOrangeDark text-white ' : '' }} ">
                     <svg class="flex-shrink-0 text-gray-500 transition duration-75 w-7 h-7 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 22 22">
@@ -253,14 +253,19 @@
             </li>
             <li>
                 <a href="../notification"
-                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
-                    <svg  class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('notification') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                        <path
+                            d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" />
+                    </svg>
                     <span class="flex-1 ms-3 whitespace-nowrap">Notifications</span>
                 </a>
             </li>
             <li>
                 <a href="../Logout"
-                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group">
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group ">
                     <svg class="flex-shrink-0 text-white transition duration-75 w-7 h-7 group-hover:text-transparent "
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 22 22">
