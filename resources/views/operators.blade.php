@@ -9,27 +9,29 @@
         </div>
         @php
             $headers = ['Sr.', 'Image', 'Name', 'Email', 'Phone Number', 'Last Active', 'status', 'Action'];
-            $body =
-                "<tr>
-                <td>1</td>
-                <td><img src='" .
-                asset('assets/Profile photo (1) 1.png') .
-                "' alt=''></td>
-                <td>Kurt Weissnat</td>
-                <td>KurtWeissnat@email.com</td>
-                <td>1234564</td>
-                <td>1234564</td>
-                <td><span class='text-blue-500'>active</span></td>
-                <td>
-                    <span class='flex justify-center'><button>
-                        <img  src='" .
-                asset('assets/icons/edit icon.png') .
-                "' alt=''>
-                    </button></span>
-                    </td>
-        </tr>";
         @endphp
 
-        <x-table :headers="$headers" :body="$body" />
+        <x-table :headers="$headers">
+            <x-slot name="tablebody">
+                <tr>
+                    <td>1</td>
+                    <td><img src="{{ asset('assets/Profile photo (1) 1.png') }}" alt=''></td>
+                    <td>Kurt Weissnat</td>
+                    <td>KurtWeissnat@email.com</td>
+                    <td>1234564</td>
+                    <td>1234564</td>
+                    <td><span class='text-blue-500'>active</span></td>
+                    <td>
+                        <span class='flex justify-center'>
+                           <a href="../priveleges">
+                            <button>
+                                <img src="{{ asset('assets/icons/edit icon.png') }}" alt=''>
+                            </button>
+                           </a>
+                        </span>
+                    </td>
+                </tr>
+            </x-slot>
+        </x-table>
     </div>
 @endsection

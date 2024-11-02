@@ -39,6 +39,27 @@
                 </a>
             </li>
             <li>
+                <a href="../operators"
+                    class="flex items-center p-2  text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('Cities') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#121212" d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z"/></svg>
+                    <span class="ms-3 ">Operators</span>
+                </a>
+            </li>
+            <li>
+                <a href="../Subscription"
+                    class="flex items-center p-2  text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('subscription') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 576 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#0f0f10" d="M64 64C28.7 64 0 92.7 0 128L0 384c0 35.3 28.7 64 64 64l448 0c35.3 0 64-28.7 64-64l0-256c0-35.3-28.7-64-64-64L64 64zM272 192l224 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-224 0c-8.8 0-16-7.2-16-16s7.2-16 16-16zM256 304c0-8.8 7.2-16 16-16l224 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-224 0c-8.8 0-16-7.2-16-16zM164 152l0 13.9c7.5 1.2 14.6 2.9 21.1 4.7c10.7 2.8 17 13.8 14.2 24.5s-13.8 17-24.5 14.2c-11-2.9-21.6-5-31.2-5.2c-7.9-.1-16 1.8-21.5 5c-4.8 2.8-6.2 5.6-6.2 9.3c0 1.8 .1 3.5 5.3 6.7c6.3 3.8 15.5 6.7 28.3 10.5l.7 .2c11.2 3.4 25.6 7.7 37.1 15c12.9 8.1 24.3 21.3 24.6 41.6c.3 20.9-10.5 36.1-24.8 45c-7.2 4.5-15.2 7.3-23.2 9l0 13.8c0 11-9 20-20 20s-20-9-20-20l0-14.6c-10.3-2.2-20-5.5-28.2-8.4c0 0 0 0 0 0s0 0 0 0c-2.1-.7-4.1-1.4-6.1-2.1c-10.5-3.5-16.1-14.8-12.6-25.3s14.8-16.1 25.3-12.6c2.5 .8 4.9 1.7 7.2 2.4c13.6 4.6 24 8.1 35.1 8.5c8.6 .3 16.5-1.6 21.4-4.7c4.1-2.5 6-5.5 5.9-10.5c0-2.9-.8-5-5.9-8.2c-6.3-4-15.4-6.9-28-10.7l-1.7-.5c-10.9-3.3-24.6-7.4-35.6-14c-12.7-7.7-24.6-20.5-24.7-40.7c-.1-21.1 11.8-35.7 25.8-43.9c6.9-4.1 14.5-6.8 22.2-8.5l0-14c0-11 9-20 20-20s20 9 20 20z"/></svg>
+                    <span class="ms-3 ">Subscription</span>
+                </a>
+            </li>
+            <li>
+                <a href="../modules"
+                    class="flex items-center p-2  text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('Cities') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 576 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#050505" d="M384 48c8.8 0 16 7.2 16 16l0 128 48 0 0-128c0-35.3-28.7-64-64-64L192 0c-35.3 0-64 28.7-64 64l0 128 48 0 0-128c0-8.8 7.2-16 16-16l56 0 0 64c0 8.8 7.2 16 16 16l48 0c8.8 0 16-7.2 16-16l0-64 56 0zM327.6 512L512 512c35.3 0 64-28.7 64-64l0-160c0-35.3-28.7-64-64-64l-184.4 0c11.8 13.2 20.1 29.7 23.1 48l25.3 0 0 64c0 8.8 7.2 16 16 16l48 0c8.8 0 16-7.2 16-16l0-64 56 0c8.8 0 16 7.2 16 16l0 160c0 8.8-7.2 16-16 16l-161.3 0c-3.1 18.3-11.3 34.8-23.1 48zM256 272c8.8 0 16 7.2 16 16l0 160c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-160c0-8.8 7.2-16 16-16l56 0 0 64c0 8.8 7.2 16 16 16l48 0c8.8 0 16-7.2 16-16l0-64 56 0zM64 224c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-160c0-35.3-28.7-64-64-64L64 224z"/></svg>
+                    <span class="ms-3 ">Modules</span>
+                </a>
+            </li>
+            <li>
                 <a href="../markets"
                     class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('markets') ? 'active bg-customOrangeDark text-white ' : '' }} ">
                     <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white"

@@ -13,11 +13,16 @@ Route::middleware(['custom_auth'])->group(function () {
     Route::get('/operators', function () {
         return view('operators');
     });
+    Route::get('/subscription', function () {
+        return view('subscription');
+    });
     Route::get('/queries', function () {
         return view('queries');
     });
     Route::get('/Logout', [UserController::class, 'logout']);
-
+    Route::get('/priveleges', function () {
+        return view('priveleges');
+    });
     Route::get('/Cities', [CityController::class, 'getCities']);
     Route::post('/saveCities', [CityController::class, 'addCities']);
     Route::post('/deleteCities', [CityController::class, 'deleteCities']);
@@ -55,3 +60,4 @@ Route::get('/login', function () {
 Route::post('/Login', [UserController::class, 'login']);
 
 Route::match(['get', 'post'], '/logout', [UserController::class, 'logout']);
+
