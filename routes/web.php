@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,9 +11,11 @@ Route::middleware(['custom_auth'])->group(function () {
     Route::get('/', function () {
         return view('dashboard');
     });
-    Route::get('/modules', function () {
-        return view('module');
-    });
+    
+    Route::get('/modules', [ModuleController::class, 'getModules']);
+    Route::post('/saveModule', [ModuleController::class, 'addModule']);
+    Route::post('/deleteModule', [ModuleController::class, 'deleteModule']);
+
     Route::get('/operators', function () {
         return view('operators');
     });

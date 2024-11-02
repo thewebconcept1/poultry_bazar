@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use Illuminate\Http\Request;
+use Exception;
+use Illuminate\Http\JsonResponse;
 
 class CityController extends Controller
 {
+    // user Defined
+    protected function errorResponse(Exception $e, $code = 400): JsonResponse
+    {
+        return response()->json([
+            'success' => false,
+            'message' => $e->getMessage(),
+        ], $code);
+    }
+    // user Defined
 
     // delete cities
     public function deleteCities(Request $request)
@@ -51,7 +62,7 @@ class CityController extends Controller
                 return response()->json(['success' => true, 'message' => 'City added successfully'], 200);
             }
         } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
+            $this->errorResponse($e);
         }
     }
     // add cities
