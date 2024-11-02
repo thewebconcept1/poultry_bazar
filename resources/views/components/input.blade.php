@@ -1,4 +1,4 @@
-    <div>
+    <div class="w-full">
         <label for="{{ $id }}"
             class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">{{ $label }}</label>
         <input type="{{ $type }}" name="{{ $name }}" id="{{ $id }}"

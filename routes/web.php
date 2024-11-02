@@ -10,6 +10,9 @@ Route::middleware(['custom_auth'])->group(function () {
     Route::get('/', function () {
         return view('dashboard');
     });
+    Route::get('/modules', function () {
+        return view('module');
+    });
     Route::get('/operators', function () {
         return view('operators');
     });
@@ -60,4 +63,3 @@ Route::get('/login', function () {
 Route::post('/Login', [UserController::class, 'login']);
 
 Route::match(['get', 'post'], '/logout', [UserController::class, 'logout']);
-
