@@ -5,7 +5,7 @@
 @section('content')
     <div class="w-full pt-10 min-h-[88vh] gradient-border  rounded-lg">
         <div class="flex justify-between px-5">
-            <h1 class="text-3xl font-bold ">Blogs</h1>
+            <h1 class="text-3xl font-bold ">Notifications</h1>
             <button data-modal-target="blog-modal" data-modal-toggle="blog-modal"
                 class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Add New + </button>
         </div>
@@ -16,7 +16,7 @@
         <x-table :headers="$headers">
             <x-slot name="tablebody">
                 <tr>
-                    <td>
+                     <td>
                         <div class="max-w-5xl space-y-4">
                             <!-- Notification 1 -->
                             <div class="p-4 bg-gray-100 rounded shadow">
@@ -47,7 +47,7 @@
 
 
         <x-modal id="blog-modal">
-            <x-slot name="title">Add </x-slot>
+            <x-slot name="title">Add Notifications </x-slot>
             <x-slot name="modal_width">max-w-4xl</x-slot>
             <x-slot name="body">
                 <form action="">
@@ -78,7 +78,7 @@
                                         class="block w-full px-3 py-2 mt-1 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm"></textarea>
                                 </div>
                                 <div class="mt-4">
-                                    <x-modal-button :title="'Add Blog'"></x-modal-button>
+                                    <x-modal-button :title="'Add Notification '"></x-modal-button>
                                 </div>
                             </div>
                         </div>
