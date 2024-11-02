@@ -6,7 +6,7 @@
     <div class="w-full pt-10 min-h-[88vh] gradient-border  rounded-lg">
         <div class="flex justify-between px-5">
             <h1 class="text-3xl font-bold ">Cities</h1>
-            <button data-modal-target="city-modal" data-modal-toggle="city-modal"
+            <button id="addModalBtn" data-modal-target="city-modal" data-modal-toggle="city-modal"
                 class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Add City + </button>
         </div>
         @php
@@ -25,7 +25,7 @@
                         <td>
                             <span class='flex gap-4'>
                                 <button class="updateDataBtn" cityName="{{ $city->city_name }}"
-                                    cityProvince="{{ $city->city_province }}">
+                                    cityProvince="{{ $city->city_province }}" cityId="{{ $city->city_id }}">
                                     <svg width='36' height='36' viewBox='0 0 36 36' fill='none'
                                         xmlns='http://www.w3.org/2000/svg'>
                                         <circle opacity='0.1' cx='18' cy='18' r='18' fill='#233A85' />
@@ -57,8 +57,9 @@
             <x-slot name="title">Add Cities</x-slot>
             <x-slot name="modal_width">max-w-4xl</x-slot>
             <x-slot name="body">
-                <form id="postDataForm" action="saveCities" method="post">
+                <form id="postDataForm" url="saveCities" method="post">
                     @csrf
+                    <input type="hidden" class="text" id="updateId" name="city_id">
                     <div class="grid grid-cols-2 gap-4">
                         <x-input id="cityName" label="City Name" placeholder="Enter City" name='city_name'
                             type="text"></x-input>
@@ -83,15 +84,26 @@
                 $('#city-modal').addClass('flex');
                 $('#cityName').val($(this).attr('cityName'));
                 $('#cityProvince').val($(this).attr('cityProvince'));
+                $('#updateId').val($(this).attr('cityId'));
+
+                $('#city-modal #modalTitle').text("Update City");
+                $('#city-modal #submitBtn').text("Update");
+
             });
         }
         updateDatafun();
+        $('#addModalBtn').click(function() {
+            $('#postDataForm')[0].reset();
+            $('#city-modal #modalTitle').text("Add Cities");
+            $('#city-modal #submitBtn').text("Add");
 
+        })
         // Listen for the custom form submission response event
         $(document).on("formSubmissionResponse", function(event, response, Alert, SuccessAlert, WarningAlert) {
-            console.log(response);
+            // console.log(response);
 
             if (response.success) {
+                updateDatafun();
                 $('.modalCloseBtn').click();
             } else {}
         });

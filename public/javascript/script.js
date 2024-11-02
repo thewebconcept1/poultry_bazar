@@ -47,10 +47,10 @@ $(document).ready(function () {
         // Reload the table body content
         $("#tableBody").load(" #tableBody > *", function () {
             // Reinitialize DataTable after loading new data
+            updateDatafun();
             $("#datatable").DataTable();
             $("#loading").hide();
             delDataFun();
-            updateDatafun();
         });
     }
 
@@ -153,35 +153,33 @@ $(document).ready(function () {
     // post data ajax request
     $("#postDataForm").submit(function (e) {
         e.preventDefault();
-        let url = $(this).attr("action");
+        let url = $(this).attr("url");
         let formData = $(this).serialize();
 
         $.ajax({
             type: "POST",
             url: url,
             data: formData,
-
             beforeSend: function () {
                 BtnSpinnerShow();
-                $("#postDataForm")[0].reset();
             },
-
             success: function (response) {
-                // $("#tableBody").load(" #tableBody > *");
+                $("#postDataForm")[0].reset();
                 BtnSpinnerHide();
 
                 // Reload the table body content
-                reloadDataTable();
                 $(document).trigger("formSubmissionResponse", [
                     response,
                     SuccessAlert(response.message),
                 ]);
+                reloadDataTable();
                 delDataFun();
             },
 
-            error: function (error) {
+            error: function (jqXHR) {
                 BtnSpinnerHide();
-                console.log("Error:", error);
+                let response = JSON.parse(jqXHR.responseText);
+
                 $(document).trigger("formSubmissionResponse", [
                     response,
                     WarningAlert(response.message),
@@ -190,7 +188,7 @@ $(document).ready(function () {
         });
     });
     $("#datatable").on("draw", function () {
-        delDataFun();
         updateDatafun();
+        delDataFun();
     });
 });
