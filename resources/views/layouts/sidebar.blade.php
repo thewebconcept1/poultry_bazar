@@ -40,7 +40,7 @@
             </li>
             <li>
                 <a href="../operators"
-                    class="flex items-center p-2  text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('Cities') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                    class="flex items-center p-2  text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('operators') ? 'active bg-customOrangeDark text-white ' : '' }} ">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5"
                         viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
                         <path fill="#121212"

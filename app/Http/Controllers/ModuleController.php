@@ -105,7 +105,7 @@ class ModuleController extends Controller
     // get Modules
     public function getModules()
     {
-        $modules = Module::get();
+        $modules = Module::where('module_status', 1)->get();
 
         return view('module', ['modules' => $modules]);
     }

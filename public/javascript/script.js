@@ -93,8 +93,12 @@ $(document).ready(function () {
 
     function delDataFun() {
         $(".deleteDataBtn").click(function () {
-            let id = $(this).attr("delId");
             let csrfToken = $('meta[name="csrf-token"]').attr("content");
+            let id = $(this).attr("delId");
+            let dynamicKey = $(this).attr("name");
+            let delData = {};
+            delData[dynamicKey] = id;
+            console.log(delData);
             console.log("url", $(this).attr("delUrl"));
             // Show SweetAlert  confirmation dialog
             Swal.fire({
@@ -110,10 +114,8 @@ $(document).ready(function () {
                     // If confirmed, proceed with AJAX request to delete
                     $.ajax({
                         type: "POST",
-                        url: "deleteModule",
-                        data: {
-                            city_id: id,
-                        },
+                        url: $(this).attr("delUrl"),
+                        data: delData,
                         headers: {
                             "X-CSRF-TOKEN": csrfToken,
                         },
