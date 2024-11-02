@@ -11,9 +11,12 @@ class FileUploader extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $name;
+    public $id;
+    public function __construct($name, $id)
     {
-        //
+        $this->id = $id;
+        $this->name = $name;
     }
 
     /**
