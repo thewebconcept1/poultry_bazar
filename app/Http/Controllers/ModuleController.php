@@ -77,6 +77,7 @@ class ModuleController extends Controller
                 $module->module_description = $validatedData['module_description'];
 
                 $module->save();
+                return response()->json(['success' => true, 'message' => 'Module update successfully'], 200);
             } else {
 
                 if ($request->hasFile('module_image')) {

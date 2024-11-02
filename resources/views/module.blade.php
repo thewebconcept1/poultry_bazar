@@ -27,7 +27,9 @@
 
                         <td>
                             <span class='flex gap-4'>
-                                <button class="updateDataBtn">
+                                <button class="updateDataBtn" moduleId="{{ $module->module_id }}"
+                                    moduleDescription="{{ $module->module_description }}"
+                                    moduleImg="{{ $module->module_image }}" moduleName="{{ $module->module_name }}">
                                     <svg width='36' height='36' viewBox='0 0 36 36' fill='none'
                                         xmlns='http://www.w3.org/2000/svg'>
                                         <circle opacity='0.1' cx='18' cy='18' r='18' fill='#233A85' />
@@ -71,7 +73,7 @@
                             <x-input id="moduleName" label="Name" placeholder="Enter Module Name" name='module_name'
                                 type="text"></x-input>
 
-                            <x-textarea id="" label="Description" placeholder="Enter Module Description"
+                            <x-textarea id="moduleDescription" label="Description" placeholder="Enter Module Description"
                                 name='module_description' type="text"></x-textarea>
                         </div>
 
@@ -92,9 +94,13 @@
             $('.updateDataBtn').click(function() {
                 $('#Module-modal').removeClass("hidden");
                 $('#Module-modal').addClass('flex');
-                $('#cityName').val($(this).attr('cityName'));
-                $('#cityProvince').val($(this).attr('cityProvince'));
-                $('#updateId').val($(this).attr('cityId'));
+                $('#updateId').val($(this).attr('moduleId'));
+
+
+                $('#moduleName').val($(this).attr('moduleName'));
+                $('#moduleDescription').val($(this).attr('moduleDescription'));
+                let fileImg = $('#Module-modal .file-preview');
+                fileImg.removeClass('hidden').attr('src', $(this).attr('moduleImg'));
 
                 $('#Module-modal #modalTitle').text("Update Module");
                 $('#Module-modal #submitBtn').text("Update");
@@ -114,7 +120,6 @@
 
             if (response.success) {
                 updateDatafun();
-                delDataFun();
                 $('.modalCloseBtn').click();
             } else {}
         });
