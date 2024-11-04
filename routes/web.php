@@ -11,7 +11,7 @@ Route::middleware(['custom_auth'])->group(function () {
     Route::get('/', function () {
         return view('dashboard');
     });
-    
+
     Route::get('/modules', [ModuleController::class, 'getModules']);
     Route::post('/saveModule', [ModuleController::class, 'addModule']);
     Route::post('/deleteModule', [ModuleController::class, 'deleteModule']);
@@ -59,10 +59,8 @@ Route::middleware(['custom_auth'])->group(function () {
     });
 });
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
+Route::get('/login', [UserController::class, 'loginData']);
 
 Route::post('/Login', [UserController::class, 'login']);
 
-Route::match(['get', 'post'], '/logout', [UserController::class, 'logout']);
+Route::match(['get', 'post'], '/logout', [ModuleController::class, 'logout']);

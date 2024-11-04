@@ -244,7 +244,30 @@
                     <div id="extraSection" class="flex flex-col justify-center hidden w-full h-full py-4 mx-auto">
                         <h2 class="mb-6 text-4xl font-bold text-center">Select Panel</h2>
                         <div class="relative z-10 grid grid-cols-1 gap-4 mb-8 text-center sm:grid-cols-2">
+
                             <!-- Market Box 1 -->
+                            @foreach ($modules as $module)
+                                <div class="relative">
+                                    <input type="checkbox" name="market" id="market-{{ $module->module_id }}"
+                                        class="sr-only peer" checked>
+                                    <label for="market1"
+                                        class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
+                                        <img src="{{ asset('assets/icons/market update.png') }}" alt="Market icon">
+                                        <h3 class="text-xl font-semibold text-customGrayColorDark">
+                                            {{ $module->module_name }}</h3>
+                                        <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
+                                            data-modal-text="{{ $module->module_description }}"
+                                            data-modal-image="{{ $module->module_image }}"
+                                            class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
+                                            View info
+                                        </button>
+                                    </label>
+                                    <div
+                                        class="absolute w-6 h-6 transition-all border-2 border-gray-300 rounded-full top-4 right-4 peer-checked:border-customOrangeDark peer-checked:bg-customOrangeDark">
+                                    </div>
+                                </div>
+                            @endforeach
+
                             <div class="relative">
                                 <input type="checkbox" name="market" id="market1" class="sr-only peer" checked>
                                 <label for="market1"

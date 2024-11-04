@@ -105,7 +105,6 @@
             // console.log(response);
 
             if (response.success) {
-                updateDatafun();
                 $('.modalCloseBtn').click();
             } else {}
         });

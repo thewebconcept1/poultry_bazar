@@ -1,5 +1,5 @@
 <div class="overflow-auto">
-    <table id="datatable" class=" dataTable">
+    <table id="datatable" class="dataTable">
         <thead class="w-full font-semibold text-white gradient-bg ">
             <tr class="w-full border-b whitespace-nowrap">
                 @foreach ($headers as $header)

@@ -111,4 +111,12 @@ class ModuleController extends Controller
         return view('module', ['modules' => $modules]);
     }
     // get Modules
+
+    // get modules for login page
+    public function loginData()
+    {
+
+        $modules = Module::all();
+        return view('auth.login', compact('modules'));
+    }
 }
