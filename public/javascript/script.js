@@ -20,7 +20,8 @@ $(document).ready(function () {
         Swal.fire({
             position: "center",
             icon: "success",
-            title: `<span class="font-semibold">${message}</span>`,
+            title: "Success",
+            text: message,
             showConfirmButton: false,
             timer: 2000,
         });
@@ -30,8 +31,9 @@ $(document).ready(function () {
     function WarningAlert(message) {
         Swal.fire({
             position: "center",
-            icon: "success",
-            title: `<span class="font-semibold text-green-600">${message}</span>`,
+            icon: "warning",
+            title: "Error",
+            text: message,
             showConfirmButton: false,
             timer: 2000,
         });
@@ -91,11 +93,14 @@ $(document).ready(function () {
 
     function delDataFun() {
         $(".deleteDataBtn").click(function () {
-            let id = $(this).attr("delId");
-            let url = "/deleteCities";
             let csrfToken = $('meta[name="csrf-token"]').attr("content");
-
-            // Show SweetAlert confirmation dialog
+            let id = $(this).attr("delId");
+            let dynamicKey = $(this).attr("name");
+            let delData = {};
+            delData[dynamicKey] = id;
+            console.log(delData);
+            console.log("url", $(this).attr("delUrl"));
+            // Show SweetAlert  confirmation dialog
             Swal.fire({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
@@ -109,10 +114,8 @@ $(document).ready(function () {
                     // If confirmed, proceed with AJAX request to delete
                     $.ajax({
                         type: "POST",
-                        url: url,
-                        data: {
-                            city_id: id,
-                        },
+                        url: $(this).attr("delUrl"),
+                        data: delData,
                         headers: {
                             "X-CSRF-TOKEN": csrfToken,
                         },
@@ -153,13 +156,13 @@ $(document).ready(function () {
     // post data ajax request
     $("#postDataForm").submit(function (e) {
         e.preventDefault();
-        let url = $(this).attr("url");
-        let formData = $(this).serialize();
-
+        var formData = new FormData(this);
         $.ajax({
             type: "POST",
-            url: url,
+            url: $(this).attr("url"),
             data: formData,
+            processData: false,
+            contentType: false,
             beforeSend: function () {
                 BtnSpinnerShow();
             },

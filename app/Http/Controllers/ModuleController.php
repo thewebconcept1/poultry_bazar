@@ -24,7 +24,7 @@ class ModuleController extends Controller
     public function deleteModule(Request $request)
     {
         try {
-            
+
             $validatedData = $request->validate([
                 'module_id' => 'required',
             ]);
@@ -35,7 +35,6 @@ class ModuleController extends Controller
             $module->save();
 
             return response()->json(['success' => true, 'message' => 'Module deleted'], 200);
-
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
@@ -54,7 +53,7 @@ class ModuleController extends Controller
                 'module_description' => 'required',
             ]);
 
-            if($moduleId != null){
+            if ($moduleId != null) {
 
                 $module = Module::where('module_id', $moduleId)->first();
 
@@ -78,8 +77,8 @@ class ModuleController extends Controller
                 $module->module_description = $validatedData['module_description'];
 
                 $module->save();
-
-            }else{
+                return response()->json(['success' => true, 'message' => 'Module update successfully'], 200);
+            } else {
 
                 if ($request->hasFile('module_image')) {
                     $image = $request->file('module_image');
@@ -87,7 +86,7 @@ class ModuleController extends Controller
                     $imagePath = $image->store('module_images', 'public'); // stored in 'storage/app/public/animal_images'
                     $imageFullPath = 'storage/' . $imagePath;
                 } else {
-                    return response()->json(['success' => false, 'message' => 'module_image is required'], 400);
+                    return response()->json(['success' => false, 'message' => 'Module Image is required'], 400);
                 }
 
                 $module = Module::create([
@@ -97,9 +96,7 @@ class ModuleController extends Controller
                 ]);
 
                 return response()->json(['success' => true, 'message' => 'Module added successfully'], 200);
-
             }
-            
         } catch (\Exception $e) {
             $this->errorResponse($e);
         }
@@ -109,10 +106,9 @@ class ModuleController extends Controller
     // get Modules
     public function getModules()
     {
-        $modules = Module::get();
+        $modules = Module::where('module_status', 1)->get();
 
         return view('module', ['modules' => $modules]);
-
     }
     // get Modules
 }
