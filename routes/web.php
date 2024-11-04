@@ -59,8 +59,10 @@ Route::middleware(['custom_auth'])->group(function () {
     });
 });
 
-Route::get('/login', [UserController::class, 'loginData']);
+Route::post('/register', [UserController::class, 'RequestForService']);
+
+Route::get('/login', [ModuleController::class, 'loginData']);
 
 Route::post('/Login', [UserController::class, 'login']);
 
-Route::match(['get', 'post'], '/logout', [ModuleController::class, 'logout']);
+Route::match(['get', 'post'], '/logout', [UserController::class, 'logout']);

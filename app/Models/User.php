@@ -23,6 +23,11 @@ class User extends Authenticatable
         'user_role',
         'added_user_id',
         'city_id',
+        'module_id',
+        'user_image',
+        'user_status',
+        'user_verified',
+        'user_privileges',
     ];
 
     /**
