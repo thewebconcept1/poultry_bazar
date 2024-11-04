@@ -95,6 +95,7 @@
         updateDatafun();
         $('#addModalBtn').click(function() {
             $('#postDataForm')[0].reset();
+            $('#updateId').val('');
             $('#city-modal #modalTitle').text("Add Cities");
             $('#city-modal #submitBtn').text("Add");
 
