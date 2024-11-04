@@ -49,10 +49,10 @@ $(document).ready(function () {
         // Reload the table body content
         $("#tableBody").load(" #tableBody > *", function () {
             // Reinitialize DataTable after loading new data
+            delDataFun();
             updateDatafun();
             $("#datatable").DataTable();
             $("#loading").hide();
-            delDataFun();
         });
     }
 
@@ -98,8 +98,6 @@ $(document).ready(function () {
             let dynamicKey = $(this).attr("name");
             let delData = {};
             delData[dynamicKey] = id;
-            console.log(delData);
-            console.log("url", $(this).attr("delUrl"));
             // Show SweetAlert  confirmation dialog
             Swal.fire({
                 title: "Are you sure?",
@@ -169,14 +167,12 @@ $(document).ready(function () {
             success: function (response) {
                 $("#postDataForm")[0].reset();
                 BtnSpinnerHide();
-
                 // Reload the table body content
                 $(document).trigger("formSubmissionResponse", [
                     response,
                     SuccessAlert(response.message),
                 ]);
                 reloadDataTable();
-                delDataFun();
             },
 
             error: function (jqXHR) {
@@ -190,7 +186,7 @@ $(document).ready(function () {
             },
         });
     });
-    $("#datatable").on("draw", function () {
+    $(".dataTable").on("draw", function () {
         updateDatafun();
         delDataFun();
     });
