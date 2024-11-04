@@ -20,6 +20,38 @@ class UserController extends Controller
         ], $code);
     }
     // user Defined
+    
+    // Request for service
+    public function RequestForService(Request $request)
+    {
+        try {
+            
+            $validatedData = $request->validate([
+                'fullName' => 'required',
+                'email' => 'required',
+                'phone' => 'required',
+                'password' => 'required',
+                'module_id' => 'required|array',
+                'module_id.*' => 'integer',
+            ]);
+
+            $moduleIds = implode(',', $validatedData['module_id']);
+
+            $requestedUser = User::create([
+                'name' => $validatedData['fullName'],
+                'email' => $validatedData['email'],
+                'phone' => $validatedData['phone'],
+                'password' => $validatedData['password'],
+                'module_id' => $moduleIds,
+            ]);
+
+            return response()->json(['success' => true, 'message' => 'Request Sent'], 200);
+
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    // Request for service
 
     public function login(Request $request)
     {
