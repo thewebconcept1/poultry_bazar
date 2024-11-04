@@ -110,6 +110,9 @@
         updateDatafun();
         $('#addModalBtn').click(function() {
             $('#postDataForm')[0].reset();
+            $('#updateId').val('');
+            let fileImg = $('#Module-modal .file-preview');
+            fileImg.addClass('hidden');
             $('#Module-modal #modalTitle').text("Add Module");
             $('#Module-modal #submitBtn').text("Add");
 
