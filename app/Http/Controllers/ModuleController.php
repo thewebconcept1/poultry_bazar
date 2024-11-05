@@ -10,15 +10,15 @@ use Illuminate\Http\JsonResponse;
 class ModuleController extends Controller
 {
 
-    // user Defined
-    protected function errorResponse(Exception $e, $code = 400): JsonResponse
-    {
-        return response()->json([
-            'success' => false,
-            'message' => $e->getMessage(),
-        ], $code);
-    }
-    // user Defined
+    // // user Defined
+    // protected function errorResponse(Exception $e, $code = 400): JsonResponse
+    // {
+    //     return response()->json([
+    //         'success' => false,
+    //         'message' => $e->getMessage(),
+    //     ], $code);
+    // }
+    // // user Defined
 
     // delete module
     public function deleteModule(Request $request)
