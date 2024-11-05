@@ -9,15 +9,15 @@ use Illuminate\Http\JsonResponse;
 
 class CityController extends Controller
 {
-    // user Defined
-    protected function errorResponse(Exception $e, $code = 400): JsonResponse
-    {
-        return response()->json([
-            'success' => false,
-            'message' => $e->getMessage(),
-        ], $code);
-    }
-    // user Defined
+    // // user Defined
+    // protected function errorResponse(Exception $e, $code = 400): JsonResponse
+    // {
+    //     return response()->json([
+    //         'success' => false,
+    //         'message' => $e->getMessage(),
+    //     ], $code);
+    // }
+    // // user Defined
 
     // delete cities
     public function deleteCities(Request $request)

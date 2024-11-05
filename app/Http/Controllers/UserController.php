@@ -11,15 +11,15 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    // user Defined
-    protected function errorResponse(Exception $e, $code = 400): JsonResponse
-    {
-        return response()->json([
-            'success' => false,
-            'message' => $e->getMessage(),
-        ], $code);
-    }
-    // user Defined
+    // // user Defined
+    // protected function errorResponse(Exception $e, $code = 400): JsonResponse
+    // {
+    //     return response()->json([
+    //         'success' => false,
+    //         'message' => $e->getMessage(),
+    //     ], $code);
+    // }
+    // // user Defined
 
     // get user
     public function getUser($id = null)

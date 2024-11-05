@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\UserController;
@@ -48,9 +49,11 @@ Route::middleware(['custom_auth'])->group(function () {
     Route::get('/consultancyvideos', function () {
         return view('consultancyvideos');
     });
-    Route::get('/categories', function () {
-        return view('categories');
-    });
+    
+    Route::get('/categories', [CategoryController::class, 'getCategory']);
+    Route::post('/deleteCategory', [CategoryController::class, 'deleteCategory']);
+    Route::post('/saveCategory', [CategoryController::class, 'addCategory']);
+
     Route::get('/setting', function () {
         return view('setting');
     });
