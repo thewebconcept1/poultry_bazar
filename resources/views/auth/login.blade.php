@@ -382,6 +382,25 @@
                         <button data-modal-target="signup-Modal" data-modal-toggle="signup-Modal"
                             class="hidden"></button>
                     </div>
+
+
+                    <div id="formSuccess" class=" w-full flex flex-col justify-center hidden h-[480px]">
+                        <h2 class="text-3xl font-bold text-center">Get Access</h2>
+                        <div class="flex justify-center space-y-2 md:p-5">
+                            <img class="h-[100%] " src="{{ asset('assets/modal-success-icon.png') }}"
+                                alt="success-icon">
+                        </div>
+                        <h2 class="text-2xl font-bold text-center">
+                            Your request has been sent <br>
+                            <span>wait for confirmation.</span>
+                        </h2>
+                        <h1 class="mt-10 text-center text-1xl text-customGrayColorDark">
+                            Or <br>
+                            <span class="">
+                                Call Us (+92 300 1234567)
+                            </span>
+                        </h1>
+                    </div>
                 </form>
             </div>
         </div>
@@ -582,8 +601,11 @@
                             $('#Stext').removeClass('hidden');
                             $('#Sspinner').addClass('hidden');
 
-                            $('#signup-Modal').removeClass('hidden');
-                            $('#signup-Modal').addClass('flex');
+                            $('#signupForm').addClass('hidden');
+                            $('#extraSection').addClass('hidden');
+                            $('#formSuccess').removeClass('hidden');
+                            // $('#signup-Modal').removeClass('hidden');
+                            // $('#signup-Modal').addClass('flex');
                             // window.location.href = '/';
 
                         } else if (response.success == false) {
@@ -598,11 +620,17 @@
 
                         let response = JSON.parse(jqXHR.responseText);
 
-                        Swal.fire(
-                            'Warning!',
-                            response.message,
-                            'warning'
-                        )
+                        // Swal.fire(
+                        //     'Warning!',
+                        //     response.message,
+                        //     'warning'
+                        // )
+
+                        $('#signupForm').removeClass('hidden');
+                        $('#extraSection').addClass('hidden');
+                        $('#signup-Modal').removeClass('hidden');
+                        $('#signup-Modal').addClass('flex');
+
                         $('#Sspinner').removeClass('hidden');
                         $('#Stext').addClass('hidden');
                         $('#submitBtn').attr('disabled', true);
