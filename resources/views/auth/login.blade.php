@@ -253,7 +253,7 @@
                     <div id="extraSection" class="flex flex-col  hidden w-full h-full py-8 mx-auto">
                         <h2 class="mb-6 text-4xl font-bold text-center">Select Panel</h2>
                         <div
-                            class="relative z-10 grid grid-cols-1 gap-4 mb-8 text-center sm:grid-cols-2 h-[460px] overflow-y-auto">
+                            class="relative z-10 grid grid-cols-1 gap-4 mb-8 text-center sm:grid-cols-2 max-h-[460px] overflow-y-auto">
 
                             <!-- Market Box 1 -->
 
@@ -262,9 +262,10 @@
                                     <input type="checkbox" name="module_id[]" value="{{ $module->module_id }}"
                                         id="market-{{ $module->module_id }}" class="sr-only peer">
                                     <label for="market-{{ $module->module_id }}"
-                                        class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
-                                        <img src="{{ asset('assets/icons/market update.png') }}" alt="Market icon">
-                                        <h3 class="text-xl font-semibold text-customGrayColorDark">
+                                        class="block h-auto p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
+                                        <img class="w-[88px] h-[88px] rounded-full object-contain bg-black"
+                                            src="{{ $module->module_image }}" alt="Market icon">
+                                        <h3 class="text-lg mt-2 font-semibold text-customGrayColorDark">
                                             {{ $module->module_name }}</h3>
                                         <button type="button" data-modal-target="modal"" data-modal-toggle="modal"
                                             data-modal-text="{{ $module->module_description }}"
@@ -415,26 +416,29 @@
         <div class="relative w-auto max-w-lg mx-auto my-4">
             <!-- Modal content -->
             <div
-                class="relative flex flex-col w-full bg-white h-[100%] rounded-[40px] shadow-lg outline-none modal-content focus:outline-none">
+                class="relative flex flex-col w-full md:min-w-[600px] bg-white h-[100%] rounded-[40px] shadow-lg outline-none modal-content focus:outline-none">
                 <!-- Icon at the top -->
                 <div class="absolute transform -translate-x-1/2 -top-20 left-1/2">
                     <div>
-                        <img class="w-36 h-36" src="{{ asset('assets/icons/Group 44.png') }}" alt="icon">
+                        <img class="w-36 h-36 rounded-full object-contain bg-black"
+                            src="{{ asset('assets/icons/Group 44.png') }}" alt="icon">
                     </div>
                 </div>
-                <!-- Modal header -->
-                <div class="flex items-start justify-between pt-16 ms-10 ">
-                    <h3 class="text-3xl font-extrabold">Market Rates</h3>
-                </div>
-                <!-- Modal body -->
-                <div class="relative flex-auto p-10 mb-5">
-                    <p class="text-xl leading-relaxed text-justify text-gray-400">
-                        Stay informed with live updates on the latest poultry market rates. This feature provides
-                        users with
-                        real-time price trends for chickens across different regions. Gain insights to make informed
-                        decisions
-                        on buying and selling, helping you maximize your profits in a competitive market.
-                    </p>
+                <div class="flex flex-col items-center mt-3">
+                    <!-- Modal header -->
+                    <div class="pt-16  ">
+                        <h3 class="text-3xl font-extrabold">Market Rates</h3>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="relative  px-10 mt-4 mb-5">
+                        <p class="text-xl leading-relaxed text-justify text-gray-400">
+                            Stay informed with live updates on the latest poultry market rates. This feature provides
+                            users with
+                            real-time price trends for chickens across different regions. Gain insights to make informed
+                            decisions
+                            on buying and selling, helping you maximize your profits in a competitive market.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -631,9 +635,10 @@
                         $('#signup-Modal').removeClass('hidden');
                         $('#signup-Modal').addClass('flex');
 
-                        $('#Sspinner').removeClass('hidden');
-                        $('#Stext').addClass('hidden');
-                        $('#submitBtn').attr('disabled', true);
+                        $('#Stext').removeClass('hidden');
+                        $('#Sspinner').addClass('hidden');
+
+                        $('#submitBtn').attr('disabled', false);
                     }
                 });
             });
