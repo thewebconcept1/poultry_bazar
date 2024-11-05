@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('added_user_id');
             $table->string('category_name');
             $table->text('category_image')->nullable();
+            $table->text('category_type');
             $table->integer('category_status')->default(1);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrent();
