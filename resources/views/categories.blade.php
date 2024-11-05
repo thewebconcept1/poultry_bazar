@@ -24,7 +24,7 @@
                 class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Add New +</button>
         </div>
 
-        <div id="categoryTable" class="transition-opacity duration-500 opacity-0">
+        <div id="categoryTable" class="transition-opacity duration-500 ">
             @php
                 $headers = ['Sr.', 'Image', 'Title', 'Posts', 'Action'];
             @endphp
@@ -67,8 +67,7 @@
             <x-slot name="title">Add </x-slot>
             <x-slot name="modal_width">max-w-2xl</x-slot>
             <x-slot name="body">
-                <form action="saveCategory" enctype="multipart/form-data" method="post">
-                    {{-- <form id="postDataForm" url="saveCategory" enctype="multipart/form-data" method="post"> --}}
+                <form id="postDataForm" url="saveCategory" enctype="multipart/form-data" method="post">
                     @csrf
                     <input type="hidden" name="category_id" value="">
                     <div class="">
@@ -101,32 +100,32 @@
     </div>
 
     <script>
-        function showCategory(category) {
-            const table = document.getElementById("categoryTable");
+        // function showCategory(category) {
+        //     const table = document.getElementById("categoryTable");
 
-            // Fade out, change content, then fade in
-            table.classList.add("opacity-0"); // Start fade-out
-            setTimeout(() => {
-                // Update table content (this would ideally be done with an AJAX request)
-                switch (category) {
-                    case 'blog':
-                        // loadBlogCategories();
-                        break;
-                    case 'disease':
-                        // loadDiseaseCategories();
-                        break;
-                    case 'consultancy':
-                        // loadConsultancyCategories();
-                        break;
-                }
-                table.classList.remove("opacity-0"); // Start fade-in
-            }, 500); // Wait for fade-out duration
-        }
+        //     // Fade out, change content, then fade in
+        //     table.classList.add("opacity-0"); // Start fade-out
+        //     setTimeout(() => {
+        //         // Update table content (this would ideally be done with an AJAX request)
+        //         switch (category) {
+        //             case 'blog':
+        //                 // loadBlogCategories();
+        //                 break;
+        //             case 'disease':
+        //                 // loadDiseaseCategories();
+        //                 break;
+        //             case 'consultancy':
+        //                 // loadConsultancyCategories();
+        //                 break;
+        //         }
+        //         table.classList.remove("opacity-0"); // Start fade-in
+        //     }, 500); // Wait for fade-out duration
+        // }
     </script>
 
     <style>
         .transition-opacity {
-            transition: opacity 0.5s ease-in-out;
+            /* transition: opacity 0.5s ease-in-out; */
         }
     </style>
 @endsection

@@ -84,7 +84,7 @@ class CategoryController extends Controller
                 $category = Category::create([
                     'added_user_id' => $user['id'],
                     'category_name' => $validatedData['category_name'],
-                    'category_image' => $imageFullPath,
+                    'category_image' => $imageFullPath ?? null,
                     'category_type' => $validatedData['category_type'],
                 ]);
 
