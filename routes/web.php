@@ -16,9 +16,9 @@ Route::middleware(['custom_auth'])->group(function () {
     Route::post('/saveModule', [ModuleController::class, 'addModule']);
     Route::post('/deleteModule', [ModuleController::class, 'deleteModule']);
 
-    Route::get('/operators', function () {
-        return view('operators');
-    });
+    Route::get('/operators/{id?}', [UserController::class, 'getUser']);
+    Route::post('/addPrivileges', [UserController::class, 'addUserPrivileges']);
+
     Route::get('/subscription', function () {
         return view('subscription');
     });
