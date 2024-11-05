@@ -196,7 +196,7 @@
 
 
             <div id="signupSection"
-                class="flex flex-col justify-center lg:flex-row items-center lg:justify-between min-h-[100vh]   mx-[50px] lg:mx-[100px]  z-20 relative hidden max-w-[1500px] xl:mx-auto ">
+                class="flex flex-col justify-center lg:flex-row items-center lg:justify-between min-h-[100vh]    mx-[50px] lg:mx-[100px]  z-20 relative hidden max-w-[1500px] xl:mx-auto ">
                 <div class="flex flex-col justify-center items-center h-full w-full relative z-40 max-w-[480px]">
                     <div id="welcomeDiv" class="flex flex-col items-center justify-start">
                         <h2 class="text-[50px] text-customOrangeDark font-bold leading-none">
@@ -211,7 +211,7 @@
                 </div>
                 <!-- Signup Form Section (Initially hidden) -->
                 <form id="registerForm" method="POST"
-                    class="max-w-[480px] animate-slideIn px-8 lg:py-0 py-4 my-2 flex flex-col justify-center items-center h-auto w-[100%] rounded-2xl transition-all duration-700 ease-in-out"
+                    class="max-w-[480px] animate-slideIn px-8 lg:py-0 py-4 my-2 flex flex-col justify-center items-center h-auto  w-[100%] rounded-2xl transition-all duration-700 ease-in-out"
                     style="box-shadow: 0px 0px 8px 0px #00000026; background:rgba(255, 255, 255, 0.389)">
                     @csrf
                     <div id="signupForm" class="w-full h-full m-5 ">
@@ -221,25 +221,28 @@
                                 <label for="fullName" class="block mt-5 text-sm text-customGrayColorDark">Full
                                     Name</label>
                                 <input type="text" id="fullName" name="fullName" required
-                                    class="w-full mt-1 bg-white border border-gray-400 rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm focus:border-customOrangeDark focus:outline-none"
+                                    class="requiredFields w-full mt-1 bg-white border border-gray-400 rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm focus:border-customOrangeDark focus:outline-none"
                                     placeholder="Enter Full Name">
                             </div>
                             <div class="mt-4">
                                 <label for="email" class="block text-sm text-customGrayColorDark">Email</label>
                                 <input type="email" id="regEmail" name="email" required
-                                    class="w-full mt-1 bg-white border border-gray-400 rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm focus:border-customOrangeDark focus:outline-none"
+                                    class="requiredFields w-full mt-1 bg-white border border-gray-400 rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm focus:border-customOrangeDark focus:outline-none"
                                     placeholder="Enter your email">
                             </div>
                             <div class="mt-4">
                                 <label for="phone" class="block text-sm text-customGrayColorDark">Phone</label>
                                 <input type="text" id="regPhone" name="phone" required
-                                    class="w-full mt-1 bg-white border border-customGrayColorDark rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm focus:border-customOrangeDark focus:outline-none"
+                                    class="requiredFields w-full mt-1 bg-white border border-customGrayColorDark rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm focus:border-customOrangeDark focus:outline-none"
                                     placeholder="Enter phone No">
                             </div>
                             <div class="mt-4">
                                 <label for="password" class="block text-sm text-customGrayColorDark">Password</label>
                                 <input type="password" id="regPassword" name="password" required
-                                    class="w-full mt-1 bg-white border border-customGrayColorDark rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm focus:border-customOrangeDark focus:outline-none"
+                                    class="requiredFields
+                                    w-full mt-1 bg-white border border-customGrayColorDark rounded-2xl
+                                    placeholder:text-customGrayColorDark placeholder:text-sm
+                                    focus:border-customOrangeDark focus:outline-none"
                                     placeholder="Enter your password">
                             </div>
                             <button id="nextBtn" type="button"
@@ -247,11 +250,13 @@
                         </div>
 
                     </div>
-                    <div id="extraSection" class="flex flex-col justify-center hidden w-full h-full py-4 mx-auto">
+                    <div id="extraSection" class="flex flex-col  hidden w-full h-full py-8 mx-auto">
                         <h2 class="mb-6 text-4xl font-bold text-center">Select Panel</h2>
-                        <div class="relative z-10 grid grid-cols-1 gap-4 mb-8 text-center sm:grid-cols-2">
+                        <div
+                            class="relative z-10 grid grid-cols-1 gap-4 mb-8 text-center sm:grid-cols-2 h-[460px] overflow-y-auto">
 
                             <!-- Market Box 1 -->
+
                             @foreach ($modules as $module)
                                 <div class="relative">
                                     <input type="checkbox" name="module_id[]" value="{{ $module->module_id }}"
@@ -261,7 +266,7 @@
                                         <img src="{{ asset('assets/icons/market update.png') }}" alt="Market icon">
                                         <h3 class="text-xl font-semibold text-customGrayColorDark">
                                             {{ $module->module_name }}</h3>
-                                        <button id="" type="button"
+                                        <button type="button" data-modal-target="modal"" data-modal-toggle="modal"
                                             data-modal-text="{{ $module->module_description }}"
                                             data-modal-image="{{ $module->module_image }}"
                                             class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
@@ -660,21 +665,32 @@
 
         });
         $(document).ready(function() {
-            const nextBtn = document.getElementById('nextBtn');
-            const signupForm = document.getElementById('signupForm');
-            const extraSection = document.getElementById('extraSection');
 
-            // Add a click event listener to the Next button
-            nextBtn.addEventListener('click', function() {
-                console.log(
-                    'Next button clicked'); // Debugging check to ensure the event is fired
+            $('#nextBtn').click(function() {
+                let allFieldsFilled = true;
+                $('.requiredFields').each(function() {
+                    if ($(this).val().trim() === '') {
+                        allFieldsFilled = false;
+                    }
+                });
 
-                // Hide the signup form
-                signupForm.classList.add('hidden');
+                if (allFieldsFilled) {
+                    $('#signupForm').addClass('hidden');
+                    $('#extraSection').removeClass('hidden');
+                } else {
+                    Swal.fire({
+                        position: "center",
+                        icon: "warning",
+                        title: "All Fields Required",
+                        text: "Please fill data in all required fields.",
+                        // showConfirmButton: false,
+                        // timer: 2000,
+                    });
+                }
 
-                // Show the extra section
-                extraSection.classList.remove('hidden');
-            });
+
+
+            })
         });
     </script>
 </body>
