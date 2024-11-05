@@ -11,15 +11,15 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    // // user Defined
-    // protected function errorResponse(Exception $e, $code = 400): JsonResponse
-    // {
-    //     return response()->json([
-    //         'success' => false,
-    //         'message' => $e->getMessage(),
-    //     ], $code);
-    // }
-    // // user Defined
+    // user Defined
+    protected function errorResponse(Exception $e, $code = 400): JsonResponse
+    {
+        return response()->json([
+            'success' => false,
+            'message' => $e->getMessage(),
+        ], $code);
+    }
+    // user Defined
 
     // get user
     public function getUser($id = null)
@@ -27,21 +27,19 @@ class UserController extends Controller
 
         $loggedInUser = session('user_details');
 
-        if($id != null){
+        if ($id != null) {
             $user = User::where('user_id', $id)->first();
 
-            if(!$user){
+            if (!$user) {
                 return response()->json(['success' => false, 'message' => 'User not found'], 404);
             }
 
             return view('priveleges', ['user' => $user]);
-        }else{
+        } else {
             $user = User::where('id', '<>', $loggedInUser->id)->where('user_role', 'operator')->get();
 
             return view('operators', ['users' => $user]);
-
         }
-
     }
     // get user
 
@@ -49,7 +47,7 @@ class UserController extends Controller
     public function addUserPrivileges(Request $request)
     {
         try {
-            
+
             $validatedData = $request->validate([
                 'userId' => 'required',
                 'userPrivileges' => 'nullable',
@@ -62,25 +60,24 @@ class UserController extends Controller
             }
 
             $user->user_privileges = json_encode($validatedData['userPrivileges']);
-            if($user->user_verified == 0){
+            if ($user->user_verified == 0) {
                 $user->user_status = 1;
                 $user->user_verified = 1;
             }
             $user->save();
 
             return response()->json(['success' => true, 'message' => 'User verified and activated'], 200);
-
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
     }
     // verify User and give privileges
-    
+
     // Request for service
     public function RequestForService(Request $request)
     {
         try {
-            
+
             $validatedData = $request->validate([
                 'fullName' => 'required',
                 'email' => 'required',
@@ -95,9 +92,9 @@ class UserController extends Controller
             $existingRequest = User::where('email', $validatedData['email'])->where('user_verified', 0)->first();
             $existingUser = User::where('email', $validatedData['email'])->where('user_verified', 1)->first();
 
-            if($existingRequest){
+            if ($existingRequest) {
                 return response()->json(['success' => false, 'message' => 'Request already sent'], 400);
-            }elseif($existingUser){
+            } elseif ($existingUser) {
                 return response()->json(['success' => false, 'message' => 'User already exist'], 400);
             }
 
@@ -111,7 +108,6 @@ class UserController extends Controller
             ]);
 
             return response()->json(['success' => true, 'message' => 'Request Sent'], 200);
-
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }

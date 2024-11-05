@@ -55,12 +55,19 @@
     <script src="{{ asset('javascript/canvas.js') }}"></script>
     <script type="text/javascript" src="{{ asset('DataTables/DataTables-1.13.8/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('javascript/script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         $(window).on('load', function() {
             $('#loading').hide();
         })
         $(document).ready(function() {
             $('#datatable').DataTable();
+            $('select').select2({
+                width: '100%'
+            });
+            $('#Items_dropdown').select2({
+                minimumResultsForSearch: Infinity
+            });
         });
     </script>
     @yield('js')

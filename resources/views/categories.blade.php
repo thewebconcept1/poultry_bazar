@@ -20,7 +20,7 @@
                         onclick="showCategory('consultancy')">Consultancy Categories</button>
                 </div>
             </div>
-            <button data-modal-target="categories" data-modal-toggle="categories"
+            <button data-modal-target="categories-modal" data-modal-toggle="categories-modal"
                 class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Add New +</button>
         </div>
 
@@ -63,26 +63,32 @@
             </x-table>
         </div>
 
-        <x-modal id="categories">
+        <x-modal id="categories-modal">
             <x-slot name="title">Add </x-slot>
             <x-slot name="modal_width">max-w-2xl</x-slot>
             <x-slot name="body">
-                <form action="">
+                <form action="saveCategory" enctype="multipart/form-data" method="post">
+                    {{-- <form id="postDataForm" url="saveCategory" enctype="multipart/form-data" method="post"> --}}
+                    @csrf
+                    <input type="hidden" name="category_id" value="">
                     <div class="">
-                        <div class="flex justify-start gap-2 ">
-                            <label for="fileInput"
-                                class="flex-row w-24 h-24 p-5 border-2 border-gray-300 rounded-md cursor-pointer">
-                                <svg class="text-black w-9 h-9 ms-2" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                                </svg>
-                                <h1 class="text-sm text-center">Upload</h1>
-                            </label>
-                            <input type="file" id="fileInput" class="hidden" />
-                            <div class="w-full mt-7">
-                                <x-input id="Marketname" label="Title:" placeholder="Enter Market Name" name='market_name'
-                                    type="text"></x-input>
+                        <div class="grid grid-cols-2 gap-4 ">
+                            <div>
+                                <x-file-uploader name="category_image" id="categoryImage" />
+                            </div>
+                            <div class="w-full ">
+                                <x-input id="categoryName" label="Category Name" placeholder="Enter Category Name"
+                                    name="category_name" type="text"></x-input>
+                                <div class="mt-4">
+                                    <x-select name="category_type" id="categoryType" label="Select Category Type">
+                                        <x-slot name="options">
+                                            <option disabled selected>Select Category</option>
+                                            <option value="blog">Blog</option>
+                                            <option value="diseases">Diseases</option>
+                                            <option value="consultancy">Consultancy</option>
+                                        </x-slot>
+                                    </x-select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -123,4 +129,39 @@
             transition: opacity 0.5s ease-in-out;
         }
     </style>
+@endsection
+
+@section('js')
+    <script>
+        function updateDatafun() {
+
+            $('.updateDataBtn').click(function() {
+                $('#categories-modal').removeClass("hidden");
+                $('#categories-modal').addClass('flex');
+                $('#cityName').val($(this).attr('cityName'));
+                $('#cityProvince').val($(this).attr('cityProvince'));
+                $('#updateId').val($(this).attr('cityId'));
+
+                $('#categories-modal #modalTitle').text("Update Category");
+                $('#categories-modal #submitBtn').text("Update");
+
+            });
+        }
+        updateDatafun();
+        $('#addModalBtn').click(function() {
+            $('#postDataForm')[0].reset();
+            $('#updateId').val('');
+            $('#categories-modal #modalTitle').text("Add Category");
+            $('#categories-modal #submitBtn').text("Add");
+
+        })
+        // Listen for the custom form submission response event
+        $(document).on("formSubmissionResponse", function(event, response, Alert, SuccessAlert, WarningAlert) {
+            // console.log(response);
+
+            if (response.success) {
+                $('.modalCloseBtn').click();
+            } else {}
+        });
+    </script>
 @endsection
