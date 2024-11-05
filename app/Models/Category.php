@@ -17,6 +17,7 @@ class Category extends Model
         'added_user_id',
         'category_name',
         'category_image',
+        'category_type',
         'category_status',
     ];
 

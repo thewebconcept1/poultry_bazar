@@ -46,6 +46,7 @@ class CategoryController extends Controller
             $categoryId = $request->input('category_id');
             $validatedData = $request->validate([
                 'category_name' => 'required',
+                'category_type' => 'required',
             ]);
 
             if ($categoryId != null) {
@@ -69,6 +70,7 @@ class CategoryController extends Controller
                 }
 
                 $category->category_name = $validatedData['category_name'];
+                $category->category_type = $validatedData['category_type'];
                 $category->save();
 
                 return response()->json(['success' => true, 'message' => 'Category updated successfully'], 200);
@@ -85,6 +87,7 @@ class CategoryController extends Controller
                     'addded_user_id' => $user->id,
                     'category_name' => $validatedData['category_name'],
                     'category_image' => $imageFullPath,
+                    'category_type' => $validatedData['category_type'],
                 ]);
 
                 return response()->json(['success' => true, 'message' => 'Category added successfully'], 200);
