@@ -20,6 +20,61 @@ class UserController extends Controller
         ], $code);
     }
     // user Defined
+
+    // get user
+    public function getUser($id = null)
+    {
+
+        $loggedInUser = session('user_details');
+
+        if($id != null){
+            $user = User::where('user_id', $id)->first();
+
+            if(!$user){
+                return response()->json(['success' => false, 'message' => 'User not found'], 404);
+            }
+
+            return view('priveleges', ['user' => $user]);
+        }else{
+            $user = User::where('id', '<>', $loggedInUser->id)->where('user_role', 'operator')->get();
+
+            return view('operators', ['users' => $user]);
+
+        }
+
+    }
+    // get user
+
+    // verify User and give privileges
+    public function addUserPrivileges(Request $request)
+    {
+        try {
+            
+            $validatedData = $request->validate([
+                'userId' => 'required',
+                'userPrivileges' => 'nullable',
+            ]);
+
+            $user = User::where('id', $validatedData['userId'])->first();
+
+            if (!$user) {
+                return response()->json(['success' => false, 'message' => 'User not found'], 404);
+            }
+
+            $user->user_privileges = json_encode($validatedData['userPrivileges']);
+            if($user->user_verified == 0){
+                $user->user_status = 1;
+                $user->user_verified = 1;
+            }
+            $user->save();
+
+            return response()->json(['success' => true, 'message' => 'User verified and activated'], 200);
+
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    // verify User and give privileges
     
     // Request for service
     public function RequestForService(Request $request)
@@ -37,12 +92,22 @@ class UserController extends Controller
 
             $moduleIds = implode(',', $validatedData['module_id']);
 
+            $existingRequest = User::where('email', $validatedData['email'])->where('user_verified', 0)->first();
+            $existingUser = User::where('email', $validatedData['email'])->where('user_verified', 1)->first();
+
+            if($existingRequest){
+                return response()->json(['success' => false, 'message' => 'Request already sent'], 400);
+            }elseif($existingUser){
+                return response()->json(['success' => false, 'message' => 'User already exist'], 400);
+            }
+
             $requestedUser = User::create([
                 'name' => $validatedData['fullName'],
                 'email' => $validatedData['email'],
                 'phone' => $validatedData['phone'],
                 'password' => $validatedData['password'],
                 'module_id' => $moduleIds,
+                'user_role' => 'operator',
             ]);
 
             return response()->json(['success' => true, 'message' => 'Request Sent'], 200);
