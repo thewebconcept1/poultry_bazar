@@ -137,14 +137,14 @@
                                 <div>
                                     <label for="email" class="block text-sm text-customGrayColorDark">Email</label>
                                     <input type="email" id="email"
-                                        class="w-full mt-1 bg-white border border-gray-400 rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm"
+                                        class="w-full mt-1 bg-white border border-gray-400 rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm focus:border-customOrangeDark focus:outline-none"
                                         placeholder="Enter your email" name="email">
                                 </div>
                                 <div class="mt-5">
                                     <label for="password"
                                         class="block text-sm text-customGrayColorDark">Password</label>
                                     <input type="password" id="password"
-                                        class="w-full mt-1 bg-white border border-customGrayColorDark rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm"
+                                        class="w-full mt-1 bg-white border border-customGrayColorDark rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm focus:border-customOrangeDark focus:outline-none"
                                         placeholder="Enter your password" name="password">
                                 </div>
                                 <div>
@@ -194,6 +194,7 @@
 
             </div>
 
+
             <div id="signupSection"
                 class="flex flex-col justify-center lg:flex-row items-center lg:justify-between min-h-[100vh]   mx-[50px] lg:mx-[100px]  z-20 relative hidden max-w-[1500px] xl:mx-auto ">
                 <div class="flex flex-col justify-center items-center h-full w-full relative z-40 max-w-[480px]">
@@ -209,37 +210,42 @@
                     </div>
                 </div>
                 <!-- Signup Form Section (Initially hidden) -->
-                <div class="max-w-[480px] animate-slideIn px-8 lg:py-0 py-4 my-2 flex flex-col justify-center items-center h-auto w-[100%] rounded-2xl transition-all duration-700 ease-in-out"
+                <form id="registerForm" method="POST"
+                    class="max-w-[480px] animate-slideIn px-8 lg:py-0 py-4 my-2 flex flex-col justify-center items-center h-auto w-[100%] rounded-2xl transition-all duration-700 ease-in-out"
                     style="box-shadow: 0px 0px 8px 0px #00000026; background:rgba(255, 255, 255, 0.389)">
+                    @csrf
                     <div id="signupForm" class="w-full h-full m-5 ">
-                        <form id="" action="">
-                            <h1 class="text-customBlackColor font-bold text-[44px] text-center mt-5">Get Access</h1>
-                            <div class="mt-10">
-                                <div>
-                                    <label for="email" class="block text-sm text-customGrayColorDark">Email</label>
-                                    <input type="email" id="email"
-                                        class="w-full mt-1 bg-white border border-gray-400 rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm"
-                                        placeholder="Enter your email">
-                                </div>
-                                <div>
-                                    <label for="confirmEmail"
-                                        class="block mt-5 text-sm text-customGrayColorDark">Confirm
-                                        Email</label>
-                                    <input type="email" id="confirmEmail"
-                                        class="w-full mt-1 bg-white border border-gray-400 rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm"
-                                        placeholder="Confirm your email">
-                                </div>
-                                <div class="mt-5">
-                                    <label for="password"
-                                        class="block text-sm text-customGrayColorDark">Password</label>
-                                    <input type="password" id="password"
-                                        class="w-full mt-1 bg-white border border-customGrayColorDark rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm"
-                                        placeholder="Enter your password">
-                                </div>
-                                <button id="nextBtn" type="button"
-                                    class="w-full mt-8 text-lg text-white rounded-full gradient-bg font-semi-bold h-14">Next</button>
+                        <h1 class="text-customBlackColor font-bold text-[44px] text-center mt-5">Get Access</h1>
+                        <div class="mt-10">
+                            <div>
+                                <label for="fullName" class="block mt-5 text-sm text-customGrayColorDark">Full
+                                    Name</label>
+                                <input type="text" id="fullName" name="fullName" required
+                                    class="w-full mt-1 bg-white border border-gray-400 rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm focus:border-customOrangeDark focus:outline-none"
+                                    placeholder="Enter Full Name">
                             </div>
-                        </form>
+                            <div class="mt-4">
+                                <label for="email" class="block text-sm text-customGrayColorDark">Email</label>
+                                <input type="email" id="regEmail" name="email" required
+                                    class="w-full mt-1 bg-white border border-gray-400 rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm focus:border-customOrangeDark focus:outline-none"
+                                    placeholder="Enter your email">
+                            </div>
+                            <div class="mt-4">
+                                <label for="phone" class="block text-sm text-customGrayColorDark">Phone</label>
+                                <input type="text" id="regPhone" name="phone" required
+                                    class="w-full mt-1 bg-white border border-customGrayColorDark rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm focus:border-customOrangeDark focus:outline-none"
+                                    placeholder="Enter phone No">
+                            </div>
+                            <div class="mt-4">
+                                <label for="password" class="block text-sm text-customGrayColorDark">Password</label>
+                                <input type="password" id="regPassword" name="password" required
+                                    class="w-full mt-1 bg-white border border-customGrayColorDark rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm focus:border-customOrangeDark focus:outline-none"
+                                    placeholder="Enter your password">
+                            </div>
+                            <button id="nextBtn" type="button"
+                                class="w-full mt-8 text-lg text-white rounded-full gradient-bg font-semi-bold h-14">Next</button>
+                        </div>
+
                     </div>
                     <div id="extraSection" class="flex flex-col justify-center hidden w-full h-full py-4 mx-auto">
                         <h2 class="mb-6 text-4xl font-bold text-center">Select Panel</h2>
@@ -248,14 +254,14 @@
                             <!-- Market Box 1 -->
                             @foreach ($modules as $module)
                                 <div class="relative">
-                                    <input type="checkbox" name="market" id="market-{{ $module->module_id }}"
-                                        class="sr-only peer" checked>
-                                    <label for="market1"
+                                    <input type="checkbox" name="module_id[]" value="{{ $module->module_id }}"
+                                        id="market-{{ $module->module_id }}" class="sr-only peer">
+                                    <label for="market-{{ $module->module_id }}"
                                         class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
                                         <img src="{{ asset('assets/icons/market update.png') }}" alt="Market icon">
                                         <h3 class="text-xl font-semibold text-customGrayColorDark">
                                             {{ $module->module_name }}</h3>
-                                        <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
+                                        <button id="" type="button"
                                             data-modal-text="{{ $module->module_description }}"
                                             data-modal-image="{{ $module->module_image }}"
                                             class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
@@ -267,14 +273,15 @@
                                     </div>
                                 </div>
                             @endforeach
-
+                            {{--
                             <div class="relative">
                                 <input type="checkbox" name="market" id="market1" class="sr-only peer" checked>
                                 <label for="market1"
                                     class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
                                     <img src="{{ asset('assets/icons/market update.png') }}" alt="Market icon">
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
-                                    <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
+                                    <button id="" data-modal-target="modal" data-modal-toggle="modal"
+                                        type="button"
                                         data-modal-text="Stay informed with live updates on the latest poultry market rates. This feature provides users with real-time price trends for chickens across different regions. Gain insights to make informed decisions on buying and selling, helping you maximize your profits in a competitive market."
                                         data-modal-image="{{ asset('assets/icons/svginfo1.svg') }}"
                                         class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
@@ -294,7 +301,8 @@
                                     class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
                                     <img src="{{ asset('assets/icons/pos.png') }}" alt="Market icon">
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
-                                    <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
+                                    <button id="" data-modal-target="modal" data-modal-toggle="modal"
+                                        type="button"
                                         data-modal-text="Simplify your sales and financial management with an integrated Point of Sale system. Whether you're selling live birds, this feature tracks sales, generates invoices, and provides insights into daily transactions. It’s designed to streamline in-store with ease. Additionally, a free printer and initial receipt roll will be provided by POUL3Y to help you get started smoothly."
                                         data-modal-image="{{ asset('assets/icons/svginfo2.svg') }}"
                                         class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
@@ -314,7 +322,8 @@
                                     class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
                                     <img src="{{ asset('assets/icons/floks.png') }}" alt="Market icon">
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
-                                    <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
+                                    <button id="" data-modal-target="modal" data-modal-toggle="modal"
+                                        type="button"
                                         data-modal-text="Manage the health, productivity, and expenses of your flocks with ease using comprehensive flock management tools. The following features are in support to improve flock health, streamline operations, and optimize profitability while managing financial aspects effectively."
                                         data-modal-image="{{ asset('assets/icons/svginfo3.svg') }}"
                                         class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
@@ -333,7 +342,8 @@
                                     class="block h-full p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
                                     <img src="{{ asset('assets/icons/svginfo4.svg') }}" alt="Market icon">
                                     <h3 class="text-xl font-semibold text-customGrayColorDark">Total Markets</h3>
-                                    <button id="openModalBtn" data-modal-target="modal" data-modal-toggle="modal"
+                                    <button id="" data-modal-target="modal" data-modal-toggle="modal"
+                                        type="button"
                                         data-modal-text="Expand your business reach with the E-Commerce module, allowing you to buy and sell poultry products online. This module simplifies online trading, making it easy to reach new customers and streamline operations."
                                         data-modal-image="{{ asset('assets/icons/e-commerce.png') }}"
                                         class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
@@ -343,17 +353,34 @@
                                 <div
                                     class="absolute w-6 h-6 transition-all border-2 border-gray-300 rounded-full top-4 right-4 peer-checked:border-customOrangeDark peer-checked:bg-customOrangeDark">
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
-                        <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+                        <button type="submit" id="submitBtn"
                             class="block w-full py-3 text-lg font-semibold text-white transition duration-300 rounded-full gradient-bg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50">
-                            Get Access
+                            <div class="hidden text-center " id="Sspinner">
+                                <svg aria-hidden="true"
+                                    class="w-5 h-5 mx-auto text-center text-gray-200 animate-spin fill-white"
+                                    viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                                        fill="currentColor" />
+                                    <path
+                                        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                                        fill="currentFill" />
+                                </svg>
+                            </div>
+                            <div class="" id="Stext">
+                                Get Access
+                            </div>
                         </button>
+                        <button data-modal-target="signup-Modal" data-modal-toggle="signup-Modal"
+                            class="hidden"></button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
+
     </div>
 
     {{-- <div id="modalOverlay" class="fixed inset-0 z-[48] hidden bg-black opacity-50"></div> --}}
@@ -391,8 +418,11 @@
     <div id="modalOverlay" class="fixed inset-0 z-[52] hidden bg-black opacity-75"></div>
 
     <!-- Main modal -->
-    <div id="default-modal" tabindex="-1" aria-hidden="true"
+    <div id="signup-Modal" tabindex="-1" aria-hidden="true"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="fixed inset-0 transition-opacity">
+            <div id="backdrop" class="absolute inset-0 opacity-75 bg-slate-800"></div>
+        </div>
         <div class="relative w-full max-w-2xl max-h-full p-4">
             <!-- Modal content -->
             <div class="relative bg-white h-[400px] mb-24 rounded-lg shadow dark:bg-gray-800">
@@ -400,7 +430,7 @@
                 <div class="flex items-center justify-between p-4 rounded-t md:p-5 dark:border-gray-600">
                     <button type="button"
                         class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto dark:hover:bg-gray-600 dark:hover:text-white"
-                        data-modal-hide="default-modal">
+                        data-modal-hide="signup-Modal">
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 14 14">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -526,7 +556,54 @@
             });
 
 
+            $("#registerForm").submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                // Send the AJAX request
+                $.ajax({
+                    type: "POST",
+                    url: "/register",
+                    data: formData,
+                    dataType: "json",
+                    beforeSend: function() {
+                        $('#Sspinner').removeClass('hidden');
+                        $('#Stext').addClass('hidden');
+                        $('#submitBtn').attr('disabled', true);
+                    },
+                    success: function(response) {
+                        // Handle the success response here
 
+                        if (response.success == true) {
+                            $('#Stext').removeClass('hidden');
+                            $('#Sspinner').addClass('hidden');
+
+                            $('#signup-Modal').removeClass('hidden');
+                            $('#signup-Modal').addClass('flex');
+                            // window.location.href = '/';
+
+                        } else if (response.success == false) {
+                            Swal.fire(
+                                'Warning!',
+                                response.message,
+                                'warning'
+                            )
+                        }
+                    },
+                    error: function(jqXHR) {
+
+                        let response = JSON.parse(jqXHR.responseText);
+
+                        Swal.fire(
+                            'Warning!',
+                            response.message,
+                            'warning'
+                        )
+                        $('#Sspinner').removeClass('hidden');
+                        $('#Stext').addClass('hidden');
+                        $('#submitBtn').attr('disabled', true);
+                    }
+                });
+            });
             const $switchToLoginBtn = $('#switchToLoginBtn');
             const $mainContent = $('#mainContent');
             const $signupSection = $('#signupSection');
