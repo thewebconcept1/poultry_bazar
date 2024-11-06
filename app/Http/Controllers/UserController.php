@@ -36,7 +36,7 @@ class UserController extends Controller
 
             return view('priveleges', ['user' => $user]);
         } else {
-            $user = User::where('id', '<>', $loggedInUser->id)->where('user_role', 'operator')->get();
+            $user = User::where('id', '<>', $loggedInUser['id'])->where('user_role', 'operator')->get();
 
             return view('operators', ['users' => $user]);
         }
@@ -137,6 +137,7 @@ class UserController extends Controller
                     'city_id' => $user->city_id,
                     'city_name' => $user->city->city_name ?? null,
                     'city_province' => $user->city->city_province ?? null,
+                    'user_privileges' => $user->user_privileges ?? null,
                 ]]);
 
                 return response()->json(['success' => true, 'message' => 'Login successful', 'user_details' => session('user_details')]);
