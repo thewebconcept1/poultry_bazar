@@ -12,8 +12,10 @@ class CategoryController extends Controller
     // get category
     public function getCategory()
     {
-        $categories = Category::where('category_status', 1)->get();
-        return view('categories', ['categories' => $categories]);
+        $blogCategories = Category::where('category_status', 1)->where('category_type', 'blog')->get();
+        $diseaseCategories = Category::where('category_status', 1)->where('category_type', 'diseases')->get();
+        $consultancyCategories = Category::where('category_status', 1)->where('category_type', 'consultancy')->get();
+        return view('categories', ['blogs' => $blogCategories, 'diseases' => $diseaseCategories, 'consultancy' => $consultancyCategories]);
     }
     // get category
 
