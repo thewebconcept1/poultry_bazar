@@ -10,21 +10,24 @@
                     <h1 class="text-3xl font-bold">Categories</h1>
                 </div>
                 <div class="flex gap-4">
-                    <form action="" method="GET">
+                    <form id="categoryForm" action="{{ url('categories') }}">
                         <button
-                            class="px-3 py-2 font-semibold {{ $_Request('all') ? 'gradient-bg text-white' : 'bg-white text-black' }}  rounded-full shadow-md gradient-bg text-white"
-                            name="type" value="">All</button>
-                        <button class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg" name="type"
-                            value="blog">Blog Categories</button>
-                        <button class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg" name="type"
-                            value="diseases">Diseases Categories</button>
-                        <button class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg" name="type"
-                            value="consultancy">Consultancy Categories</button>
+                            class="px-3 py-2 font-semibold {{ $type == 'all' ? 'bg-white  text-black ' : 'gradient-bg text-white' }} border border-black  rounded-full shadow-md min-w-16"
+                            onclick="submitForm('all')">All</button>
+                        <button
+                            class="px-3 py-2 font-semibold  rounded-full shadow-md {{ $type == 'blog' ? 'bg-white  text-black ' : 'gradient-bg text-white' }} border border-black "
+                            onclick="submitForm('blog')">Blog Categories</button>
+                        <button
+                            class="px-3 py-2 font-semibold  rounded-full shadow-md {{ $type == 'diseases' ? 'bg-white  text-black ' : 'gradient-bg text-white' }} border border-black "
+                            onclick="submitForm('diseases')">Diseases Categories</button>
+                        <button
+                            class="px-3 py-2 font-semibold  rounded-full shadow-md {{ $type == 'consultancy' ? 'bg-white  text-black ' : 'gradient-bg text-white' }} border border-black "
+                            onclick="submitForm('consultancy')">Consultancy Categories</button>
                     </form>
 
                 </div>
             </div>
-            <button data-modal-target="categories-modal" data-modal-toggle="categories-modal"
+            <button id="addModalBtn" data-modal-target="categories-modal" data-modal-toggle="categories-modal"
                 class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Add New +</button>
         </div>
 
@@ -39,7 +42,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td><img class='rounded-full h-20 w-20 bg-black object-contain '
-                                    src="{{ $category->category_image }}" alt='{{ $category->category_name }}'>
+                                    src="../{{ $category->category_image }}" alt='{{ $category->category_name }}'>
                             </td>
                             <td>{{ $category->category_name }}</td>
                             <td>0</td>
@@ -58,7 +61,7 @@
                                         </svg>
                                     </button>
                                     <button class="deleteDataBtn" delId="{{ $category->category_id }}"
-                                        delUrl="deleteCategory" name="category_id">
+                                        delUrl="../deleteCategory" name="category_id">
                                         <svg width='36' height='36' viewBox='0 0 36 36' fill='none'
                                             xmlns='http://www.w3.org/2000/svg'>
                                             <circle opacity='0.1' cx='18' cy='18' r='18' fill='#DF6F79' />
@@ -80,7 +83,7 @@
             <x-slot name="title">Add </x-slot>
             <x-slot name="modal_width">max-w-2xl</x-slot>
             <x-slot name="body">
-                <form id="postDataForm" url="saveCategory" enctype="multipart/form-data" method="post">
+                <form id="postDataForm" url="../saveCategory" enctype="multipart/form-data" method="post">
                     @csrf
                     <input type="hidden" name="category_id" id="updateId">
                     <div class="">
@@ -92,7 +95,7 @@
                                 <x-input id="categoryName" label="Category Name" placeholder="Enter Category Name"
                                     name="category_name" type="text"></x-input>
                                 <div class="mt-4">
-                                    <x-select name="category_type" id="categoryName" label="Select Category Type">
+                                    <x-select name="category_type" id="categoryType" label="Select Category Type">
                                         <x-slot name="options">
                                             <option disabled selected>Select Category</option>
                                             <option value="blog">Blog</option>
@@ -145,16 +148,24 @@
 
 @section('js')
     <script>
+        function submitForm(type) {
+            // Set the form action dynamically based on the type
+            let form = document.getElementById('categoryForm');
+
+            form.action = type ? `{{ url('categories') }}/${type}` : `categories`;
+            form.submit();
+        }
+
         function updateDatafun() {
 
             $('.updateDataBtn').click(function() {
                 $('#categories-modal').removeClass("hidden");
                 $('#categories-modal').addClass('flex');
                 $('#categoryName').val($(this).attr('categoryName'));
-                $('#categoryName').val($(this).attr('categoryName'));
+                $('#categoryType').val($(this).attr('categoryType')).trigger('change');
                 $('#updateId').val($(this).attr('categoryId'));
                 let fileImg = $('#categories-modal .file-preview');
-                fileImg.removeClass('hidden').attr('src', $(this).attr('categoryImage'));
+                fileImg.removeClass('hidden').attr('src', $(this).attr('../' + 'categoryImage'));
                 $('#categories-modal #modalTitle').text("Update Category");
                 $('#categories-modal #submitBtn').text("Update");
 
@@ -164,6 +175,8 @@
         $('#addModalBtn').click(function() {
             $('#postDataForm')[0].reset();
             $('#updateId').val('');
+            let fileImg = $('#categories-modal .file-preview');
+            fileImg.addClass('hidden');
             $('#categories-modal #modalTitle').text("Add Category");
             $('#categories-modal #submitBtn').text("Add");
 
