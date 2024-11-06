@@ -28,7 +28,6 @@ class CityController extends Controller
 
         $city = City::where('city_id', $validatedData['city_id'])->first();
 
-        $city->city_status = 0;
         $city->save();
 
         return response()->json(['success' => true, 'message' => 'City deleted successfully'], 200);

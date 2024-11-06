@@ -14,14 +14,14 @@ class CategoryController extends Controller
     {
         if ($type == 'blog') {
             $categories = Category::where('category_status', 1)->where('category_type', 'blog')->get();
-        }elseif ($type == 'diseases') {
+        } elseif ($type == 'diseases') {
             $categories = Category::where('category_status', 1)->where('category_type', 'diseases')->get();
-        }elseif ($type == 'consultancy') {
+        } elseif ($type == 'consultancy') {
             $categories = Category::where('category_status', 1)->where('category_type', 'consultancy')->get();
-        }else{
+        } else {
             $categories = Category::where('category_status', 1)->get();
         }
-        return view('categories', ['categories' => $categories]);
+        return view('categories', ['categories' => $categories, "type" => $type]);
     }
     // get category
 
