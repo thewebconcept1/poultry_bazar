@@ -48,30 +48,31 @@
                          </div>
                      </td>
                      <td>Dashboard</td>
-                     <td clas='flex justify-center w-full'>
-                         <div class='flex gap-4'>
+                     <td class='flex justify-center w-full'>
+                         <div class='flex gap-4 permission-group'>
                              <div class='flex items-center me-4'>
-                                 <input id='edit' type='checkbox'
-                                     class='w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='edit' class='text-sm font-medium ms-2 text-gsray-900'>Edit</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox edit-checkbox w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium ms-2 text-gray-900'>Edit</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='delete' type='checkbox'
-                                     class='w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='delete' class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox delete-checkbox w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='add' type='checkbox'
-                                     class='w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark '>
-                                 <label for='add' class='text-sm font-medium text-gray-900 ms-2'>Add</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox add-checkbox w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Add</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='fullAccess' type='checkbox'
-                                     class='w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='fullAccess' class='text-sm font-medium text-gray-900 ms-2'>Full Access</label>
+                                 <input type='checkbox'
+                                     class='full-access-checkbox w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Full Access</label>
                              </div>
                          </div>
                      </td>
+
                  </tr>
                  <tr>
                      <td>2</td>
@@ -82,30 +83,31 @@
                          </div>
                      </td>
                      <td>Markets</td>
-                     <td clas='flex justify-center w-full'>
-                         <div class='flex gap-4'>
+                     <td class='flex justify-center w-full'>
+                         <div class='flex gap-4 permission-group'>
                              <div class='flex items-center me-4'>
-                                 <input id='edit' type='checkbox'
-                                     class='w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='edit' class='text-sm font-medium ms-2 text-gsray-900'>Edit</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox edit-checkbox w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium ms-2 text-gray-900'>Edit</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='delete' type='checkbox'
-                                     class='w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='delete' class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox delete-checkbox w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='add' type='checkbox'
-                                     class='w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark '>
-                                 <label for='add' class='text-sm font-medium text-gray-900 ms-2'>Add</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox add-checkbox w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Add</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='fullAccess' type='checkbox'
-                                     class='w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='fullAccess' class='text-sm font-medium text-gray-900 ms-2'>Full Access</label>
+                                 <input type='checkbox'
+                                     class='full-access-checkbox w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Full Access</label>
                              </div>
                          </div>
                      </td>
+
                  </tr>
                  <tr>
                      <td>3</td>
@@ -116,28 +118,27 @@
                          </div>
                      </td>
                      <td>Market Updates</td>
-                     <td clas='flex justify-center w-full'>
-                         <div class='flex gap-4'>
+                     <td class='flex justify-center w-full'>
+                         <div class='flex gap-4 permission-group'>
                              <div class='flex items-center me-4'>
-                                 <input id='edit' type='checkbox'
-                                     class='w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='edit' class='text-sm font-medium ms-2 text-gsray-900'>Edit</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox edit-checkbox w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium ms-2 text-gray-900'>Edit</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='delete' type='checkbox'
-                                     class='w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='delete' class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox delete-checkbox w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='add' type='checkbox'
-                                     class='w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark '>
-                                 <label for='add' class='text-sm font-medium text-gray-900 ms-2'>Add</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox add-checkbox w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Add</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='fullAccess' type='checkbox'
-                                     class='w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='fullAccess' class='text-sm font-medium text-gray-900 ms-2'>Full
-                                     Access</label>
+                                 <input type='checkbox'
+                                     class='full-access-checkbox w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Full Access</label>
                              </div>
                          </div>
                      </td>
@@ -146,33 +147,31 @@
                      <td>4</td>
                      <td>
                          <div class="bg-gray-400 h-12 w-12 flex justify-center items-center rounded-full"><img
-                                 class="h-6 w-6 " src="{{ asset('assets/icons/priveleges-icon/blog.png') }}"
-                                 alt='Blogs'>
+                                 class="h-6 w-6 " src="{{ asset('assets/icons/priveleges-icon/blog.png') }}" alt='Blogs'>
                          </div>
                      </td>
                      <td>Blogs</td>
-                     <td clas='flex justify-center w-full'>
-                         <div class='flex gap-4'>
+                     <td class='flex justify-center w-full'>
+                         <div class='flex gap-4 permission-group'>
                              <div class='flex items-center me-4'>
-                                 <input id='edit' type='checkbox'
-                                     class='w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='edit' class='text-sm font-medium ms-2 text-gsray-900'>Edit</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox edit-checkbox w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium ms-2 text-gray-900'>Edit</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='delete' type='checkbox'
-                                     class='w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='delete' class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox delete-checkbox w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='add' type='checkbox'
-                                     class='w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark '>
-                                 <label for='add' class='text-sm font-medium text-gray-900 ms-2'>Add</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox add-checkbox w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Add</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='fullAccess' type='checkbox'
-                                     class='w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='fullAccess' class='text-sm font-medium text-gray-900 ms-2'>Full
-                                     Access</label>
+                                 <input type='checkbox'
+                                     class='full-access-checkbox w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Full Access</label>
                              </div>
                          </div>
                      </td>
@@ -186,28 +185,27 @@
                          </div>
                      </td>
                      <td>Diseases</td>
-                     <td clas='flex justify-center w-full'>
-                         <div class='flex gap-4'>
+                     <td class='flex justify-center w-full'>
+                         <div class='flex gap-4 permission-group'>
                              <div class='flex items-center me-4'>
-                                 <input id='edit' type='checkbox'
-                                     class='w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='edit' class='text-sm font-medium ms-2 text-gsray-900'>Edit</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox edit-checkbox w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium ms-2 text-gray-900'>Edit</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='delete' type='checkbox'
-                                     class='w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='delete' class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox delete-checkbox w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='add' type='checkbox'
-                                     class='w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark '>
-                                 <label for='add' class='text-sm font-medium text-gray-900 ms-2'>Add</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox add-checkbox w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Add</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='fullAccess' type='checkbox'
-                                     class='w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='fullAccess' class='text-sm font-medium text-gray-900 ms-2'>Full
-                                     Access</label>
+                                 <input type='checkbox'
+                                     class='full-access-checkbox w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Full Access</label>
                              </div>
                          </div>
                      </td>
@@ -221,28 +219,27 @@
                          </div>
                      </td>
                      <td>Consultancy videos</td>
-                     <td clas='flex justify-center w-full'>
-                         <div class='flex gap-4'>
+                     <td class='flex justify-center w-full'>
+                         <div class='flex gap-4 permission-group'>
                              <div class='flex items-center me-4'>
-                                 <input id='edit' type='checkbox'
-                                     class='w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='edit' class='text-sm font-medium ms-2 text-gsray-900'>Edit</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox edit-checkbox w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium ms-2 text-gray-900'>Edit</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='delete' type='checkbox'
-                                     class='w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='delete' class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
-                             </div>x
-                             <div class='flex items-center me-4'>
-                                 <input id='add' type='checkbox'
-                                     class='w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark '>
-                                 <label for='add' class='text-sm font-medium text-gray-900 ms-2'>Add</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox delete-checkbox w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='fullAccess' type='checkbox'
-                                     class='w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='fullAccess' class='text-sm font-medium text-gray-900 ms-2'>Full
-                                     Access</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox add-checkbox w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Add</label>
+                             </div>
+                             <div class='flex items-center me-4'>
+                                 <input type='checkbox'
+                                     class='full-access-checkbox w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Full Access</label>
                              </div>
                          </div>
                      </td>
@@ -256,28 +253,27 @@
                          </div>
                      </td>
                      <td>Categories</td>
-                     <td clas='flex justify-center w-full'>
-                         <div class='flex gap-4'>
+                     <td class='flex justify-center w-full'>
+                         <div class='flex gap-4 permission-group'>
                              <div class='flex items-center me-4'>
-                                 <input id='edit' type='checkbox'
-                                     class='w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='edit' class='text-sm font-medium ms-2 text-gsray-900'>Edit</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox edit-checkbox w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium ms-2 text-gray-900'>Edit</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='delete' type='checkbox'
-                                     class='w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='delete' class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox delete-checkbox w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='add' type='checkbox'
-                                     class='w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark '>
-                                 <label for='add' class='text-sm font-medium text-gray-900 ms-2'>Add</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox add-checkbox w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Add</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='fullAccess' type='checkbox'
-                                     class='w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='fullAccess' class='text-sm font-medium text-gray-900 ms-2'>Full
-                                     Access</label>
+                                 <input type='checkbox'
+                                     class='full-access-checkbox w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Full Access</label>
                              </div>
                          </div>
                      </td>
@@ -291,28 +287,27 @@
                          </div>
                      </td>
                      <td>Queries</td>
-                     <td clas='flex justify-center w-full'>
-                         <div class='flex gap-4'>
+                     <td class='flex justify-center w-full'>
+                         <div class='flex gap-4 permission-group'>
                              <div class='flex items-center me-4'>
-                                 <input id='edit' type='checkbox'
-                                     class='w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='edit' class='text-sm font-medium ms-2 text-gsray-900'>Edit</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox edit-checkbox w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium ms-2 text-gray-900'>Edit</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='delete' type='checkbox'
-                                     class='w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='delete' class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox delete-checkbox w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='add' type='checkbox'
-                                     class='w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark '>
-                                 <label for='add' class='text-sm font-medium text-gray-900 ms-2'>Add</label>
+                                 <input type='checkbox'
+                                     class='permission-checkbox add-checkbox w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Add</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input id='fullAccess' type='checkbox'
-                                     class='w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark '>
-                                 <label for='fullAccess' class='text-sm font-medium text-gray-900 ms-2'>Full
-                                     Access</label>
+                                 <input type='checkbox'
+                                     class='full-access-checkbox w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Full Access</label>
                              </div>
                          </div>
                      </td>
@@ -321,4 +316,17 @@
              </x-slot>
          </x-table>
      </div>
+ @endsection
+
+ @section('js')
+     <script>
+         $(document).ready(function() {
+             // Add event listener to each "Full Access" checkbox
+             $('.full-access-checkbox').on('change', function() {
+                 // Find the parent group of checkboxes and set all permission checkboxes
+                 $(this).closest('.permission-group').find('.permission-checkbox').prop('checked', $(this)
+                     .prop('checked'));
+             });
+         });
+     </script>
  @endsection

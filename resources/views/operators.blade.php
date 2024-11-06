@@ -17,8 +17,8 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td><img class="h-16 w-16 rounded-full bg-black object-contain"
-                                src="{{ asset('assets/Profile phoo (1) 1.png') }}" alt='{{ $user->name }}'></td>
-                        <td>{{ $user->name }}</td>t
+                                src="{{ asset('assets/Profile photo (1) 1.png') }}"></td>
+                        <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->user_phone }}</td>
                         <td><button data-modal-target="status-modal"
