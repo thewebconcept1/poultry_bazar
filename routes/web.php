@@ -50,7 +50,7 @@ Route::middleware(['custom_auth'])->group(function () {
         return view('consultancyvideos');
     });
 
-    Route::get('/categories', [CategoryController::class, 'getCategory']);
+    Route::get('/categories/{type?}', [CategoryController::class, 'getCategory']);
     Route::post('/', [CategoryController::class, 'deleteCategory']);
     Route::post('/saveCategory', [CategoryController::class, 'addCategory']);
 

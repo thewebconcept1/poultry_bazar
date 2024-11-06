@@ -10,12 +10,18 @@ class CategoryController extends Controller
 {
 
     // get category
-    public function getCategory()
+    public function getCategory($type = null)
     {
-        $blogCategories = Category::where('category_status', 1)->where('category_type', 'blog')->get();
-        $diseaseCategories = Category::where('category_status', 1)->where('category_type', 'diseases')->get();
-        $consultancyCategories = Category::where('category_status', 1)->where('category_type', 'consultancy')->get();
-        return view('categories', ['blogs' => $blogCategories, 'diseases' => $diseaseCategories, 'consultancy' => $consultancyCategories]);
+        if ($type == 'blog') {
+            $categories = Category::where('category_status', 1)->where('category_type', 'blog')->get();
+        }elseif ($type == 'diseases') {
+            $categories = Category::where('category_status', 1)->where('category_type', 'diseases')->get();
+        }elseif ($type == 'consultancy') {
+            $categories = Category::where('category_status', 1)->where('category_type', 'consultancy')->get();
+        }else{
+            $categories = Category::where('category_status', 1)->get();
+        }
+        return view('categories', ['categories' => $categories]);
     }
     // get category
 
