@@ -10,14 +10,18 @@
                     <h1 class="text-3xl font-bold">Categories</h1>
                 </div>
                 <div class="flex gap-4">
-                    <button id="blogBtn"
-                        class="px-3 py-2 font-semibold text-black  border-2 rounded-full shadow-md hover:border-1 border-[#FCB579] active-btn"
-                        onclick="showCategory('blog')">Blog Categories</button>
-                    <button id="diseaseBtn" class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg"
-                        onclick="showCategory('disease')">Diseases Categories</button>
-                    <button id="consultancyBtn"
-                        class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg"
-                        onclick="showCategory('consultancy')">Consultancy Categories</button>
+                    <form action="" method="GET">
+                        <button
+                            class="px-3 py-2 font-semibold {{ $_Request('all') ? 'gradient-bg text-white' : 'bg-white text-black' }}  rounded-full shadow-md gradient-bg text-white"
+                            name="type" value="">All</button>
+                        <button class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg" name="type"
+                            value="blog">Blog Categories</button>
+                        <button class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg" name="type"
+                            value="diseases">Diseases Categories</button>
+                        <button class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg" name="type"
+                            value="consultancy">Consultancy Categories</button>
+                    </form>
+
                 </div>
             </div>
             <button data-modal-target="categories-modal" data-modal-toggle="categories-modal"
@@ -40,7 +44,11 @@
                             <td>{{ $category->category_name }}</td>
                             <td>0</td>
                             <td>
-                                <span class='flex gap-4'> <button>
+                                <div class='flex gap-4'>
+                                    <button categoryId="{{ $category->category_id }}" class="updateDataBtn"
+                                        categoryName="{{ $category->category_name }}"
+                                        categoryImage="{{ $category->category_image }}"
+                                        categoryType="{{ $category->category_type }}">
                                         <svg width='36' height='36' viewBox='0 0 36 36' fill='none'
                                             xmlns='http://www.w3.org/2000/svg'>
                                             <circle opacity='0.1' cx='18' cy='18' r='18' fill='#233A85' />
@@ -59,7 +67,7 @@
                                                 fill='#D11A2A' />
                                         </svg>
                                     </button>
-                                </span>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -74,7 +82,7 @@
             <x-slot name="body">
                 <form id="postDataForm" url="saveCategory" enctype="multipart/form-data" method="post">
                     @csrf
-                    <input type="hidden" name="category_id" value="">
+                    <input type="hidden" name="category_id" id="updateId">
                     <div class="">
                         <div class="grid grid-cols-2 gap-4 ">
                             <div>
@@ -84,7 +92,7 @@
                                 <x-input id="categoryName" label="Category Name" placeholder="Enter Category Name"
                                     name="category_name" type="text"></x-input>
                                 <div class="mt-4">
-                                    <x-select name="category_type" id="categoryType" label="Select Category Type">
+                                    <x-select name="category_type" id="categoryName" label="Select Category Type">
                                         <x-slot name="options">
                                             <option disabled selected>Select Category</option>
                                             <option value="blog">Blog</option>
@@ -142,10 +150,11 @@
             $('.updateDataBtn').click(function() {
                 $('#categories-modal').removeClass("hidden");
                 $('#categories-modal').addClass('flex');
-                $('#cityName').val($(this).attr('cityName'));
-                $('#cityProvince').val($(this).attr('cityProvince'));
-                $('#updateId').val($(this).attr('cityId'));
-
+                $('#categoryName').val($(this).attr('categoryName'));
+                $('#categoryName').val($(this).attr('categoryName'));
+                $('#updateId').val($(this).attr('categoryId'));
+                let fileImg = $('#categories-modal .file-preview');
+                fileImg.removeClass('hidden').attr('src', $(this).attr('categoryImage'));
                 $('#categories-modal #modalTitle').text("Update Category");
                 $('#categories-modal #submitBtn').text("Update");
 
