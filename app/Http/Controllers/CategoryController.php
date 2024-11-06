@@ -13,8 +13,7 @@ class CategoryController extends Controller
     public function getCategory()
     {
         $categories = Category::where('category_status', 1)->get();
-
-        return view('categories', ['categories', $categories]);
+        return view('categories', ['categories' => $categories]);
     }
     // get category
 
@@ -29,6 +28,8 @@ class CategoryController extends Controller
             $category = Category::where('category_id', $validatedData['category_id'])->first();
 
             $category->category_status = 0;
+            $category->update();
+            return response()->json(['success' => true, 'message' => 'Category deleted successfully'], 200);
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }

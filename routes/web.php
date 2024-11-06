@@ -51,7 +51,7 @@ Route::middleware(['custom_auth'])->group(function () {
     });
 
     Route::get('/categories', [CategoryController::class, 'getCategory']);
-    Route::post('/deleteCategory', [CategoryController::class, 'deleteCategory']);
+    Route::post('/', [CategoryController::class, 'deleteCategory']);
     Route::post('/saveCategory', [CategoryController::class, 'addCategory']);
 
     Route::get('/setting', function () {
