@@ -43,20 +43,24 @@
     </div>
 
     <x-modal id="status-modal">
-        <x-slot name="title">Add Cities</x-slot>
-        <x-slot name="modal_width">max-w-4xl</x-slot>
+        <x-slot name="title">Change Status</x-slot>
+        <x-slot name="modal_width">max-w-xl</x-slot>
         <x-slot name="body">
-            <form id="postDataForm" url="saveCities" method="post">
+            <form id="postDataForm" url="" method="post">
                 @csrf
-                <input type="hidden" class="text" id="updateId" name="city_id">
-                <div class="grid grid-cols-2 gap-4">
-                    <x-input id="cityName" label="City Name" placeholder="Enter City" name='city_name'
-                        type="text"></x-input>
-                    <x-input id="cityProvince" label="city Province" placeholder=" Enter City Province" name='city_province'
-                        type="text"></x-input>
+                <input type="hidden" class="text" id="userId" name="user_id">
+                <div>
+                    <x-select name="user_status" id="status" label="Select Status">
+                        <x-slot name="options">
+                            <option disabled selected>Select status</option>
+                            <option value="1">Active</option>
+                            <option value="0">Un Active</option>
+                        </x-slot>
+
+                    </x-select>
                 </div>
                 <div class="mt-4">
-                    <x-modal-button :title="'Add City'"></x-modal-button>
+                    <x-modal-button title="Change"></x-modal-button>
                 </div>
             </form>
         </x-slot>

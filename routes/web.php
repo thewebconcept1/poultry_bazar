@@ -27,7 +27,7 @@ Route::middleware(['custom_auth'])->group(function () {
         return view('queries');
     });
     Route::get('/Logout', [UserController::class, 'logout']);
-    Route::get('/priveleges', function () {
+    Route::get('/priveleges/{id}', function () {
         return view('priveleges');
     });
     Route::get('/Cities', [CityController::class, 'getCities']);
