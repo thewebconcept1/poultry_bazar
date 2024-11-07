@@ -11,15 +11,45 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    // user Defined
-    protected function errorResponse(Exception $e, $code = 400): JsonResponse
+    // // user Defined
+    // protected function errorResponse(Exception $e, $code = 400): JsonResponse
+    // {
+    //     return response()->json([
+    //         'success' => false,
+    //         'message' => $e->getMessage(),
+    //     ], $code);
+    // }
+    // // user Defined
+
+    // update user status
+    public function updateUserStatus(Request $request)
     {
-        return response()->json([
-            'success' => false,
-            'message' => $e->getMessage(),
-        ], $code);
+        try {
+            
+            $validatedData = $request->validate([
+                'user_id' => 'required',
+                'user_status' => 'required',
+            ]);
+
+            $user = User::where('id', $validatedData['user_id'])->first();
+
+            $user->user_status = $validatedData['user_status'];
+            if ($user->user_verified == 0) {
+                $user->user_verified = 1;
+            }
+            $user->save();
+
+            if ($validatedData['user_status'] == 1) {
+                return response()->json(['success' => true, 'message' => 'User activated successfully'], 200);
+            }elseif ($validatedData['user_status'] == 0) {
+                return response()->json(['success' => true, 'message' => 'User deactivated successfully'], 200);
+            }
+
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
     }
-    // user Defined
+    // update user status
 
     // get user
     public function getUser($id = null)
