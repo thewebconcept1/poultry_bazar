@@ -32,12 +32,12 @@
                  </div>
              </div>
          </div>
-         <form action="">
+         <form url="../addPrivileges" id="postDataForm" method="post">
              @csrf
-             <input type="text" name="userId" value="3">
-             <input type="text" name="userPrivileges" value="" id="permissionOutput">
+             <input type="hidden" name="userId" value="{{ $user_id }}">
+             <input type="hidden" name="userPrivileges" value="{{ $privileges }}" id="permissionOutput">
              <div class="flex justify-end mx-4">
-                 <div class="min-w`-[150px]">
+                 <div class="min-w-[150px]">
                      <x-modal-button title="Update All"></x-modal-button>
                  </div>
 
@@ -371,64 +371,88 @@
 
  @section('js')
      <script>
+         $(document).on("formSubmissionResponse", function(event, response, Alert, SuccessAlert, WarningAlert) {
+
+             location.reload();
+             if (response.success) {} else {}
+         });
          $(document).ready(function() {
-             // Add event listener to each "Full Access" checkbox
+
+             let permissionsInputData = $('#permissionOutput').val();
+             if (permissionsInputData) {
+
+                 let permissionsData = JSON.parse(permissionsInputData);
+                 const permissions = permissionsData.permissions;
+
+
+                 $.each(permissions, function(mainGroup, subPermissions) {
+                     $.each(subPermissions, function(permissionType, status) {
+                         if (status === "on") {
+                             const checkboxName = `permissions['${mainGroup}']['${permissionType}']`;
+                             $(`input[name="${checkboxName}"]`).prop('checked', true);
+                         }
+                     });
+                 });
+             }
+
              $('.full-access-checkbox').on('change', function() {
-                 // Find the parent group of checkboxes and set all permission checkboxes
                  $(this).closest('.permission-group').find('.permission-checkbox').prop('checked', $(this)
                      .prop('checked'));
              });
-         });
 
-         document.addEventListener('DOMContentLoaded', () => {
-             // Attach change event to each checkbox within the rows
-             document.querySelectorAll('tr input[type="checkbox"]').forEach(checkbox => {
-                 checkbox.addEventListener('change', getAllPermissions);
-             });
-         });
+             $('tr input[type="checkbox"]').on('change', getAllPermissions);
 
-         function getAllPermissions() {
-             const permissions = {};
+             ;
 
-             // Loop through each row (tr) with checkboxes
-             document.querySelectorAll('tr').forEach(row => {
-                 // Find all permission groups within the row
-                 row.querySelectorAll('.permission-group').forEach(group => {
-                     const firstCheckbox = group.querySelector("input");
+             function getAllPermissions() {
+                 const permissions = {};
 
-                     // Ensure we have a valid permission group name
-                     if (firstCheckbox && firstCheckbox.name.includes("[")) {
-                         const [mainGroup, subGroup] = firstCheckbox.name.match(/(\w+)\['(\w+)'\]/).slice(1,
-                             3);
+                 // Loop through each row (tr) with checkboxes
+                 document.querySelectorAll('tr').forEach(row => {
+                     // Find all permission groups within the row
+                     row.querySelectorAll('.permission-group').forEach(group => {
+                         const firstCheckbox = group.querySelector("input");
 
-                         // Initialize main and sub-groups if they don't exist
-                         if (!permissions[mainGroup]) {
-                             permissions[mainGroup] = {};
-                         }
-                         if (!permissions[mainGroup][subGroup]) {
-                             permissions[mainGroup][subGroup] = {};
-                         }
+                         // Ensure we have a valid permission group name
+                         if (firstCheckbox && firstCheckbox.name.includes("[")) {
+                             const [mainGroup, subGroup] = firstCheckbox.name.match(
+                                 /(\w+)\['(\w+)'\]/).slice(1,
+                                 3);
 
-                         // Loop through each checkbox within the group
-                         group.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-                             if (checkbox.checked) {
-                                 const permissionType = checkbox.name.split("['").pop().replace("']",
-                                     "");
-                                 permissions[mainGroup][subGroup][permissionType] = "on";
+                             // Initialize main and sub-groups if they don't exist
+                             if (!permissions[mainGroup]) {
+                                 permissions[mainGroup] = {};
                              }
-                         });
+                             if (!permissions[mainGroup][subGroup]) {
+                                 permissions[mainGroup][subGroup] = {};
+                             }
 
-                         // Remove the sub-group if no permissions are checked
-                         if (Object.keys(permissions[mainGroup][subGroup]).length === 0) {
-                             delete permissions[mainGroup][subGroup];
+                             // Loop through each checkbox within the group
+                             group.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                                 if (checkbox.checked) {
+                                     const permissionType = checkbox.name.split("['").pop()
+                                         .replace("']",
+                                             "");
+                                     permissions[mainGroup][subGroup][permissionType] = "on";
+                                 }
+                             });
+
+                             // Remove the sub-group if no permissions are checked
+                             if (Object.keys(permissions[mainGroup][subGroup]).length === 0) {
+                                 delete permissions[mainGroup][subGroup];
+                             }
                          }
-                     }
+                     });
                  });
-             });
 
-             //  console.log(JSON.stringify(permissions));
-             document.getElementById('permissionOutput').value = JSON.stringify(permissions);
-             return permissions;
-         }
+                 //  console.log(JSON.stringify(permissions));
+                 document.getElementById('permissionOutput').value = JSON.stringify(permissions);
+             }
+
+             function updateDatafun() {
+
+             }
+             updateDatafun();
+         })
      </script>
  @endsection

@@ -25,7 +25,7 @@ class UserController extends Controller
     public function updateUserStatus(Request $request)
     {
         try {
-            
+
             $validatedData = $request->validate([
                 'user_id' => 'required',
                 'user_status' => 'required',
@@ -41,10 +41,9 @@ class UserController extends Controller
 
             if ($validatedData['user_status'] == 1) {
                 return response()->json(['success' => true, 'message' => 'User activated successfully'], 200);
-            }elseif ($validatedData['user_status'] == 0) {
+            } elseif ($validatedData['user_status'] == 0) {
                 return response()->json(['success' => true, 'message' => 'User deactivated successfully'], 200);
             }
-
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
@@ -186,5 +185,15 @@ class UserController extends Controller
         $request->session()->regenerate();
 
         return redirect('/login');
+    }
+
+    // get user privileges for view page
+
+    public function getPriveleges($id)
+    {
+        $user_id = $id;
+        $userPrivileges = User::select('user_privileges')->where('id', $user_id)->first();
+        $privileges = json_decode($userPrivileges->user_privileges, true); // First decode
+        return view('priveleges', compact('privileges', 'user_id'));
     }
 }
