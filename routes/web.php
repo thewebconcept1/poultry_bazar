@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\MediaController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\UserController;
+use App\Models\Media;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,6 +21,7 @@ Route::middleware(['custom_auth'])->group(function () {
 
     Route::get('/operators/{id?}', [UserController::class, 'getUser']);
     Route::post('/addPrivileges', [UserController::class, 'addUserPrivileges']);
+    Route::post('/updateUserStatus', [UserController::class, 'updateUserStatus']);
 
     Route::get('/subscription', function () {
         return view('subscription');
@@ -40,15 +43,10 @@ Route::middleware(['custom_auth'])->group(function () {
     Route::get('/marketupdates', function () {
         return view('marketupdates');
     });
-    Route::get('/blogs', function () {
-        return view('blogs');
-    });
-    Route::get('/diseases', function () {
-        return view('diseases');
-    });
-    Route::get('/consultancyvideos', function () {
-        return view('consultancyvideos');
-    });
+
+    Route::get('/media/{type?}', [MediaController::class, 'getMedia']);
+    Route::post('/saveMedia', [MediaController::class, 'addMedia']);
+    Route::post('/deleteMedia', [MediaController::class, 'deleteMedia']);
 
     Route::get('/categories/{type?}', [CategoryController::class, 'getCategory']);
     Route::post('/deleteCategory', [CategoryController::class, 'deleteCategory']);
