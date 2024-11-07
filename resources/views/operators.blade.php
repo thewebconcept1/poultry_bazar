@@ -21,10 +21,11 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->user_phone }}</td>
-                        <td><button data-modal-target="status-modal"
-                                data-modal-toggle="status-modal">{!! $user->user_status == 1
+                        <td><button class="changeStatusBtn" data-modal-target="status-modal" data-modal-toggle="status-modal"
+                                userId="{{ $user->id }}"
+                                status="{{ $user->user_status }}">{!! $user->user_status == 1
                                     ? "<span class='text-blue-500'>Active</span>"
-                                    : "<span class='text-red-600'>Un-Active</span>" !!}</button>
+                                    : "<span class='text-red-600'>In-Active</span>" !!}</button>
                         </td>
                         <td>
                             <span class='flex justify-center'>
@@ -46,15 +47,15 @@
         <x-slot name="title">Change Status</x-slot>
         <x-slot name="modal_width">max-w-xl</x-slot>
         <x-slot name="body">
-            <form id="postDataForm" url="" method="post">
+            <form id="postDataForm" url="updateUserStatus" method="post">
                 @csrf
-                <input type="hidden" class="text" id="userId" name="user_id">
+                <input type="text" class="text" id="userId" name="user_id">
                 <div>
                     <x-select name="user_status" id="status" label="Select Status">
                         <x-slot name="options">
                             <option disabled selected>Select status</option>
                             <option value="1">Active</option>
-                            <option value="0">Un Active</option>
+                            <option value="0">In-Active</option>
                         </x-slot>
 
                     </x-select>
@@ -65,4 +66,32 @@
             </form>
         </x-slot>
     </x-modal>
+@endsection
+@section('js')
+    <script>
+        function changeStatusFun() {
+
+            $('.changeStatusBtn').click(function() {
+                console.log('buttonclick')
+                $('#userId').val($(this).attr('userId'));
+                $('#status').val($(this).attr('status')).trigger('change');
+
+                $('#status-modal').addClass('flex').removeClass('hidden');
+            })
+        }
+        changeStatusFun()
+
+        function updateDatafun() {
+            changeStatusFun()
+
+        }
+        updateDatafun();
+        $(document).on("formSubmissionResponse", function(event, response, Alert, SuccessAlert, WarningAlert) {
+            // console.log(response);
+
+            if (response.success) {
+                $('.modalCloseBtn').click();
+            } else {}
+        });
+    </script>
 @endsection
