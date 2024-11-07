@@ -33,7 +33,7 @@
 
         <div id="categoryTable" class="transition-opacity duration-500 ">
             @php
-                $headers = ['Sr.', 'Image', 'Title', 'Posts', 'Action'];
+                $headers = ['Sr.', 'Image', 'Type', 'Title', 'Posts', 'Action'];
             @endphp
 
             <x-table :headers="$headers">
@@ -44,13 +44,14 @@
                             <td><img class='rounded-full h-20 w-20 bg-black object-contain '
                                     src="../{{ $category->category_image }}" alt='{{ $category->category_name }}'>
                             </td>
+                            <td>{{ $category->category_type }}</td>
                             <td>{{ $category->category_name }}</td>
                             <td>0</td>
                             <td>
                                 <div class='flex gap-4'>
                                     <button categoryId="{{ $category->category_id }}" class="updateDataBtn"
                                         categoryName="{{ $category->category_name }}"
-                                        categoryImage="{{ $category->category_image }}"
+                                        categoryImage="../{{ $category->category_image }}"
                                         categoryType="{{ $category->category_type }}">
                                         <svg width='36' height='36' viewBox='0 0 36 36' fill='none'
                                             xmlns='http://www.w3.org/2000/svg'>
@@ -165,7 +166,7 @@
                 $('#categoryType').val($(this).attr('categoryType')).trigger('change');
                 $('#updateId').val($(this).attr('categoryId'));
                 let fileImg = $('#categories-modal .file-preview');
-                fileImg.removeClass('hidden').attr('src', $(this).attr('../' + 'categoryImage'));
+                fileImg.removeClass('hidden').attr('src', $(this).attr('categoryImage'));
                 $('#categories-modal #modalTitle').text("Update Category");
                 $('#categories-modal #submitBtn').text("Update");
 
