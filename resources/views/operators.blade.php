@@ -49,7 +49,7 @@
         <x-slot name="body">
             <form id="postDataForm" url="updateUserStatus" method="post">
                 @csrf
-                <input type="text" class="text" id="userId" name="user_id">
+                <input type="hidden" class="text" id="userId" name="user_id">
                 <div>
                     <x-select name="user_status" id="status" label="Select Status">
                         <x-slot name="options">
