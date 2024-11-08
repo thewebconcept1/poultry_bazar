@@ -30,9 +30,7 @@ Route::middleware(['custom_auth'])->group(function () {
         return view('queries');
     });
     Route::get('/Logout', [UserController::class, 'logout']);
-    Route::get('/priveleges/{id}', function () {
-        return view('priveleges');
-    });
+    Route::get('/priveleges/{id}', [UserController::class, 'getPriveleges']);
     Route::get('/Cities', [CityController::class, 'getCities']);
     Route::post('/saveCities', [CityController::class, 'addCities']);
     Route::post('/deleteCities', [CityController::class, 'deleteCities']);
