@@ -28,6 +28,7 @@ class CityController extends Controller
 
         $city = City::where('city_id', $validatedData['city_id'])->first();
 
+        $city->city_status = 0;
         $city->save();
 
         return response()->json(['success' => true, 'message' => 'City deleted successfully'], 200);
@@ -53,6 +54,13 @@ class CityController extends Controller
 
                 return response()->json(['success' => true, 'message' => 'City updated successfully'], 200);
             } else {
+                $existingCity = City::where('city_name', $validatedData['city_name'])
+                    ->where('city_province', $validatedData['city_province'])
+                    ->first();
+
+                if ($existingCity) {
+                    return response()->json(['success' => false, 'message' => 'City with the same name and province already exists'], 400);
+                }
                 $city = City::create([
                     'city_name' => $validatedData['city_name'],
                     'city_province' => $validatedData['city_province'],
