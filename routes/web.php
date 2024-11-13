@@ -4,12 +4,13 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\UserController;
 use App\Models\Media;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware(['custom_auth'])->group(function () {
+Route::middleware(['custom_auth', 'check_privileges'])->group(function () {
 
     Route::get('/', function () {
         return view('dashboard');
@@ -53,9 +54,9 @@ Route::middleware(['custom_auth'])->group(function () {
     Route::get('/setting', function () {
         return view('setting');
     });
-    Route::get('/notification', function () {
-        return view('notification');
-    });
+
+    Route::get('/notification', [NotificationController::class, 'getNotification']);
+    Route::post('/addNotification', [NotificationController::class, 'addNotification']);
 });
 
 Route::post('/register', [UserController::class, 'RequestForService']);
