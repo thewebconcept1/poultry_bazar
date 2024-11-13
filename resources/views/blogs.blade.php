@@ -19,12 +19,11 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td><img class="h-16 w-16 object-contain  bg-black rounded-full "
-                                src="{{ isset($data->media_image) ? $data->media_image : asset('assets/Profile photo (1) 1.png') }}"
-                                alt='{{ $data->media_title }}'></td>
+                                src="../{{ $data->media_image ?? 'assets/Profile photo (1) 1.png' }}" alt='Blog Image'></td>
                         <td class='text-xs xl:text-[15px]'>{{ $data->media_title }}</td>
                         <td class='text-xs xl:text-[15px] '>{{ $data->media_description }} </td>
-                        <td class='text-sm xl:text-[15px]'>{{ $data->category_id }}}</td>
-                        <td class='text-sm xl:text-[15px]'>Oct 02, 2024 </td>
+                        <td class='text-sm xl:text-[15px]'>{{ $data->category_name }}</td>
+                        <td class='text-sm xl:text-[15px]'>{{ $data->date }} </td>
                         <td class='text-sm xl:text-[15px]'>{{ $data->media_author }}</td>
 
                         <td>
@@ -39,7 +38,8 @@
                                     </svg>
                                 </button>
 
-                                <button>
+                                <button class="deleteDataBtn" delId="{{ $data->media_id }}" delUrl="../deleteMedia"
+                                    name="media_id">
                                     <svg width='36' height='36' viewBox='0 0 36 36' fill='none'
                                         xmlns='http://www.w3.org/2000/svg'>
                                         <circle opacity='0.1' cx='18' cy='18' r='18' fill='#DF6F79' />

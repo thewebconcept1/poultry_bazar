@@ -139,7 +139,7 @@ $(document).ready(function () {
                             $("#loading").hide();
                             Swal.fire({
                                 title: "Error!",
-                                text: "There was an error deleting the city.",
+                                text: "There was an error deleting data.",
                                 icon: "error",
                             });
                         },
