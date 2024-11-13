@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Media;
 use Illuminate\Http\Request;
 
@@ -14,13 +15,12 @@ class MediaController extends Controller
             $validatedData = $request->validate([
                 'media_id' => 'required',
             ]);
-            
+
             $media = Media::where('media_id', $validatedData['media_id'])->first();
 
             $media->media_status = 0;
 
             return response()->json(['success' => true, 'message' => 'Media deleted successfully'], 200);
-
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
@@ -34,14 +34,15 @@ class MediaController extends Controller
 
         if ($type == 'blogs') {
             $media = Media::where('added_user_id', $user['id'])->where('media_type', $type)->where('media_status', 1)->get();
-            return view('blogs', ['media' => $media]);
+            $categories = Category::where('category_status', 1)->get();
+            return view('blogs', ['media' => $media, "categories" => $categories]);
         } elseif ($type == 'diseases') {
             $media = Media::where('added_user_id', $user['id'])->where('media_type', $type)->where('media_status', 1)->get();
             return view('diseases', ['media' => $media]);
         } elseif ($type == 'consultancy') {
             $media = Media::where('added_user_id', $user['id'])->where('media_type', $type)->where('media_status', 1)->get();
             return view('consultancyvideos', ['media' => $media]);
-        }else {
+        } else {
             return response()->json(['success' => false, 'message' => 'Please add type of the media'], 400);
         }
     }
@@ -97,6 +98,8 @@ class MediaController extends Controller
                     // Store the image in the 'animal_images' folder and get the file path
                     $imagePath = $image->store('media_images', 'public'); // stored in 'storage/app/public/animal_images'
                     $imageFullPath = 'storage/' . $imagePath;
+                } else {
+                    $imageFullPath = null;
                 }
 
                 $media = Media::create([
