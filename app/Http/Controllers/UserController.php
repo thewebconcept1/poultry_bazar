@@ -166,7 +166,7 @@ class UserController extends Controller
                     'city_id' => $user->city_id,
                     'city_name' => $user->city->city_name ?? null,
                     'city_province' => $user->city->city_province ?? null,
-                    'user_privileges' => $user->user_privileges ?? null,
+                    'user_privileges' => json_decode($user->user_privileges) ?? null,
                 ]]);
 
                 return response()->json(['success' => true, 'message' => 'Login successful', 'user_details' => session('user_details')]);
