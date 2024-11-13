@@ -22,7 +22,7 @@ class NotificationController extends Controller
     {
         try {
             $user = session('user_details');
-            
+
             $validatedData = $request->validate([
                 'notification_title' => 'required',
                 'notification_type' => 'required',
@@ -36,8 +36,7 @@ class NotificationController extends Controller
                 'notification_description' => $validatedData['notification_description'],
             ]);
 
-            return response()->json(['success' => true, 'message' => 'Notification added successfullu'], 200);
-
+            return response()->json(['success' => true, 'message' => 'Notification added successfully'], 200);
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
