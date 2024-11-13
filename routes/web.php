@@ -65,3 +65,6 @@ Route::get('/login', [ModuleController::class, 'loginData']);
 Route::post('/Login', [UserController::class, 'login']);
 
 Route::match(['get', 'post'], '/logout', [UserController::class, 'logout']);
+Route::get('/landingpage', function () {
+    return view('landingpage');
+});
