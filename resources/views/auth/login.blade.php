@@ -258,7 +258,26 @@
                             <!-- Market Box 1 -->
 
                             @foreach ($modules as $module)
-
+                                <div class="relative">
+                                    <input type="checkbox" name="module_id[]" value="{{ $module->module_id }}"
+                                        id="market-{{ $module->module_id }}" class="sr-only peer">
+                                    <label for="market-{{ $module->module_id }}"
+                                        class="block h-auto p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
+                                        <img class="w-[88px] h-[88px] rounded-full object-contain bg-black"
+                                            src="{{ $module->module_image }}" alt="Market icon">
+                                        <h3 class="text-lg mt-2 font-semibold text-customGrayColorDark">
+                                            {{ $module->module_name }}</h3>
+                                        <button type="button" data-modal-target="modal"" data-modal-toggle="modal"
+                                            data-modal-text="{{ $module->module_description }}"
+                                            data-modal-image="{{ $module->module_image }}"
+                                            class="w-full h-10 mt-4 text-sm transition-colors bg-white border-2 rounded-full text-customOrangeDark peer-checked:text-customOrangeDark hover:text-orange-600">
+                                            View info
+                                        </button>
+                                    </label>
+                                    <div
+                                        class="absolute w-6 h-6 transition-all border-2 border-gray-300 rounded-full top-4 right-4 peer-checked:border-customOrangeDark peer-checked:bg-customOrangeDark">
+                                    </div>
+                                </div>
                             @endforeach
                             {{--
                             <div class="relative">

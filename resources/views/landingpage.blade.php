@@ -385,6 +385,7 @@
                 </div>
             </div>
         </div>
+
         <div class="">
             <div class="container grid grid-cols-2 gap-5 px-6 py-4 mx-auto md:gap-16 xl:mt-0 md:mt-6 lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-4 md:px-12">
                 <div class="h-auto border rounded-lg w-44 border-customOrangeDark">
@@ -469,6 +470,7 @@
                         consumers</p>
                 </div>
             </div>
+
             <div class="flex items-center justify-center mt-16">
                 <div class="container px-4 mx-auto">
                     <div class="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
@@ -543,6 +545,7 @@
                     <img src="{{ asset('assets/app and apple store.png') }}" alt="App Store and Google Play"
                         class="h-auto w-80">
                 </div>
+
                 <!-- Section Title -->
                 <h2 class="text-xl font-semibold text-gray-800">Choose the plan that’s right for your business</h2>
                 <h1 class="mt-6"><span class="font-bold">Start with free plan </span>to try our platform for an
@@ -552,6 +555,7 @@
             </div>
         </div>
         <div class="section" id="price">
+
             <div class="container flex items-center justify-center mx-auto mt-14">
                 <div class="px:0 md:px-4 ">
                     <div class="grid grid-cols-1 gap-6 md:grid-cols-3">

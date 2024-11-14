@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\CheckPrivileges;
 use App\Http\Middleware\CutomMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -14,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'custom_auth' => CutomMiddleware::class,
+            'check_privileges' => CheckPrivileges::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

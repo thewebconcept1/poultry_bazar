@@ -21,6 +21,72 @@ class UserController extends Controller
     // }
     // // user Defined
 
+    // update user password
+    public function updateUserPassword(Request $request)
+    {
+        try {
+            $userDetails = session('user_details');
+            $validatedData = $request->validate([
+                'new_password' => 'required',
+            ]);
+
+            $user = User::where('id', $userDetails['id'])->first();
+
+            $user->password = $validatedData['password'];
+            $user->save();
+
+            return response()->json(['success' => true, 'message' => 'Password updated'], 200);
+
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    // update user password
+
+    // update user details
+    public function updateUserDetails(Request $request)
+    {
+        try {
+            $userDetails = session('user_details');
+            $validatedData = $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'phone' => 'nullable',
+                'address' => 'nullable',
+            ]);
+
+            $user = User::where('id', $userDetails['id'])->first();
+
+            $user->name = $validatedData['name'];
+            $user->email = $validatedData['email'];
+            $user->phone = $validatedData['phone'];
+            $user->address = $validatedData['address'];
+            if ($request->hasFile('user_image')) {
+                // Get the path of the image from the animal record
+                $imagePath = public_path($user->user_image); // Get the full image path
+
+                // Delete the image file if it exists
+                if (file_exists($imagePath)) {
+                    unlink($imagePath); // Delete the image from the file system
+                }
+
+                $image = $request->file('user_image');
+                // Store the image in the 'animal_images' folder and get the file path
+                $imagePath = $image->store('user_images', 'public'); // stored in 'storage/app/public/animal_images'
+                $imageFullPath = 'storage/' . $imagePath;
+                $user->user_image = $imageFullPath;
+            }
+
+            $user->save();
+
+            return response()->json(['success' => true, 'message' => 'user details updated'], 200);
+
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    // update user details
+
     // update user status
     public function updateUserStatus(Request $request)
     {
@@ -166,7 +232,7 @@ class UserController extends Controller
                     'city_id' => $user->city_id,
                     'city_name' => $user->city->city_name ?? null,
                     'city_province' => $user->city->city_province ?? null,
-                    'user_privileges' => $user->user_privileges ?? null,
+                    'user_privileges' => json_decode($user->user_privileges) ?? null,
                 ]]);
 
                 return response()->json(['success' => true, 'message' => 'Login successful', 'user_details' => session('user_details')]);
