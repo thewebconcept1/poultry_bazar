@@ -147,27 +147,29 @@
 
     <div class="section" id="home">
         <div
-        class="relative z-20 flex flex-col items-center justify-center max-w-6xl mx-12 lg:flex-row lg:justify-between lg:mx-24 xl:mx-auto">
+            class="relative z-20 flex flex-col items-center justify-center max-w-6xl mx-12 lg:flex-row lg:justify-between lg:mx-24 xl:mx-auto">
 
-        <!-- Welcome Section -->
-        <div class="relative z-40 flex flex-col items-center justify-center w-full h-full max-w-sm p-6">
-            <div id="welcomeDiv" class="text-center lg:text-left">
-                <h2 class="text-4xl font-bold leading-tight lg:text-5xl text-customOrangeDark">
-                    <span>Welcome to</span><br> Poultry Bazar
-                </h2>
-                <p class="mt-4 text-sm font-light text-gray-600 lg:text-base">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                </p>
+            <!-- Welcome Section -->
+            <div class="relative z-40 flex flex-col items-center justify-center w-full h-full max-w-sm p-6">
+                <div id="welcomeDiv" class="text-center lg:text-left">
+                    <h2 class="text-4xl font-bold leading-tight lg:text-5xl text-customOrangeDark">
+                        <span>Welcome to</span><br> Poultry Bazar
+                    </h2>
+                    <p class="mt-4 text-sm font-light text-gray-600 lg:text-base">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip
+                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    </p>
+                </div>
             </div>
-        </div>
             <!-- Signup Form Section (Initially hidden) -->
             <div class="w-full h-full ">
                 <div class="p-5 w-5xl xl:px-5 xl:p-0">
                     <div>
                         <div class="absolute z-20 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                            <img id="henImage" class="xl:w-[260px] object-contain lg:w-[20vw]"
+                            <img id="henImage" class="xl:w-[260px]  object-contain lg:w-[20vw]"
                                 style="transform: rotateY(360deg)" src="{{ asset('assets/hen-avatar-withbg.png') }}"
                                 alt="hen">
                         </div>
@@ -177,9 +179,10 @@
                     </div>
                 </div>
             </div>
-            <div class="container z-40 flex items-center justify-center w-screen min-h-[100%] mt-5 gap-5 p-16 xl:p-[10%] lg:p-0">
+            <div
+                class="z-40 flex gap-5 mx-auto mt-5 ">
                 <div class="flex flex-col gap-10 ">
-                    <div class="max-w-[100%] p-2 bg-white rounded-lg shadow-lg ">
+                    <div class="w-[200px] p-2 bg-white rounded-lg shadow-lg ">
                         <!-- Icon Circle -->
                         <div class="flex justify-center mb-4">
                             <div class="flex items-center justify-center w-20 h-12 rounded-ful">
@@ -230,7 +233,7 @@
                             the
                             market.</p>
                     </div>
-                    <div class="max-w-[100%] p-2 bg-white rounded-lg shadow-lg">
+                    <div class="w-[200px] p-2 bg-white rounded-lg shadow-lg">
                         <!-- Icon Circle -->
                         <div class="flex justify-center mb-4">
                             <div class="flex items-center justify-center w-20 h-12 rounded-full">
@@ -284,7 +287,7 @@
 
                 </div>
                 <div class="flex flex-col gap-10 ">
-                    <div class="max-w-[100%] p-2 bg-white rounded-lg shadow-lg">
+                    <div class="w-[200px] p-2 bg-white rounded-lg shadow-lg">
                         <!-- Icon Circle -->
                         <div class="flex justify-center mb-4">
                             <div class="flex items-center justify-center w-20 h-12 rounded-full">
@@ -330,7 +333,7 @@
                             the
                             market.</p>
                     </div>
-                    <div class="max-w-[100%] p-2 bg-white rounded-lg shadow-lg">
+                    <div class="w-[200px] p-2 bg-white rounded-lg shadow-lg">
                         <!-- Icon Circle -->
                         <div class="flex justify-center mb-4">
                             <div class="flex items-center justify-center w-20 h-12 rounded-full">
@@ -386,7 +389,8 @@
             </div>
         </div>
         <div class="">
-            <div class="container grid grid-cols-2 gap-5 px-6 py-4 mx-auto md:gap-16 xl:mt-0 md:mt-6 lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-4 md:px-12">
+            <div
+                class="container grid grid-cols-2 gap-5 px-6 py-4 mx-auto md:gap-16 xl:mt-0 md:mt-6 lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-4 md:px-12">
                 <div class="h-auto border rounded-lg w-44 border-customOrangeDark">
                     <div class="flex gap-10 m-4">
                         <div>
@@ -446,8 +450,8 @@
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <rect width="136" height="46" rx="8" fill="url(#pattern0_1897_5533)" />
                             <defs>
-                                <pattern id="pattern0_1897_5533" patternContentUnits="objectBoundingBox" width="1"
-                                    height="1">
+                                <pattern id="pattern0_1897_5533" patternContentUnits="objectBoundingBox"
+                                    width="1" height="1">
                                     <use xlink:href="#image0_1897_5533"
                                         transform="matrix(0.00574866 0 0 0.016996 -1.1688 -0.304348)" />
                                 </pattern>
@@ -477,7 +481,8 @@
                             <img src="{{ asset('assets/hen-avatar-withbg.png') }}" alt="Market Updates Icon"
                                 class="w-[200px] h-[200px] mb-4">
                             <h3 class="text-2xl font-semibold text-customOrangeDark">Market Updates</h3>
-                            <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                            <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed
                                 do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
                         </div>
@@ -486,7 +491,8 @@
                             <img src="{{ asset('assets/hen-avatar-withbg.png') }}" alt="Knowledge Center Icon"
                                 class="mb-4 w-[200px] h-[200px]">
                             <h3 class="text-2xl font-semibold text-customOrangeDark">Knowledge Center</h3>
-                            <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                            <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed
                                 do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
                         </div>
@@ -495,7 +501,8 @@
                             <img src="{{ asset('assets/hen-avatar-withbg.png') }}" alt="Point of Sale Icon"
                                 class="mb-4 w-[200px] h-[200px]">
                             <h3 class="text-2xl font-semibold text-customOrangeDark">Point of Sale</h3>
-                            <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                            <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed
                                 do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
                         </div>
@@ -510,7 +517,8 @@
                             <img src="{{ asset('assets/hen-avatar-withbg.png') }}" alt="Market Updates Icon"
                                 class="w-[200px] h-[200px] mb-4">
                             <h3 class="text-2xl font-semibold text-customOrangeDark">Flock Management</h3>
-                            <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                            <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed
                                 do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
                         </div>
@@ -519,7 +527,8 @@
                             <img src="{{ asset('assets/hen-avatar-withbg.png') }}" alt="Knowledge Center Icon"
                                 class="mb-4 w-[200px] h-[200px]">
                             <h3 class="text-2xl font-semibold text-customOrangeDark">E-Commerce </h3>
-                            <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                            <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed
                                 do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
                         </div>
@@ -528,7 +537,8 @@
                             <img src="{{ asset('assets/hen-avatar-withbg.png') }}" alt="Point of Sale Icon"
                                 class="mb-4 w-[200px] h-[200px]">
                             <h3 class="text-2xl font-semibold text-customOrangeDark">Job Portal</h3>
-                            <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                            <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit, sed
                                 do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
                         </div>
@@ -556,7 +566,8 @@
                 <div class="px:0 md:px-4 ">
                     <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
                         <!-- Card 1 -->
-                        <div class="flex flex-col justify-between overflow-hidden text-center bg-white rounded-lg shadow-2xl xl:w-full xl:h-full lg:w-full lg:h-full md:h-full ">
+                        <div
+                            class="flex flex-col justify-between overflow-hidden text-center bg-white rounded-lg shadow-2xl xl:w-full xl:h-full lg:w-full lg:h-full md:h-full ">
                             <div class="px-4 py-6">
                                 <h3 class="text-lg font-semibold text-customOrangeDark">Start up</h3>
                                 <p class="mt-2 text-gray-500">Fast start your business with this</p>
@@ -673,7 +684,8 @@
                                 </svg>
                             </div>
                         </div>
-                        <div class="flex flex-col justify-between overflow-hidden text-center bg-white rounded-lg shadow-2xl xl:w-full xl:h-full lg:w-full lg:h-full md:h-full ">
+                        <div
+                            class="flex flex-col justify-between overflow-hidden text-center bg-white rounded-lg shadow-2xl xl:w-full xl:h-full lg:w-full lg:h-full md:h-full ">
                             <div class="px-4 py-6">
                                 <h3 class="text-lg font-semibold text-customOrangeDark">Small Company</h3>
                                 <p class="mt-2 text-gray-500">Fast start your business with this</p>
@@ -792,7 +804,8 @@
                             </div>
                         </div>
                         <!-- Card 3 -->
-                        <div class="flex flex-col justify-between overflow-hidden text-center bg-white rounded-lg shadow-2xl xl:w-full xl:h-full lg:w-full lg:h-full md:h-full ">
+                        <div
+                            class="flex flex-col justify-between overflow-hidden text-center bg-white rounded-lg shadow-2xl xl:w-full xl:h-full lg:w-full lg:h-full md:h-full ">
                             <div class="px-4 py-6">
                                 <h3 class="text-lg font-semibold text-customOrangeDark">Advance</h3>
                                 <p class="mt-2 text-gray-500">Fast start your business with this</p>
