@@ -24,6 +24,5 @@ class Media extends Model
         'media_type',
     ];
 
-    public $timestamps = true;
-
+    public $timestamps = false;
 }

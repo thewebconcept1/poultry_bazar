@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('media', function(Blueprint $table){
+        Schema::create('media', function (Blueprint $table) {
             $table->id('media_id');
             $table->integer('added_user_id');
             $table->integer('category_id');
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('media_description')->nullable();
             $table->string('media_author')->nullable();
             $table->integer('media_status')->default(1);
-            $table->integer('media_type');
+            $table->string('media_type');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrent();
         });
