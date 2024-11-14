@@ -33,7 +33,7 @@
                     <span class="ms-3 ">Dashboard</span>
                 </a>
             </li>
-            @if ($userRole === 'superadmin' || isset($privileges['Blogs']['view']))
+            @if ($userRole === 'superadmin' || isset($privileges['City']['view']))
                 <li>
                     <a href="../Cities"
                         class="flex items-center p-2 text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('Cities') ? 'active bg-customOrangeDark text-white ' : '' }} ">
@@ -71,7 +71,7 @@
                     </a>
                 </li>
             @endif
-            @if ($userRole === 'superadmin' || isset($privileges['Modules']['view']))
+            @if ($userRole === 'superadmin')
                 <li>
                     <a href="../modules"
                         class="flex items-center p-2  text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('modules') ? 'active bg-customOrangeDark text-white ' : '' }} ">
