@@ -55,7 +55,8 @@ Route::middleware(['custom_auth', 'check_privileges'])->group(function () {
         return view('setting');
     });
 
-    Route::post('/updateUserDetails', [UserController::class], 'updateUserDetails');
+    Route::post('/updateUserDetails', [UserController::class, 'updateUserDetails']);
+    Route::post('/updateUserPassword', [UserController::class, 'updateUserPassword']);
 
     Route::get('/notification', [NotificationController::class, 'getNotification']);
     Route::post('/addNotification', [NotificationController::class, 'addNotification']);
