@@ -25,15 +25,16 @@ class CheckPrivileges
         // Access decoded privileges directly
         $privileges = json_decode($user['user_privileges'], true)['permissions'] ?? [];
 
-        // Mapping URLs to privilege names
         $routeToPrivilege = [
-            'dashboard' => 'Dashboard',
+            'media/blogs' => 'Blogs',
+            'media/diseases' => 'Diseases',
+            'media/consultancy' => 'Consultancy',
             'modules' => 'Modules',
-            'operators' => 'Users',
+            'operators' => 'Operators',
             'subscription' => 'Subscription',
             'queries' => 'Queries',
             'markets' => 'Markets',
-            'marketupdates' => 'Market Updates',
+            'marketupdates' => 'MarketsUpdates',
             'media' => 'Media',
             'categories' => 'Categories',
             'setting' => 'Setting',
@@ -42,22 +43,21 @@ class CheckPrivileges
 
         // Get the requested route name
         $currentRoute = $request->path();
-        
-        // Check if the current route has a mapped privilege
         foreach ($routeToPrivilege as $route => $privilegeName) {
-            if (Str::startsWith($currentRoute, $route)) {  // Check if URL starts with the route name
+            // Convert the route to a regular expression pattern, escaping slashes and adding delimiters
+            $routePattern = '/^' . str_replace('/', '\/', $route) . '($|\/)/';
+            // Check if the current route matches the pattern
+            if (preg_match($routePattern, $currentRoute)) {
                 $permission = $privileges[$privilegeName]['view'] ?? null;
-                // dd($permission);
+                // dd($privileges[$privilegeName]['view']);
 
-                // If 'view' permission is not granted, deny access
-                if ($permission != 'on') {
+                if ($permission !== "on") {
                     return redirect()->back();
                 }
 
-                break;
+                break; // Exit the loop if a match is found
             }
         }
-
         return $next($request);
     }
 }

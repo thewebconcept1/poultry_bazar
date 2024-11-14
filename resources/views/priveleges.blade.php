@@ -50,39 +50,40 @@
 
          <x-table :headers="$headers">
              <x-slot name='tablebody'>
+
                  <tr>
-                     <td>1</td>
+                     <td>2</td>
                      <td>
                          <div class="bg-gray-400 h-12 w-12 flex justify-center items-center rounded-full"><img
                                  class="h-6 w-6 " src="{{ asset('assets/icons/priveleges-icon/Dashboard.png') }}"
                                  alt='Dashboard'>
                          </div>
                      </td>
-                     <td>Dashboard</td>
+                     <td>City</td>
                      <td class='flex justify-center w-full'>
                          <div class='flex gap-4 permission-group'>
                              <div class='flex items-center me-4'>
-                                 <input type='checkbox' name="permissions['Dashboard']['view']"
+                                 <input type='checkbox' name="permissions['City']['view']"
                                      class='permission-checkbox view-checkbox w-5 h-5 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
                                  <label class='text-sm font-medium ms-2 text-gray-900'>View</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input type='checkbox' name="permissions['Dashboard']['edit']"
+                                 <input type='checkbox' name="permissions['City']['edit']"
                                      class='permission-checkbox edit-checkbox w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
                                  <label class='text-sm font-medium ms-2 text-gray-900'>Edit</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input type='checkbox' name="permissions['Dashboard']['delete']"
+                                 <input type='checkbox' name="permissions['City']['delete']"
                                      class='permission-checkbox delete-checkbox w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
                                  <label class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input type='checkbox' name="permissions['Dashboard']['add']"
+                                 <input type='checkbox' name="permissions['City']['add']"
                                      class='permission-checkbox add-checkbox w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark'>
                                  <label class='text-sm font-medium text-gray-900 ms-2'>Add</label>
                              </div>
                              <div class='flex items-center me-4'>
-                                 <input type='checkbox' name="permissions['Dashboard']['full_access']"
+                                 <input type='checkbox' name="permissions['City']['full_access']"
                                      class='full-access-checkbox w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
                                  <label class='text-sm font-medium text-gray-900 ms-2'>Full Access</label>
                              </div>
@@ -91,7 +92,87 @@
 
                  </tr>
                  <tr>
-                     <td>2</td>
+                     <td>3</td>
+                     <td>
+                         <div class="bg-gray-400 h-12 w-12 flex justify-center items-center rounded-full"><img
+                                 class="h-6 w-6 " src="{{ asset('assets/icons/priveleges-icon/Dashboard.png') }}"
+                                 alt='Dashboard'>
+                         </div>
+                     </td>
+                     <td>Operators</td>
+                     <td class='flex justify-center w-full'>
+                         <div class='flex gap-4 permission-group'>
+                             <div class='flex items-center me-4'>
+                                 <input type='checkbox' name="permissions['Operators']['view']"
+                                     class='permission-checkbox view-checkbox w-5 h-5 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium ms-2 text-gray-900'>View</label>
+                             </div>
+                             <div class='flex items-center me-4'>
+                                 <input type='checkbox' name="permissions['Operators']['edit']"
+                                     class='permission-checkbox edit-checkbox w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium ms-2 text-gray-900'>Edit</label>
+                             </div>
+                             <div class='flex items-center me-4'>
+                                 <input type='checkbox' name="permissions['Operators']['delete']"
+                                     class='permission-checkbox delete-checkbox w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
+                             </div>
+                             <div class='flex items-center me-4'>
+                                 <input type='checkbox' name="permissions['Operators']['add']"
+                                     class='permission-checkbox add-checkbox w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Add</label>
+                             </div>
+                             <div class='flex items-center me-4'>
+                                 <input type='checkbox' name="permissions['Operators']['full_access']"
+                                     class='full-access-checkbox w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Full Access</label>
+                             </div>
+                         </div>
+                     </td>
+
+                 </tr>
+                 <tr>
+                     <td>4</td>
+                     <td>
+                         <div class="bg-gray-400 h-12 w-12 flex justify-center items-center rounded-full"><img
+                                 class="h-6 w-6 " src="{{ asset('assets/icons/priveleges-icon/Dashboard.png') }}"
+                                 alt='Dashboard'>
+                         </div>
+                     </td>
+                     <td>Subscription</td>
+                     <td class='flex justify-center w-full'>
+                         <div class='flex gap-4 permission-group'>
+                             <div class='flex items-center me-4'>
+                                 <input type='checkbox' name="permissions['Subscription']['view']"
+                                     class='permission-checkbox view-checkbox w-5 h-5 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium ms-2 text-gray-900'>View</label>
+                             </div>
+                             <div class='flex items-center me-4'>
+                                 <input type='checkbox' name="permissions['Subscription']['edit']"
+                                     class='permission-checkbox edit-checkbox w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium ms-2 text-gray-900'>Edit</label>
+                             </div>
+                             <div class='flex items-center me-4'>
+                                 <input type='checkbox' name="permissions['Subscription']['delete']"
+                                     class='permission-checkbox delete-checkbox w-5 h-5 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Delete</label>
+                             </div>
+                             <div class='flex items-center me-4'>
+                                 <input type='checkbox' name="permissions['Subscription']['add']"
+                                     class='permission-checkbox add-checkbox w-5 h-5 bg-gray-100 border-gray-300 rounded text-customOrangeDark focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Add</label>
+                             </div>
+                             <div class='flex items-center me-4'>
+                                 <input type='checkbox' name="permissions['Subscription']['full_access']"
+                                     class='full-access-checkbox w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring customOrangeDark'>
+                                 <label class='text-sm font-medium text-gray-900 ms-2'>Full Access</label>
+                             </div>
+                         </div>
+                     </td>
+
+                 </tr>
+                 <tr>
+                     <td>5</td>
                      <td>
                          <div class="bg-gray-400 h-12 w-12 flex justify-center items-center rounded-full"><img
                                  class="h-6 w-6 " src="{{ asset('assets/icons/priveleges-icon/market.png') }}"
@@ -131,7 +212,7 @@
 
                  </tr>
                  <tr>
-                     <td>3</td>
+                     <td>6</td>
                      <td>
                          <div class="bg-gray-400 h-12 w-12 flex justify-center items-center rounded-full"><img
                                  class="h-6 w-6 " src="{{ asset('assets/icons/priveleges-icon/market-update.png') }}"
@@ -170,7 +251,7 @@
                      </td>
                  </tr>
                  <tr>
-                     <td>4</td>
+                     <td>7</td>
                      <td>
                          <div class="bg-gray-400 h-12 w-12 flex justify-center items-center rounded-full"><img
                                  class="h-6 w-6 " src="{{ asset('assets/icons/priveleges-icon/blog.png') }}"
@@ -209,7 +290,7 @@
                      </td>
                  </tr>
                  <tr>
-                     <td>5</td>
+                     <td>8</td>
                      <td>
                          <div class="bg-gray-400 h-12 w-12 flex justify-center items-center rounded-full"><img
                                  class="h-6 w-6 " src="{{ asset('assets/icons/priveleges-icon/Diseases.png') }}"
@@ -248,7 +329,7 @@
                      </td>
                  </tr>
                  <tr>
-                     <td>6</td>
+                     <td>9</td>
                      <td>
                          <div class="bg-gray-400 h-12 w-12 flex justify-center items-center rounded-full"><img
                                  class="h-6 w-6 " src="{{ asset('assets/icons/priveleges-icon/video.png') }}"
@@ -287,7 +368,7 @@
                      </td>
                  </tr>
                  <tr>
-                     <td>7</td>
+                     <td>10</td>
                      <td>
                          <div class="bg-gray-400 h-12 w-12 flex justify-center items-center rounded-full"><img
                                  class="h-6 w-6 " src="{{ asset('assets/icons/priveleges-icon/category.png') }}"
@@ -326,7 +407,7 @@
                      </td>
                  </tr>
                  <tr>
-                     <td>8</td>
+                     <td>11</td>
                      <td>
                          <div class="bg-gray-400 h-12 w-12 flex justify-center items-center rounded-full"><img
                                  class="h-6 w-6 " src="{{ asset('assets/icons/priveleges-icon/query.png') }}"
