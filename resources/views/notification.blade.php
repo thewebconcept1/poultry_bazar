@@ -16,30 +16,14 @@
         <x-table :headers="$headers">
             <x-slot name="tablebody">
                 <tr>
-                     <td>
-                        <div class="max-w-5xl space-y-4">
-                            <!-- Notification 1 -->
-                            <div class="p-4 bg-gray-100 rounded shadow">
-                                <h3 class="font-semibold text-gray-800 ">Notification title Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dol</h3>
-                                <p class="mt-1 text-sm text-gray-600">
-                                    Help Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore hic atque illum eos ut facere officia Help Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore hic atque illum eos ut facere officia Help Lorem
-                                </p>
+                    <td>
+                        @foreach ($notifications as $notification)
+                            <div class="p-4 bg-gray-100 rounded shadow mb-5">
+                                <h3 class="text-lg font-semibold text-gray-800">{{ $notification->notification_title }}
+                                </h3>
+                                <p class="mt-1 text-sm text-gray-600">{{ $notification->notification_description }}</p>
                             </div>
-                            <!-- Notification 2 -->
-                            <div class="p-4 bg-gray-100 rounded shadow">
-                                <h3 class="text-lg font-semibold text-gray-800">Notification title Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dol</h3>
-                                <p class="mt-1 text-sm text-gray-600">
-                                    Help Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore hic atque illum eos ut facere officia Help Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore hic atque illum eos ut facere officia Help Lorem
-                                </p>
-                            </div>
-                            <!-- Notification 3 -->
-                            <div class="p-4 bg-gray-100 rounded shadow">
-                                <h3 class="text-lg font-semibold text-gray-800">Notification title Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dol</h3>
-                                <p class="mt-1 text-sm text-gray-600">
-                                    Help Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore hic atque illum eos ut facere officia Help Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore hic atque illum eos ut facere officia Help Lorem
-                                </p>
-                            </div>
-                        </div>
+                        @endforeach
                     </td>
                 </tr>
             </x-slot>
@@ -50,49 +34,25 @@
             <x-slot name="title">Add Notifications </x-slot>
             <x-slot name="modal_width">max-w-4xl</x-slot>
             <x-slot name="body">
-                <form action="">
-                    <div class="">
-                        <div class="flex p-6">
-                            <!-- Form Fields -->
-                            <div class="flex-1 ml-6">
-                                <div class="mb-4">
-                                    <label for="title" class="block text-sm font-medium text-gray-700">Title:</label>
-                                    <input type="text" id="title" placeholder="Enter Title"
-                                        class="block w-full px-3 py-2 mt-1 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm">
-                                </div>
-
-                                <div class="mb-4">
-                                    <label for="category"
-                                        class="block text-sm font-medium text-gray-700">Type:</label>
-                                    <select id="category"
-                                        class="block w-full px-3 py-2 mt-1 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm">
-                                        <option>Select</option>
-                                        <!-- Add options here -->
-                                    </select>
-                                </div>
-
-                                <div class="mb-4">
-                                    <label for="description"
-                                        class="block text-sm font-medium text-gray-700">Message:</label>
-                                    <textarea id="description" rows="3" placeholder="Start writing here"
-                                        class="block w-full px-3 py-2 mt-1 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm"></textarea>
-                                </div>
-                                <div class="mt-4">
-                                    <x-modal-button :title="'Add Notification '"></x-modal-button>
-                                </div>
-                            </div>
+                <form id="postDataForm" url="addNotification" method="post">
+                    @csrf
+                    <div class="grid grid-cols-2 gap-4">
+                        <x-input id="NotificationTitle" label="Notification Title" placeholder="Enter Title"
+                            name='notification_title' type="text"></x-input>
+                        <x-select name="notification_type" id="NotificationType" label="Notification Type">
+                            <x-slot name="options">
+                                <option disabled selected>Select Notification Type</option>
+                                <option value="important">Important</option>
+                            </x-slot>
+                        </x-select>
+                        <div class="col-span-2">
+                            <x-textarea id="NotificationDescription" label="Notification Description"
+                                placeholder="Enter Description" name='notification_description' type="text"></x-textarea>
                         </div>
                     </div>
-                    {{-- <div class="w-full h-full ">
-                        <x-input id="title" label="Title:" placeholder="Enter Title " name='market_name'
-                        type="text"></x-input>
-                        <x-input id="category" label="Category:" placeholder="Enter Category " name='market_name'
-                        type="text"></x-input>
-                        <label for="">
-                            <textarea name="" id="" cols="30" placeholder="Start writing from here" rows="10"></textarea>
-                        </label>
-
-                    </div> --}}
+                    <div class="mt-4">
+                        <x-modal-button :title="'Add Notification '"></x-modal-button>
+                    </div>
 
                 </form>
             </x-slot>
@@ -162,4 +122,21 @@
             </x-slot>
         </x-modal>
     </div>
+@endsection
+
+@section('js')
+    <script>
+        function updateDatafun() {
+
+        }
+        updateDatafun();
+
+        $(document).on("formSubmissionResponse", function(event, response, Alert, SuccessAlert, WarningAlert) {
+            // console.log(response);
+
+            if (response.success) {
+                $('.modalCloseBtn').click();
+            } else {}
+        });
+    </script>
 @endsection
