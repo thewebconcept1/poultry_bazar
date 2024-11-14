@@ -29,6 +29,7 @@ class CheckPrivileges
             'media/blogs' => 'Blogs',
             'media/diseases' => 'Diseases',
             'media/consultancy' => 'Consultancy',
+            'Cities' => 'City',
             'modules' => 'Modules',
             'operators' => 'Operators',
             'subscription' => 'Subscription',
