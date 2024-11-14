@@ -21,6 +21,28 @@ class UserController extends Controller
     // }
     // // user Defined
 
+    // update user password
+    public function updateUserPassword(Request $request)
+    {
+        try {
+            $userDetails = session('user_details');
+            $validatedData = $request->validate([
+                'new_password' => 'required',
+            ]);
+
+            $user = User::where('id', $userDetails['id'])->first();
+
+            $user->password = $validatedData['password'];
+            $user->save();
+
+            return response()->json(['success' => true, 'message' => 'Password updated'], 200);
+
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    // update user password
+
     // update user details
     public function updateUserDetails(Request $request)
     {
