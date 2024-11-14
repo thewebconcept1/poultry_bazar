@@ -17,6 +17,10 @@ Route::middleware(['custom_auth'])->group(function () {
     });
     Route::get('/notification', [NotificationController::class, 'getNotification']);
     Route::post('/addNotification', [NotificationController::class, 'addNotification']);
+
+    Route::post('/updateUserDetails', [UserController::class, 'updateUserDetails']);
+    Route::post('/updateUserPassword', [UserController::class, 'updateUserPassword']);
+
     Route::get('/setting', function () {
         return view('setting');
     });
