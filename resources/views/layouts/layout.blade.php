@@ -29,7 +29,7 @@
     <div class=" max-w-[1920px] mx-auto  relative">
         <div class="relative ">
             <div id="loading">
-                 <div class=" text-center z-[9999] h-screen w-screen flex justify-center items-center  ">
+                <div class=" text-center z-[9999] h-screen w-screen flex justify-center items-center  ">
                     <svg aria-hidden="true"
                         class="w-12 h-12 mx-auto text-center text-gray-200 animate-spin fill-customOrangeLight"
                         viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

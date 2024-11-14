@@ -6,7 +6,7 @@
     <div class="w-full pt-10 min-h-[88vh] gradient-border  rounded-lg">
         <div class="flex justify-between px-5">
             <h1 class="text-3xl font-bold ">Blogs</h1>
-            <button data-modal-target="blog-modal" data-modal-toggle="blog-modal"
+            <button id="addModalBtn" data-modal-target="blog-modal" data-modal-toggle="blog-modal"
                 class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Add New + </button>
         </div>
         @php
@@ -21,14 +21,14 @@
                         <td><img class="h-16 w-16 object-contain  bg-black rounded-full "
                                 src="../{{ $data->media_image ?? 'assets/Profile photo (1) 1.png' }}" alt='Blog Image'></td>
                         <td class='text-xs xl:text-[15px]'>{{ $data->media_title }}</td>
-                        <td class='text-xs xl:text-[15px] '>{{ $data->media_description }} </td>
+                        <td class='text-xs xl:text-[15px] '>{{ $data->media_description }}</td>
                         <td class='text-sm xl:text-[15px]'>{{ $data->category_name }}</td>
                         <td class='text-sm xl:text-[15px]'>{{ $data->date }} </td>
                         <td class='text-sm xl:text-[15px]'>{{ $data->media_author }}</td>
 
                         <td>
                             <span class='flex gap-4'>
-                                <button>
+                                <button class="updateDataBtn">
                                     <svg width='36' height='36' viewBox='0 0 36 36' fill='none'
                                         xmlns='http://www.w3.org/2000/svg'>
                                         <circle opacity='0.1' cx='18' cy='18' r='18' fill='#233A85' />
@@ -48,7 +48,13 @@
                                             fill='#D11A2A' />
                                     </svg>
                                 </button>
-                                <button data-modal-target='view-modal' data-modal-toggle='view-modal'>
+                                <button data-modal-target='view-modal' data-modal-toggle='view-modal'
+                                    mediaTitle="{{ $data->media_title }}" mediaAuthor="{{ $data->media_author }}"
+                                    mediaCategory="{{ $data->category_name }}" mediaCategoryId={{ $data->category_id }}
+                                    mediaDate="{{ $data->date }}" mediaDescription="{{ $data->media_description }}"
+                                    mediaId="{{ $data->media_id }}"
+                                    mediaImage="../{{ $data->media_image ?? 'assets/Surface 3 png.png' }}"
+                                    class="viewModalBtn">
                                     <svg width='37' height='36' viewBox='0 0 37 36' fill='none'
                                         xmlns='http://www.w3.org/2000/svg'>
                                         <path fill-rule='evenodd' clip-rule='evenodd'
@@ -86,13 +92,14 @@
                 <form id="postDataForm" method="POST" url="../saveMedia" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="media_type" value="blogs">
+                    <input type="hidden" name="media_id" id="updateId">
                     <div class="grid gap-4 grid-cols-2 ">
                         <div>
                             <x-file-uploader name="media_image" id="moduleImage" />
                         </div>
                         <div>
-                            <x-input id="mediaTitle" label="Blog Title" placeholder="Enter Blog Title" name='media_title'
-                                type="text"></x-input>
+                            <x-input id="mediaTitle" label="Blog Title" placeholder="Enter Blog Title"
+                                name='media_title' type="text"></x-input>
                             <div class="mt-2">
                                 <x-input id="mediaAuthor" label="Blog Author" placeholder="Enter Blog Author"
                                     name='media_author' type="text"></x-input>
@@ -117,17 +124,6 @@
                     <div class="mt-4">
                         <x-modal-button :title="'Add Blog'"></x-modal-button>
                     </div>
-                    {{-- <div class="w-full h-full ">
-                        <x-input id="title" label="Title:" placeholder="Enter Title " name='market_name'
-                        type="text"></x-input>
-                        <x-input id="category" label="Category:" placeholder="Enter Category " name='market_name'
-                        type="text"></x-input>
-                        <label for="">
-                            <textarea name="" id="" cols="30" placeholder="Start writing from here" rows="10"></textarea>
-                        </label>
-
-                    </div> --}}
-
                 </form>
             </x-slot>
         </x-modal>
@@ -139,18 +135,14 @@
                     <div class="flex">
                         <!-- Image Placeholder -->
 
-                        <img class="w-40 h-40" src="{{ asset('assets/Surface 3 png.png') }}" alt="">
+                        <img class="w-40 h-40 bg-black object-contain" id="dImage"
+                            src="{{ asset('assets/Surface 3 png.png') }}" alt="">
 
 
                         <!-- Text Details -->
                         <div class="ml-5">
-                            <h3 class="text-xl font-semibold text-gray-800">Lorem Ipsum is simply dummy text of the
-                                printing.</h3>
-                            {{-- <div class="mt-4 ">
-                          <p class="text-sm font-medium text-gray-600">Category: <span class="text-gray-800 ms-10">Campus Name</span></p>
-                         <div class="mt-5 "> <p class="text-sm font-medium text-gray-600">Author: <span class="text-gray-80 ms-14">Author Name</span></p></div>
-                         <div class="mt-5"> <p class="text-sm font-medium text-gray-600">Date: <span class="text-gray-800 ms-14">Dec 21, 2023</span></p></div>
-                        </div> --}}
+                            <h3 class="text-xl font-semibold text-gray-800" id="dTitle"></h3>
+
                             <div class="grid grid-cols-2 mt-5 md:grid-cols-3 ">
                                 <div class="min-w-10">
                                     <p class="text-[12.9px] lg:text-lg md:text-lg">Category:</p>
@@ -158,9 +150,9 @@
                                     <p class="mt-4 text-[12.9px] lg:text-lg md:text-lg">Date:</p>
                                 </div>
                                 <div class="min-w-10 md:col-span-2 ">
-                                    <p class=" text-[#323C47] text-[12.9px] lg:text-lg md:text-lg">Campus Name</p>
-                                    <p class="mt-4 text-[#323C47] text-[12.9px] lg:text-lg md:text-lg">Author Name</p>
-                                    <p class="mt-4 text-[#323C47] text-[12.9px] lg:text-lg md:text-lg">Dec 21, 2023</p>
+                                    <p class=" text-[#323C47] text-[12.9px] lg:text-lg md:text-lg" id="dCategory"></p>
+                                    <p class="mt-4 text-[#323C47] text-[12.9px] lg:text-lg md:text-lg" id="dAuthor"></p>
+                                    <p class="mt-4 text-[#323C47] text-[12.9px] lg:text-lg md:text-lg" id="dDate"></p>
                                 </div>
                             </div>
                         </div>
@@ -169,28 +161,7 @@
                     <!-- Description -->
                     <div class="mt-6">
                         <h4 class="text-lg font-semibold text-gray-800">Description:</h4>
-                        <p class="mt-2 text-sm text-gray-600">
-                            Lorem Ipsum is simply dummy text
-                            of the printing and typesetting Lorem Ipsum is simply dummy text
-                            of the printing and typesetting text
-                            Lorem Ipsum is simply dummy text
-                            of the printing and typesetting Lorem Ipsum is simply Lorem Ipsum is simply dummy text of the.
-                            Lorem Ipsum is simply dummy text
-                            of the printing and typesetting Lorem Ipsum is simply dummy text
-                            of the printing and typesetting text
-                            Lorem Ipsum is simply dummy text
-                            of the printing and typesetting Lorem Ipsum is simply Lorem Ipsum is simply dummy text of the.
-                            Lorem Ipsum is simply dummy text
-                            of the printing and typesetting Lorem Ipsum is simply dummy text
-                            of the printing and typesetting text
-                            Lorem Ipsum is simply dummy text
-                            of the printing and typesetting Lorem Ipsum is simply Lorem Ipsum is simply dummy text of the.
-                            Lorem Ipsum is simply dummy text
-                            of the printing and typesetting Lorem Ipsum is simply dummy text
-                            of the printing and typesetting text
-                            Lorem Ipsum is simply dummy text
-                            of the printing and typesetting Lorem Ipsum is simply Lorem Ipsum is simply dummy text of the.
-                        </p>
+                        <p class="mt-2 text-sm text-gray-600" id="dDescription"></p>
                     </div>
                 </div>
             </x-slot>
@@ -199,14 +170,37 @@
 @endsection
 @section('js')
     <script>
-        function updateDatafun() {
+        function viewData() {
 
+            $('.viewModalBtn').click(function() {
+                $('#view-modal').addClass('flex').removeClass('hidden');
+                $('#dTitle').text($(this).attr('mediaTitle'));
+                $('#dAuthor').text($(this).attr('mediaAuthor'));
+                $('#dCategory').text($(this).attr('mediaCategory'));
+                $('#dDate').text($(this).attr('mediaDate'));
+                $('#dDescription').text($(this).attr('mediaDescription'));
+                $('#dImage').attr('src', $(this).attr('mediaImage'));
+
+            });
+
+        }
+        viewData()
+
+        function updateDatafun() {
+            viewData()
             $('.updateDataBtn').click(function() {
-                $('#blog-modal').removeClass("hidden");
-                $('#blog-modal').addClass('flex');
-                $('#cityName').val($(this).attr('cityName'));
-                $('#cityProvince').val($(this).attr('cityProvince'));
-                $('#updateId').val($(this).attr('cityId'));
+                $('#blog-modal').removeClass("hidden").addClass('flex');
+
+                let mediaDetails = $(this).siblings('.viewModalBtn');;
+                $('#updateId').val(mediaDetails.attr('mediaId'));
+                $('#mediaTitle').val(mediaDetails.attr('mediaTitle'));
+                $('#mediaTitle').val(mediaDetails.attr('mediaTitle'));
+                $('#mediaAuthor').val(mediaDetails.attr('mediaAuthor'));
+                $('#categoryId').val(mediaDetails.attr('mediaCategoryId')).trigger('change');
+                $('#mediaDescription').val(mediaDetails.attr('mediaDescription'));
+                let fileImg = $('#blog-modal .file-preview');
+                fileImg.removeClass('hidden').attr('src', mediaDetails.attr('mediaImage'));
+
 
                 $('#blog-modal #modalTitle').text("Update Blog");
                 $('#blog-modal #submitBtn').text("Update");
@@ -219,13 +213,17 @@
             $('#updateId').val('');
             $('#blog-modal #modalTitle').text("Add Blog");
             $('#blog-modal #submitBtn').text("Add");
+            let fileImg = $('#blog-modal .file-preview');
+            fileImg.addClass('hidden');
 
         })
+
+
         // Listen for the custom form submission response event
         $(document).on("formSubmissionResponse", function(event, response, Alert, SuccessAlert, WarningAlert) {
             // console.log(response);
-
             if (response.success) {
+
                 $('.modalCloseBtn').click();
             } else {}
         });
