@@ -3,14 +3,23 @@
     Market Updates
 @endsection
 @section('content')
+    @php
+        $user = session('user_details');
+        $privileges = json_decode($user['user_privileges'], true)['permissions'] ?? [];
+        $userRole = session('user_details')['user_role'];
+    @endphp
     <div class="w-full pt-10 min-h-[88vh] gradient-border  rounded-lg">
         <div class="flex justify-between px-5">
             <h1 class="text-3xl font-bold ">Markets Rates</h1>
-            <div class="flex gap-5">
-                <button class="px-3 py-2 font-light text-[#B6B4B4] border-2 border-gray-200 rounded-full shadow-sm ">Clear
-                    All </button>
-                <button class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Update All </button>
-            </div>
+            @if ($userRole === 'superadmin' || isset($privileges['MarketsUpdates']['add']))
+                <div class="flex gap-5">
+                    <button
+                        class="px-3 py-2 font-light text-[#B6B4B4] border-2 border-gray-200 rounded-full shadow-sm ">Clear
+                        All </button>
+                    <button class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Update All
+                    </button>
+                </div>
+            @endif
         </div>
         @php
             $headers = ['Sr.', 'Markets', 'Rates', 'Open ', 'Close ', 'DOC ', 'Action'];
@@ -40,12 +49,15 @@
 
                     <td>
                         <span class='flex justify-center gap-4'>
-                            <button
-                                class='px-5 py-2 font-light text-[#B6B4B4] border-2 border-gray-[#B6B4B4] rounded-full shadow-sm'>Clear</button>
-
-                            <button
-                                class='px-5 py-1 text-[13px] font-semibold text-white rounded-full shadow-md gradient-bg'>Update
-                            </button>
+                            @if ($userRole === 'superadmin' || isset($privileges['MarketsUpdates']['delete']))
+                                <button
+                                    class='px-5 py-2 font-light text-[#B6B4B4] border-2 border-gray-[#B6B4B4] rounded-full shadow-sm'>Clear</button>
+                            @endif
+                            @if ($userRole === 'superadmin' || isset($privileges['MarketsUpdates']['edit']))
+                                <button
+                                    class='px-5 py-1 text-[13px] font-semibold text-white rounded-full shadow-md gradient-bg'>Update
+                                </button>
+                            @endif
                         </span>
                     </td>
                 </tr>
