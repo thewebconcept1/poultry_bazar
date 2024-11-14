@@ -177,7 +177,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container z-40 flex items-center justify-center w-screen min-h-[100%] mt-5 gap-5 p-10 xl:p-[10%] lg:p-0">
+            <div class="container z-40 flex items-center justify-center w-screen min-h-[100%] mt-5 gap-5 p-16 xl:p-[10%] lg:p-0">
                 <div class="flex flex-col gap-10 ">
                     <div class="max-w-[100%] p-2 bg-white rounded-lg shadow-lg ">
                         <!-- Icon Circle -->
@@ -387,7 +387,7 @@
         </div>
 
         <div class="">
-            <div class="container grid grid-cols-2 gap-5 px-6 py-4 mx-auto xl:mt-0 md:mt-6 lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-4 md:px-12">
+            <div class="container grid grid-cols-2 gap-5 px-6 py-4 mx-auto md:gap-16 xl:mt-0 md:mt-6 lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-4 md:px-12">
                 <div class="h-auto border rounded-lg w-44 border-customOrangeDark">
                     <div class="flex gap-10 m-4">
                         <div>
@@ -478,8 +478,8 @@
                         <div class="flex flex-col items-center">
                             <img src="{{ asset('assets/hen-avatar-withbg.png') }}" alt="Market Updates Icon"
                                 class="w-[200px] h-[200px] mb-4">
-                            <h3 class="text-2xl font-bold text-customOrangeDark">Market Updates</h3>
-                            <p class="mt-2 text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                            <h3 class="text-2xl font-semibold text-customOrangeDark">Market Updates</h3>
+                            <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                                 do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
                         </div>
@@ -487,8 +487,8 @@
                         <div class="flex flex-col items-center">
                             <img src="{{ asset('assets/hen-avatar-withbg.png') }}" alt="Knowledge Center Icon"
                                 class="mb-4 w-[200px] h-[200px]">
-                            <h3 class="text-2xl font-bold text-customOrangeDark">Knowledge Center</h3>
-                            <p class="mt-2 text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                            <h3 class="text-2xl font-semibold text-customOrangeDark">Knowledge Center</h3>
+                            <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                                 do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
                         </div>
@@ -496,8 +496,8 @@
                         <div class="flex flex-col items-center">
                             <img src="{{ asset('assets/hen-avatar-withbg.png') }}" alt="Point of Sale Icon"
                                 class="mb-4 w-[200px] h-[200px]">
-                            <h3 class="text-2xl font-bold text-customOrangeDark">Point of Sale</h3>
-                            <p class="mt-2 text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                            <h3 class="text-2xl font-semibold text-customOrangeDark">Point of Sale</h3>
+                            <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                                 do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
                         </div>
@@ -511,8 +511,8 @@
                         <div class="flex flex-col items-center">
                             <img src="{{ asset('assets/hen-avatar-withbg.png') }}" alt="Market Updates Icon"
                                 class="w-[200px] h-[200px] mb-4">
-                            <h3 class="text-2xl font-bold text-customOrangeDark">Flock Management</h3>
-                            <p class="mt-2 text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                            <h3 class="text-2xl font-semibold text-customOrangeDark">Flock Management</h3>
+                            <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                                 do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
                         </div>
@@ -520,8 +520,8 @@
                         <div class="flex flex-col items-center">
                             <img src="{{ asset('assets/hen-avatar-withbg.png') }}" alt="Knowledge Center Icon"
                                 class="mb-4 w-[200px] h-[200px]">
-                            <h3 class="text-2xl font-bold text-customOrangeDark">E-Commerce </h3>
-                            <p class="mt-2 text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                            <h3 class="text-2xl font-semibold text-customOrangeDark">E-Commerce </h3>
+                            <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                                 do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
                         </div>
@@ -529,8 +529,8 @@
                         <div class="flex flex-col items-center">
                             <img src="{{ asset('assets/hen-avatar-withbg.png') }}" alt="Point of Sale Icon"
                                 class="mb-4 w-[200px] h-[200px]">
-                            <h3 class="text-2xl font-bold text-customOrangeDark">Job Portal</h3>
-                            <p class="mt-2 text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                            <h3 class="text-2xl font-semibold text-customOrangeDark">Job Portal</h3>
+                            <p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                                 do
                                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
                         </div>
@@ -538,7 +538,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex items-center justify-center mt-14">
+        <div class="flex items-center justify-center px-4 mt-14">
             <div class="text-center">
                 <!-- App Store Buttons -->
                 <div class="flex justify-center gap-4 mb-4">
@@ -557,13 +557,11 @@
         <div class="section" id="price">
 
             <div class="container flex items-center justify-center mx-auto mt-14">
-                <div class="px-4 ">
-
+                <div class="px:0 md:px-4 ">
                     <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
                         <!-- Card 1 -->
-                        <div
-                            class="flex flex-col justify-between overflow-hidden text-center bg-white rounded-lg shadow-2xl ">
-                            <div class="px-6 py-8">
+                        <div class="flex flex-col justify-between overflow-hidden text-center bg-white rounded-lg shadow-2xl xl:w-full xl:h-full lg:w-full lg:h-full md:h-full ">
+                            <div class="px-4 py-6">
                                 <h3 class="text-lg font-semibold text-customOrangeDark">Start up</h3>
                                 <p class="mt-2 text-gray-500">Fast start your business with this</p>
                                 <p class="mt-4 text-2xl font-bold">$10 <span class="text-sm font-normal">/mon</span>
@@ -679,9 +677,8 @@
                                 </svg>
                             </div>
                         </div>
-                        <div
-                            class="flex flex-col justify-between overflow-hidden text-center bg-white rounded-lg shadow-2xl ">
-                            <div class="px-6 py-8">
+                        <div class="flex flex-col justify-between overflow-hidden text-center bg-white rounded-lg shadow-2xl xl:w-full xl:h-full lg:w-full lg:h-full md:h-full ">
+                            <div class="px-4 py-6">
                                 <h3 class="text-lg font-semibold text-customOrangeDark">Small Company</h3>
                                 <p class="mt-2 text-gray-500">Fast start your business with this</p>
                                 <p class="mt-4 text-2xl font-bold">$20 <span class="text-sm font-normal">/mon</span>
@@ -799,9 +796,8 @@
                             </div>
                         </div>
                         <!-- Card 3 -->
-                        <div
-                            class="flex flex-col justify-between overflow-hidden text-center bg-white rounded-lg shadow-2xl ">
-                            <div class="px-6 py-8">
+                        <div class="flex flex-col justify-between overflow-hidden text-center bg-white rounded-lg shadow-2xl xl:w-full xl:h-full lg:w-full lg:h-full md:h-full ">
+                            <div class="px-4 py-6">
                                 <h3 class="text-lg font-semibold text-customOrangeDark">Advance</h3>
                                 <p class="mt-2 text-gray-500">Fast start your business with this</p>
                                 <p class="mt-4 text-2xl font-bold">$50 <span class="text-sm font-normal">/mon</span>
@@ -931,7 +927,7 @@
                 <div class="container grid gap-8 px-4 mx-auto text-center md:grid-cols-4 md:text-left">
 
                     <!-- Company Section -->
-                    <div class="h-32 mt-20">
+                    <div class="h-32 lg:mt-20">
                         <h2 class="mb-2 text-lg font-semibold text-orange-500">Company</h2>
                         <p class="text-gray-500">Best delivery services in Germany. Using by more than 3,000,000 people
                             in
@@ -939,7 +935,7 @@
                     </div>
 
                     <!-- Quick Links Column 1 -->
-                    <div class="h-32 mt-20">
+                    <div class="h-32 lg:mt-20">
                         <h2 class="mb-2 text-lg font-semibold text-orange-500">Quick Links</h2>
                         <ul class="space-y-1 text-gray-500">
                             <li><a href="#" class="hover:text-gray-700">Pricing</a></li>
@@ -962,7 +958,7 @@
 
                     <!-- Logo and App Store Links -->
                     <div class="flex flex-col items-center md:items-start">
-                        <svg width="220" height="220" viewBox="0 0 220 220" fill="none"
+                        <svg width="180" height="180" viewBox="0 0 220 220" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g filter="url(#filter0_d_1789_9187)">
                                 <path
@@ -1067,7 +1063,7 @@
 
                         <div class="flex space-x-2">
                             <img src="{{ asset('assets/app and apple store.png') }}"
-                                alt="App Store and Google Play" class="h-auto w-100">
+                                alt="App Store and Google Play" class="h-auto ">
                         </div>
                     </div>
 
