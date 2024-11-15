@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\MarketController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\NotificationController;
@@ -47,12 +48,10 @@ Route::middleware(['custom_auth'])->group(function () {
         Route::post('/saveCities', [CityController::class, 'addCities']);
         Route::post('/deleteCities', [CityController::class, 'deleteCities']);
 
-        Route::get('/markets', function () {
-            return view('markets');
-        });
-        Route::get('/marketupdates', function () {
-            return view('marketupdates');
-        });
+        Route::get('/markets', [MarketController::class, 'getMarkets']);
+        Route::post('/saveMarket', [MarketController::class, 'addMarket']);
+        Route::get('/marketupdates', [MarketController::class, 'getMarketUpdates']);
+        Route::post('/updateMarketRates', [MarketController::class, 'marketRates']);
 
         Route::get('/media/{type?}', [MediaController::class, 'getMedia']);
         Route::post('/saveMedia', [MediaController::class, 'addMedia']);
