@@ -236,7 +236,9 @@ class UserController extends Controller
                 ]]);
 
                 return response()->json(['success' => true, 'message' => 'Login successful', 'user_details' => session('user_details')]);
-            } else {
+            } elseif($user->user_status != 1) {
+                return response()->json(['success' => false, 'message' => 'Please contact your admin'], 400);
+            }else{
                 // Authentication failed
                 return response()->json(['success' => false, 'message' => 'Invalid credentials'], 401);
             }
