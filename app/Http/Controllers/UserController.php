@@ -26,16 +26,25 @@ class UserController extends Controller
     {
         try {
             $userDetails = session('user_details');
+
+            // Validate the request data
             $validatedData = $request->validate([
-                'new_password' => 'required',
+                'old_password' => 'required',
+                'new_password' => 'required|min:8|confirmed',
             ]);
 
             $user = User::where('id', $userDetails['id'])->first();
 
-            $user->password = $validatedData['password'];
-            $user->save();
+            if (!$user) {
+                return response()->json(['success' => false, 'message' => 'User not found'], 404);
+            }
 
-            return response()->json(['success' => true, 'message' => 'Password updated'], 200);
+            if (!Hash::check($validatedData['old_password'], $user->password)) {
+                return response()->json(['success' => false, 'message' => 'The old password is incorrect'], 400);
+            }
+            $user->password = Hash::make($validatedData['new_password']);
+            $user->save();
+            return response()->json(['success' => true, 'message' => "Password change successfully"], 200);
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
@@ -58,7 +67,7 @@ class UserController extends Controller
 
             $user->name = $validatedData['name'];
             $user->email = $validatedData['email'];
-            $user->phone = $validatedData['phone'];
+            $user->user_phone = $validatedData['phone'];
             $user->address = $validatedData['address'];
             if ($request->hasFile('user_image')) {
                 // Get the path of the image from the animal record
