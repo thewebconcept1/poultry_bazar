@@ -22,9 +22,7 @@ Route::middleware(['custom_auth'])->group(function () {
     Route::post('/updateUserDetails', [UserController::class, 'updateUserDetails']);
     Route::post('/updateUserPassword', [UserController::class, 'updateUserPassword']);
 
-    Route::get('/setting', function () {
-        return view('setting');
-    });
+    Route::get('/setting', [UserController::class, 'settings']);
 
     Route::middleware(['check_privileges'])->group(function () {
 

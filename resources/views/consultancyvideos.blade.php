@@ -216,7 +216,7 @@
                 fileImg.removeClass('hidden').attr('src', mediaDetails.attr('mediaImage'));
 
 
-                $('#consultancy-modal #modalTitle').text("Update Blog");
+                $('#consultancy-modal #modalTitle').text("Update Consultancy");
                 $('#consultancy-modal #submitBtn').text("Update");
 
             });
@@ -225,7 +225,7 @@
         $('#addModalBtn').click(function() {
             $('#postDataForm')[0].reset();
             $('#updateId').val('');
-            $('#consultancy-modal #modalTitle').text("Add Blog");
+            $('#consultancy-modal #modalTitle').text("Add Consultancy");
             $('#consultancy-modal #submitBtn').text("Add");
             let fileImg = $('#consultancy-modal .file-preview');
             fileImg.addClass('hidden');

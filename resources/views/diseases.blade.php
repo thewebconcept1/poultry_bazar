@@ -216,7 +216,7 @@
                 fileImg.removeClass('hidden').attr('src', mediaDetails.attr('mediaImage'));
 
 
-                $('#diseases-modal #modalTitle').text("Update Blog");
+                $('#diseases-modal #modalTitle').text("Update Diseases");
                 $('#diseases-modal #submitBtn').text("Update");
 
             });
@@ -225,7 +225,7 @@
         $('#addModalBtn').click(function() {
             $('#postDataForm')[0].reset();
             $('#updateId').val('');
-            $('#diseases-modal #modalTitle').text("Add Blog");
+            $('#diseases-modal #modalTitle').text("Add Diseases");
             $('#diseases-modal #submitBtn').text("Add");
             let fileImg = $('#diseases-modal .file-preview');
             fileImg.addClass('hidden');
