@@ -36,7 +36,6 @@ class UserController extends Controller
             $user->save();
 
             return response()->json(['success' => true, 'message' => 'Password updated'], 200);
-
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
@@ -80,7 +79,6 @@ class UserController extends Controller
             $user->save();
 
             return response()->json(['success' => true, 'message' => 'user details updated'], 200);
-
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
@@ -236,9 +234,9 @@ class UserController extends Controller
                 ]]);
 
                 return response()->json(['success' => true, 'message' => 'Login successful', 'user_details' => session('user_details')]);
-            } elseif($user->user_status != 1) {
+            } elseif ($user->user_status != 1) {
                 return response()->json(['success' => false, 'message' => 'Please contact your admin'], 400);
-            }else{
+            } else {
                 // Authentication failed
                 return response()->json(['success' => false, 'message' => 'Invalid credentials'], 401);
             }
@@ -263,5 +261,13 @@ class UserController extends Controller
         $userPrivileges = User::select('user_privileges')->where('id', $user_id)->first();
         $privileges = json_decode($userPrivileges->user_privileges, true); // First decode
         return view('priveleges', compact('privileges', 'user_id'));
+    }
+
+    // get  user data for profile and settings
+    public function settings()
+    {
+        $user = User::where('id', session('user_details')['id'])->first();
+        // return response()->json($user);
+        return view('setting', compact('user'));
     }
 }
