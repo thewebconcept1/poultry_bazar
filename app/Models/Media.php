@@ -25,4 +25,10 @@ class Media extends Model
     ];
 
     public $timestamps = false;
+
+    protected function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
 }
