@@ -7,6 +7,7 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\UserController;
+use App\Models\Market;
 use App\Models\Media;
 use Illuminate\Support\Facades\Route;
 
@@ -50,6 +51,7 @@ Route::middleware(['custom_auth'])->group(function () {
         Route::post('/saveMarket', [MarketController::class, 'addMarket']);
         Route::get('/marketupdates', [MarketController::class, 'getMarketUpdates']);
         Route::post('/updateMarketRates', [MarketController::class, 'marketRates']);
+        Route::post('/deleteMarket', [MarketController::class, 'deleteMarket']);
 
         Route::get('/media/{type?}', [MediaController::class, 'getMedia']);
         Route::post('/saveMedia', [MediaController::class, 'addMedia']);

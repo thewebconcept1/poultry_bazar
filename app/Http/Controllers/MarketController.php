@@ -11,7 +11,7 @@ class MarketController extends Controller
     // get markets
     public function getMarkets()
     {
-        $markets = Market::get();
+        $markets = Market::where('market_status', 1)->get();
         $cities = City::select('city_id', 'city_name')->get();
         return view('markets', ['markets' => $markets, 'cities' => $cities]);
     }
@@ -20,7 +20,7 @@ class MarketController extends Controller
     // get market updates
     public function getMarketUpdates()
     {
-        $marketsUpdates = Market::get();
+        $marketsUpdates = Market::where('market_status', 1)->get();
         return view('marketupdates', ['marketUpdates' => $marketsUpdates]);
     }
     // get market updates
@@ -52,6 +52,29 @@ class MarketController extends Controller
         }
     }
     // update market rates
+
+    // delete market
+    public function deleteMarket(Request $request)
+    {
+        try {
+            $user = session('user_details');
+
+            $vlaidatedData = $request->validate([
+                'market_id' => 'required',
+            ]);
+
+            $market = Market::where('market_id', $vlaidatedData['market_id'])->first();
+
+            $market->market_status = 0;
+            $market->save();
+
+            return response()->json(['success' => true, 'message' => 'market deleted'], 200);
+
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    // delete market
 
     // add market
     public function addMarket(Request $request)
