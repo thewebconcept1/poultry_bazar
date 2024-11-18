@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['custom_auth'])->group(function () {
 
-    Route::get('/', function () {
-        return view('dashboard');
-    });
+    Route::get('/', [UserController::class, 'getDashboard']);
+
+    
     Route::get('/notification', [NotificationController::class, 'getNotification']);
     Route::post('/addNotification', [NotificationController::class, 'addNotification']);
 

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
+use App\Models\Market;
+use App\Models\Media;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -20,6 +23,33 @@ class UserController extends Controller
     //     ], $code);
     // }
     // // user Defined
+
+    // get dashboard
+    public function getDashboard()
+    {
+        $user = session('user_details');
+
+        if ($user['user_role'] == 'superadmin') {
+            $totalOperators = User::where('user_role', 'operator')->where('user_status', 1)->count();
+            $totalCities = City::where('city_status', 1)->count();
+            $totalBlogs = Media::where('media_type', 'blogs')->where('media_status', 1)->count();
+            $totalDiseases = Media::where('media_type', 'diseases')->where('media_status', 1)->count();
+
+            return view('dashboard', ['totalOperators' => $totalOperators, 'totalCities' => $totalCities, 'totalBlogs' => $totalBlogs, 'totalDiseases' => $totalDiseases]);
+        }elseif ($user['user_role'] == 'operator') {
+            $totalMarkets = Market::where('market_status', 1)->count();
+            $totalBlogs = Media::where('media_type', 'blogs')->where('media_status', 1)->count();
+            $totalDiseases = Media::where('media_type', 'diseases')->where('media_status', 1)->count();
+            $pendingQuries = 25;
+            $blogs = Media::where('media_type', 'blogs')->where('media_status', 1)->orderBy('media_id', 'DESC')->limit(5)->get();
+            $diseases = Media::where('media_type', 'diseases')->where('media_status', 1)->orderBy('media_id', 'DESC')->limit(5)->get();
+            $consultancy = Media::where('media_type', 'consultancy')->where('media_status', 1)->orderBy('media_id', 'DESC')->limit(5)->get();
+
+            return view('dashboard', ['totalMarkets' => $totalMarkets, 'totalBlogs' => $totalBlogs, 'totalDiseases' => $totalDiseases, 'pendingQuries' => $pendingQuries, 'blogs' => $blogs, 'diseases' => $diseases, 'consultancy' => $consultancy]);
+        }
+
+    }
+    // get dashboard
 
     // update user password
     public function updateUserPassword(Request $request)
