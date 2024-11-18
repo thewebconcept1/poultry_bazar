@@ -70,7 +70,7 @@ class ApiController extends Controller
     // get markets
     public function getMarkets()
     {
-        $markets = Market::where('market_status', 1)->get();
+        $markets = Market::select('market_id', 'market_name')->where('market_status', 1)->get();
 
         return response()->json(['success' => true, 'markets' => $markets], 200);
     }
