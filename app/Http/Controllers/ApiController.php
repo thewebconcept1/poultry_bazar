@@ -12,11 +12,11 @@ class ApiController extends Controller
     public function getMedia($type = null)
     {
         if ($type == 'blogs') {
-            $media = Media::with('category')->where('media_type', $type)->where('media_status', 1)->get();
+            $media = Media::with('category:category_id,category_name')->where('media_type', $type)->where('media_status', 1)->get();
         }elseif ($type == 'diseases') {
-            $media = Media::with('category')->where('media_type', $type)->where('media_status', 1)->get();
+            $media = Media::with('category:category_id,category_name')->where('media_type', $type)->where('media_status', 1)->get();
         }elseif ($type == 'consultancy') {
-            $media = Media::with('category')->where('media_type', $type)->where('media_status', 1)->get();
+            $media = Media::with('category:category_id,category_name')->where('media_type', $type)->where('media_status', 1)->get();
         }else{
             return response()->json(['success' => false, 'message' => 'Please select type']);
         }
