@@ -179,7 +179,7 @@
                     </div>
                 </div>
             </div>
-            <div class="z-40 flex items-center md:mt-4 lg:w-[40vw] justify-center ">
+            <div class="z-40 flex items-center md:mt-4 mt-6 md:px-0 px-2 lg:w-[40vw] justify-center ">
                 <div class="grid grid-cols-2 gap-5 ">
                     <div class="max-w-[200px] p-4 text-center bg-white rounded-lg shadow-lg">
                         <div class="flex items-center justify-center mx-auto mb-4 ">
@@ -215,8 +215,8 @@
 
         <div class="">
             <div
-                class="container grid grid-cols-2 gap-10 px-6 py-4 mx-auto md:gap-16 xl:mt-0 sm:mt-10 lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-4 md:px-12">
-                <div class="h-auto border rounded-lg w-44 border-customOrangeDark">
+                class="container grid grid-cols-2 gap-6 px-4 py-4 mx-auto md:gap-10 xl:mt-0 sm:mt-10 lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-4 md:px-12">
+                <div class="w-full h-auto border rounded-lg border-customOrangeDark">
                     <div class="flex gap-10 m-4">
                         <div>
                             <h1 class="font-semibold">250.50</h1>
@@ -231,7 +231,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="h-20 border rounded-lg w-44 border-customOrangeDark">
+                <div class="w-full h-20 border rounded-lg border-customOrangeDark">
                     <div class="flex gap-10 m-4">
                         <div>
                             <h1 class="font-semibold">250.50</h1>
@@ -247,7 +247,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="h-20 border rounded-lg w-44 border-customOrangeDark">
+                <div class="w-full h-20 border rounded-lg border-customOrangeDark">
                     <div class="flex gap-10 m-4">
                         <div>
                             <h1 class="font-semibold">250.50</h1>
@@ -262,14 +262,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="h-20 border rounded-lg w-44 border-customOrangeDark">
+                <div class="w-full h-20 border rounded-lg border-customOrangeDark">
                     <div class="m-4 ms-6">
                         <h1 class="font-bold">20+More</h1>
-                        <p class="font-bold text-customOrangeDark">Cities in App</p>
+                        <p class="font-bold text-[15px] text-customOrangeDark">Cities in App</p>
                     </div>
                 </div>
                 <div class="h-20 px-4 text-center w-44 ">
-                    <h1 class="mt-1 font-semibold text-customGrayColorDark">Download App</h1>
+                    <h1 class="mt-1 font-semibold text-[100%] text-customGrayColorDark">Download App</h1>
                     <div class="flex justify-center">
                         <svg width="136" height="46" viewBox="0 0 136 46" fill="none"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
