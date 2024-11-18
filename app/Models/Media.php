@@ -31,4 +31,9 @@ class Media extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
+    public function getMediaImageAttribute($value)
+    {
+        return $value ? asset($value) : null;
+    }
+
 }

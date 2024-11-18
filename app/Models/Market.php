@@ -27,4 +27,9 @@ class Market extends Model
 
     public $timestamps = true;
 
+    public function getMarketImageAttribute($value)
+    {
+        return $value ? asset($value) : null;
+    }
+
 }
