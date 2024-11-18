@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\Market;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,8 @@ class MarketController extends Controller
     public function getMarkets()
     {
         $markets = Market::get();
-        return view('markets', ['markets', $markets]);
+        $cities = City::select('city_id', 'city_name')->get();
+        return view('markets', ['markets' => $markets, 'cities' => $cities]);
     }
     // get markets
 
@@ -45,13 +47,12 @@ class MarketController extends Controller
             $market->save();
 
             return response()->json(['success' => true, 'message' => 'Rates updated'], 200);
-
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
     }
     // update market rates
-    
+
     // add market
     public function addMarket(Request $request)
     {
@@ -63,22 +64,22 @@ class MarketController extends Controller
                 'market_name' => 'required',
             ]);
 
-            if($marketId){
+            if ($marketId) {
                 $market = Market::where('market_id', $marketId)->first();
                 if ($request->hasFile('market_image')) {
                     // Get the path of the image from the animal record
                     $imagePath = public_path($market->market_image); // Get the full image path
-    
+
                     // Delete the image file if it exists
                     if (file_exists($imagePath)) {
                         unlink($imagePath); // Delete the image from the file system
                     }
-    
+
                     $image = $request->file('market_image');
                     // Store the image in the 'animal_images' folder and get the file path
                     $imagePath = $image->store('market_images', 'public'); // stored in 'storage/app/public/animal_images'
                     $imageFullPath = 'storage/' . $imagePath;
-                    $user->market_image = $imageFullPath;
+                    $user->market_image = $imageFullPath ?? null;
                 }
                 $market->market_name = $vlaidatedData['market_name'];
                 $market->city_id = $vlaidatedData['city_id'];
@@ -86,7 +87,7 @@ class MarketController extends Controller
                 $market->save();
 
                 return response()->json(['success' => true, 'message' => 'Market update successfully'], 200);
-            }else{
+            } else {
 
                 if ($request->hasFile('market_image')) {
                     $image = $request->file('market_image');
@@ -98,12 +99,10 @@ class MarketController extends Controller
                     'added_user_id' => $user['id'],
                     'city_id' => $vlaidatedData['city_id'],
                     'market_name' => $vlaidatedData['market_name'],
-                    'market_image' => $vlaidatedData['imageFullPath'],
+                    'market_image' => $imageFullPath ?? null,
                 ]);
                 return response()->json(['success' => true, 'message' => 'Market updated successfully'], 200);
-
             }
-
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
