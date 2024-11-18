@@ -13,11 +13,11 @@ class ApiController extends Controller
     {
         if ($type == 'blogs') {
             $media = Media::with('category:category_id,category_name')->where('media_type', $type)->where('media_status', 1)->get();
-        }elseif ($type == 'diseases') {
+        } elseif ($type == 'diseases') {
             $media = Media::with('category:category_id,category_name')->where('media_type', $type)->where('media_status', 1)->get();
-        }elseif ($type == 'consultancy') {
+        } elseif ($type == 'consultancy') {
             $media = Media::with('category:category_id,category_name')->where('media_type', $type)->where('media_status', 1)->get();
-        }else{
+        } else {
             return response()->json(['success' => false, 'message' => 'Please select type']);
         }
 
@@ -30,7 +30,6 @@ class ApiController extends Controller
         }
 
         return response()->json(['success' => true, 'data' => $media], 200);
-
     }
     // get media
 
@@ -40,17 +39,19 @@ class ApiController extends Controller
         try {
             // Validate the incoming request
             $validatedData = $request->validate([
-                'market_ids' => 'required|array', // Expecting an array of market IDs
+                'market_ids' => 'nullable|array', // Allow market_ids to be nullable
             ]);
 
-            // Retrieve the markets based on the provided IDs
-            $markets = Market::whereIn('market_id', $validatedData['market_ids'])->get();
+            // Retrieve the markets based on the provided IDs or fetch all markets if IDs are null
+            $markets = isset($validatedData['market_ids']) && !empty($validatedData['market_ids'])
+                ? Market::whereIn('market_id', $validatedData['market_ids'])->get()
+                : Market::all(); // Fetch all markets if market_ids is null or empty
 
             // Check if markets were found
             if ($markets->isEmpty()) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'No markets found for the provided IDs.',
+                    'message' => 'No markets found.',
                     'data' => [],
                 ], 404);
             }
