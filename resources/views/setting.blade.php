@@ -3,6 +3,7 @@
     Operators
 @endsection
 @section('content')
+    @endphp
     <style>
         .active-tab {
             color: #FE8D2F;
@@ -73,6 +74,7 @@
                             <div class="flex">
                                 <span class="w-32 font-semibold text-gray-600">Full Name:</span>
                                 <span>{{ $user['name'] }}</span>
+
                             </div>
                             <div class="flex">
                                 <span class="w-32 font-semibold text-gray-600">Email:</span>
