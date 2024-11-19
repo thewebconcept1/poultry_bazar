@@ -6,8 +6,10 @@
     <div class="w-full pt-10 min-h-[88vh] gradient-border  rounded-lg">
         <div class="flex justify-between px-5">
             <h1 class="text-3xl font-bold ">Notifications</h1>
-            <button data-modal-target="blog-modal" data-modal-toggle="blog-modal"
-                class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Add New + </button>
+            @if (session('user_details')['user_role'] == 'superadmin')
+                <button data-modal-target="blog-modal" data-modal-toggle="blog-modal"
+                    class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Add New + </button>
+            @endif
         </div>
         @php
             $headers = [''];

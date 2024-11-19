@@ -16,6 +16,7 @@ class City extends Model
     protected $fillable = [
         'city_name',
         'city_province',
+        'city_status',
     ];
 
     public $timestamps = true;

@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
+use App\Models\Market;
+use App\Models\Media;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use App\Mail\ForgotPasswordMail;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -21,22 +26,103 @@ class UserController extends Controller
     // }
     // // user Defined
 
+    // reset password
+    public function resetPassword(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'user_id' => 'required',
+                'password' => 'required',
+            ]);
+
+            $user = User::where('id', $validatedData['user_id'])->first();
+
+            $user->password = $validatedData['password'];
+
+            $user->save();
+
+            return response()->json(['success' => true, 'message' => 'Password has been reset'], 200);
+
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    // reset password
+
+    // forgot password
+    public function forgotPassword(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'email' => 'required',
+            ]);
+
+            $user = User::where('user_email', $validatedData['email'])->where('user_status', 1)->first();
+            
+            if(!$user){
+                return response()->json(['success' => false, 'message' => 'Please contact your admin'], 400);
+            }
+            
+            Mail::to($validatedData['email'])->send(new ForgotPasswordMail(Hash::make($user->id)));
+
+            return response()->json(['success' => true, 'message' => 'A mail has been sent to gmail account to reset your password.'], 200);
+
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    // forgot password
+    // get dashboard
+    public function getDashboard()
+    {
+        $user = session('user_details');
+
+        if ($user['user_role'] == 'superadmin') {
+            $totalOperators = User::where('user_role', 'operator')->where('user_status', 1)->count();
+            $totalCities = City::where('city_status', 1)->count();
+            $totalBlogs = Media::where('media_type', 'blogs')->where('media_status', 1)->count();
+            $totalDiseases = Media::where('media_type', 'diseases')->where('media_status', 1)->count();
+
+            return view('dashboard', ['totalOperators' => $totalOperators, 'totalCities' => $totalCities, 'totalBlogs' => $totalBlogs, 'totalDiseases' => $totalDiseases]);
+        }elseif ($user['user_role'] == 'operator') {
+            $totalMarkets = Market::where('market_status', 1)->count();
+            $totalBlogs = Media::where('media_type', 'blogs')->where('media_status', 1)->count();
+            $totalDiseases = Media::where('media_type', 'diseases')->where('media_status', 1)->count();
+            $pendingQuries = 25;
+            $blogs = Media::where('media_type', 'blogs')->where('media_status', 1)->orderBy('media_id', 'DESC')->limit(5)->get();
+            $diseases = Media::where('media_type', 'diseases')->where('media_status', 1)->orderBy('media_id', 'DESC')->limit(5)->get();
+            $consultancy = Media::where('media_type', 'consultancy')->where('media_status', 1)->orderBy('media_id', 'DESC')->limit(5)->get();
+
+            return view('dashboard', ['totalMarkets' => $totalMarkets, 'totalBlogs' => $totalBlogs, 'totalDiseases' => $totalDiseases, 'pendingQuries' => $pendingQuries, 'blogs' => $blogs, 'diseases' => $diseases, 'consultancy' => $consultancy]);
+        }
+
+    }
+    // get dashboard
+
     // update user password
     public function updateUserPassword(Request $request)
     {
         try {
             $userDetails = session('user_details');
+
+            // Validate the request data
             $validatedData = $request->validate([
-                'new_password' => 'required',
+                'old_password' => 'required',
+                'new_password' => 'required|min:8|confirmed',
             ]);
 
             $user = User::where('id', $userDetails['id'])->first();
 
-            $user->password = $validatedData['password'];
+            if (!$user) {
+                return response()->json(['success' => false, 'message' => 'User not found'], 404);
+            }
+
+            if (!Hash::check($validatedData['old_password'], $user->password)) {
+                return response()->json(['success' => false, 'message' => 'The old password is incorrect'], 400);
+            }
+            $user->password = Hash::make($validatedData['new_password']);
             $user->save();
-
-            return response()->json(['success' => true, 'message' => 'Password updated'], 200);
-
+            return response()->json(['success' => true, 'message' => "Password change successfully"], 200);
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
@@ -59,7 +145,7 @@ class UserController extends Controller
 
             $user->name = $validatedData['name'];
             $user->email = $validatedData['email'];
-            $user->phone = $validatedData['phone'];
+            $user->user_phone = $validatedData['phone'];
             $user->address = $validatedData['address'];
             if ($request->hasFile('user_image')) {
                 // Get the path of the image from the animal record
@@ -80,7 +166,6 @@ class UserController extends Controller
             $user->save();
 
             return response()->json(['success' => true, 'message' => 'user details updated'], 200);
-
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
@@ -236,6 +321,8 @@ class UserController extends Controller
                 ]]);
 
                 return response()->json(['success' => true, 'message' => 'Login successful', 'user_details' => session('user_details')]);
+            } elseif ($user->user_status != 1) {
+                return response()->json(['success' => false, 'message' => 'Please contact your admin'], 400);
             } else {
                 // Authentication failed
                 return response()->json(['success' => false, 'message' => 'Invalid credentials'], 401);
@@ -261,5 +348,13 @@ class UserController extends Controller
         $userPrivileges = User::select('user_privileges')->where('id', $user_id)->first();
         $privileges = json_decode($userPrivileges->user_privileges, true); // First decode
         return view('priveleges', compact('privileges', 'user_id'));
+    }
+
+    // get  user data for profile and settings
+    public function settings()
+    {
+        $user = User::where('id', session('user_details')['id'])->first();
+        // return response()->json($user);
+        return view('setting', compact('user'));
     }
 }

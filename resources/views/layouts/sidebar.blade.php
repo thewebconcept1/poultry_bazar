@@ -16,7 +16,7 @@
 <aside id="sidebar"
     class="fixed top-0  z-40   w-64 h-[88vh]  transition-transform -translate-x-full  sm:translate-x-0  md:ml-[10px]  sm:mt-[100px] overflow-y-auto left-auto "
     aria-label="Sidebar">
-    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 gradient-border rounded-2xl">
+    <div class="h-full px-3 py-4 overflow-y-auto  gradient-border rounded-2xl z-20 relative">
         <ul class="pb-10 space-y-2 font-medium">
             <li>
                 <a href="../"
@@ -33,7 +33,7 @@
                 </a>
                 </a>
             </li>
-            @if ($userRole === 'superadmin' || isset($privileges['Blogs']['view']))
+            @if ($userRole === 'superadmin' || isset($privileges['City']['view']))
                 <li>
                     <a href="../Cities"
                         class="flex items-center p-2 text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('Cities') ? 'active bg-customOrangeDark text-white' : '' }}">
@@ -73,7 +73,7 @@
                     </a>
                 </li>
             @endif
-            @if ($userRole === 'superadmin' || isset($privileges['Modules']['view']))
+            @if ($userRole === 'superadmin')
                 <li>
                     <a href="../modules"
                         class="flex items-center p-2  text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('modules') ? 'active bg-customOrangeDark text-white ' : '' }} ">
@@ -332,6 +332,8 @@
                 <a href="../Logout"
                     class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group  {{ request()->is('logout') ? 'active bg-customOrangeDark text-white ' : '' }} ">
                     <svg class="flex-shrink-0  w-7 h-7 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('logout') ? 'text-white' : '' }}"
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group  ">
+                    <svg class="flex-shrink-0 text-white transition duration-75 w-7 h-7 group-hover:text-transparent "
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 22 22">
                         <path
@@ -344,11 +346,11 @@
             </li>
         </ul>
     </div>
-    {{-- <div>
+    <div>
 
-        <img class="absolute -translate-x-1/2 opacity-50 bottom-1 grayscale sidebar-bg left-1/2"
+        <img class="absolute -translate-x-1/2 opacity-20 bottom-1 grayscale sidebar-bg left-1/2 z-30"
             src="{{ asset('assets/sidebar-bg.png') }}" alt="Hen">
-    </div> --}}
+    </div>
 </aside>
 
 <div class="p-4  sm:ml-64 pt-[100px]">
