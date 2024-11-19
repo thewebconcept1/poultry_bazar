@@ -147,10 +147,10 @@
 
     <div class="section" id="home">
         <div
-            class="container mx-auto relative z-20 flex flex-col px-[5vw] items-center justify-center w-full lg:flex-row lg:justify-between xl:mx-auto">
+            class=" container mx-auto relative z-20  flex flex-col px-[5vw] items-center justify-center w-full lg:flex-row lg:justify-between xl:mx-auto">
 
             <!-- Welcome Section -->
-            <div class="relative z-40 lg:w-[40vh] flex flex-col items-center justify-center h-full ">
+            <div class="relative z-40 flex flex-col items-center justify-center w-[70vw] h-full ">
                 <div id="welcomeDiv" class="text-center lg:text-left">
                     <h2 class="text-4xl font-bold leading-tight lg:text-5xl text-customOrangeDark">
                         <span>Welcome to</span><br> Poultry Bazar
@@ -165,7 +165,7 @@
                 </div>
             </div>
             <!-- Signup Form Section (Initially hidden) -->
-            <div class="w-[20vw] lg:block hidden h-full ">
+            <div class="hidden w-[30vw] h-full lg:block">
                 <div class="p-5 w-5xl xl:px-5 xl:p-0">
                     <div>
                         <div class="absolute z-20 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
@@ -179,7 +179,7 @@
                     </div>
                 </div>
             </div>
-            <div class="z-40 flex items-center md:mt-4 mt-6 md:px-0 px-2 lg:w-[40vw] justify-center ">
+            <div class="z-40 flex items-center justify-center w-[80vw] px-2 mt-6 md:mt-4 md:px-0 ">
                 <div class="grid grid-cols-2 gap-5 ">
                     <div class="max-w-[200px] p-4 text-center bg-white rounded-lg shadow-lg">
                         <div class="flex items-center justify-center mx-auto mb-4 ">
