@@ -11,6 +11,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use App\Mail\ForgotPasswordMail;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -24,6 +26,52 @@ class UserController extends Controller
     // }
     // // user Defined
 
+    // reset password
+    public function resetPassword(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'user_id' => 'required',
+                'password' => 'required',
+            ]);
+
+            $user = User::where('id', $validatedData['user_id'])->first();
+
+            $user->password = $validatedData['password'];
+
+            $user->save();
+
+            return response()->json(['success' => true, 'message' => 'Password has been reset'], 200);
+
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    // reset password
+
+    // forgot password
+    public function forgotPassword(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'email' => 'required',
+            ]);
+
+            $user = User::where('user_email', $validatedData['email'])->where('user_status', 1)->first();
+            
+            if(!$user){
+                return response()->json(['success' => false, 'message' => 'Please contact your admin'], 400);
+            }
+            
+            Mail::to($validatedData['email'])->send(new ForgotPasswordMail(Hash::make($user->id)));
+
+            return response()->json(['success' => true, 'message' => 'A mail has been sent to gmail account to reset your password.'], 200);
+
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    // forgot password
     // get dashboard
     public function getDashboard()
     {
