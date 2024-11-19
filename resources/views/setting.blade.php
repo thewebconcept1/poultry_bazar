@@ -3,7 +3,6 @@
     Operators
 @endsection
 @section('content')
-    @endphp
     <style>
         .active-tab {
             color: #FE8D2F;

@@ -13,7 +13,7 @@
         </div>
         <input type="file" class="file-input hidden" name="{{ $name }}" accept="image/*"
             onchange="previewFile(event)" />
-        <img class="file-preview absolute top-0 left-0 w-full h-full object-contain hidden bg-black rounded-lg" />
+        <img class="file-preview absolute top-0 left-0 w-full h-full object-contain hidden bg-customOrangeDark rounded-lg" />
     </label>
 </div>
 

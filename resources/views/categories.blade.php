@@ -37,6 +37,8 @@
             @if ($userRole === 'superadmin' || isset($privileges['Categories']['add']))
                 <button id="addModalBtn" data-modal-target="categories-modal" data-modal-toggle="categories-modal"
                     class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Add New +</button>
+                    @else
+                    <button data-modal-target="categories-modal" data-modal-toggle="categories-modal"></button>
             @endif
         </div>
 
@@ -50,8 +52,8 @@
                     @foreach ($categories as $category)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img class='rounded-full h-20 w-20 bg-black object-contain '
-                                    src="../{{ $category->category_image }}" alt='{{ $category->category_name }}'>
+                            <td><img class='rounded-full h-20 w-20 bg-customOrangeDark object-contain'
+                                    src="../{{ $category->category_image ??  'assets/default-logo-1.png'  }}" alt='Category Image'>
                             </td>
                             <td>{{ $category->category_type }}</td>
                             <td>{{ $category->category_name }}</td>
@@ -61,7 +63,7 @@
                                     @if ($userRole === 'superadmin' || isset($privileges['Categories']['edit']))
                                         <button categoryId="{{ $category->category_id }}" class="updateDataBtn"
                                             categoryName="{{ $category->category_name }}"
-                                            categoryImage="../{{ $category->category_image }}"
+                                            categoryImage="../{{ $category->category_image ??  'assets/default-logo-1.png'  }}"
                                             categoryType="{{ $category->category_type }}">
                                             <svg width='36' height='36' viewBox='0 0 36 36' fill='none'
                                                 xmlns='http://www.w3.org/2000/svg'>
@@ -190,6 +192,7 @@
         updateDatafun();
         $('#addModalBtn').click(function() {
             $('#postDataForm')[0].reset();
+            $('#categoryType').trigger('change');
             $('#updateId').val('');
             let fileImg = $('#categories-modal .file-preview');
             fileImg.addClass('hidden');
