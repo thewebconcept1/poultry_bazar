@@ -20,10 +20,10 @@
                     <tr>
 
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $module->module_name }}</td>
-                        <td><img class="h-16 w-16 object-contain bg-black rounded-full" src="{{ $module->module_image }}"
+                        <td class="whitespace-nowrap">{{ $module->module_name }}</td>
+                        <td><img class="h-16 w-16 object-cover bg-customOrangeDark rounded-full" src="{{ $module->module_image }}"
                                 alt="{{ $module->module_name }}"></td>
-                        <td>{{ $module->module_description }}</td>
+                        <td class="min-w-[280px]">{{ $module->module_description }}</td>
 
                         <td>
                             <span class='flex gap-4'>

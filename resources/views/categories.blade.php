@@ -52,7 +52,7 @@
                     @foreach ($categories as $category)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><img class='rounded-full h-20 w-20 bg-customOrangeDark object-contain'
+                            <td><img class='rounded-full h-20 w-20 bg-customOrangeDark object-cover'
                                     src="../{{ $category->category_image ??  'assets/default-logo-1.png'  }}" alt='Category Image'>
                             </td>
                             <td>{{ $category->category_type }}</td>

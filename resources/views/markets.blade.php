@@ -30,7 +30,7 @@
                 @foreach ($markets as $market)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td><img class='rounded-full h-20 w-20 bg-customOrangeDark object-contain border-2 '
+                        <td><img class='rounded-full h-20 w-20 bg-customOrangeDark object-cover border-2 '
                                 src="{{ $market->market_image ??  asset('assets/default-logo-1.png') }}"
                                 alt='{{ $market->market_name }}'>
                         <td>{{ $market->market_name }}</td>
