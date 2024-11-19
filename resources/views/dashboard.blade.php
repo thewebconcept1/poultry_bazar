@@ -60,7 +60,7 @@
                         <p class="text-2xl font-bold text-gray-800 ">72</p>
                     </div>
                     <div class="flex items-center justify-center rounded-full">
-                        <img class="h-14 w-14" src="{{ asset('assets/icons/dex icon1.png') }}" alt="">
+                        <img class="w-16 h-16" src="{{ asset('assets/icons/dex icon1.png') }}" alt="">
                     </div>
                 </div>
                 <div
@@ -70,7 +70,7 @@
                         <p class="text-2xl font-bold text-gray-800 ">5,732</p>
                     </div>
                     <div class="flex items-center justify-center rounded-full">
-                        <img class="h-14 w-14" src="{{ asset('assets/icons/dex icon2.png') }}" alt="">
+                        <img class="w-16 h-16" src="{{ asset('assets/icons/dex icon2.png') }}" alt="">
                     </div>
                 </div>
                 <div
@@ -80,7 +80,7 @@
                         <p class="text-2xl font-bold text-gray-800 ">5,732</p>
                     </div>
                     <div class="flex items-center justify-center rounded-full">
-                        <img class="h-14 w-14" src="{{ asset('assets/icons/dex icon3.png') }}" alt="">
+                        <img class="w-16 h-16" src="{{ asset('assets/icons/dex icon3.png') }}" alt="">
                     </div>
                 </div>
                 <div
@@ -90,7 +90,7 @@
                         <p class="text-2xl font-bold text-gray-800 ">10</p>
                     </div>
                     <div class="flex items-center justify-center rounded-full">
-                        <img class="h-14 w-14" src="{{ asset('assets/icons/dex icon4.png') }}" alt="">
+                        <img class="w-16 h-16" src="{{ asset('assets/icons/dex icon4.png') }}" alt="">
                     </div>
                 </div>
             </div>
