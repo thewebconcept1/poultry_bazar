@@ -16,7 +16,7 @@
                 @foreach ($users as $user)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td><img class="h-20 w-20 rounded-full bg-black object-contain  gradient-border"
+                        <td><img class="h-20 w-20 rounded-full bg-customOrangeDark object-cover  gradient-border"
                                 src="{{$user->user_image ?? asset('assets/default-logo-1.png') }}"></td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
