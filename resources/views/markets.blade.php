@@ -32,7 +32,7 @@
                                 src="../{{ $market->market_image ?? 'assets/default-logo-1.png' }}"
                                 alt='{{ $market->market_name }}'>
                         <td>{{ $market->market_name }}</td>
-                        <td>29/04/49</td>
+                        <td>{{ $market->updated_date }}</td>
 
                         <td>
                             <span class='flex gap-4'>

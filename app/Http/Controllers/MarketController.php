@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use App\Models\Market;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class MarketController extends Controller
@@ -13,6 +14,9 @@ class MarketController extends Controller
     {
         $markets = Market::where('market_status', 1)->get();
         $cities = City::select('city_id', 'city_name')->get();
+        foreach ($markets as $market) {
+            $market->updated_date = Carbon::parse($market->created_at)->format('M d, Y');
+        }
         return view('markets', ['markets' => $markets, 'cities' => $cities]);
     }
     // get markets
@@ -69,7 +73,6 @@ class MarketController extends Controller
             $market->save();
 
             return response()->json(['success' => true, 'message' => 'market deleted'], 200);
-
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }

@@ -16,7 +16,7 @@ Route::middleware(['custom_auth'])->group(function () {
 
     Route::get('/', [UserController::class, 'getDashboard']);
 
-    
+
     Route::get('/notification', [NotificationController::class, 'getNotification']);
     Route::post('/addNotification', [NotificationController::class, 'addNotification']);
 
