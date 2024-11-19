@@ -227,9 +227,9 @@
             @endif
             @if ($userRole === 'superadmin' || isset($privileges['Categories']['view']))
                 <li>
-                    <a href="../categories"
+                    <a href="../categories/all"
                         class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('categories') || request()->is('categories/all') || request()->is('categories/blog') || request()->is('categories/diseases') || request()->is('categories/consultancy') ? 'active bg-customOrangeDark text-white ' : '' }} ">
-                        <svg class="flex-shrink-0 w-6 h-6 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('categories') ? 'text-white' : '' }}"
+                        <svg class="flex-shrink-0 w-6 h-6 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('categories') || request()->is('categories/all') || request()->is('categories/blog') || request()->is('categories/diseases') || request()->is('categories/consultancy')? 'text-white' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                             viewBox="0 0 22 22">
                             <path
@@ -332,14 +332,10 @@
                 <a href="../Logout"
                     class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group  {{ request()->is('logout') ? 'active bg-customOrangeDark text-white ' : '' }} ">
                     <svg class="flex-shrink-0  w-7 h-7 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('logout') ? 'text-white' : '' }}"
-                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group  ">
-                    <svg class="flex-shrink-0 text-white transition duration-75 w-7 h-7 group-hover:text-transparent "
-                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                        viewBox="0 0 22 22">
+                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-lg hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group  " fill="currentColor">
                         <path
                             d="M5.83333 13.332L2.5 9.9987M2.5 9.9987L5.83333 6.66536M2.5 9.9987H14.1667M9.16667 13.332V14.1654C9.16667 14.8284 9.43006 15.4643 9.8989 15.9331C10.3677 16.402 11.0036 16.6654 11.6667 16.6654H15C15.663 16.6654 16.2989 16.402 16.7678 15.9331C17.2366 15.4643 17.5 14.8284 17.5 14.1654V5.83203C17.5 5.16899 17.2366 4.53311 16.7678 4.06426C16.2989 3.59542 15.663 3.33203 15 3.33203H11.6667C11.0036 3.33203 10.3677 3.59542 9.8989 4.06426C9.43006 4.53311 9.16667 5.16899 9.16667 5.83203V6.66536"
                             stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
-
                     </svg>
                     <span class="flex-1 ms-3 whitespace-nowrap">Log Out</span>
                 </a>
