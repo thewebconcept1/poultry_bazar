@@ -60,9 +60,9 @@ Route::middleware(['custom_auth'])->group(function () {
         Route::get('/categories/{type?}', [CategoryController::class, 'getCategory']);
         Route::post('/deleteCategory', [CategoryController::class, 'deleteCategory']);
         Route::post('/saveCategory', [CategoryController::class, 'addCategory']);
-        Route::post('/register', [UserController::class, 'RequestForService']);
     });
 });
+Route::post('/register', [UserController::class, 'RequestForService']);
 Route::get('/login', [ModuleController::class, 'loginData']);
 Route::post('/Login', [UserController::class, 'login']);
 Route::get('/forgotPassword', [UserController::class, 'forgotPassword']);
