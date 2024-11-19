@@ -3,7 +3,7 @@
 
         <div class="flex items-center justify-between mx-auto">
             <div class="flex items-center h-full">
-                <img class="h-[60%]" src="{{ asset('assets/logo-icon.svg') }}" alt="Logo">
+                <img class="h-[60%]" src="{{ asset('assets/icons/Logonewsvg.svg') }}" alt="Logo">
             </div>
             <div class="flex items-center space-x-4">
                 <div class="relative">
@@ -157,7 +157,7 @@
                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                     <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
                         <div>{{ session('user_details')['name'] }}</div>
-                        <div class="font-medium truncate text-xs">{{ session('user_details')['email'] }}</div>
+                        <div class="text-xs font-medium truncate">{{ session('user_details')['email'] }}</div>
                     </div>
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
                         aria-labelledby="dropdownUserAvatarButton">
