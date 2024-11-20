@@ -316,7 +316,7 @@ return view('resetpassword');
             )
                 ->where('email', $email)->first();
 
-            if ($user && Hash::check($password, $user->password)) {
+            if ($user && Hash::check($password, $user->password) && $user->user_status == 1) {
                 // Create a session for the user
                 session(['user_details' => [
                     'token' => $token, // Set token value if needed
