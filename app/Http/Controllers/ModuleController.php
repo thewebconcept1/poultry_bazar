@@ -116,7 +116,7 @@ class ModuleController extends Controller
     public function loginData()
     {
 
-        $modules = Module::all();
+        $modules = Module::where('module_status' , 1)->get();
         return view('auth.login', compact('modules'));
     }
 }

@@ -16,6 +16,8 @@
             @if ($userRole === 'superadmin' || isset($privileges['Blogs']['add']))
                 <button id="addModalBtn" data-modal-target="blog-modal" data-modal-toggle="blog-modal"
                     class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Add New + </button>
+                    @else
+                    <button data-modal-target="blog-modal" data-modal-toggle="blog-modal"></button>
             @endif
         </div>
         @php
@@ -27,13 +29,13 @@
                 @foreach ($media as $data)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td><img class="h-16 w-16 object-contain  bg-black rounded-full "
-                                src="../{{ $data->media_image ?? 'assets/Profile photo (1) 1.png' }}" alt='Blog Image'></td>
+                        <td><img class="h-16 w-16 object-cover  bg-customOrangeDark rounded-full "
+                                src="{{ $data->media_image ??  asset('assets/default-logo-1.png') }}" alt='Blog Image'></td>
                         <td class='text-xs xl:text-[15px]'>{{ $data->media_title }}</td>
-                        <td class='text-xs xl:text-[15px] '>{{ $data->media_description }}</td>
-                        <td class='text-sm xl:text-[15px]'>{{ $data->category_name }}</td>
-                        <td class='text-sm xl:text-[15px]'>{{ $data->date }} </td>
-                        <td class='text-sm xl:text-[15px]'>{{ $data->media_author }}</td>
+                        <td class='text-xs xl:text-[15px] min-w-[280px]'>{{ $data->media_description }}</td>
+                        <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->category_name }}</td>
+                        <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->date }} </td>
+                        <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->media_author }}</td>
 
                         <td>
                             <span class='flex gap-4'>
@@ -66,7 +68,7 @@
                                     mediaCategory="{{ $data->category_name }}" mediaCategoryId={{ $data->category_id }}
                                     mediaDate="{{ $data->date }}" mediaDescription="{{ $data->media_description }}"
                                     mediaId="{{ $data->media_id }}"
-                                    mediaImage="../{{ $data->media_image ?? 'assets/Surface 3 png.png' }}"
+                                    mediaImage="{{  $data->media_image ??  asset('assets/default-logo-req.png') }}"
                                     class="viewModalBtn">
                                     <svg width='37' height='36' viewBox='0 0 37 36' fill='none'
                                         xmlns='http://www.w3.org/2000/svg'>
@@ -223,6 +225,7 @@
         updateDatafun();
         $('#addModalBtn').click(function() {
             $('#postDataForm')[0].reset();
+            $('#categoryId').trigger('change');
             $('#updateId').val('');
             $('#blog-modal #modalTitle').text("Add Blog");
             $('#blog-modal #submitBtn').text("Add");

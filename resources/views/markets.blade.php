@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('title')
-    Operators
+    Market
 @endsection
 @section('content')
     @php
@@ -16,6 +16,8 @@
             @if ($userRole === 'superadmin' || isset($privileges['Markets']['add']))
                 <button id="addModalBtn" data-modal-target="market-modal" data-modal-toggle="market-modal"
                     class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Add New + </button>
+                    @else
+                    <button data-modal-target="market-modal" data-modal-toggle="market-modal"></button>
             @endif
         </div>
         @php
@@ -28,8 +30,8 @@
                 @foreach ($markets as $market)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td><img class='rounded-full h-20 w-20 bg-black object-contain'
-                                src="../{{ $market->market_image ?? 'assets/default-logo-1.png' }}"
+                        <td><img class='rounded-full h-20 w-20 bg-customOrangeDark object-cover border-2 '
+                                src="{{ $market->market_image ??  asset('assets/default-logo-1.png') }}"
                                 alt='{{ $market->market_name }}'>
                         <td>{{ $market->market_name }}</td>
                         <td>{{ $market->updated_date }}</td>
@@ -38,7 +40,7 @@
                             <span class='flex gap-4'>
                                 @if ($userRole === 'superadmin' || isset($privileges['Markets']['edit']))
                                     <button marketId="{{ $market->market_id }}" class="updateDataBtn"
-                                        marketName="{{ $market->market_name }}" marketImage="../{{ $market->market_image }}"
+                                        marketName="{{ $market->market_name }}" marketImage="{{ $market->market_image ??  asset('assets/default-logo-req.png') }}"
                                         marketCity="{{ $market->city_id }}">
                                         <svg width='36' height='36' viewBox='0 0 36 36' fill='none'
                                             xmlns='http://www.w3.org/2000/svg'>
@@ -127,6 +129,7 @@
         updateDatafun();
         $('#addModalBtn').click(function() {
             $('#postDataForm')[0].reset();
+            $('#MarketCity').trigger('change');
             $('#updateId').val('');
             let fileImg = $('#market-modal .file-preview');
             fileImg.addClass('hidden');
