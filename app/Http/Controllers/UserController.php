@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Mail\ForgotPasswordMail;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
@@ -35,14 +36,23 @@ class UserController extends Controller
                 'password' => 'required',
             ]);
 
-            $user = User::where('id', $validatedData['user_id'])->first();
+            // Decrypt the hashed user_id
+            $decryptedId = Crypt::decrypt($validatedData['user_id']);
 
+            $user = User::find($decryptedId);
+
+            if (!$user) {
+                return response()->json(['success' => false, 'message' => 'User not found'], 404);
+            }
+
+            // Hash the password before saving it
             $user->password = $validatedData['password'];
 
             $user->save();
 
             return response()->json(['success' => true, 'message' => 'Password has been reset'], 200);
-
+        } catch (\Illuminate\Contracts\Encryption\DecryptException $e) {
+            return response()->json(['success' => false, 'message' => 'Invalid user ID'], 400);
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
@@ -58,15 +68,14 @@ class UserController extends Controller
             ]);
 
             $user = User::where('user_email', $validatedData['email'])->where('user_status', 1)->first();
-            
-            if(!$user){
+
+            if (!$user) {
                 return response()->json(['success' => false, 'message' => 'Please contact your admin'], 400);
             }
-            
+
             Mail::to($validatedData['email'])->send(new ForgotPasswordMail(Hash::make($user->id)));
 
             return response()->json(['success' => true, 'message' => 'A mail has been sent to gmail account to reset your password.'], 200);
-
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
@@ -84,7 +93,7 @@ class UserController extends Controller
             $totalDiseases = Media::where('media_type', 'diseases')->where('media_status', 1)->count();
 
             return view('dashboard', ['totalOperators' => $totalOperators, 'totalCities' => $totalCities, 'totalBlogs' => $totalBlogs, 'totalDiseases' => $totalDiseases]);
-        }elseif ($user['user_role'] == 'operator') {
+        } elseif ($user['user_role'] == 'operator') {
             $totalMarkets = Market::where('market_status', 1)->count();
             $totalBlogs = Media::where('media_type', 'blogs')->where('media_status', 1)->count();
             $totalDiseases = Media::where('media_type', 'diseases')->where('media_status', 1)->count();
@@ -95,7 +104,6 @@ class UserController extends Controller
 
             return view('dashboard', ['totalMarkets' => $totalMarkets, 'totalBlogs' => $totalBlogs, 'totalDiseases' => $totalDiseases, 'pendingQuries' => $pendingQuries, 'blogs' => $blogs, 'diseases' => $diseases, 'consultancy' => $consultancy]);
         }
-
     }
     // get dashboard
 

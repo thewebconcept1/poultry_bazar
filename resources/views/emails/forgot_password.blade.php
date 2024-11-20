@@ -59,7 +59,7 @@
             <p>Hello,</p>
             <p>We received a request to reset your password. Please use the following link to reset your password:</p>
 
-            <div class="otp-code"><a href="http://127.0.0.1:8011/resetPassword/{{$link}}">click here!</a></div>
+            <div class="otp-code"><a href="http://poultrybazar.healthylifemanager.com/resetPassword/{{$link}}">click here!</a></div>
 
             <p>Thank you,<br>Poultry Bazar</p>
         </div>

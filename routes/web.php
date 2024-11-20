@@ -65,7 +65,8 @@ Route::middleware(['custom_auth'])->group(function () {
 Route::post('/register', [UserController::class, 'RequestForService']);
 Route::get('/login', [ModuleController::class, 'loginData']);
 Route::post('/Login', [UserController::class, 'login']);
-Route::get('/forgotPassword', [UserController::class, 'forgotPassword']);
+Route::post('/forgotPassword', [UserController::class, 'forgotPassword']);
+Route::post('/resetPassword/{id}', [UserController::class, 'resetPassword']);
 
 Route::match(['get', 'post'], '/logout', [UserController::class, 'logout']);
 Route::get('/landingpage', function () {
