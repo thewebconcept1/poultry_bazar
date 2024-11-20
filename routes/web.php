@@ -66,7 +66,8 @@ Route::post('/register', [UserController::class, 'RequestForService']);
 Route::get('/login', [ModuleController::class, 'loginData']);
 Route::post('/Login', [UserController::class, 'login']);
 Route::post('/forgotPassword', [UserController::class, 'forgotPassword']);
-Route::post('/resetPassword/{id}', [UserController::class, 'resetPassword']);
+Route::post('/resetPassword', [UserController::class, 'resetPassword']);
+Route::get('/resetPassword', [UserController::class, 'resetPasswordView']);
 
 Route::match(['get', 'post'], '/logout', [UserController::class, 'logout']);
 Route::get('/landingpage', function () {

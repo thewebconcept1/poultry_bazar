@@ -193,7 +193,7 @@
                             <div class="mt-10">
                                 <div>
                                     <label for="Femail" class="block text-sm text-center">Enter your Email to receive password reset link.</label>
-                                    <input type="email" id="Femail"
+                                    <input type="email" id="Femail" required
                                         class="w-full mt-3 bg-white border border-gray-400 rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm focus:border-customOrangeDark focus:outline-none"
                                         placeholder="Enter your email" name="email">
                                 </div>
@@ -803,7 +803,61 @@
                     }
                 });
             });
-            
+            $("#forgotForm").submit(function(event) {
+                event.preventDefault();
+                var formData = $(this).serialize();
+                // Send the AJAX request
+                $.ajax({
+                    type: "POST",
+                    url: "/forgotPassword",
+                    data: formData,
+                    dataType: "json",
+                    beforeSend: function() {
+                        $('#Fspinner').removeClass('hidden');
+                        $('#Ftext').addClass('hidden');
+                        $('#forgotbutton').attr('disabled', true);
+                    },
+                    success: function(response) {
+                        // Handle the success response here
+
+                        if (response.success == true) {
+                            $('#Ftext').removeClass('hidden');
+                            $('#Fspinner').addClass('hidden');
+                            $('#forgotbutton').attr('disabled', true);
+                            $('#Ftext').text("Mail Send!");
+                            Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Success",
+            text: response.message,
+        });
+
+
+                        } else if (response.success == false) {
+                            Swal.fire(
+                                'Warning!',
+                                response.message,
+                                'warning'
+                            )
+                        }
+                    },
+                    error: function(jqXHR) {
+
+                        let response = JSON.parse(jqXHR.responseText);
+
+                      
+                            Swal.fire(
+                                'Warning!',
+                                response.message,
+                                'warning'
+                            )
+                        $('#Ftext').removeClass('hidden');
+                        $('#Fspinner').addClass('hidden');
+                        $('#forgotbutton').attr('disabled', false);
+                    }
+                });
+            });
+
             const $switchToLoginBtn = $('#switchToLoginBtn');
             const $mainContent = $('#mainContent');
             const $signupSection = $('#signupSection');
