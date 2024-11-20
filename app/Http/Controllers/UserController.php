@@ -27,27 +27,29 @@ class UserController extends Controller
     // }
     // // user Defined
 
+public function resetPasswordView(){
+return view('resetpassword');
+}
+
     // reset password
     public function resetPassword(Request $request)
     {
         try {
             $validatedData = $request->validate([
                 'user_id' => 'required',
-                'password' => 'required',
+                'password' => 'required|confirmed',
             ]);
 
+            $hashedUserId = $validatedData['user_id'];
             // Decrypt the hashed user_id
-            $decryptedId = Crypt::decrypt($validatedData['user_id']);
-
-            $user = User::find($decryptedId);
+            $user = User::all()->first(function ($user) use ($hashedUserId) {
+                return Hash::check($user->id, $hashedUserId);
+            });
 
             if (!$user) {
                 return response()->json(['success' => false, 'message' => 'User not found'], 404);
             }
-
-            // Hash the password before saving it
             $user->password = $validatedData['password'];
-
             $user->save();
 
             return response()->json(['success' => true, 'message' => 'Password has been reset'], 200);
@@ -67,7 +69,7 @@ class UserController extends Controller
                 'email' => 'required',
             ]);
 
-            $user = User::where('user_email', $validatedData['email'])->where('user_status', 1)->first();
+            $user = User::where('email', $validatedData['email'])->where('user_status', 1)->first();
 
             if (!$user) {
                 return response()->json(['success' => false, 'message' => 'Please contact your admin'], 400);
