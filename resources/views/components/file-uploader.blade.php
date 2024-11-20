@@ -16,18 +16,3 @@
         <img class="file-preview absolute top-0 left-0 w-full h-full object-contain hidden bg-customOrangeDark rounded-lg" />
     </label>
 </div>
-
-<script>
-    function previewFile(event) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const previewImg = event.target.closest('.file-upload-label').querySelector('.file-preview');
-                previewImg.src = e.target.result;
-                previewImg.classList.remove('hidden');
-            };
-            reader.readAsDataURL(file);
-        }
-    }
-</script>

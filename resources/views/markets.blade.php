@@ -15,7 +15,7 @@
             <h1 class="text-3xl font-bold ">Markets</h1>
             @if ($userRole === 'superadmin' || isset($privileges['Markets']['add']))
                 <button id="addModalBtn" data-modal-target="market-modal" data-modal-toggle="market-modal"
-                    class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Add New + </button>
+                    class="px-5 py-3 font-semibold text-white rounded-full shadow-md gradient-bg">Add New</button>
                     @else
                     <button data-modal-target="market-modal" data-modal-toggle="market-modal"></button>
             @endif

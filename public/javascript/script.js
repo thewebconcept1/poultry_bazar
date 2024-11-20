@@ -1,3 +1,15 @@
+function previewFile(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const previewImg = event.target.closest('.file-upload-label').querySelector('.file-preview');
+            previewImg.src = e.target.result;
+            previewImg.classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+    }
+}
 $(document).ready(function () {
     // Post Request Delete Data variable
 
