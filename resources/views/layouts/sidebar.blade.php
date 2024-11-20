@@ -249,7 +249,7 @@
             @endif
             @if ($userRole === 'superadmin' || isset($privileges['Queries']['view']))
                 <li>
-                    <a href="./queries"
+                    <a href="../queries"
                         class="flex items-center p-2 text-gray-900 rounded-lg transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('queries') ? 'active bg-customOrangeDark text-white ' : '' }}">
                         <svg class="flex-shrink-0 w-6 h-6 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('queries') ? 'text-white' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
