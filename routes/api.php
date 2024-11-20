@@ -10,8 +10,11 @@ Route::get('/user', function (Request $request) {
 
 Route::middleware(['auth:sanctum'])->group(function () {
 
+    Route::post('/addQuery', [ApiController::class, 'addQuery']);
     
 });
 Route::get('/getMarkets', [ApiController::class, 'getMarkets']);
 Route::post('/getMarketRates', [ApiController::class, 'getMarketRates']);
 Route::get('/getMedia/{type?}', [ApiController::class, 'getMedia']);
+Route::post('/register', [ApiController::class, 'register']);
+Route::post('/login', [ApiController::class, 'login']);

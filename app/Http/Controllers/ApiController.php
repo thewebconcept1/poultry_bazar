@@ -4,10 +4,94 @@ namespace App\Http\Controllers;
 
 use App\Models\Market;
 use App\Models\Media;
+use App\Models\Queries;
+use App\Models\User;
+// use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class ApiController extends Controller
 {
+    // get Notifications
+    // public function getNotifications()
+    // {
+    //     $notifications = Queries::get();
+    // }
+    // get Notifications
+
+    // login
+    public function login(Request $request)
+    {
+        try {
+            $email = $request->input('email');
+            $password = $request->input('password');
+            $user = User::where('email', $email)->first();
+
+            if (!$user || !Hash::check($password, $user->password) && $user->user_role != 'appuser') {
+                return response()->json(['success' => false, 'message' => 'Invalid credentials'], 401);
+            }
+
+            // Generate a personal access token for the user
+            $token = $user->createToken('api-token')->plainTextToken;
+
+            return response()->json(['success' => true, 'message' => 'Login successful!', 'token' => $token, 'user_details' => $user], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
+        }
+    }
+    // login
+
+    // register
+    public function register(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|unique:users,email',
+                'address' => 'required|string|max:500',
+                'password' => 'required|string|min:8',
+            ]);
+
+            $user = User::create([
+                'name' => $validatedData['userName'],
+                'email' => $validatedData['email'],
+                'address' => $validatedData['address'],
+                'password' => $validatedData['password'],
+                'user_role' => 'appuser',
+                'user_status' => $validatedData['userRole'] == 'appuser' ? 1 : 0,
+            ]);
+
+            return response()->json(['success' => true, 'message' => 'Registration successfull'], 200);
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    // register
+
+    // add query
+    public function addQuery(Request $request)
+    {
+        try {
+            $user = Auth::user();
+            $validatedData = $request->validate([
+                'query_subject' => 'required',
+                'query_message' => 'required',
+            ]);
+
+            $query = Queries::create([
+                'added_user_id' => $user->id,
+                'query_subject' => $validatedData['query_subject'],
+                'query_message' => $validatedData['query_message'],
+            ]);
+
+            return response()->json(['success' => true, 'message' => 'Query has been sent to our team. You will get the notification soon.'], 200);
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    // add query
+
     // get media
     public function getMedia($type = null)
     {
