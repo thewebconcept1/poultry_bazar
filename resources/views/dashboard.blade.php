@@ -99,11 +99,11 @@
                 <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
 
                     <!-- Blogs Section -->
-                    <div class="bg-white border-2 rounded-lg shadow-lg border-customOrangeLight">
+                    <div class="bg-white border-4 rounded-xl shadow-lg border-customOrangeLight">
                         <div class="flex items-center justify-between p-3 mb-4 bg-orange-100 rounded-t-lg">
-                            <h1 class="text-sm font-bold text-gray-800">Blogs</h1>
+                            <h1 class="text-lg font-bold text-gray-800">Blogs</h1>
                             <a href="/media/blogs"><button
-                                class="py-1 px-2 text-[10px] shadow-md font-medium text-orange-500 transition-colors bg-white rounded-full ">
+                                class="py-2 px-3 text-sm shadow-md font-medium text-orange-500 transition-colors bg-white rounded-full ">
                                 Add New
                             </button></a>
                         </div>
@@ -124,11 +124,11 @@
                     </div>
 
                     <!-- Diseases Section -->
-                    <div class="bg-white border-2 rounded-lg shadow-lg border-customOrangeLight">
+                    <div class="bg-white border-4 rounded-xl shadow-lg border-customOrangeLight">
                         <div class="flex items-center justify-between p-3 mb-4 bg-orange-100 rounded-t-lg">
-                            <h1 class="text-sm font-bold text-gray-800">Diseases</h1>
+                            <h1 class="text-lg font-bold text-gray-800">Diseases</h1>
                             <a href="/media/diseases"><button
-                                class="py-1 px-2 text-[10px] shadow-md font-medium text-orange-500 transition-colors bg-white rounded-full ">
+                                class="py-2 px-3 text-sm shadow-md font-medium text-orange-500 transition-colors bg-white rounded-full ">
                                 Add New
                             </button></a>
                         </div>
@@ -148,11 +148,11 @@
                     </div>
 
                     <!-- Consultancy Videos Section -->
-                    <div class="bg-white border-2 rounded-lg shadow-lg border-customOrangeLight">
+                    <div class="bg-white border-4 rounded-xl shadow-lg border-customOrangeLight">
                         <div class="flex items-center justify-between p-3 mb-4 bg-orange-100 rounded-t-lg">
-                            <h1 class="text-sm font-bold text-gray-800">Consultancy Videos</h1>
+                            <h1 class="text-lg font-bold text-gray-800">Consultancy Videos</h1>
                             <a href="/media/consultancy"><button
-                                class="py-1 px-2 text-[10px] shadow-md font-medium text-orange-500 transition-colors bg-white rounded-full ">
+                                class="py-2 px-3 text-sm shadow-md font-medium text-orange-500 transition-colors bg-white rounded-full ">
                                 Add New
                             </button></a>
                         </div>

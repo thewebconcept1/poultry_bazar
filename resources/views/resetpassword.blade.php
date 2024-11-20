@@ -36,27 +36,23 @@
                             <input type="hidden" name="user_id" id="" value="{{isset($_GET['key']) ? $_GET['key'] : null}}">
                             <div class="mt-20">
                                 <div class="relative mt-5">
-                                    <label for="password" class="block text-sm ">Enter New
-                                        Password</label>
+                                    <label for="password" class="block text-sm">Enter New Password</label>
                                     <div class="relative mt-1">
                                         <input type="password" id="password"
                                             class="w-full pr-12 bg-white border border-customGrayColorDark rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm focus:border-customOrangeDark focus:outline-none"
                                             placeholder="Enter Here" name="password">
-                                        <span class="absolute inset-y-0 flex items-center cursor-pointer right-4"
-                                            id="togglePassword">
+                                        <span class="absolute inset-y-0 flex items-center cursor-pointer right-4 togglePassword">
                                             <i class="fa-solid fa-eye-slash text-customGrayColorDark"></i>
                                         </span>
                                     </div>
                                 </div>
                                 <div class="relative mt-5">
-                                    <label for="password" class="block text-sm ">Re-Enter New
-                                        Password</label>
+                                    <label for="password_confirmation" class="block text-sm">Re-Enter New Password</label>
                                     <div class="relative mt-1">
                                         <input type="password" id="password_confirmation"
                                             class="w-full pr-12 bg-white border border-customGrayColorDark rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm focus:border-customOrangeDark focus:outline-none"
                                             placeholder="Enter Here" name="password_confirmation">
-                                        <span class="absolute inset-y-0 flex items-center cursor-pointer right-4"
-                                            id="togglePassword">
+                                        <span class="absolute inset-y-0 flex items-center cursor-pointer right-4 togglePassword">
                                             <i class="fa-solid fa-eye-slash text-customGrayColorDark"></i>
                                         </span>
                                     </div>
@@ -79,7 +75,21 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('javascript/script.js') }}"></script>
 <script>
-     // Listen for the custom form submission response event
+     $(document).ready(function () {
+        // Toggle password visibility
+        $('.togglePassword').on('click', function () {
+            const input = $(this).siblings('input');
+            const icon = $(this).find('i');
+
+            if (input.attr('type') === 'password') {
+                input.attr('type', 'text');
+                icon.removeClass('fa-eye-slash').addClass('fa-eye');
+            } else {
+                input.attr('type', 'password'); 
+                icon.removeClass('fa-eye').addClass('fa-eye-slash');
+            }
+        });
+    });
      $(document).on("formSubmissionResponse", function(event, response, Alert, SuccessAlert, WarningAlert) {
             if (response.success) {
                 window.location.href  = "../login";

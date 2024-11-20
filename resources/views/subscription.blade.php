@@ -15,7 +15,7 @@
             <h1 class="text-3xl font-bold ">Subcription Plans</h1>
             @if ($userRole === 'superadmin' || isset($privileges['Subscription']['add']))
                 <button id="addModalBtn" data-modal-target="subscription-modal" data-modal-toggle="subscription-modal"
-                    class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Add Subcription + </button>
+                    class="px-4 py-3 font-semibold text-white rounded-full shadow-md gradient-bg">Add Subcription </button>
             @endif
         </div>
         @php

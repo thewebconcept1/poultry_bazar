@@ -36,7 +36,7 @@
             </div>
             @if ($userRole === 'superadmin' || isset($privileges['Categories']['add']))
                 <button id="addModalBtn" data-modal-target="categories-modal" data-modal-toggle="categories-modal"
-                    class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Add New +</button>
+                    class="px-5 py-3 font-semibold text-white rounded-full shadow-md gradient-bg">Add New</button>
                     @else
                     <button data-modal-target="categories-modal" data-modal-toggle="categories-modal"></button>
             @endif

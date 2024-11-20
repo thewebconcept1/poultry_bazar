@@ -7,7 +7,7 @@
         <div class="flex justify-between px-5">
             <h1 class="text-3xl font-bold ">Modules</h1>
             <button id="addModalBtn" data-modal-target="Module-modal" data-modal-toggle="Module-modal"
-                class="px-3 py-2 font-semibold text-white rounded-full shadow-md gradient-bg">Add Module + </button>
+                class="px-5 py-3 font-semibold text-white rounded-full shadow-md gradient-bg">Add Module</button>
         </div>
         @php
             $headers = ['Sr.', 'Name', 'image', 'Description', 'Action'];

@@ -89,6 +89,12 @@ table.dataTable tbody td {
     padding: 18px 10px !important;
     color: #323c47;
 }
+
+input[aria-controls="datatable"]{
+border-radius: 20px !important;
+padding-left: 20px !important;
+
+}
 .canvasjs-chart-credit {
     display: none !important;
 }
@@ -167,6 +173,15 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
     border-radius: 20px;
     background: linear-gradient(to right, white, white),
         linear-gradient(to right, #FCB37680, #FE8A2980);
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    width: 100%;
+}
+.gradient-border-sidebar {
+    border: 4px solid transparent;
+    border-radius: 20px;
+    background: linear-gradient(to right, white, white),
+        linear-gradient(to right, #FE8A2980, #FCB37680);
     background-clip: padding-box, border-box;
     background-origin: padding-box, border-box;
     width: 100%;
