@@ -18,6 +18,7 @@ class Queries extends Model
         'email',
         'query_subject',
         'query_message',
+        'query_status',
     ];
 
     public $timestamps = true;
