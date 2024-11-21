@@ -16,8 +16,8 @@
             @if ($userRole === 'superadmin' || isset($privileges['Consultancy']['add']))
                 <button id="addModalBtn" data-modal-target="consultancy-modal" data-modal-toggle="consultancy-modal"
                     class="px-5 py-3 font-semibold text-white rounded-full shadow-md gradient-bg">Add New</button>
-                    @else
-                    <button data-modal-target="consultancy-modal" data-modal-toggle="consultancy-modal"></button>
+            @else
+                <button data-modal-target="consultancy-modal" data-modal-toggle="consultancy-modal"></button>
             @endif
         </div>
         @php
@@ -31,13 +31,13 @@
                         <td>{{ $loop->iteration }}</td>
                         {{-- <td><img class="h-16 w-16 object-cover  bg-customOrangeDark rounded-full "
                             src="{{ $data->media_image ??  asset('assets/default-logo-1.png') }}" alt='consultancy Image'></td> --}}
-                            <td class="min-w-[200px]">
-                                <video
-                                poster="{{ $data->media_image ? '' : asset('assets/default-logo-req.png') }}"
-                                    class="h-[140px] w-[170px] rounded-md" height="140px" width="170px" {{ $data->media_image ? 'controls' : '' }}
-                                    src="{{ $data->media_image ?? asset('assets/default-logo-1.png') }}">
-                                </video>
-                            </td>
+                        <td class="min-w-[200px]">
+                            <video poster="{{ $data->media_image ? '' : asset('assets/default-logo-req.png') }}"
+                                class="h-[140px] w-[170px] rounded-md" height="140px" width="170px"
+                                {{ $data->media_image ? 'controls' : '' }}
+                                src="{{ $data->media_image ?? asset('assets/default-logo-1.png') }}">
+                            </video>
+                        </td>
                         <td class='text-xs xl:text-[15px]'>{{ $data->media_title }}</td>
                         <td class='text-xs xl:text-[15px] min-w-[280px]'>{{ $data->media_description }} </td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->category_name }}</td>
@@ -74,7 +74,7 @@
                                     mediaCategory="{{ $data->category_name }}" mediaCategoryId={{ $data->category_id }}
                                     mediaDate="{{ $data->date }}" mediaDescription="{{ $data->media_description }}"
                                     mediaId="{{ $data->media_id }}"
-                                    mediaImage="{{ $data->media_image ??  asset('assets/default-logo-req.png') }}"
+                                    mediaImage="{{ $data->media_image ?? asset('assets/default-logo-req.png') }}"
                                     class="viewModalBtn">
                                     <svg width='37' height='36' viewBox='0 0 37 36' fill='none'
                                         xmlns='http://www.w3.org/2000/svg'>
@@ -117,22 +117,25 @@
 
                     <div class="grid gap-4 grid-cols-2 ">
                         <div>
-                                                    <div class="relative flex items-center justify-center w-full h-full">
+                            <div class="relative flex items-center justify-center w-full h-full" id="VideoUploader">
                                 <label
                                     class="file-upload-label flex flex-col items-center justify-center w-full h-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
                                     <div class="file-upload-content flex flex-col items-center justify-center pt-5 pb-6">
                                         <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2"
                                                 d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                         </svg>
-                                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload Video</span>
+                                        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span
+                                                class="font-semibold">Click to upload Video</span>
                                         </p>
                                         <p class="text-xs text-gray-500 dark:text-gray-400">Mp4 (MAX. 1920x1080px)</p>
                                     </div>
-                                    <input type="file" class="file-input hidden" name="media_image" accept="video/*"
+                                    <input id="videoLabel" type="file" class="file-input hidden" name="media_image" accept="video/*"
                                         onchange="previewFile(event)" />
-                                    <video autoplay muted controls class="file-preview absolute top-0 left-0 w-full h-full hidden bg-customOrangeDark rounded-lg" ></video>
+                                    <video id="" autoplay muted controls
+                                        class="file-preview absolute top-0 left-0 w-full h-full hidden bg-customOrangeDark rounded-lg"></video>
                                 </label>
                             </div>
                         </div>
@@ -210,6 +213,11 @@
 @endsection
 @section('js')
     <script>
+        $('#VideoUploader .file-preview').click(function() {
+            $('#videoLabel').click();
+
+        })
+
         function viewData() {
 
             $('.viewModalBtn').click(function() {
