@@ -790,6 +790,7 @@
                             <li><a href="#" class="hover:text-gray-700">Privacy Policy</a></li>
                             <li><a href="#" class="hover:text-gray-700">Terms & Conditions</a></li>
                             <li><a href="#" class="hover:text-gray-700">Disclaimer</a></li>
+                            <li><a href="/login" class="hover:text-gray-700">Get Access</a></li>
                         </ul>
                     </div>
 

@@ -316,11 +316,11 @@
                 </a>
             </li>
         </ul>
-        <div class="z-0">
+        <!-- <div class="z-0">
             <h2 class="absolute bottom-1 left-1/2 -translate-x-1/2 text-sm">Version 1.0.0</h2>
             <img class="absolute -translate-x-1/2 bottom-0   opacity-20  grayscale  left-1/2 z-0"
                 src="{{ asset('assets/sidebar-bg.png') }}" alt="Hen">
-        </div>
+        </div> -->
     </div>
 </aside>
 
