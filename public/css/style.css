@@ -163,9 +163,9 @@ padding-left: 20px !important;
     align-items: center;
 }
 
-div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
+/* div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
     background-color: #7066e0 !important;
-}
+} */
 
 /* =============sidebar ============= */
 .gradient-border {
@@ -208,3 +208,8 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
 } */
+
+.swal2-actions {
+    display: flex;
+    flex-direction: row-reverse;  /* This will reverse the order of the buttons */
+}

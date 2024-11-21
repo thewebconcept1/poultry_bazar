@@ -116,8 +116,8 @@ $(document).ready(function () {
                 text: "You won't be able to revert this!",
                 icon: "warning",
                 showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
+                confirmButtonColor: "#D42929FF",
+                cancelButtonColor: "gray",
                 confirmButtonText: "Yes, delete it!",
             }).then((result) => {
                 if (result.isConfirmed) {

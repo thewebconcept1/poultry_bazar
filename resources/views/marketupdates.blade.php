@@ -49,7 +49,7 @@
                                 placeholder="00.0" value="{{ $market->market_doc ?? 0 }}" pattern="^\d+(\.\d+)?$">
                         </td>
                         <td>
-                            <span class="flex justify-center gap-4">
+                            <span class="flex  gap-4">
                                 @if ($userRole === 'superadmin' || isset($privileges['MarketsUpdates']['delete']))
                                     <button type="button"
                                         class="px-5 clearBtn py-2 font-light text-[#B6B4B4] border-2 border-gray-[#B6B4B4] rounded-full shadow-sm">
