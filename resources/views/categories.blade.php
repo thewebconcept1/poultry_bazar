@@ -19,16 +19,16 @@
                 <div class="flex gap-4">
                     <form id="categoryForm" action="{{ url('categories') }}">
                         <button
-                            class="px-3 py-2 font-semibold {{ $type == 'all' ? 'bg-white  text-black ' : 'gradient-bg text-white' }} border border-black  rounded-full shadow-md min-w-16"
-                            onclick="submitForm('all')">All</button>
+                            class="px-3 py-2 font-semibold {{ $type == 'all' ? 'gradient-bg text-white' : 'bg-white  text-black' }} border border-black  rounded-full shadow-md min-w-16"
+                            onclick="submitForm('all')">All</button>`
                         <button
-                            class="px-3 py-2 font-semibold  rounded-full shadow-md {{ $type == 'blog' ? 'bg-white  text-black ' : 'gradient-bg text-white' }} border border-black "
+                            class="px-3 py-2 font-semibold  rounded-full shadow-md {{ $type == 'blog' ? 'gradient-bg text-white' : 'bg-white  text-black' }} border border-black "
                             onclick="submitForm('blog')">Blog Categories</button>
                         <button
-                            class="px-3 py-2 font-semibold  rounded-full shadow-md {{ $type == 'diseases' ? 'bg-white  text-black ' : 'gradient-bg text-white' }} border border-black "
+                            class="px-3 py-2 font-semibold  rounded-full shadow-md {{ $type == 'diseases' ? 'gradient-bg text-white' : 'bg-white  text-black' }} border border-black "
                             onclick="submitForm('diseases')">Diseases Categories</button>
                         <button
-                            class="px-3 py-2 font-semibold  rounded-full shadow-md {{ $type == 'consultancy' ? 'bg-white  text-black ' : 'gradient-bg text-white' }} border border-black "
+                            class="px-3 py-2 font-semibold  rounded-full shadow-md {{ $type == 'consultancy' ? 'gradient-bg text-white' : 'bg-white  text-black' }} border border-black "
                             onclick="submitForm('consultancy')">Consultancy Categories</button>
                     </form>
 

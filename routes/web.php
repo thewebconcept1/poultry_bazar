@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['custom_auth'])->group(function () {
 
-    Route::get('/', [UserController::class, 'getDashboard']);
+    Route::get('/dashboard', [UserController::class, 'getDashboard']);
 
 
     Route::get('/notification', [NotificationController::class, 'getNotification']);
@@ -70,6 +70,7 @@ Route::post('/resetPassword', [UserController::class, 'resetPassword']);
 Route::get('/resetPassword', [UserController::class, 'resetPasswordView']);
 
 Route::match(['get', 'post'], '/logout', [UserController::class, 'logout']);
-Route::get('/landingpage', function () {
+
+Route::get('/', function () {
     return view('landingpage');
 });
