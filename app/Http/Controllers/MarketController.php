@@ -13,7 +13,7 @@ class MarketController extends Controller
     public function getMarkets()
     {
         $markets = Market::where('market_status', 1)->get();
-        $cities = City::select('city_id', 'city_name')->get();
+        $cities = City::select('city_id', 'city_name')->where('city_status' , 1)->get();
         foreach ($markets as $market) {
             $market->updated_date = Carbon::parse($market->created_at)->format('M d, Y');
         }
