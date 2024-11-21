@@ -21,7 +21,7 @@
             @endif
         </div>
         @php
-            $headers = ['Sr.', 'Image', 'Title', 'Description', 'Category', 'Date', 'Author', 'Action'];
+            $headers = ['Sr.', 'Video', 'Title', 'Description', 'Category', 'Date', 'Author', 'Action'];
         @endphp
 
         <x-table :headers="$headers">
@@ -31,7 +31,7 @@
                         <td>{{ $loop->iteration }}</td>
                         {{-- <td><img class="h-16 w-16 object-cover  bg-customOrangeDark rounded-full "
                             src="{{ $data->media_image ??  asset('assets/default-logo-1.png') }}" alt='consultancy Image'></td> --}}
-                            <td>
+                            <td class="min-w-[200px]">
                                 <video
                                 poster="{{ $data->media_image ? '' : asset('assets/default-logo-req.png') }}"
                                     class="h-[140px] w-[170px] rounded-md" height="140px" width="170px" {{ $data->media_image ? 'controls' : '' }}

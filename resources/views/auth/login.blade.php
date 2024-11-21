@@ -156,7 +156,7 @@
                                 </div>
 
                                 <div class="flex justify-end">
-                                    
+
                                         <button type="button" class="mt-5 text-xs text-right text-customOrangeDark" id="showForgot">Forgot password?</button>
                                 </div>
 
@@ -178,6 +178,7 @@
                                         Login
                                     </div>
                                 </button>
+                                <h2 class="absolute bottom-1 left-1/2 -translate-x-1/2 text-sm">Version 1.0.0</h2>
                             </div>
                         </form>
                     </div>
@@ -197,7 +198,7 @@
                                         class="w-full mt-3 bg-white border border-gray-400 rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm focus:border-customOrangeDark focus:outline-none"
                                         placeholder="Enter your email" name="email">
                                 </div>
-                              
+
 
                                 <div class="flex justify-center items-center mt-4 gap-1">
                                         <span>Remember your password?</span>
@@ -222,6 +223,7 @@
                                         Continue
                                     </div>
                                 </button>
+                                <h2 class="absolute bottom-1 left-1/2 -translate-x-1/2 text-sm">Version 1.0.0</h2>
                             </div>
                         </form>
                     </div>
@@ -246,7 +248,7 @@
             <div id="signupSection"
                 class="flex flex-col justify-center lg:flex-row items-center lg:justify-between min-h-[100vh]    mx-[50px] lg:mx-[100px]  z-20 relative hidden max-w-[1500px] xl:mx-auto ">
                 <div class="flex flex-col justify-center items-center h-full w-full relative z-40 max-w-[480px]">
-                    <div id="welcomeDiv" class="flex flex-col items-center justify-start">
+                    <div id="welcomeDiv" class="flex flex-col  justify-start">
                         <h2 class="text-[50px] text-customOrangeDark font-bold leading-none">
                             <span class="text-[40px]">Join Us at</span><br> Poultry Bazar
                         </h2>
@@ -516,12 +518,12 @@
     $('#showForgot').click(function(){
             $('#ForgotContainer').removeClass('hidden')
             $('#loginContainer').addClass('hidden')
-        
+
     });
     $('#showLogin').click(function(){
             $('#ForgotContainer').addClass('hidden')
             $('#loginContainer').removeClass('hidden')
-        
+
     });
 
             $("#loginForm").submit(function(event) {
@@ -544,7 +546,7 @@
                             $('#text').removeClass('hidden');
                             $('#spinner').addClass('hidden');
 
-                            window.location.href = '/';
+                            window.location.href = '../dashboard';
 
                         } else if (response.success == false) {
                             Swal.fire(
@@ -614,7 +616,7 @@
                         if(response.message == "Request already sent"){
                             $('#signup-Modal').removeClass('hidden');
                             $('#signup-Modal').addClass('flex');
-                            
+
                         }else{
                             Swal.fire(
                                 'Warning!',
@@ -676,7 +678,7 @@
 
                         let response = JSON.parse(jqXHR.responseText);
 
-                      
+
                             Swal.fire(
                                 'Warning!',
                                 response.message,
