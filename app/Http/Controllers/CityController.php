@@ -63,7 +63,7 @@ class CityController extends Controller
                     $existingCity->save();
                     return response()->json(['success' => true, 'message' => 'City added successfully'], 200);
                 }elseif ($existingCity && $existingCity->city_status == 1) {
-                    return response()->json(['success' => true, 'message' => 'City already existed'], 200);
+                    return response()->json(['success' => false, 'message' => 'City already existed'], 400);
                 }else{
                     $city = City::create([
                         'city_name' => $validatedData['city_name'],
