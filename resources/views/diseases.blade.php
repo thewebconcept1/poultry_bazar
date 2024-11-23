@@ -219,7 +219,7 @@
 
 
                 $('#diseases-modal #modalTitle').text("Update Diseases");
-                $('#diseases-modal #submitBtn').text("Update");
+                $('#diseases-modal #btnText').text("Update");
 
             });
         }
@@ -229,7 +229,7 @@
             $('#categoryId').trigger('change');
             $('#updateId').val('');
             $('#diseases-modal #modalTitle').text("Add Diseases");
-            $('#diseases-modal #submitBtn').text("Add");
+            $('#diseases-modal #btnText').text("Add");
             let fileImg = $('#diseases-modal .file-preview');
             fileImg.addClass('hidden');
 

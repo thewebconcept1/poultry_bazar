@@ -103,7 +103,7 @@
                 fileImg.removeClass('hidden').attr('src', $(this).attr('moduleImg'));
 
                 $('#Module-modal #modalTitle').text("Update Module");
-                $('#Module-modal #submitBtn').text("Update");
+                $('#Module-modal #btnText').text("Update");
 
             });
         }
@@ -114,7 +114,7 @@
             let fileImg = $('#Module-modal .file-preview');
             fileImg.addClass('hidden');
             $('#Module-modal #modalTitle').text("Add Module");
-            $('#Module-modal #submitBtn').text("Add");
+            $('#Module-modal #btnText').text("Add");
 
         })
         // Listen for the custom form submission response event
