@@ -6,6 +6,7 @@ use App\Http\Controllers\MarketController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\QueryController;
 use App\Http\Controllers\UserController;
 use App\Models\Market;
 use App\Models\Media;
@@ -38,9 +39,9 @@ Route::middleware(['custom_auth'])->group(function () {
         Route::get('/subscription', function () {
             return view('subscription');
         });
-        Route::get('/queries', function () {
-            return view('queries');
-        });
+        Route::get('/queries', [QueryController::class, 'getQueries']);
+        Route::post('/answerQuery', [QueryController::class, 'answerQuery']);
+
         Route::get('/Logout', [UserController::class, 'logout']);
         Route::get('/priveleges/{id}', [UserController::class, 'getPriveleges']);
         Route::get('/Cities', [CityController::class, 'getCities']);
