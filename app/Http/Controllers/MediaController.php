@@ -90,7 +90,7 @@ class MediaController extends Controller
                     $imagePath = public_path($media->media_image); // Get the full image path
 
                     // Delete the image file if it exists
-                    if (file_exists($imagePath)) {
+                    if (!empty($media->media_image) && file_exists($imagePath)) {
                         unlink($imagePath); // Delete the image from the file system
                     }
 
