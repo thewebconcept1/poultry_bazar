@@ -356,8 +356,9 @@ return view('resetpassword');
     {
         $user_id = $id;
         $userPrivileges = User::select('user_privileges')->where('id', $user_id)->first();
+        $user = User::where('id', $user_id)->first();
         $privileges = json_decode($userPrivileges->user_privileges, true); // First decode
-        return view('priveleges', compact('privileges', 'user_id'));
+        return view('priveleges', compact('privileges', 'user_id', 'user'));
     }
 
     // get  user data for profile and settings
