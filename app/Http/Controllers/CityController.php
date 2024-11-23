@@ -58,17 +58,20 @@ class CityController extends Controller
                     ->where('city_province', $validatedData['city_province'])
                     ->first();
 
-                if ($existingCity) {
+                if ($existingCity && $existingCity->city_status == 0) {
                     $existingCity->city_status = 1;
                     $existingCity->save();
                     return response()->json(['success' => true, 'message' => 'City added successfully'], 200);
+                }elseif ($existingCity && $existingCity->city_status == 1) {
+                    return response()->json(['success' => true, 'message' => 'City already existed'], 200);
+                }else{
+                    $city = City::create([
+                        'city_name' => $validatedData['city_name'],
+                        'city_province' => $validatedData['city_province'],
+                    ]);
+    
+                    return response()->json(['success' => true, 'message' => 'City added successfully'], 200);
                 }
-                $city = City::create([
-                    'city_name' => $validatedData['city_name'],
-                    'city_province' => $validatedData['city_province'],
-                ]);
-
-                return response()->json(['success' => true, 'message' => 'City added successfully'], 200);
             }
         } catch (\Exception $e) {
             $this->errorResponse($e);
