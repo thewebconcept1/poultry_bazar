@@ -99,7 +99,7 @@
                 $('#updateId').val($(this).attr('cityId'));
 
                 $('#city-modal #modalTitle').text("Update City");
-                $('#city-modal #submitBtn').text("Update");
+                $('#city-modal #btnText').text("Update");
 
             });
         }
@@ -108,7 +108,7 @@
             $('#postDataForm')[0].reset();
             $('#updateId').val('');
             $('#city-modal #modalTitle').text("Add Cities");
-            $('#city-modal #submitBtn').text("Add");
+            $('#city-modal #btnText').text("Add");
 
         })
         // Listen for the custom form submission response event

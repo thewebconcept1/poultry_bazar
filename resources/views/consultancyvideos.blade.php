@@ -251,7 +251,7 @@
 
 
                 $('#consultancy-modal #modalTitle').text("Update Consultancy");
-                $('#consultancy-modal #submitBtn').text("Update");
+                $('#consultancy-modal #btnText').text("Update");
 
             });
         }
@@ -261,7 +261,7 @@
             $('#categoryId').trigger('change');
             $('#updateId').val('');
             $('#consultancy-modal #modalTitle').text("Add Consultancy");
-            $('#consultancy-modal #submitBtn').text("Add");
+            $('#consultancy-modal #btnText').text("Add");
             let fileImg = $('#consultancy-modal .file-preview');
             fileImg.addClass('hidden');
 

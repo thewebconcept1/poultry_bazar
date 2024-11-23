@@ -218,7 +218,7 @@
 
 
                 $('#blog-modal #modalTitle').text("Update Blog");
-                $('#blog-modal #submitBtn').text("Update");
+                $('#blog-modal #btnText').text("Update");
 
             });
         }
@@ -228,7 +228,7 @@
             $('#categoryId').trigger('change');
             $('#updateId').val('');
             $('#blog-modal #modalTitle').text("Add Blog");
-            $('#blog-modal #submitBtn').text("Add");
+            $('#blog-modal #btnText').text("Add");
             let fileImg = $('#blog-modal .file-preview');
             fileImg.addClass('hidden');
 

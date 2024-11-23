@@ -185,7 +185,7 @@
                 let fileImg = $('#categories-modal .file-preview');
                 fileImg.removeClass('hidden').attr('src', $(this).attr('categoryImage'));
                 $('#categories-modal #modalTitle').text("Update Category");
-                $('#categories-modal #submitBtn').text("Update");
+                $('#categories-modal #btnText').text("Update");
 
             });
         }
@@ -197,7 +197,7 @@
             let fileImg = $('#categories-modal .file-preview');
             fileImg.addClass('hidden');
             $('#categories-modal #modalTitle').text("Add Category");
-            $('#categories-modal #submitBtn').text("Add");
+            $('#categories-modal #btnText').text("Add");
 
         })
         // Listen for the custom form submission response event

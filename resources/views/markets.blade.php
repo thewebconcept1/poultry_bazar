@@ -122,7 +122,7 @@
                 let fileImg = $('#market-modal .file-preview');
                 fileImg.removeClass('hidden').attr('src', $(this).attr('MarketImage'));
                 $('#market-modal #modalTitle').text("Update Market");
-                $('#market-modal #submitBtn').text("Update");
+                $('#market-modal #btnText').text("Update");
 
             });
         }
@@ -134,7 +134,7 @@
             let fileImg = $('#market-modal .file-preview');
             fileImg.addClass('hidden');
             $('#market-modal #modalTitle').text("Add Market");
-            $('#market-modal #submitBtn').text("Add");
+            $('#market-modal #btnText').text("Add");
 
         })
         // Listen for the custom form submission response event
