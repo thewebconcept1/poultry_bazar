@@ -178,7 +178,7 @@
                                         Login
                                     </div>
                                 </button>
-                                <h2 class="absolute bottom-1 left-1/2 -translate-x-1/2 text-sm">Version 1.0.0</h2>
+                                <h2 class="absolute bottom-1 left-1/2 -translate-x-1/2 text-sm text-customGrayColorDark">Version 1.0.0</h2>
                             </div>
                         </form>
                     </div>
@@ -223,7 +223,7 @@
                                         Continue
                                     </div>
                                 </button>
-                                <h2 class="absolute bottom-1 left-1/2 -translate-x-1/2 text-sm">Version 1.0.0</h2>
+                                <h2 class="absolute bottom-1 left-1/2 -translate-x-1/2 text-sm text-customGrayColorDark">Version 1.0.0</h2>
                             </div>
                         </form>
                     </div>
