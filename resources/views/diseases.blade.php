@@ -10,6 +10,8 @@
         $userRole = session('user_details')['user_role'];
 
     @endphp
+        <button data-modal-target='view-modal' data-modal-toggle='view-modal'></button>
+
     <div class="w-full pt-10 min-h-[88vh] gradient-border  rounded-lg">
         <div class="flex justify-between px-5">
             <h1 class="text-3xl font-bold ">Diseases</h1>
@@ -21,7 +23,7 @@
             @endif
         </div>
         @php
-            $headers = ['Sr.', 'Image', 'Title', 'Description', 'Category', 'Date', 'Author', 'Action'];
+            $headers = ['Sr.', 'Added By' ,'Image', 'Title', 'Description', 'Category', 'Date', 'Author', 'Action'];
         @endphp
 
 
@@ -30,6 +32,7 @@
                 @foreach ($media as $data)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
+                        <td class="whitespace-nowrap">{{ $data->added_username  }}</td>
                         <td><img class="h-16 w-16 object-cover  bg-customOrangeDark rounded-full "
                             src="{{ $data->media_image ??  asset('assets/default-logo-1.png') }}" alt='Disease Image'></td>
                         <td class='text-xs xl:text-[15px]'>{{ $data->media_title }}</td>
@@ -63,7 +66,7 @@
                                         </svg>
                                     </button>
                                 @endif
-                                <button data-modal-target='view-modal' data-modal-toggle='view-modal'
+                                <button
                                     mediaTitle="{{ $data->media_title }}" mediaAuthor="{{ $data->media_author }}"
                                     mediaCategory="{{ $data->category_name }}" mediaCategoryId={{ $data->category_id }}
                                     mediaDate="{{ $data->date }}" mediaDescription="{{ $data->media_description }}"
