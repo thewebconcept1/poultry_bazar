@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Queries;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class QueryController extends Controller
@@ -36,9 +37,11 @@ class QueryController extends Controller
     public function getQueries()
     {
         $queries = Queries::get();
-
+        foreach($queries as $query ){
+            $user = User::Select('name' , 'email', 'user_image')->where('id', $query->added_user_id)->first();
+            $query->user = $user;
+        }
         return view('queries', ['queries' => $queries]);
 
     }
-    // get queries
 }
