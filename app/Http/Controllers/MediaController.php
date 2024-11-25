@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Media;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -40,6 +41,8 @@ class MediaController extends Controller
                 $blog->date = Carbon::parse($blog->created_at)->format('M d, Y');
                 $category = $categories->firstWhere('category_id', $blog->category_id);
                 $blog->category_name = $category ? $category->category_name : null;
+                $user_name = User::select('name')->where('id' , $blog->added_user_id)->first();
+                $blog->added_username = $user_name->name;
             }
             return view('blogs', ['media' => $media, "categories" => $categories]);
         } elseif ($type == 'diseases') {
@@ -49,6 +52,8 @@ class MediaController extends Controller
                 $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
                 $category = $categories->firstWhere('category_id', $diseases->category_id);
                 $diseases->category_name = $category ? $category->category_name : null;
+                $user_name = User::select('name')->where('id' , $diseases->added_user_id)->first();
+                $diseases->added_username = $user_name->name;
             }
             return view('diseases', ['media' => $media, "categories" => $categories]);
         } elseif ($type == 'consultancy') {
@@ -58,7 +63,11 @@ class MediaController extends Controller
                 $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
                 $category = $categories->firstWhere('category_id', $diseases->category_id);
                 $diseases->category_name = $category ? $category->category_name : null;
+                $user_name = User::select('name')->where('id' , $diseases->added_user_id)->first();
+                $diseases->added_username = $user_name->name;
             }
+
+            // return response()->json($media);
             return view('consultancyvideos', ['media' => $media, "categories" => $categories]);
         } else {
             return response()->json(['success' => false, 'message' => 'Please add type of the media'], 400);

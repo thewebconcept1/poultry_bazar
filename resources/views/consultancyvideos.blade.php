@@ -9,7 +9,8 @@
         $privileges = json_decode($user['user_privileges'], true)['permissions'] ?? [];
         $userRole = session('user_details')['user_role'];
 
-    @endphp
+        @endphp
+        <button data-modal-target='view-modal' data-modal-toggle='view-modal'></button>
     <div class="w-full pt-10 min-h-[88vh] gradient-border  rounded-lg">
         <div class="flex justify-between px-5">
             <h1 class="text-3xl font-bold ">Consultancy Videos</h1>
@@ -21,7 +22,7 @@
             @endif
         </div>
         @php
-            $headers = ['Sr.', 'Video', 'Title', 'Description', 'Category', 'Date', 'Author', 'Action'];
+            $headers = ['Sr.', 'Added By' ,  'Video', 'Title', 'Description', 'Category', 'Date', 'Author', 'Action'];
         @endphp
 
         <x-table :headers="$headers">
@@ -31,7 +32,8 @@
                         <td>{{ $loop->iteration }}</td>
                         {{-- <td><img class="h-16 w-16 object-cover  bg-customOrangeDark rounded-full "
                             src="{{ $data->media_image ??  asset('assets/default-logo-1.png') }}" alt='consultancy Image'></td> --}}
-                        <td class="min-w-[200px]">
+                            <td class="whitespace-nowrap">{{ $data->added_username  }}</td>
+                            <td class="min-w-[200px]">
                             <video poster="{{ $data->media_image ? '' : asset('assets/default-logo-req.png') }}"
                                 class="h-[140px] w-[170px] rounded-md" height="140px" width="170px"
                                 {{ $data->media_image ? 'controls' : '' }}
@@ -69,7 +71,7 @@
                                         </svg>
                                     </button>
                                 @endif
-                                <button data-modal-target='view-modal' data-modal-toggle='view-modal'
+                                <button
                                     mediaTitle="{{ $data->media_title }}" mediaAuthor="{{ $data->media_author }}"
                                     mediaCategory="{{ $data->category_name }}" mediaCategoryId={{ $data->category_id }}
                                     mediaDate="{{ $data->date }}" mediaDescription="{{ $data->media_description }}"
@@ -178,16 +180,15 @@
                     <div class="flex">
                         <!-- Image Placeholder -->
 
-                        <img class="w-40 h-40 bg-black object-contain" id="dImage"
-                            src="{{ asset('assets/Surface 3 png.png') }}" alt="">
 
+                        <video class="w-52 h-48 bg-black object-contain" controls   id="dImage"></video>
 
                         <!-- Text Details -->
                         <div class="ml-5">
                             <h3 class="text-xl font-semibold text-gray-800" id="dTitle"></h3>
 
-                            <div class="grid grid-cols-2 mt-5 md:grid-cols-3 ">
-                                <div class="min-w-10">
+                            <div class="grid grid-cols-2 gap-2 mt-5 md:grid-cols-3 ">
+                                <div class="min-w-14">
                                     <p class="text-[12.9px] lg:text-lg md:text-lg">Category:</p>
                                     <p class="mt-4 text-[12.9px] lg:text-lg md:text-lg">Author:</p>
                                     <p class="mt-4 text-[12.9px] lg:text-lg md:text-lg">Date:</p>

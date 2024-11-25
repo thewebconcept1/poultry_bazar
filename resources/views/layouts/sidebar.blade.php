@@ -60,7 +60,7 @@
                     </a>
                 </li>
             @endif
-            @if ($userRole === 'superadmin' || isset($privileges['Subscription']['view']))
+            {{-- @if ($userRole === 'superadmin' || isset($privileges['Subscription']['view']))
                 <li class="relative z-20">
                     <a href="../subscription"
                         class="flex items-center p-2  text-gray-900 rounded-xl transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('subscription') ? 'active bg-customOrangeDark text-white ' : '' }} ">
@@ -74,7 +74,7 @@
                         <span class="ms-3 ">Subscription</span>
                     </a>
                 </li>
-            @endif
+            @endif --}}
             @if ($userRole === 'superadmin')
                 <li class="relative z-20">
                     <a href="../modules"
