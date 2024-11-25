@@ -181,28 +181,28 @@
             </div>
             <div class="z-40 flex items-center justify-center w-[80vw] px-2 mt-6 md:mt-4 md:px-0 ">
                 <div class="grid grid-cols-2 gap-5 ">
-                    <div class="max-w-[200px] p-4 text-center bg-white rounded-lg shadow-lg">
+                    <div class="max-w-[250px]  p-4 text-center bg-white rounded-lg shadow-lg">
                         <div class="flex items-center justify-center mx-auto mb-4 ">
                             <img src="{{ asset('assets/icons/Group 44.png') }}" alt="Market Rates Icon" class="w-24 h-24">
                         </div>
                         <h3 class="mb-2 text-lg font-bold text-gray-800">Market Rates</h3>
                         <p class="text-sm text-gray-600">Get real-time poultry prices to stay ahead in the market.</p>
                     </div>
-                    <div class="max-w-[200px] p-4 text-center bg-white rounded-lg shadow-lg">
+                    <div class="max-w-[250px] p-4 text-center bg-white rounded-lg shadow-lg">
                         <div class="flex items-center justify-center mx-auto mb-4 ">
                             <img src="{{ asset('assets/icons/pos.png') }}" alt="Market Rates Icon" class="w-24 h-24">
                         </div>
                         <h3 class="mb-2 text-lg font-bold text-gray-800">Market Rates</h3>
                         <p class="text-sm text-gray-600">Get real-time poultry prices to stay ahead in the market.</p>
                     </div>
-                    <div class="max-w-[200px] p-4 text-center bg-white rounded-lg shadow-lg">
+                    <div class="max-w-[250px] p-4 text-center bg-white rounded-lg shadow-lg">
                         <div class="flex items-center justify-center mx-auto mb-4 ">
                             <img src="{{ asset('assets/icons/floks.png') }}" alt="Market Rates Icon" class="w-24 h-24">
                         </div>
                         <h3 class="mb-2 text-lg font-bold text-gray-800">Market Rates</h3>
                         <p class="text-sm text-gray-600">Get real-time poultry prices to stay ahead in the market.</p>
                     </div>
-                    <div class="max-w-[200px] p-4 text-center bg-white rounded-lg shadow-lg">
+                    <div class="max-w-[250px] p-4 text-center bg-white rounded-lg shadow-lg">
                         <div class="flex items-center justify-center mx-auto mb-4 ">
                             <img src="{{ asset('assets/icons/e-commerce.png') }}" alt="Market Rates Icon" class="w-24 h-24">
                         </div>
@@ -215,9 +215,9 @@
 
         <div class="">
             <div
-                class="container grid grid-cols-2 gap-6 px-4 py-4 mx-auto md:gap-10 xl:mt-0 sm:mt-10 lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-4 md:px-12">
+                class="container grid grid-cols-2 gap-6 px-4 py-4 mx-auto mt-20 md:gap-10 xl:mt-12 sm:mt-10 lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-4 md:px-12">
                 <div class="w-full h-auto border rounded-lg border-customOrangeDark">
-                    <div class="flex gap-10 m-4">
+                    <div class="flex gap-24 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
                         <div>
                             <h1 class="font-semibold">250.50</h1>
                             <p class="font-semibold text-customOrangeDark">City</p>
@@ -232,7 +232,7 @@
                     </div>
                 </div>
                 <div class="w-full h-20 border rounded-lg border-customOrangeDark">
-                    <div class="flex gap-10 m-4">
+                    <div class="flex gap-24 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
                         <div>
                             <h1 class="font-semibold">250.50</h1>
                             <p class="font-semibold text-customOrangeDark">City</p>
@@ -248,7 +248,7 @@
                     </div>
                 </div>
                 <div class="w-full h-20 border rounded-lg border-customOrangeDark">
-                    <div class="flex gap-10 m-4">
+                    <div class="flex gap-24 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
                         <div>
                             <h1 class="font-semibold">250.50</h1>
                             <p class="font-semibold text-customOrangeDark">City</p>
@@ -265,7 +265,7 @@
                 <div class="w-full h-20 border rounded-lg border-customOrangeDark">
                     <div class="m-4 ms-6">
                         <h1 class="font-bold">20+More</h1>
-                        <p class="font-bold text-[15px] text-customOrangeDark">Cities in App</p>
+                        <p class="font-bold lg:text-[15px] md:text-[12px] text-customOrangeDark">Cities in App</p>
                     </div>
                 </div>
                 <div class="h-20 px-4 text-center w-44 ">

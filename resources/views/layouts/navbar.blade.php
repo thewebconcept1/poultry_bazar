@@ -6,7 +6,7 @@
                 <img class="h-[60%]" src="{{ asset('assets/icons/Logonewsvg.svg') }}" alt="Logo">
             </div>
             <div class="flex items-center space-x-4">
-                <div class="relative">
+                {{-- <div class="relative">
                     <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
                         class="flex items-center px-3 py-2 space-x-1 text-white bg-transparent border rounded-full">
                         <img src="{{ asset('assets/Rectangle 1887.png') }}" alt="USA flag"
@@ -39,8 +39,8 @@
                             </path>
                         </svg>
                     </button>
-                </div>
-                <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification"
+                </div> --}}
+                {{-- <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification"
                     class="relative inline-flex items-center text-sm font-medium text-center text-gray-500 hover:text-gray-900 focus:outline-none dark:hover:text-white dark:text-gray-400"
                     type="button">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -63,7 +63,7 @@
                         Notifications
                     </div>
                     <h2 class="text-center font-semibold text-xl py-10">No Notifications Yet</h2>
-                    {{-- <div class="divide-y divide-gray-100 dark:divide-gray-700">
+                    <div class="divide-y divide-gray-100 dark:divide-gray-700">
                         <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700">
                             <div class="flex-shrink-0">
                                 <img class="rounded-full w-11 h-11" src="{{ asset('assets/profile-img.jpg') }}"
@@ -86,10 +86,10 @@
                                 <div class="text-xs text-blue-600 dark:text-blue-500">a few moments ago</div>
                             </div>
                         </a>
-               
-            
 
-                    </div> --}}
+
+
+                    </div>
                     <a href="../notification"
                         class="block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-gray-50 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white">
                         <div class="inline-flex items-center ">
@@ -101,7 +101,7 @@
                             View all
                         </div>
                     </a>
-                </div>
+                </div> --}}
 
                 <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar"
                     class="flex items-center space-x-2">
@@ -120,7 +120,7 @@
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
                         aria-labelledby="dropdownUserAvatarButton">
                         <li>
-                            <a href="../"
+                            <a href="../dashboard"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                         </li>
                         <li>
