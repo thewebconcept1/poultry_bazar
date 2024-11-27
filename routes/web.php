@@ -57,6 +57,7 @@ Route::middleware(['custom_auth'])->group(function () {
         Route::get('/media/{type?}', [MediaController::class, 'getMedia']);
         Route::post('/saveMedia', [MediaController::class, 'addMedia']);
         Route::post('/deleteMedia', [MediaController::class, 'deleteMedia']);
+        Route::post('/approveMedia', [MediaController::class, 'approveMedia']);
 
         Route::get('/categories/{type?}', [CategoryController::class, 'getCategory']);
         Route::post('/deleteCategory', [CategoryController::class, 'deleteCategory']);

@@ -29,48 +29,116 @@ class MediaController extends Controller
     }
     // delete media
 
+    // approve media
+    public function approveMedia(Request $request)
+    {
+        try {
+            $user = session('user_details');
+            if ($user['user_role'] != 'superadmin') {
+                return response()->json(['success' => false, 'message' => 'You are not authorized to the operation'], 400);
+            }
+            $validatedData = $request->validate([
+                'media_id' => 'required',
+            ]);
+
+            $media = Media::where('media_id', $validatedData['media_id'])->first();
+
+            $media->media_status = 1;
+            $media->save();
+
+            return response()->json(['success' => true, 'message' => 'Media Approved'], 200);
+
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    // approve media
+
     // get media
     public function getMedia($type = null)
     {
         $user = session('user_details');
 
-        if ($type == 'blogs') {
-            $media = Media::where('added_user_id', $user['id'])->where('media_type', $type)->where('media_status', 1)->get();
-            $categories = Category::where('category_status', 1)->get();
-            foreach ($media as $blog) {
-                $blog->date = Carbon::parse($blog->created_at)->format('M d, Y');
-                $category = $categories->firstWhere('category_id', $blog->category_id);
-                $blog->category_name = $category ? $category->category_name : null;
-                $user_name = User::select('name')->where('id' , $blog->added_user_id)->first();
-                $blog->added_username = $user_name->name;
+        if ($user['user_role'] != 'superadmin') {
+            if ($type == 'blogs') {
+                $media = Media::where('added_user_id', $user['id'])->where('media_type', $type)->where('media_status', 1)->get();
+                $categories = Category::where('category_status', 1)->get();
+                foreach ($media as $blog) {
+                    $blog->date = Carbon::parse($blog->created_at)->format('M d, Y');
+                    $category = $categories->firstWhere('category_id', $blog->category_id);
+                    $blog->category_name = $category ? $category->category_name : null;
+                }
+                return view('blogs', ['media' => $media, "categories" => $categories]);
+            } elseif ($type == 'diseases') {
+                $media = Media::where('added_user_id', $user['id'])->where('media_type', $type)->where('media_status', 1)->get();
+                $categories = Category::where('category_status', 1)->where('category_type', $type)->get();
+                foreach ($media as $diseases) {
+                    $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
+                    $category = $categories->firstWhere('category_id', $diseases->category_id);
+                    $diseases->category_name = $category ? $category->category_name : null;
+                }
+                return view('diseases', ['media' => $media, "categories" => $categories]);
+            } elseif ($type == 'consultancy') {
+                $media = Media::where('added_user_id', $user['id'])->where('media_type', $type)->where('media_status', 1)->get();
+                $categories = Category::where('category_status', 1)->where('category_type', $type)->get();
+                foreach ($media as $diseases) {
+                    $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
+                    $category = $categories->firstWhere('category_id', $diseases->category_id);
+                    $diseases->category_name = $category ? $category->category_name : null;
+                }
+                return view('consultancyvideos', ['media' => $media, "categories" => $categories]);
+            } elseif ($type == 'pending') {
+                $media = Media::where('media_status', 2)->get();
+                $categories = Category::where('category_status', 1)->get();
+                foreach ($media as $diseases) {
+                    $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
+                    $category = $categories->firstWhere('category_id', $diseases->category_id);
+                    $diseases->category_name = $category ? $category->category_name : null;
+                }
+                return view('pendingMedia', ['media' => $media, "categories" => $categories]);
+            } else {
+                return response()->json(['success' => false, 'message' => 'Please add type of the media'], 400);
             }
-            return view('blogs', ['media' => $media, "categories" => $categories]);
-        } elseif ($type == 'diseases') {
-            $media = Media::where('added_user_id', $user['id'])->where('media_type', $type)->where('media_status', 1)->get();
-            $categories = Category::where('category_status', 1)->where('category_type', $type)->get();
-            foreach ($media as $diseases) {
-                $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
-                $category = $categories->firstWhere('category_id', $diseases->category_id);
-                $diseases->category_name = $category ? $category->category_name : null;
-                $user_name = User::select('name')->where('id' , $diseases->added_user_id)->first();
-                $diseases->added_username = $user_name->name;
-            }
-            return view('diseases', ['media' => $media, "categories" => $categories]);
-        } elseif ($type == 'consultancy') {
-            $media = Media::where('added_user_id', $user['id'])->where('media_type', $type)->where('media_status', 1)->get();
-            $categories = Category::where('category_status', 1)->where('category_type', $type)->get();
-            foreach ($media as $diseases) {
-                $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
-                $category = $categories->firstWhere('category_id', $diseases->category_id);
-                $diseases->category_name = $category ? $category->category_name : null;
-                $user_name = User::select('name')->where('id' , $diseases->added_user_id)->first();
-                $diseases->added_username = $user_name->name;
-            }
-
-            // return response()->json($media);
-            return view('consultancyvideos', ['media' => $media, "categories" => $categories]);
         } else {
-            return response()->json(['success' => false, 'message' => 'Please add type of the media'], 400);
+            if ($type == 'blogs') {
+                $media = Media::where('media_type', $type)->where('media_status', 1)->get();
+                $categories = Category::where('category_status', 1)->get();
+                foreach ($media as $blog) {
+                    $blog->date = Carbon::parse($blog->created_at)->format('M d, Y');
+                    $category = $categories->firstWhere('category_id', $blog->category_id);
+                    $blog->category_name = $category ? $category->category_name : null;
+                }
+                return view('blogs', ['media' => $media, "categories" => $categories]);
+            } elseif ($type == 'diseases') {
+                $media = Media::where('media_type', $type)->where('media_status', 1)->get();
+                $categories = Category::where('category_status', 1)->where('category_type', $type)->get();
+                foreach ($media as $diseases) {
+                    $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
+                    $category = $categories->firstWhere('category_id', $diseases->category_id);
+                    $diseases->category_name = $category ? $category->category_name : null;
+                }
+                return view('diseases', ['media' => $media, "categories" => $categories]);
+            } elseif ($type == 'consultancy') {
+                $media = Media::where('media_type', $type)->where('media_status', 1)->get();
+                $categories = Category::where('category_status', 1)->where('category_type', $type)->get();
+                foreach ($media as $diseases) {
+                    $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
+                    $category = $categories->firstWhere('category_id', $diseases->category_id);
+                    $diseases->category_name = $category ? $category->category_name : null;
+                }
+                return view('consultancyvideos', ['media' => $media, "categories" => $categories]);
+            } elseif ($type == 'pending') {
+                $media = Media::where('media_status', 2)->get();
+                $categories = Category::where('category_status', 1)->get();
+                foreach ($media as $diseases) {
+                    $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
+                    $category = $categories->firstWhere('category_id', $diseases->category_id);
+                    $diseases->category_name = $category ? $category->category_name : null;
+                }
+                return view('pendingMedia', ['media' => $media, "categories" => $categories]);
+            } else {
+                return response()->json(['success' => false, 'message' => 'Please add type of the media'], 400);
+            }
         }
     }
     // get media
@@ -115,6 +183,7 @@ class MediaController extends Controller
                 $media->media_description = $validatedData['media_description'];
                 $media->media_author = $validatedData['media_author'];
                 $media->media_type = $validatedData['media_type'];
+                $media->media_status = $user['user_role'] == 'superadmin' ? 1 : 2;
 
                 $media->save();
 
@@ -137,6 +206,7 @@ class MediaController extends Controller
                     'media_author' => $validatedData['media_author'],
                     'media_type' => $validatedData['media_type'],
                     'media_image' => $imageFullPath,
+                    'media_status' => $user['user_role'] == 'superadmin' ? 1 : 2,
                 ]);
 
                 return response()->json(['success' => true, 'message' => 'Media added successfully'], 200);
