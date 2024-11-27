@@ -157,7 +157,14 @@
                             d="m1 1 4 4 4-4" />
                     </svg>
                 </button>
-                <ul id="dropdown-example" class=" {{ request()->is('categories', 'blogs', 'media/diseases', 'media/blogs', 'media/consultancy' , 'categories/all' , 'categories/blog' , 'categories/diseases' , 'categories/consultancy') ? "" : "hidden"}} py-2 space-y-2 bg-gray-100 rounded-xl">
+                <ul id="dropdown-example" class=" {{ request()->is('categories', 'blogs', 'media/diseases', 'media/blogs', 'media/consultancy' , 'categories/all' , 'categories/blog' , 'categories/diseases' , 'categories/consultancy' , 'pendingMedia/pending') ? "" : "hidden"}} py-2 space-y-2 bg-gray-100 rounded-b-xl">
+                        <li class="px-3">
+                            <a href="../pendingMedia/pending"
+                                class="flex items-center  p-2 text-sm text-gray-900 transition duration-200 text-sm rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('pendingMedia/pending') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                                <svg fill="currentColor" class="flex-shrink-0 w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('pendingMedia/pending') ? 'text-white' : '' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2 160 448c0 17.7 14.3 32 32 32s32-14.3 32-32l0-306.7L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg>
+                                <span class="flex-1 ms-3 whitespace-nowrap">Pending Requests</span>
+                            </a>
+                        </li>
                     @if ($userRole === 'superadmin' || isset($privileges['Categories']['view']))
                         <li class="px-3">
                             <a href="../categories/all"
@@ -180,7 +187,7 @@
                     @if ($userRole === 'superadmin' || (isset($privileges['Blogs']['view']) && $userRole !== 'superadmin'))
                         <li class="px-3">
                             <a href="/media/blogs"
-                            class="flex items-center p-2 text-sm text-gray-900 transition duration-200 rounded-t-none rounded-b-xl hover:text-white dark:text-white hover:bg-customOrangeDark group {{ request()->is('media/blogs') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                            class="flex items-center p-2 text-sm text-gray-900 transition duration-200  rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark group {{ request()->is('media/blogs') ? 'active bg-customOrangeDark text-white ' : '' }} ">
                                 <svg class="flex-shrink-0 w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('media/blogs') ? 'text-white' : '' }}"
                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 22 22">

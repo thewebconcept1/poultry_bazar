@@ -188,7 +188,7 @@
     </div>
 @endsection
 @section('js')
-    <script>
+   <script>
         function viewData() {
 
             $('.viewModalBtn').click(function() {
@@ -228,7 +228,7 @@
         }
         updateDatafun();
         $('#addModalBtn').click(function() {
-            $('#postDataForm')[0].reset();
+            $('#postDat aForm')[0].reset();
             $('#categoryId').trigger('change');
             $('#updateId').val('');
             $('#blog-modal #modalTitle').text("Add Blog");

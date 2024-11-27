@@ -107,6 +107,9 @@ class MediaController extends Controller
                     $blog->date = Carbon::parse($blog->created_at)->format('M d, Y');
                     $category = $categories->firstWhere('category_id', $blog->category_id);
                     $blog->category_name = $category ? $category->category_name : null;
+                     
+                    $username = User::where('id', $blog->added_user_id)->value('name');
+                    $blog->added_username = $username;
                 }
                 return view('blogs', ['media' => $media, "categories" => $categories]);
             } elseif ($type == 'diseases') {
@@ -116,6 +119,9 @@ class MediaController extends Controller
                     $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
                     $category = $categories->firstWhere('category_id', $diseases->category_id);
                     $diseases->category_name = $category ? $category->category_name : null;
+                     
+                    $username = User::where('id', $diseases->added_user_id)->value('name');
+                    $diseases->added_username = $username;
                 }
                 return view('diseases', ['media' => $media, "categories" => $categories]);
             } elseif ($type == 'consultancy') {
@@ -125,6 +131,9 @@ class MediaController extends Controller
                     $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
                     $category = $categories->firstWhere('category_id', $diseases->category_id);
                     $diseases->category_name = $category ? $category->category_name : null;
+                     
+                    $username = User::where('id', $diseases->added_user_id)->value('name');
+                    $diseases->added_username = $username;
                 }
                 return view('consultancyvideos', ['media' => $media, "categories" => $categories]);
             } elseif ($type == 'pending') {
@@ -134,8 +143,14 @@ class MediaController extends Controller
                     $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
                     $category = $categories->firstWhere('category_id', $diseases->category_id);
                     $diseases->category_name = $category ? $category->category_name : null;
+
+                    $username = User::where('id', $diseases->added_user_id)->value('name');
+                    $diseases->added_username = $username;
+
+
                 }
-                return view('pendingMedia', ['media' => $media, "categories" => $categories]);
+                // return response()->json($media);
+                return view('pending_media', ['media' => $media, "categories" => $categories]);
             } else {
                 return response()->json(['success' => false, 'message' => 'Please add type of the media'], 400);
             }

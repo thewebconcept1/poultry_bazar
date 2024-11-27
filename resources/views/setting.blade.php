@@ -234,20 +234,26 @@
                                 <label for="currentPassword"
                                     class="mb-2 font-medium text-gray-700 md:w-1/3 lg:w-1/4 md:mb-0">Current
                                     Password</label>
-                                <div class="md:w-2/3 lg:w-3/4">
+                                <div class="md:w-2/3 lg:w-3/4 relative">
                                     <input name="old_password" type="password" id="currentPassword"
                                         class="w-full p-2 border border-gray-300 rounded focus:outline-none  focus:border-customOrangeDark"
                                         placeholder="Enter old password">
+                                        <span class="absolute inset-y-0 flex items-center cursor-pointer right-4 top-1/2 -translate-y-1/2">
+                                            <i class="fa-solid fa-eye-slash text-customGrayColorDark"></i>
+                                        </span>
                                 </div>
                             </div>
 
                             <div class="flex flex-col mb-3 md:flex-row">
                                 <label for="newPassword"
                                     class="mb-2 font-medium text-gray-700 md:w-1/3 lg:w-1/4 md:mb-0">New Password</label>
-                                <div class="md:w-2/3 lg:w-3/4">
+                                <div class="md:w-2/3 lg:w-3/4 relative">
                                     <input name="new_password" type="password" id="newPassword"
                                         class="w-full p-2 border border-gray-300 rounded focus:outline-none  focus:border-customOrangeDark"
                                         placeholder="Enter new password">
+                                        <span class="absolute inset-y-0 flex items-center cursor-pointer right-4 top-1/2 -translate-y-1/2">
+                                            <i class="fa-solid fa-eye-slash text-customGrayColorDark"></i>
+                                        </span>
                                 </div>
                             </div>
 
@@ -255,10 +261,13 @@
                                 <label for="renewPassword"
                                     class="mb-2 font-medium text-gray-700 md:w-1/3 lg:w-1/4 md:mb-0">Re-enter New
                                     Password</label>
-                                <div class="md:w-2/3 lg:w-3/4">
+                                <div class="md:w-2/3 lg:w-3/4 relative">
                                     <input name="new_password_confirmation" type="password" id="renewPassword"
                                         class="w-full p-2 border border-gray-300 rounded focus:outline-none  focus:border-customOrangeDark"
                                         placeholder="Re-enter new  password">
+                                        <span class="absolute inset-y-0 flex items-center cursor-pointer right-4 top-1/2 -translate-y-1/2">
+                                            <i class="fa-solid fa-eye-slash text-customGrayColorDark"></i>
+                                        </span>
                                 </div>
                             </div>
 
@@ -313,6 +322,20 @@
 
 @section('js')
     <script>
+        $(document).ready(function () {
+    // Toggle password visibility
+    $('.fa-eye-slash').on('click', function () {
+        let $icon = $(this); 
+        let $input = $icon.closest('div').find('input'); 
+        if ($input.attr('type') === 'password') {
+            $input.attr('type', 'text');
+            $icon.removeClass('fa-eye-slash').addClass('fa-eye');
+        } else {
+            $input.attr('type', 'password');
+            $icon.removeClass('fa-eye').addClass('fa-eye-slash');
+        }
+    });
+});
         let userImageExists = {{ isset($user['user_image']) ? 'true' : 'false' }};
         let userImage = {!! isset($user['user_image']) ? json_encode($user['user_image']) : 'null' !!};
         let fileImg = $('#settingForm .file-preview');
