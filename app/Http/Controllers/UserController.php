@@ -291,7 +291,7 @@ return view('resetpassword');
             $requestedUser = User::create([
                 'name' => $validatedData['fullName'],
                 'email' => $validatedData['email'],
-                'phone' => $validatedData['phone'],
+                'user_phone' => $validatedData['phone'],
                 'password' => $validatedData['password'],
                 'module_id' => $moduleIds,
                 'user_role' => 'operator',

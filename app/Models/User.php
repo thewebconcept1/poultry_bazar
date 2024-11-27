@@ -24,11 +24,13 @@ class User extends Authenticatable
         'added_user_id',
         'city_id',
         'module_id',
+        'user_phone',
         'user_image',
         'user_status',
         'user_verified',
         'user_privileges',
         'address',
+
     ];
 
     /**
@@ -58,5 +60,5 @@ class User extends Authenticatable
     {
         return $this->belongsTo(City::class, 'city_id');
     }
-    
+
 }
