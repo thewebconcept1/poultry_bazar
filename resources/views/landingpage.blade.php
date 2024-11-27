@@ -26,7 +26,7 @@
 
 <body class="relative text-gray-800 bg-white">
     <nav
-        class="sticky z-40 border-gray-200 rounded-full shadow-xl bg-customOrangeDark top-1 xl:mx-96 lg:mx-40 dark:bg-gray-900">
+        class="sticky z-40 border-gray-200 rounded-full shadow-xl gradient-bg top-1 xl:mx-[200px] lg:mx-40 dark:bg-gray-900">
         <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-12 py-4 mx-auto">
             <!-- Logo -->
             <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -86,7 +86,7 @@
 
     <div class=" section" id="home">
         <div
-            class=" container mx-auto relative z-20 mt-10 flex flex-col px-[5vw] items-center justify-center w-full lg:flex-row lg:justify-between xl:mx-auto">
+            class="container relative z-20 flex flex-col items-center justify-center w-full px-[5vw] mx-auto mt-10  xl:px-0 lg:flex-row lg:justify-between xl:mx-auto">
 
             <!-- Welcome Section -->
             <div class="relative z-40 flex flex-col items-center lg:mt-0 mt-10 justify-center w-[70vw] h-full ">
@@ -151,7 +151,7 @@
                         <p class="text-sm text-gray-600">Get real-time poultry prices to stay ahead in the market.</p>
                     </div>
                 </div> --}}
-                <svg width="358" height="437" viewBox="0 0 358 437" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <svg class="" width="408" height="537" viewBox="0 0 358 437" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g opacity="0.7" filter="url(#filter0_f_2751_6634)">
                     <circle cx="179" cy="199.871" r="169" fill="url(#paint0_linear_2751_6634)"/>
                     </g>
