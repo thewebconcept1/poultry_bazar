@@ -161,10 +161,10 @@ return view('resetpassword');
                 // Get the path of the image from the animal record
                 $imagePath = public_path($user->user_image); // Get the full image path
 
-                // Delete the image file if it exists
-                if (file_exists($imagePath)) {
-                    unlink($imagePath); // Delete the image from the file system
+                if (!empty($user->user_image) && file_exists($oldImagePath) && is_file($oldImagePath)) {
+                    unlink($oldImagePath); // Safely delete the old image
                 }
+
 
                 $image = $request->file('user_image');
                 // Store the image in the 'animal_images' folder and get the file path
