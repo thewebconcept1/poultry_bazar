@@ -8,7 +8,7 @@
             <h1 class="text-3xl font-bold ps-5">Operators</h1>
         </div>
         @php
-            $headers = ['Sr.', 'Image', 'Name', 'Email', 'Phone Number', 'status', 'Action'];
+            $headers = ['Sr.', 'Image', 'Name', 'Email', 'Phone Number', 'User Role' , 'status', 'Action'];
         @endphp
 
         <x-table :headers="$headers">
@@ -21,6 +21,7 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->user_phone }}</td>
+                        <td>{{ $user->user_role }}</td>
                         <td><button class="changeStatusBtn" data-modal-target="status-modal" data-modal-toggle="status-modal"
                                 userId="{{ $user->id }}"
                                 status="{{ $user->user_status }}">{!! $user->user_status == 1
