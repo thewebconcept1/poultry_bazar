@@ -135,7 +135,8 @@ class MediaController extends Controller
                     $category = $categories->firstWhere('category_id', $diseases->category_id);
                     $diseases->category_name = $category ? $category->category_name : null;
                 }
-                return view('pendingMedia', ['media' => $media, "categories" => $categories]);
+                // return response()->json($media);
+                return view('pending_media', ['media' => $media, "categories" => $categories]);
             } else {
                 return response()->json(['success' => false, 'message' => 'Please add type of the media'], 400);
             }

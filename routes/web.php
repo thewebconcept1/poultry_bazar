@@ -76,3 +76,4 @@ Route::match(['get', 'post'], '/logout', [UserController::class, 'logout']);
 Route::get('/', function () {
     return view('landingpage');
 });
+Route::get('pendingMedia/{type?}', [MediaController::class , 'getMedia']);
