@@ -13,6 +13,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <style>
+        *{
+            scroll-behavior: smooth;
+        }
         #loading {
             position: fixed;
             top: 0;
@@ -24,10 +27,10 @@
         }
     </style>
 
-<body class="relative text-gray-800 bg-white">
+<body class="relative text-gray-800 bg-white body">
     <nav
         class="container sticky z-40 w-full mx-auto border-gray-200 rounded-full shadow-xl gradient-bg top-1 dark:bg-gray-900">
-        <div class="flex flex-wrap items-center justify-between w-full px-12 py-4 mx-auto xl:max-w-">
+        <div class="flex flex-wrap items-center justify-between w-full px-12 py-3 mx-auto xl:max-w-">
             <!-- Logo -->
             <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="{{ asset('assets/icons/logowhite.png') }}" alt="">
@@ -46,16 +49,16 @@
             </button>
             <ul class="hidden md:flex">
                 <li>
-                    <a href="#" class="px-3 text-white rounded hover:bg-gray-700">What is it?</a>
+                    <a href="#" class="px-3 text-white rounded hover:bg-orange-500">What is it?</a>
                 </li>
                 <li>
-                    <a href="#home" class="px-3 text-white rounded hover:bg-gray-700">Home</a>
+                    <a href="#home" class="px-3 text-white rounded hover:bg-orange-500">Home</a>
                 </li>
                 <li>
-                    <a href="#about" class="px-3 text-white rounded hover:bg-gray-700">About</a>
+                    <a href="#about" class="px-3 text-white rounded hover:bg-orange-500">About</a>
                 </li>
                 <li>
-                    <a href="#blogs" class="px-3 text-white rounded hover:bg-gray-700">Blogs</a>
+                    <a href="#blogs" class="px-3 text-white rounded hover:bg-orange-500">Blogs</a>
                 </li>
             </ul>
             <!-- Sidebar Menu -->
@@ -86,10 +89,10 @@
 
     <div class=" section" id="home">
         <div
-            class="container relative z-20 flex flex-col items-center justify-center w-full px-[5vw] mx-auto mt-10  xl:px-0 lg:flex-row lg:justify-between xl:mx-auto">
+            class="container relative z-20 flex flex-col items-center justify-center w-full px-6 mx-auto mt-10 xl:px-14 lg:flex-row lg:justify-between xl:mx-auto">
 
             <!-- Welcome Section -->
-            <div class="relative z-40 flex flex-col items-center lg:mt-0 mt-10 justify-center w-[70vw] h-full ">
+            <div class="relative z-40 flex flex-col items-center lg:mt-0 mt-10 xl:mx-auto justify-center w-[70vw] h-full ">
                 <div id="welcomeDiv" class="text-center lg:text-left">
                     <h2 class="text-4xl font-bold leading-tight lg:text-5xl text-customOrangeDark">
                         <span>Welcome to</span><br> Poultry Bazar
@@ -117,7 +120,7 @@
                     </div>
                 </div>
             </div>
-            <div class="z-40 flex items-center justify-center w-[80vw] px-2 mt-6 md:mt-4 md:px-0 ">
+            <div class="z-40 flex items-center  justify-end w-[80vw] px-2 mt-6 md:mt-4 md:px-0 ">
                 {{-- <div class="grid grid-cols-2 gap-5 ">
                     <div class="max-w-[250px]  p-4 text-center bg-white rounded-lg shadow-lg">
                         <div class="flex items-center justify-center mx-auto mb-4 ">
