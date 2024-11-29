@@ -867,7 +867,7 @@
                     <!-- Quick Links Column 2 -->
                     <div class="flex justify-center w-full h-32 lg:mt-20 ">
 
-                        <ul class="flex flex-col items-start w-full space-y-2 text-gray-500">
+                        <ul class="flex flex-col items-center w-full space-y-2 text-gray-500 xl:items-start">
                             <li><a href="#">
                                     <h2 class="mb-2 text-lg font-semibold text-customOrangeDark">Quick Links</h2>
                                 </a></li>
