@@ -12,7 +12,7 @@
         @php
             $headers = ['Sr.', 'Name', 'image', 'Description', 'Action'];
             $body = '';
-        @endphp
+        @endphp 
 
         <x-table :headers="$headers" :body="$body">
             <x-slot name="tablebody">

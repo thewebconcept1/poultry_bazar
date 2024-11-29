@@ -363,8 +363,8 @@
                 <div class="w-full h-auto border rounded-lg border-customOrangeDark">
                     <div class="flex gap-14 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
                         <div>
-                            <h1 class="font-semibold">250.50</h1>
-                            <p class="font-semibold text-customOrangeDark">City</p>
+                            <h1 class="font-semibold">410</h1>
+                            <p class="font-semibold text-customOrangeDark">Lahore</p>
                         </div>
                         <div class="flex flex-col justify-center">
                             <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
@@ -378,8 +378,8 @@
                 <div class="w-full h-20 border rounded-lg border-customOrangeDark">
                     <div class="flex gap-14 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
                         <div>
-                            <h1 class="font-semibold">250.50</h1>
-                            <p class="font-semibold text-customOrangeDark">City</p>
+                            <h1 class="font-semibold">330</h1>
+                            <p class="font-semibold text-customOrangeDark">Multan</p>
                         </div>
                         <div class="flex flex-col justify-center">
                             <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
@@ -394,8 +394,8 @@
                 <div class="w-full h-20 border rounded-lg border-customOrangeDark">
                     <div class="flex gap-14 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
                         <div>
-                            <h1 class="font-semibold">250.50</h1>
-                            <p class="font-semibold text-customOrangeDark">City</p>
+                            <h1 class="font-semibold">280</h1>
+                            <p class="font-semibold text-customOrangeDark">Islamabad</p>
                         </div>
                         <div class="flex flex-col justify-center">
                             <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
@@ -409,8 +409,8 @@
                 <div class="w-full h-20 border rounded-lg border-customOrangeDark">
                     <div class="flex gap-14 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
                         <div>
-                            <h1 class="font-semibold">250.50</h1>
-                            <p class="font-semibold text-customOrangeDark">City</p>
+                            <h1 class="font-semibold">350</h1>
+                            <p class="font-semibold text-customOrangeDark">Peshawar</p>
                         </div>
                         <div class="flex flex-col justify-center">
                             <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
@@ -1172,7 +1172,7 @@
                         <h2 class="mb-2 text-lg font-semibold lg:mt-20 text-customOrangeDark">Social Links</h2>
                         <ul class="space-y-2 text-gray-500 ">
                             <li>
-                                <a href="#" class="flex items-center group">
+                                <a href="https://www.facebook.com/profile.php?id=61569679073435" target="_blank" class="flex items-center group">
                                     <svg class="w-6 h-6 text-gray-500 transition-colors duration-300 fill-current group-hover:text-customOrangeDark"
                                         width="25" height="25" viewBox="0 0 25 25"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1186,7 +1186,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="flex items-center group">
+                                <a href="https://www.instagram.com/poul3y" target="_blank" class="flex items-center group">
                                     <svg class="w-6 h-6 text-gray-500 transition-colors duration-300 fill-current group-hover:text-customOrangeDark"
                                         width="25" height="25" viewBox="0 0 25 25"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1224,9 +1224,10 @@
                     </div>
 
                     <!-- Quick Links Column 2 -->
-                    <div class="h-32 lg:mt-20 ">
-                        <h2 class="mb-2 text-lg font-semibold text-customOrangeDark">Quick Links</h2>
-                        <ul class="space-y-2 text-gray-500">
+                    <div class="h-32 lg:mt-20  w-full  flex justify-center ">
+                       
+                        <ul class="space-y-2 text-gray-500 flex flex-col items-start w-full">
+                            <li><a href="#" > <h2 class="mb-2 text-lg font-semibold text-customOrangeDark">Quick Links</h2></a></li>
                             <li><a href="#" class="hover:text-gray-700">Privacy Policy</a></li>
                             <li><a href="#" class="hover:text-gray-700">Terms & Conditions</a></li>
                             <li><a href="#" class="hover:text-gray-700">Disclaimer</a></li>
