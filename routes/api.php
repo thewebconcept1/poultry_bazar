@@ -11,6 +11,9 @@ Route::get('/user', function (Request $request) {
 Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::post('/addQuery', [ApiController::class, 'addQuery']);
+
+    Route::get('/getUser', [ApiController::class, 'getUser']);
+    Route::post('/updateUser', [ApiController::class, 'updateUser']);
     
 });
 Route::get('/getMarkets', [ApiController::class, 'getMarkets']);

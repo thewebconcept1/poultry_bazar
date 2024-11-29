@@ -20,6 +20,56 @@ class ApiController extends Controller
     // }
     // get Notifications
 
+    // update User
+    public function updateUser(Request $request)
+    {
+        try {
+            $loggedInUser = Auth::user();
+
+            $validatedData = $request->validate([
+                'name' => 'nullable|string|max:255',
+                'email' => 'nullable|email',
+                'address' => 'nullable|string|max:500',
+                'password' => 'nullable|string|min:8',
+            ]);
+
+            $user = User::where('id', $loggedInUser->id)->first();
+
+            if ($request->hasFile('user_image')) {
+                // Get the path of the image from the animal record
+                $imagePath = public_path($user->user_image); // Get the full image path
+                if (!empty($user->user_image) && file_exists($imagePath) && is_file($imagePath)) {
+                    unlink($imagePath); // Safely delete the old image
+                }
+                $image = $request->file('user_image');
+                // Store the image in the 'animal_images' folder and get the file path
+                $imagePath = $image->store('user_images', 'public'); // stored in 'storage/app/public/animal_images'
+                $imageFullPath = 'storage/' . $imagePath;
+                $user->user_image = $imageFullPath;
+            }
+
+            $user->name = $validatedData['name'];
+            $user->email = $validatedData['email'];
+            $user->address = $validatedData['address'];
+            $user->password = hash::make($validatedData['password']);
+            $user->save();
+
+            return response()->json(['success' => true, 'message' => 'User updated'], 200);
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    // update User
+
+    // get User
+    public function getUser()
+    {
+        $user = Auth::user();
+
+        return response()->json(['success' => true, 'data' => $user], 200);
+
+    }
+    // get User
     // login
     public function login(Request $request)
     {
@@ -54,12 +104,12 @@ class ApiController extends Controller
             ]);
 
             $user = User::create([
-                'name' => $validatedData['userName'],
+                'name' => $validatedData['name'],
                 'email' => $validatedData['email'],
                 'address' => $validatedData['address'],
                 'password' => $validatedData['password'],
                 'user_role' => 'appuser',
-                'user_status' => $validatedData['userRole'] == 'appuser' ? 1 : 0,
+                'user_status' => 1,
             ]);
 
             return response()->json(['success' => true, 'message' => 'Registration successfull'], 200);
