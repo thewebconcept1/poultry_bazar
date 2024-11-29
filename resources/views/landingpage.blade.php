@@ -26,8 +26,8 @@
 
 <body class="relative text-gray-800 bg-white">
     <nav
-        class="sticky z-40 border-gray-200 rounded-full shadow-xl gradient-bg top-1 xl:mx-[200px] lg:mx-40 dark:bg-gray-900">
-        <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-12 py-4 mx-auto">
+        class="container sticky z-40 w-full mx-auto border-gray-200 rounded-full shadow-xl gradient-bg top-1 dark:bg-gray-900">
+        <div class="flex flex-wrap items-center justify-between w-full px-12 py-4 mx-auto xl:max-w-">
             <!-- Logo -->
             <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="{{ asset('assets/icons/logowhite.png') }}" alt="">
@@ -55,7 +55,7 @@
                     <a href="#about" class="px-3 text-white rounded hover:bg-gray-700">About</a>
                 </li>
                 <li>
-                    <a href="#price" class="px-3 text-white rounded hover:bg-gray-700">Price</a>
+                    <a href="#blogs" class="px-3 text-white rounded hover:bg-gray-700">Blogs</a>
                 </li>
             </ul>
             <!-- Sidebar Menu -->
@@ -77,7 +77,7 @@
                         <a href="#about" class="px-3 py-2 text-white rounded hover:bg-orange-500">About</a>
                     </li>
                     <li>
-                        <a href="#price" class="px-3 py-2 text-white rounded hover:bg-orange-500">Price</a>
+                        <a href="#blogs" class="px-3 py-2 text-white rounded hover:bg-orange-500">Blogs</a>
                     </li>
                 </ul>
             </div>
@@ -358,7 +358,7 @@
             <div
                 class="container grid grid-cols-2 gap-6 px-4 py-4 mx-auto mt-10 md:gap-10 xl:mt-20 sm:mt-20 lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-4 md:px-12">
                 <div class="w-full h-auto border rounded-lg border-customOrangeDark">
-                    <div class="flex gap-24 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
+                    <div class="flex gap-14 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
                         <div>
                             <h1 class="font-semibold">250.50</h1>
                             <p class="font-semibold text-customOrangeDark">City</p>
@@ -373,7 +373,7 @@
                     </div>
                 </div>
                 <div class="w-full h-20 border rounded-lg border-customOrangeDark">
-                    <div class="flex gap-24 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
+                    <div class="flex gap-14 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
                         <div>
                             <h1 class="font-semibold">250.50</h1>
                             <p class="font-semibold text-customOrangeDark">City</p>
@@ -389,7 +389,7 @@
                     </div>
                 </div>
                 <div class="w-full h-20 border rounded-lg border-customOrangeDark">
-                    <div class="flex gap-24 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
+                    <div class="flex gap-14 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
                         <div>
                             <h1 class="font-semibold">250.50</h1>
                             <p class="font-semibold text-customOrangeDark">City</p>
@@ -404,7 +404,7 @@
                     </div>
                 </div>
                 <div class="w-full h-20 border rounded-lg border-customOrangeDark">
-                    <div class="flex gap-24 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
+                    <div class="flex gap-14 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
                         <div>
                             <h1 class="font-semibold">250.50</h1>
                             <p class="font-semibold text-customOrangeDark">City</p>
@@ -449,7 +449,7 @@
             <div class="flex items-center justify-center p-5 mt-12">
                 <div class="text-center">
                     <h2 class="text-2xl font-semibold text-customOrangeDark">Services</h2>
-                    <p class="mt-2 text-gray-500">Revolutionize your poultry business with tools to stay informed,
+                    <p class="sm:mx-[150px] mt-2 text-gray-500">Revolutionize your poultry business with tools to stay informed,
                         streamline operations, optimize management,
                         expand your market reach, enhance expertise, and simplify hiring processes.</p>
                 </div>
@@ -533,7 +533,7 @@
                                 </defs>
                             </svg>
                             <h3 class="text-2xl font-semibold text-customOrangeDark">Point of Sale</h3>
-                            <p class="mt-2 text-sm text-gray-500">Streamline sales and financial management with an integrated Point of Sale system. Track sales, generate invoices, and gain insights into daily transactions. A free printer and initial receipt roll will be provided by POUL3Y to help you start smoothly.</p>
+                            <p class="mt-2 text-sm text-gray-500 ">Streamline sales and financial management with an integrated Point of Sale system. Track sales, generate invoices, and gain insights into daily transactions. A free printer and initial receipt roll will be provided by POUL3Y to help you start smoothly.</p>
                         </div>
                         <!-- Card 3 -->
                         <div class="flex flex-col items-center">
@@ -1088,14 +1088,14 @@
                 </div>
             </div>
         </div> --}}
-        <section class="py-10 mt-20">
-            <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <section id="blogs" class="container py-10 mx-auto mt-20 xl:px-0">
+            <div class="px-4 mx-auto lg:px-8">
               <!-- Header -->
               <div class="flex items-center justify-between mb-8">
                 <h2 class="pb-1 text-3xl font-bold text-customOrangeDark">Our Latest Blog Posts</h2>
-                <a href="#" class="px-6 py-2 text-white transition rounded bg-customOrangeDark hover:bg-orange-500">
+                <button class="px-6 py-3 font-semibold text-white rounded-full shadow-md gradient-bg ">
                   See All Blog Posts
-                </a>
+                </button>
               </div>
 
               <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -1154,19 +1154,20 @@
             <img class="mt-24" src="{{ asset('assets/icons/Subtract.png') }}" alt="">
         </div>
         <div class="mb-16 text-gray-800 bg-white">
-            <footer class="mt-8 bg-white ">
-                <div class="container grid gap-8 px-4 mx-auto text-center md:grid-cols-4 md:text-left">
+            <footer class="mt-6 bg-white ">
+                <div class="container grid gap-8 px-4 mx-auto text-center md:grid-cols-4">
                     <div class="h-32 lg:mt-20">
                         <h2 class="mb-2 text-lg font-bold text-customOrangeDark">POUL<span
                                 class="font-extrabold">3</span>Y</h2>
                         <p class="text-gray-500">Best delivery services in Germany. Using by more than 3,000,000
                             people
                             in
-                            the world</p>
+                            the world
+                        </p>
                     </div>
-                    <div class="h-32 lg:mt-20">
-                        <h2 class="mb-2 text-lg font-semibold text-customOrangeDark">Social Links</h2>
-                        <ul class="space-y-1 text-gray-500">
+                    <div class="flex flex-col items-center justify-center ">
+                        <h2 class="mb-2 text-lg font-semibold lg:mt-20 text-customOrangeDark">Social Links</h2>
+                        <ul class="space-y-2 text-gray-500 ">
                             <li>
                                 <a href="#" class="flex items-center group">
                                     <svg class="w-6 h-6 text-gray-500 transition-colors duration-300 fill-current group-hover:text-customOrangeDark"
@@ -1176,7 +1177,9 @@
                                             d="M5 23.2812C4.57622 23.2815 4.15656 23.1981 3.76501 23.0361C3.37345 22.874 3.01767 22.6363 2.71802 22.3367C2.41836 22.037 2.1807 21.6812 2.01863 21.2897C1.85655 20.8981 1.77323 20.4785 1.77344 20.0547V5.05469C1.77323 4.63091 1.85655 4.21125 2.01863 3.81969C2.1807 3.42814 2.41836 3.07236 2.71802 2.77271C3.01767 2.47305 3.37345 2.23539 3.76501 2.07331C4.15656 1.91124 4.57622 1.82792 5 1.82813H20C20.4238 1.82792 20.8434 1.91124 21.235 2.07331C21.6266 2.23539 21.9823 2.47305 22.282 2.77271C22.5816 3.07236 22.8193 3.42814 22.9814 3.81969C23.1435 4.21125 23.2268 4.63091 23.2266 5.05469V20.0547C23.2268 20.4785 23.1435 20.8981 22.9814 21.2897C22.8193 21.6812 22.5816 22.037 22.282 22.3367C21.9823 22.6363 21.6266 22.874 21.235 23.0361C20.8434 23.1981 20.4238 23.2815 20 23.2812H5ZM18.1094 14.2188H15.8438V21.7188H20.0156C20.2344 21.7188 20.451 21.6757 20.653 21.592C20.8551 21.5083 21.0387 21.3856 21.1934 21.2309C21.3481 21.0762 21.4708 20.8926 21.5545 20.6905C21.6382 20.4885 21.6813 20.2719 21.6813 20.0531V5.05313C21.6813 4.61137 21.5058 4.18772 21.1934 3.87535C20.881 3.56299 20.4574 3.3875 20.0156 3.3875H5.01563C4.57387 3.3875 4.15022 3.56299 3.83785 3.87535C3.52549 4.18772 3.35 4.61137 3.35 5.05313V20.0531C3.35 20.4949 3.52549 20.9185 3.83785 21.2309C4.15022 21.5433 4.57387 21.7188 5.01563 21.7188H13.3438V14.2188H10.8438V11.7188H13.3438V10.3766C13.3438 7.82969 14.5828 6.72031 16.6875 6.72031C17.6797 6.72031 18.2125 6.79219 18.4688 6.82813H18.4844V9.21875H17.0438C16.3172 9.21875 15.9734 9.53125 15.8703 10.1563C15.8452 10.3201 15.8332 10.4858 15.8344 10.6516V11.7188H18.4594L18.1031 14.2188H18.1094Z" />
                                     </svg>
                                     <span
-                                        class="ml-2 text-gray-600 duration-300 hover:text-customOrangeDark">Facebook</span>
+                                        class="ml-2 text-gray-600 duration-300 hover:text-customOrangeDark">
+                                        Facebook
+                                    </span>
                                 </a>
                             </li>
                             <li>
@@ -1192,20 +1195,18 @@
                                 </a>
                             </li>
                             <li> <a href="#" class="flex items-center group">
-                                    <svg class="w-6 h-6 text-gray-500 transition-colors duration-300 fill-current group-hover:text-customOrangeDark"
-                                        width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M14.5833 12.5013L10.9375 14.5846V10.418L14.5833 12.5013Z"
-                                            fill="#ACADAE" stroke="#ACADAE" stroke-width="1.875"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <path
-                                            d="M2.08301 13.2388V11.7638C2.08301 8.74818 2.08301 7.23984 3.02572 6.27005C3.96947 5.29922 5.45488 5.25755 8.42468 5.17318C9.83093 5.13359 11.2684 5.10547 12.4997 5.10547C13.7309 5.10547 15.1674 5.13359 16.5747 5.17318C19.5445 5.25755 21.0299 5.29922 21.9726 6.27005C22.9153 7.24089 22.9163 8.74922 22.9163 11.7638V13.2378C22.9163 16.2544 22.9163 17.7617 21.9736 18.7326C21.0299 19.7023 19.5455 19.7451 16.5747 19.8284C15.1684 19.869 13.7309 19.8971 12.4997 19.8971C11.2684 19.8971 9.83197 19.869 8.42468 19.8284C5.45488 19.7451 3.96947 19.7034 3.02572 18.7326C2.08197 17.7617 2.08301 16.2534 2.08301 13.2388Z"
-                                            stroke="#ACADAE" stroke-width="1.875" />
+                                <svg class="w-6 h-6 text-gray-500 transition-colors duration-300 group-hover:text-customOrangeDark"
+                                 width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14.5833 12.5013L10.9375 14.5846V10.418L14.5833 12.5013Z" fill="currentColor" stroke="currentColor" stroke-width="1.875" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M2.08301 13.2388V11.7638C2.08301 8.74818 2.08301 7.23984 3.02572 6.27005C3.96947 5.29922 5.45488 5.25755 8.42468 5.17318C9.83093 5.13359 11.2684 5.10547 12.4997 5.10547C13.7309 5.10547 15.1674 5.13359 16.5747 5.17318C19.5445 5.25755 21.0299 5.29922 21.9726 6.27005C22.9153 7.24089 22.9163 8.74922 22.9163 11.7638V13.2378C22.9163 16.2544 22.9163 17.7617 21.9736 18.7326C21.0299 19.7023 19.5455 19.7451 16.5747 19.8284C15.1684 19.869 13.7309 19.8971 12.4997 19.8971C11.2684 19.8971 9.83197 19.869 8.42468 19.8284C5.45488 19.7451 3.96947 19.7034 3.02572 18.7326C2.08197 17.7617 2.08301 16.2534 2.08301 13.2388Z" stroke="currentColor" stroke-width="1.875"/>
                                     </svg>
+
                                     <span
                                         class="ml-2 text-gray-600 duration-300 hover:text-customOrangeDark">YouTube</span>
-                                </a></li>
-                            <li> <a href="#" class="flex items-center group">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center group">
                                     <svg class="w-6 h-6 text-gray-500 transition-colors duration-300 fill-current group-hover:text-customOrangeDark"
                                         width="25" height="25" viewBox="0 0 25 25"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1214,14 +1215,15 @@
                                     </svg>
                                     <span
                                         class="ml-2 text-gray-600 duration-300 hover:text-customOrangeDark">Whatsaap</span>
-                                </a></li>
+                                </a>
+                            </li>
                         </ul>
                     </div>
 
                     <!-- Quick Links Column 2 -->
-                    <div class="h-32 mt-20">
+                    <div class="h-32 lg:mt-20 ">
                         <h2 class="mb-2 text-lg font-semibold text-customOrangeDark">Quick Links</h2>
-                        <ul class="space-y-1 text-gray-500">
+                        <ul class="space-y-2 text-gray-500">
                             <li><a href="#" class="hover:text-gray-700">Privacy Policy</a></li>
                             <li><a href="#" class="hover:text-gray-700">Terms & Conditions</a></li>
                             <li><a href="#" class="hover:text-gray-700">Disclaimer</a></li>
