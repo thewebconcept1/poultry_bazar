@@ -23,7 +23,7 @@
             @endif
         </div>
         @php
-            $headers = ['Sr.', 'Added By' ,'Image', 'Title', 'Description', 'Category', 'Date', 'Author', 'Action'];
+            $headers = ['Sr.','Image', 'Title', 'Description', 'Category', 'Date', 'Author', 'Action'];
         @endphp
 
 
@@ -32,7 +32,7 @@
                 @foreach ($media as $data)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td class="whitespace-nowrap">{{ $data->added_username  }}</td>
+                        {{-- <td class="whitespace-nowrap">{{ $data->added_username  }}</td> --}}
                         <td><img class="h-16 w-16 object-cover  bg-customOrangeDark rounded-full "
                             src="{{ $data->media_image ??  asset('assets/default-logo-1.png') }}" alt='Disease Image'></td>
                         <td class='text-xs xl:text-[15px]'>{{ $data->media_title }}</td>
@@ -119,8 +119,17 @@
                             <x-input id="mediaTitle" label="Diseases Title" placeholder="Enter Diseases Title"
                                 name='media_title' type="text"></x-input>
                             <div class="mt-2">
-                                <x-input id="mediaAuthor" label="Diseases Author" placeholder="Enter Diseases Author"
-                                    name='media_author' type="text"></x-input>
+                                {{-- <x-input id="mediaAuthor" label="Diseases Author" placeholder="Enter Diseases Author"
+                                    name='media_author' type="text"></x-input> --}}
+
+                                    <div class="w-full">
+                                        <label for="mediaAuthor"
+                                            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Diseases Author</label>
+                                        <input type="text" name="media_author" id="mediaAuthor"
+                                            placeholder="Enter Diseases Author"
+                                            class=" border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-customOrangeDark focus:border-customOrangeDark block w-full p-2.5"
+                                            required value="{{ session('user_details')['name'] }}" readonly />
+                                    </div>
                             </div>
                             <div class="mt-2">
                                 <x-select id="categoryId" name="category_id" label="Diseases Category">

@@ -14,9 +14,9 @@
     $userRole = session('user_details')['user_role'];
 @endphp
 <aside id="sidebar"
-    class="fixed top-0  z-40   w-64 h-[88vh]  transition-transform -translate-x-full  sm:translate-x-0  md:ml-[10px]  sm:mt-[100px] overflow-y-auto left-auto "
+    class="fixed top-0  z-40   w-64 h-[88vh]  transition-transform -translate-x-full  sm:translate-x-0  md:ml-[10px]  sm:mt-[100px]  left-auto   "
     aria-label="Sidebar">
-    <div class="h-full px-3 py-4 overflow-y-auto  gradient-border-sidebar rounded-2xl z-20 relative">
+    <div class="h-full px-3 py-4  overflow-y-scroll scrollbar-hide  sidebar-main gradient-border-sidebar rounded-2xl z-20 relative">
         <ul class="pb-10 space-y-2 font-medium">
             <li class="relative z-20">
                 <a href="../dashboard"
@@ -236,7 +236,7 @@
                     @if ($userRole === 'superadmin' || isset($privileges['Consultancy']['view']))
                         <li>
                             <a href="/media/consultancy"
-                                class="flex items-center px-4  py-2 text-sm text-gray-900 transition duration-200  hover:text-white dark:text-white hover:bg-gray-400 dark:hover:bg-gray-700 group {{ request()->is('media/consultancy') ? 'active gradient-bg text-white ' : '' }} ">
+                                class="flex items-center px-4  py-2 text-sm text-gray-900 transition duration-200  hover:text-white dark:text-white hover:bg-gray-400 dark:hover:bg-gray-700 group {{ request()->is('media/consultancy') ? 'active bg-gray-400 text-white ' : '' }} ">
                                 <svg class="flex-shrink-0 w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('media/consultancy') ? 'text-white' : '' }}"
                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 22 22">

@@ -23,7 +23,7 @@
             @endif
         </div>
         @php
-            $headers = ['Sr.', 'Added By' , 'Image', 'Title', 'Description', 'Category', 'Date', 'Author', 'Action'];
+            $headers = ['Sr.' , 'Image', 'Title', 'Description', 'Category', 'Date', 'Author', 'Action'];
         @endphp
 
         <x-table :headers="$headers">
@@ -31,7 +31,7 @@
                 @foreach ($media as $data)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td class="whitespace-nowrap">{{ $data->added_username  }}</td>
+                        {{-- <td class="whitespace-nowrap">{{ $data->added_username  }}</td> --}}
                         {{-- <td>{{ $username =App\Models\User::select('name')->where('id' , $data->added_user_id)->first();  }}</td> --}}
                         <td><img class="h-16 w-16 object-cover  bg-customOrangeDark rounded-full "
                                 src="{{ $data->media_image ??  asset('assets/default-logo-1.png') }}" alt='Blog Image'></td>
@@ -105,7 +105,7 @@
 
 
         <x-modal id="blog-modal">
-            <x-slot name="title">Add </x-slot>
+            <x-slot name="title">Add Blog </x-slot>
             <x-slot name="modal_width">max-w-4xl</x-slot>
             <x-slot name="body">
                 <form id="postDataForm" method="POST" url="../saveMedia" enctype="multipart/form-data">
@@ -120,8 +120,17 @@
                             <x-input id="mediaTitle" label="Blog Title" placeholder="Enter Blog Title"
                                 name='media_title' type="text"></x-input>
                             <div class="mt-2">
-                                <x-input id="mediaAuthor" label="Blog Author" placeholder="Enter Blog Author"
-                                    name='media_author' type="text"></x-input>
+                                {{-- <x-input id="mediaAuthor" label="Blog Author" placeholder="Enter Blog Author"
+                                    name='media_author' type="text"></x-input> --}}
+                                  <div class="w-full">
+                                        <label for="mediaAuthor"
+                                            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Blog Author</label>
+                                        <input type="text" name="media_author" id="mediaAuthor"
+                                            placeholder="Enter Blog Author"
+                                            class=" border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-customOrangeDark focus:border-customOrangeDark block w-full p-2.5"
+                                            required value="{{ session('user_details')['name'] }}" readonly />
+                                    </div>
+                                
                             </div>
                             <div class="mt-2">
                                 <x-select id="categoryId" name="category_id" label="Blog Category">
