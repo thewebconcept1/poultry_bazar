@@ -16,19 +16,19 @@
                 <div>
                     <h1 class="text-3xl font-bold">Categories</h1>
                 </div>
-                <div class="flex gap-4">
+                <div class="flex gap-5">
                     <form id="categoryForm" action="{{ url('categories') }}">
                         <button
-                            class="px-3 py-2 font-semibold {{ $type == 'all' ? 'gradient-bg text-white' : 'bg-white  text-black' }} border border-black  rounded-full shadow-md min-w-16"
+                            class="px-3 py-2  {{ $type == 'all' ? 'gradient-bg text-white font-semibold' :  'bg-white  text-gray-600' }} border border-gray-300  rounded-full  min-w-16"
                             onclick="submitForm('all')">All</button>`
                         <button
-                            class="px-3 py-2 font-semibold  rounded-full shadow-md {{ $type == 'blog' ? 'gradient-bg text-white' : 'bg-white  text-black' }} border border-black "
+                            class="px-3 py-2   rounded-full  {{ $type == 'blog' ? 'gradient-bg text-white  font-semibold' : 'bg-white  text-gray-600' }} border border-gray-300 "
                             onclick="submitForm('blog')">Blog Categories</button>
                         <button
-                            class="px-3 py-2 font-semibold  rounded-full shadow-md {{ $type == 'diseases' ? 'gradient-bg text-white' : 'bg-white  text-black' }} border border-black "
+                            class="px-3 py-2   rounded-full  {{ $type == 'diseases' ? 'gradient-bg text-white  font-semibold' : 'bg-white  text-gray-600' }} border border-gray-300 "
                             onclick="submitForm('diseases')">Diseases Categories</button>
                         <button
-                            class="px-3 py-2 font-semibold  rounded-full shadow-md {{ $type == 'consultancy' ? 'gradient-bg text-white' : 'bg-white  text-black' }} border border-black "
+                            class="px-3 py-2   rounded-full  {{ $type == 'consultancy' ? 'gradient-bg text-white  font-semibold' : 'bg-white  text-gray-600' }} border border-gray-300 "
                             onclick="submitForm('consultancy')">Consultancy Categories</button>
                     </form>
 

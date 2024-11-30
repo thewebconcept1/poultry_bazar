@@ -37,7 +37,7 @@ class FAQController extends Controller
 
             $validatedData = $request->validate([
                 'faq_question' => 'required',
-                'faq_answer' => 'requried',
+                'faq_answer' => 'required',
             ]);
 
             if ($faqId != null) {
@@ -56,7 +56,7 @@ class FAQController extends Controller
                 ]);
 
                 return response()->json(['success' => true, 'message' => 'FAQ added successfully'], 200);
-            }
+            }   
 
         } catch (\Exception $e) {
             return $this->errorResponse($e);
@@ -69,8 +69,7 @@ class FAQController extends Controller
     {
         $user = session('user_details');
 
-        $FAQs = FAQ::where('added_user_id', $user['id'])->first();
-
+        $FAQs = FAQ::where('added_user_id', $user['id'])->get();
         return view('faqs', ['faqs' => $FAQs]);
     }
     // get faqs
