@@ -65,7 +65,7 @@ class CategoryController extends Controller
                     $imagePath = public_path($category->category_image); // Get the full image path
 
                     // Delete the image file if it exists
-                    if (file_exists($imagePath)) {
+                    if (!empty($category->category_image) && file_exists($imagePath) && is_file($imagePath)) {
                         unlink($imagePath); // Delete the image from the file system
                     }
 

@@ -62,7 +62,7 @@ class ModuleController extends Controller
                     $imagePath = public_path($module->module_image); // Get the full image path
 
                     // Delete the image file if it exists
-                    if (file_exists($imagePath)) {
+                    if (!empty($module->module_image) && file_exists($imagePath) && is_file($imagePath)) {
                         unlink($imagePath); // Delete the image from the file system
                     }
 
