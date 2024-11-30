@@ -1,5 +1,5 @@
 <button data-drawer-target="sidebar" data-drawer-toggle="sidebar" aria-controls="sidebar" type="button"
-    class="inline-flex items-center p-2 mt-[100px] pl-4 absolute  text-sm text-gray-500 rounded-lg ms-3 sm:hidden  ">
+    class="inline-flex items-center py-2 px-4 mt-[100px] pl-4 absolute  text-sm text-gray-500 rounded-lg ms-3 sm:hidden  ">
     <span class="sr-only">Open sidebar</span>
     <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
         <path clip-rule="evenodd" fill-rule="evenodd"
@@ -20,7 +20,7 @@
         <ul class="pb-10 space-y-2 font-medium">
             <li class="relative z-20">
                 <a href="../dashboard"
-                    class="flex items-center p-2 text-gray-900 rounded-xl transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('dashboard') ? 'active bg-customOrangeDark text-white' : '' }}">
+                    class="flex items-center py-2 px-4 text-gray-900 rounded-full transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('dashboard') ? 'active gradient-bg text-white' : '' }}">
                     <svg class="w-6 h-6 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('/') ? 'text-white' : '' }}"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                         <rect x="12.75" y="3" width="1.875" height="4.375" rx="0.9375" />
@@ -33,10 +33,38 @@
                 </a>
                 </a>
             </li>
+            @if ($userRole === 'superadmin')
+            <li class="relative z-20">
+                <a href="../modules"
+                    class="flex items-center py-2 px-4  text-gray-900 rounded-full transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('modules') ? 'active gradient-bg text-white ' : '' }} ">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('modules') ? 'text-white' : '' }}"
+                        viewBox="0 0 576 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                        <path fill="currentColor"
+                            d="M384 48c8.8 0 16 7.2 16 16l0 128 48 0 0-128c0-35.3-28.7-64-64-64L192 0c-35.3 0-64 28.7-64 64l0 128 48 0 0-128c0-8.8 7.2-16 16-16l56 0 0 64c0 8.8 7.2 16 16 16l48 0c8.8 0 16-7.2 16-16l0-64 56 0zM327.6 512L512 512c35.3 0 64-28.7 64-64l0-160c0-35.3-28.7-64-64-64l-184.4 0c11.8 13.2 20.1 29.7 23.1 48l25.3 0 0 64c0 8.8 7.2 16 16 16l48 0c8.8 0 16-7.2 16-16l0-64 56 0c8.8 0 16 7.2 16 16l0 160c0 8.8-7.2 16-16 16l-161.3 0c-3.1 18.3-11.3 34.8-23.1 48zM256 272c8.8 0 16 7.2 16 16l0 160c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-160c0-8.8 7.2-16 16-16l56 0 0 64c0 8.8 7.2 16 16 16l48 0c8.8 0 16-7.2 16-16l0-64 56 0zM64 224c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-160c0-35.3-28.7-64-64-64L64 224z" />
+                    </svg>
+                    <span class="ms-3 ">Modules</span>
+                </a>
+            </li>
+        @endif
+        @if ($userRole === 'superadmin' || isset($privileges['Operators']['view']))
+            <li class="relative z-20">
+                <a href="../operators"
+                    class="flex items-center py-2 px-4 text-gray-900 rounded-full transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('operators') ? 'active gradient-bg text-white' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('operators') ? 'text-white' : '' }}"
+                        viewBox="0 0 448 512" fill="currentColor">
+                        <path
+                            d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z" />
+                    </svg>
+                    <span class="ms-3 ">Operators</span>
+                </a>
+            </li>
+        @endif
             @if ($userRole === 'superadmin' || isset($privileges['City']['view']))
                 <li class="relative z-20">
                     <a href="../Cities"
-                        class="flex items-center p-2 text-gray-900 rounded-xl transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('Cities') ? 'active bg-customOrangeDark text-white' : '' }}">
+                        class="flex items-center py-2 px-4 text-gray-900 rounded-full transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('Cities') ? 'active gradient-bg text-white' : '' }}">
                         <svg class="w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('Cities') ? 'text-white' : '' }}"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                             <path fill="currentColor"
@@ -46,24 +74,10 @@
                     </a>
                 </li>
             @endif
-            @if ($userRole === 'superadmin' || isset($privileges['Operators']['view']))
-                <li class="relative z-20">
-                    <a href="../operators"
-                        class="flex items-center p-2 text-gray-900 rounded-xl transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('operators') ? 'active bg-customOrangeDark text-white' : '' }}">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('operators') ? 'text-white' : '' }}"
-                            viewBox="0 0 448 512" fill="currentColor">
-                            <path
-                                d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z" />
-                        </svg>
-                        <span class="ms-3 ">Operators</span>
-                    </a>
-                </li>
-            @endif
             {{-- @if ($userRole === 'superadmin' || isset($privileges['Subscription']['view']))
                 <li class="relative z-20">
                     <a href="../subscription"
-                        class="flex items-center p-2  text-gray-900 rounded-xl transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('subscription') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                        class="flex items-center py-2 px-4  text-gray-900 rounded-xl transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('subscription') ? 'active gradient-bg text-white ' : '' }} ">
                         <svg xmlns="http://www.w3.org/2000/svg"
                             class="w-5 h-5  text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('subscription') ? 'text-white' : '' }}"
                             viewBox="0 0 576 512"
@@ -75,24 +89,11 @@
                     </a>
                 </li>
             @endif --}}
-            @if ($userRole === 'superadmin')
-                <li class="relative z-20">
-                    <a href="../modules"
-                        class="flex items-center p-2  text-gray-900 rounded-xl transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('modules') ? 'active bg-customOrangeDark text-white ' : '' }} ">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('modules') ? 'text-white' : '' }}"
-                            viewBox="0 0 576 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                            <path fill="currentColor"
-                                d="M384 48c8.8 0 16 7.2 16 16l0 128 48 0 0-128c0-35.3-28.7-64-64-64L192 0c-35.3 0-64 28.7-64 64l0 128 48 0 0-128c0-8.8 7.2-16 16-16l56 0 0 64c0 8.8 7.2 16 16 16l48 0c8.8 0 16-7.2 16-16l0-64 56 0zM327.6 512L512 512c35.3 0 64-28.7 64-64l0-160c0-35.3-28.7-64-64-64l-184.4 0c11.8 13.2 20.1 29.7 23.1 48l25.3 0 0 64c0 8.8 7.2 16 16 16l48 0c8.8 0 16-7.2 16-16l0-64 56 0c8.8 0 16 7.2 16 16l0 160c0 8.8-7.2 16-16 16l-161.3 0c-3.1 18.3-11.3 34.8-23.1 48zM256 272c8.8 0 16 7.2 16 16l0 160c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-160c0-8.8 7.2-16 16-16l56 0 0 64c0 8.8 7.2 16 16 16l48 0c8.8 0 16-7.2 16-16l0-64 56 0zM64 224c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-160c0-35.3-28.7-64-64-64L64 224z" />
-                        </svg>
-                        <span class="ms-3 ">Modules</span>
-                    </a>
-                </li>
-            @endif
+
             @if ($userRole === 'superadmin' || isset($privileges['Markets']['view']))
                 <li class="relative z-20">
                     <a href="../markets"
-                        class="flex items-center p-2 text-gray-900 transition duration-200 rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('markets') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                        class="flex items-center py-2 px-4 text-gray-900 transition duration-200 rounded-full hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('markets') ? 'active gradient-bg text-white ' : '' }} ">
                         <svg class="flex-shrink-0 w-6 h-6 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('markets') ? 'text-white' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                             viewBox="0 0 22 22">
@@ -118,7 +119,7 @@
             @if ($userRole === 'superadmin' || isset($privileges['MarketsUpdates']['view']))
                 <li class="relative z-20">
                     <a href="../marketupdates"
-                        class="flex items-center p-2 text-gray-900 transition duration-200 rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('marketupdates') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                        class="flex items-center py-2 px-4 text-gray-900 transition duration-200 rounded-full hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('marketupdates') ? 'active gradient-bg text-white ' : '' }} ">
                         <svg class="flex-shrink-0 w-6 h-6 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('marketupdates') ? 'text-white' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                             viewBox="0 0 22 22">
@@ -143,7 +144,7 @@
             @endif
             <li>
                 <button type="button"
-                    class="flex items-center {{ request()->is('categories', 'blogs', 'media/diseases', 'media/blogs', 'media/consultancy' , 'categories/all' , 'categories/blog' , 'categories/diseases' , 'categories/consultancy') ? "bg-customOrangeDark text-white rounded-t-xl rounded-b-none" : "text-gray-900"}}  w-full text-base p-2  transition duration-200 rounded-xl hover:text-white  hover:bg-customOrangeDark  group"
+                    class="flex items-center {{ request()->is('categories', 'blogs', 'media/diseases', 'media/blogs', 'media/consultancy' , 'categories/all' , 'categories/blog' , 'categories/diseases' , 'categories/consultancy' , 'pendingMedia/pending') ? "gradient-bg text-white rounded-t-xl rounded-b-none" : "text-gray-900"}}  w-full text-base px-4 py-2   transition duration-200 rounded-full hover:text-white  hover:bg-customOrangeDark  group"
                     aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
 
                     <svg class="flex-shrink-0 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -158,21 +159,21 @@
                     </svg>
                 </button>
                 <ul id="dropdown-example" class=" {{ request()->is('categories', 'blogs', 'media/diseases', 'media/blogs', 'media/consultancy' , 'categories/all' , 'categories/blog' , 'categories/diseases' , 'categories/consultancy' , 'pendingMedia/pending') ? "" : "hidden"}} py-2 space-y-2 bg-gray-100 rounded-b-xl">
-                        <li class="px-3">
+                        <li>
                             <a href="../pendingMedia/pending"
-                                class="flex items-center  p-2 text-sm text-gray-900 transition duration-200 text-sm rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('pendingMedia/pending') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                                class="flex items-center px-4  py-2 text-sm text-gray-900 transition duration-200  hover:text-white dark:text-white hover:bg-gray-400 dark:hover:bg-gray-700 group {{ request()->is('pendingMedia/pending') ? 'active bg-gray-400 text-white' : '' }} ">
                                 <svg fill="currentColor" class="flex-shrink-0 w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('pendingMedia/pending') ? 'text-white' : '' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2 160 448c0 17.7 14.3 32 32 32s32-14.3 32-32l0-306.7L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg>
                                 <span class="flex-1 ms-3 whitespace-nowrap">Pending Media</span>
                             </a>
                         </li>
                     @if ($userRole === 'superadmin' || isset($privileges['Categories']['view']))
-                        <li class="px-3">
+                        <li class="">
                             <a href="../categories/all"
-                                class="flex items-center  p-2 text-sm text-gray-900 transition duration-200 text-sm rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('categories') || request()->is('categories/all') || request()->is('categories/blog') || request()->is('categories/diseases') || request()->is('categories/consultancy') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                                class="flex items-center px-4  py-2 text-sm text-gray-900 transition duration-200  hover:text-white dark:text-white hover:bg-gray-400 dark:hover:bg-gray-700 group {{ request()->is('categories') || request()->is('categories/all') || request()->is('categories/blog') || request()->is('categories/diseases') || request()->is('categories/consultancy') ? 'active bg-gray-400 text-white ' : '' }} ">
                                 <svg class="flex-shrink-0 w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('categories') || request()->is('categories/all') || request()->is('categories/blog') || request()->is('categories/diseases') || request()->is('categories/consultancy') ? 'text-white' : '' }}"
                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 22 22">
-                                    <path
+                                    <path 
                                         d="M13.5692 3.48534L13.5691 3.48545L13.5782 3.49452L16.5448 6.46118L16.5447 6.4613L16.554 6.47013C17.0132 6.90634 17.0132 7.64226 16.554 8.07846L16.5539 8.07836L16.5456 8.08665L9.66504 14.9375V9.10763V5.74605L11.9197 3.46007C12.3566 3.0245 13.132 3.02512 13.5692 3.48534Z" />
                                     <path
                                         d="M6.96699 1.64882L6.96667 1.65774V1.66667V16.2667C6.96667 18.0572 5.52386 19.5 3.73333 19.5C1.94281 19.5 0.5 18.0572 0.5 16.2667V1.66667C0.5 1.00948 1.00948 0.5 1.66667 0.5H5.83333C6.46748 0.5 6.98961 1.01542 6.96699 1.64882ZM1.56667 16.2667C1.56667 17.4761 2.52386 18.4333 3.73333 18.4333C4.94281 18.4333 5.9 17.4761 5.9 16.2667C5.9 15.0572 4.94281 14.1 3.73333 14.1C2.52386 14.1 1.56667 15.0572 1.56667 16.2667Z" />
@@ -185,9 +186,9 @@
                         </li>
                     @endif
                     @if ($userRole === 'superadmin' || (isset($privileges['Blogs']['view']) && $userRole !== 'superadmin'))
-                        <li class="px-3">
+                        <li>
                             <a href="/media/blogs"
-                            class="flex items-center p-2 text-sm text-gray-900 transition duration-200  rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark group {{ request()->is('media/blogs') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                            class="flex items-center px-4  py-2 text-sm text-gray-900 transition duration-200  hover:text-white dark:text-white hover:bg-gray-400 dark:hover:bg-gray-700 group {{ request()->is('media/blogs') ? 'active bg-gray-400 text-white' : '' }} ">
                                 <svg class="flex-shrink-0 w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('media/blogs') ? 'text-white' : '' }}"
                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 22 22">
@@ -212,9 +213,9 @@
                         </li>
                     @endif
                     @if ($userRole === 'superadmin' || isset($privileges['Diseases']['view']))
-                        <li class="px-3">
+                        <li>
                             <a href="/media/diseases"
-                                class="flex items-center p-2 text-sm text-gray-900 transition duration-200 rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('media/diseases') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                                class="flex items-center px-4  py-2 text-sm text-gray-900 transition duration-200  hover:text-white dark:text-white hover:bg-gray-400 dark:hover:bg-gray-700 group {{ request()->is('media/diseases') ? 'active bg-gray-400 text-white' : '' }} ">
                                 <svg class="flex-shrink-0 w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('media/diseases') ? 'text-white' : '' }}"
                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 22 22">
@@ -233,9 +234,9 @@
                         </li>
                     @endif
                     @if ($userRole === 'superadmin' || isset($privileges['Consultancy']['view']))
-                        <li class="px-3">
+                        <li>
                             <a href="/media/consultancy"
-                                class="flex items-center p-2 text-sm text-gray-900 transition duration-200 rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('media/consultancy') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                                class="flex items-center px-4  py-2 text-sm text-gray-900 transition duration-200  hover:text-white dark:text-white hover:bg-gray-400 dark:hover:bg-gray-700 group {{ request()->is('media/consultancy') ? 'active gradient-bg text-white ' : '' }} ">
                                 <svg class="flex-shrink-0 w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('media/consultancy') ? 'text-white' : '' }}"
                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 22 22">
@@ -263,7 +264,7 @@
             @if ($userRole === 'superadmin' || (isset($privileges['Blogs']['view']) && $userRole !== 'superadmin'))
                 <li class="relative z-20">
                     <a href="/media/blogs"
-                        class="flex items-center p-2 text-gray-900 transition duration-200 rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('media/blogs') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                        class="flex items-center py-2 px-4 text-gray-900 transition duration-200 rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('media/blogs') ? 'active gradient-bg text-white ' : '' }} ">
                         <svg class="flex-shrink-0 w-6 h-6 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('media/blogs') ? 'text-white' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                             viewBox="0 0 22 22">
@@ -290,7 +291,7 @@
             @if ($userRole === 'superadmin' || isset($privileges['Diseases']['view']))
                 <li class="relative z-20">
                     <a href="/media/diseases"
-                        class="flex items-center p-2 text-gray-900 transition duration-200 rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('media/diseases') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                        class="flex items-center py-2 px-4 text-gray-900 transition duration-200 rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('media/diseases') ? 'active gradient-bg text-white ' : '' }} ">
                         <svg class="flex-shrink-0 w-6 h-6text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('media/diseases') ? 'text-white' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                             viewBox="0 0 22 22">
@@ -311,7 +312,7 @@
             @if ($userRole === 'superadmin' || isset($privileges['Consultancy']['view']))
                 <li class="relative z-20">
                     <a href="/media/consultancy"
-                        class="flex items-center p-2 text-gray-900 transition duration-200 rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('media/consultancy') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                        class="flex items-center py-2 px-4 text-gray-900 transition duration-200 rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('media/consultancy') ? 'active gradient-bg text-white ' : '' }} ">
                         <svg class="flex-shrink-0 w-6 h-6text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('media/consultancy') ? 'text-white' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                             viewBox="0 0 22 22">
@@ -336,7 +337,7 @@
             @if ($userRole === 'superadmin' || isset($privileges['Categories']['view']))
                 <li class="relative z-20">
                     <a href="../categories/all"
-                        class="flex items-center p-2 text-gray-900 transition duration-200 rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('categories') || request()->is('categories/all') || request()->is('categories/blog') || request()->is('categories/diseases') || request()->is('categories/consultancy') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                        class="flex items-center py-2 px-4 text-gray-900 transition duration-200 rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('categories') || request()->is('categories/all') || request()->is('categories/blog') || request()->is('categories/diseases') || request()->is('categories/consultancy') ? 'active gradient-bg text-white ' : '' }} ">
                         <svg class="flex-shrink-0 w-6 h-6 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('categories') || request()->is('categories/all') || request()->is('categories/blog') || request()->is('categories/diseases') || request()->is('categories/consultancy') ? 'text-white' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                             viewBox="0 0 22 22">
@@ -355,7 +356,7 @@
             @if ($userRole === 'superadmin' || isset($privileges['Queries']['view']))
                 <li class="relative z-20">
                     <a href="../queries"
-                        class="flex items-center p-2 text-gray-900 rounded-xl transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('queries') ? 'active bg-customOrangeDark text-white ' : '' }}">
+                        class="flex items-center py-2 px-4 text-gray-900 rounded-full transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('queries') ? 'active gradient-bg text-white ' : '' }}">
                         <svg class="flex-shrink-0 w-6 h-6 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('queries') ? 'text-white' : '' }}"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                             viewBox="0 0 22 22">
@@ -395,9 +396,20 @@
                     </a>
                 </li>
             @endif
+
+            @if ($userRole === 'superadmin')
+            
+            <li class="relative z-20">
+                <a href="../FAQs"
+                    class="flex items-center py-2 px-4 text-gray-900 transition duration-200 rounded-full hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('FAQs') ? 'active gradient-bg text-white ' : '' }} ">
+                    <svg class="flex-shrink-0 w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('FAQs') ? 'text-white' : '' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M80 160c0-35.3 28.7-64 64-64l32 0c35.3 0 64 28.7 64 64l0 3.6c0 21.8-11.1 42.1-29.4 53.8l-42.2 27.1c-25.2 16.2-40.4 44.1-40.4 74l0 1.4c0 17.7 14.3 32 32 32s32-14.3 32-32l0-1.4c0-8.2 4.2-15.8 11-20.2l42.2-27.1c36.6-23.6 58.8-64.1 58.8-107.7l0-3.6c0-70.7-57.3-128-128-128l-32 0C73.3 32 16 89.3 16 160c0 17.7 14.3 32 32 32s32-14.3 32-32zm80 320a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"/></svg>
+                    <span class="flex-1 ms-3 whitespace-nowrap">FAQs</span>
+                </a>
+            </li>
+            @endif
             <li class="relative z-20">
                 <a href="../notification"
-                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('notification') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                    class="flex items-center py-2 px-4 text-gray-900 transition duration-200 rounded-full hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('notification') ? 'active gradient-bg text-white ' : '' }} ">
                     <svg class="flex-shrink-0 w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('notification') ? 'text-white' : '' }}"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 512 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -409,7 +421,7 @@
             </li>
             <li class="relative z-20">
                 <a href="../setting"
-                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('setting') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                    class="flex items-center py-2 px-4 text-gray-900 transition duration-200 rounded-full hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('setting') ? 'active gradient-bg text-white ' : '' }} ">
                     <svg class="flex-shrink-0  w-7 h-7 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('setting') ? 'text-white' : '' }}"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 22 22">
@@ -422,9 +434,9 @@
             </li>
             <li class="relative z-20">
                 <a href="../Logout"
-                    class="flex items-center p-2 text-gray-900 transition duration-200 rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group  {{ request()->is('logout') ? 'active bg-customOrangeDark text-white ' : '' }} ">
+                    class="flex items-center py-2 px-4 text-gray-900 transition duration-200 rounded-full hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group  {{ request()->is('logout') ? 'active gradient-bg text-white ' : '' }} ">
                     <svg class="flex-shrink-0  w-7 h-7 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('logout') ? 'text-white' : '' }}"
-                        class="flex items-center p-2 text-gray-900 transition duration-200 rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group  "
+                        class="flex items-center py-2 px-4 text-gray-900 transition duration-200 rounded-xl hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group  "
                         fill="currentColor">
                         <path
                             d="M5.83333 13.332L2.5 9.9987M2.5 9.9987L5.83333 6.66536M2.5 9.9987H14.1667M9.16667 13.332V14.1654C9.16667 14.8284 9.43006 15.4643 9.8989 15.9331C10.3677 16.402 11.0036 16.6654 11.6667 16.6654H15C15.663 16.6654 16.2989 16.402 16.7678 15.9331C17.2366 15.4643 17.5 14.8284 17.5 14.1654V5.83203C17.5 5.16899 17.2366 4.53311 16.7678 4.06426C16.2989 3.59542 15.663 3.33203 15 3.33203H11.6667C11.0036 3.33203 10.3677 3.59542 9.8989 4.06426C9.43006 4.53311 9.16667 5.16899 9.16667 5.83203V6.66536"
