@@ -21,7 +21,7 @@
             <li class="relative z-20">
                 <a href="../dashboard"
                     class="flex items-center py-2 px-4 text-gray-900 rounded-full transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('dashboard') ? 'active gradient-bg text-white' : '' }}">
-                    <svg class="w-6 h-6 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('/') ? 'text-white' : '' }}"
+                    <svg class="w-6 h-6 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('dashboard') ? 'text-white' : '' }}"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                         <rect x="12.75" y="3" width="1.875" height="4.375" rx="0.9375" />
                         <rect x="15.25" y="3" width="3.125" height="4.375" rx="1" />
