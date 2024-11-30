@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FAQ;
 use App\Models\Market;
 use App\Models\Media;
 use App\Models\Queries;
@@ -19,6 +20,16 @@ class ApiController extends Controller
     //     $notifications = Queries::get();
     // }
     // get Notifications
+
+    // get FAQs
+    public function getFAQs()
+    {
+        $FAQs = FAQ::get();
+
+        return response()->json(['success' => true, 'data' => $FAQs], 200);
+
+    }
+    // get FAQs
 
     // update User
     public function updateUser(Request $request)

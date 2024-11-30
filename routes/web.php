@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\FAQController;
 use App\Http\Controllers\MarketController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\ModuleController;
@@ -62,6 +63,10 @@ Route::middleware(['custom_auth'])->group(function () {
         Route::get('/categories/{type?}', [CategoryController::class, 'getCategory']);
         Route::post('/deleteCategory', [CategoryController::class, 'deleteCategory']);
         Route::post('/saveCategory', [CategoryController::class, 'addCategory']);
+
+        Route::get('/FAQs', [FAQController::class, 'getFAQs']);
+        Route::post('/addFAQs', [FAQController::class, 'addFAQs']);
+        Route::post('/deleteFAQ', [FAQController::class, 'deleteFAQ']);
     });
 });
 Route::post('/register', [UserController::class, 'RequestForService']);
