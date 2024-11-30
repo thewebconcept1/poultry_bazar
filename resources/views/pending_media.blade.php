@@ -18,7 +18,6 @@
             @php
                 $headers = [
                     'Sr.',
-                    'Added By',
                     'Title',
                     'Description',
                     'Category',
@@ -34,7 +33,7 @@
                     @foreach ($media as $data)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td class="whitespace-nowrap">{{ $data->added_username }}</td>
+                            {{-- <td class="whitespace-nowrap">{{ $data->added_username }}</td> --}}
                             {{-- <td>{{ $username =App\Models\User::select('name')->where('id' , $data->added_user_id)->first();  }}</td> --}}
 
                             <td class='text-xs xl:text-[15px]'>{{ $data->media_title }}</td>

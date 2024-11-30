@@ -213,3 +213,10 @@ padding-left: 20px !important;
     display: flex;
     flex-direction: row-reverse;  /* This will reverse the order of the buttons */
 }
+
+.sidebar-main::-webkit-scrollbar {
+    display: none;
+}
+.sidebar-main{
+       scrollbar-width: none;
+}

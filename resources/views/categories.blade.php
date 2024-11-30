@@ -16,29 +16,29 @@
                 <div>
                     <h1 class="text-3xl font-bold">Categories</h1>
                 </div>
-                <div class="flex gap-5">
-                    <form id="categoryForm" action="{{ url('categories') }}">
+                <form id="categoryForm" action="{{ url('categories') }}">
+                    <div class="flex gap-2">
                         <button
-                            class="px-3 py-2  {{ $type == 'all' ? 'gradient-bg text-white font-semibold' :  'bg-white  text-gray-600' }} border border-gray-300  rounded-full  min-w-16"
-                            onclick="submitForm('all')">All</button>`
+                            class="px-5 py-2  {{ $type == 'all' ? 'gradient-bg text-white font-semibold' : 'bg-white  text-gray-600' }} border border-gray-300  rounded-full "
+                            onclick="submitForm('all')">All</button>
                         <button
-                            class="px-3 py-2   rounded-full  {{ $type == 'blog' ? 'gradient-bg text-white  font-semibold' : 'bg-white  text-gray-600' }} border border-gray-300 "
-                            onclick="submitForm('blog')">Blog Categories</button>
+                            class="px-5 py-2   rounded-full  {{ $type == 'blog' ? 'gradient-bg text-white  font-semibold' : 'bg-white  text-gray-600' }} border border-gray-300 "
+                            onclick="submitForm('blog')">Blog</button>
                         <button
-                            class="px-3 py-2   rounded-full  {{ $type == 'diseases' ? 'gradient-bg text-white  font-semibold' : 'bg-white  text-gray-600' }} border border-gray-300 "
-                            onclick="submitForm('diseases')">Diseases Categories</button>
+                            class="px-5 py-2   rounded-full  {{ $type == 'diseases' ? 'gradient-bg text-white  font-semibold' : 'bg-white  text-gray-600' }} border border-gray-300 "
+                            onclick="submitForm('diseases')">Diseases</button>
                         <button
-                            class="px-3 py-2   rounded-full  {{ $type == 'consultancy' ? 'gradient-bg text-white  font-semibold' : 'bg-white  text-gray-600' }} border border-gray-300 "
-                            onclick="submitForm('consultancy')">Consultancy Categories</button>
-                    </form>
+                            class="px-5 py-2   rounded-full  {{ $type == 'consultancy' ? 'gradient-bg text-white  font-semibold' : 'bg-white  text-gray-600' }} border border-gray-300 "
+                            onclick="submitForm('consultancy')">Consultancy</button>
 
-                </div>
+                    </div>
+                </form>
             </div>
             @if ($userRole === 'superadmin' || isset($privileges['Categories']['add']))
                 <button id="addModalBtn" data-modal-target="categories-modal" data-modal-toggle="categories-modal"
                     class="px-5 py-3 font-semibold text-white rounded-full shadow-md gradient-bg">Add New</button>
-                    @else
-                    <button data-modal-target="categories-modal" data-modal-toggle="categories-modal"></button>
+            @else
+                <button data-modal-target="categories-modal" data-modal-toggle="categories-modal"></button>
             @endif
         </div>
 
@@ -53,7 +53,8 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td><img class='rounded-full h-20 w-20 bg-customOrangeDark object-cover'
-                                    src="../{{ $category->category_image ??  'assets/default-logo-1.png'  }}" alt='Category Image'>
+                                    src="../{{ $category->category_image ?? 'assets/default-logo-1.png' }}"
+                                    alt='Category Image'>
                             </td>
                             <td>{{ $category->category_type }}</td>
                             <td>{{ $category->category_name }}</td>
@@ -63,7 +64,7 @@
                                     @if ($userRole === 'superadmin' || isset($privileges['Categories']['edit']))
                                         <button categoryId="{{ $category->category_id }}" class="updateDataBtn"
                                             categoryName="{{ $category->category_name }}"
-                                            categoryImage="../{{ $category->category_image ??  'assets/default-logo-1.png'  }}"
+                                            categoryImage="../{{ $category->category_image ?? 'assets/default-logo-1.png' }}"
                                             categoryType="{{ $category->category_type }}">
                                             <svg width='36' height='36' viewBox='0 0 36 36' fill='none'
                                                 xmlns='http://www.w3.org/2000/svg'>

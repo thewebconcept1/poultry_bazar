@@ -22,7 +22,7 @@
             @endif
         </div>
         @php
-            $headers = ['Sr.', 'Added By' ,  'Video', 'Title', 'Description', 'Category', 'Date', 'Author', 'Action'];
+            $headers = ['Sr.' ,  'Video', 'Title', 'Description', 'Category', 'Date', 'Author', 'Action'];
         @endphp
 
         <x-table :headers="$headers">
@@ -32,10 +32,10 @@
                         <td>{{ $loop->iteration }}</td>
                         {{-- <td><img class="h-16 w-16 object-cover  bg-customOrangeDark rounded-full "
                             src="{{ $data->media_image ??  asset('assets/default-logo-1.png') }}" alt='consultancy Image'></td> --}}
-                            <td class="whitespace-nowrap">{{ $data->added_username  }}</td>
+                            {{-- <td class="whitespace-nowrap">{{ $data->added_username  }}</td> --}}
                             <td class="min-w-[200px]">
                             <video poster="{{ $data->media_image ? '' : asset('assets/default-logo-req.png') }}"
-                                class="h-[140px] w-[170px] rounded-md" height="140px" width="170px"
+                                class="h-[140px] w-[170px] rounded-md" height="140px" width="170px"z
                                 {{ $data->media_image ? 'controls' : '' }}
                                 src="{{ $data->media_image ?? asset('assets/default-logo-1.png') }}">
                             </video>
@@ -145,9 +145,17 @@
                             <x-input id="mediaTitle" label="Consultancy Title" placeholder="Enter Consultancy Title"
                                 name='media_title' type="text"></x-input>
                             <div class="mt-2">
-                                <x-input id="mediaAuthor" label="Consultancy Author"
-                                    placeholder="Enter Consultancy Author" name='media_author' type="text"></x-input>
-                            </div>
+                                {{-- <x-input id="mediaAuthor" label="Consultancy Author"
+                                    placeholder="Enter Consultancy Author" name='media_author' type="text"></x-input> --}}
+                                    <div class="w-full">
+                                        <label for="mediaAuthor"
+                                            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Consultancy Author</label>
+                                        <input type="text" name="media_author" id="mediaAuthor"
+                                            placeholder="Enter Consultancy Author"
+                                            class=" border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-customOrangeDark focus:border-customOrangeDark block w-full p-2.5"
+                                            required value="{{ session('user_details')['name'] }}" readonly />
+                                    </div>
+                                </div>
                             <div class="mt-2">
                                 <x-select id="categoryId" name="category_id" label="Consultancy Category">
                                     <x-slot name="options">
