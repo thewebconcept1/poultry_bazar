@@ -21,3 +21,4 @@ Route::post('/getMarketRates', [ApiController::class, 'getMarketRates']);
 Route::get('/getMedia/{type?}', [ApiController::class, 'getMedia']);
 Route::post('/register', [ApiController::class, 'register']);
 Route::post('/login', [ApiController::class, 'login']);
+Route::get('/getFAQs', [ApiController::class, 'getFAQs']);
