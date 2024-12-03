@@ -173,7 +173,7 @@
                                 <svg class="flex-shrink-0 w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('categories') || request()->is('categories/all') || request()->is('categories/blog') || request()->is('categories/diseases') || request()->is('categories/consultancy') ? 'text-white' : '' }}"
                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 22 22">
-                                    <path 
+                                    <path
                                         d="M13.5692 3.48534L13.5691 3.48545L13.5782 3.49452L16.5448 6.46118L16.5447 6.4613L16.554 6.47013C17.0132 6.90634 17.0132 7.64226 16.554 8.07846L16.5539 8.07836L16.5456 8.08665L9.66504 14.9375V9.10763V5.74605L11.9197 3.46007C12.3566 3.0245 13.132 3.02512 13.5692 3.48534Z" />
                                     <path
                                         d="M6.96699 1.64882L6.96667 1.65774V1.66667V16.2667C6.96667 18.0572 5.52386 19.5 3.73333 19.5C1.94281 19.5 0.5 18.0572 0.5 16.2667V1.66667C0.5 1.00948 1.00948 0.5 1.66667 0.5H5.83333C6.46748 0.5 6.98961 1.01542 6.96699 1.64882ZM1.56667 16.2667C1.56667 17.4761 2.52386 18.4333 3.73333 18.4333C4.94281 18.4333 5.9 17.4761 5.9 16.2667C5.9 15.0572 4.94281 14.1 3.73333 14.1C2.52386 14.1 1.56667 15.0572 1.56667 16.2667Z" />
@@ -398,7 +398,7 @@
             @endif
 
             @if ($userRole === 'superadmin')
-            
+
             <li class="relative z-20">
                 <a href="../FAQs"
                     class="flex items-center py-2 px-4 text-gray-900 transition duration-200 rounded-full hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('FAQs') ? 'active gradient-bg text-white ' : '' }} ">
