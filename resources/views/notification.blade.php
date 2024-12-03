@@ -21,10 +21,11 @@
                     <td>
                         @foreach ($notifications as $notification)
                             <div class="p-4 bg-gray-100 rounded shadow mb-5">
-                                <h3 class="text-lg font-semibold text-gray-800">{{ $notification->notification_title }}
-                                </h3>
+                                <h3 class="text-lg font-semibold text-gray-800 flex items-center">{{ $notification->notification_title }}   <Button class="{{$notification->notification_type == "important" ? "bg-red-600" : "bg-green-800"}} text-white font-semibold text-sm px-2 rounded-full ml-2">{{$notification->notification_type}}</Button></h3>
                                 <p class="mt-1 text-sm text-gray-600">{{ $notification->notification_description }}</p>
-                            </div>
+                            
+                            
+                            </div>  
                         @endforeach
                     </td>
                 </tr>
@@ -59,70 +60,7 @@
                 </form>
             </x-slot>
         </x-modal>
-        <x-modal id="view-modal">
-            <x-slot name="title">Details </x-slot>
-            <x-slot name="modal_width">max-w-4xl</x-slot>
-            <x-slot name="body">
-                <div class="p-6">
-                    <div class="flex">
-                        <!-- Image Placeholder -->
 
-                        <img class="w-40 h-40" src="{{ asset('assets/Surface 3 png.png') }}" alt="">
-
-
-                        <!-- Text Details -->
-                        <div class="ml-5">
-                            <h3 class="text-xl font-semibold text-gray-800">Lorem Ipsum is simply dummy text of the
-                                printing.</h3>
-                            {{-- <div class="mt-4 ">
-                          <p class="text-sm font-medium text-gray-600">Category: <span class="text-gray-800 ms-10">Campus Name</span></p>
-                         <div class="mt-5 "> <p class="text-sm font-medium text-gray-600">Author: <span class="text-gray-80 ms-14">Author Name</span></p></div>
-                         <div class="mt-5"> <p class="text-sm font-medium text-gray-600">Date: <span class="text-gray-800 ms-14">Dec 21, 2023</span></p></div>
-                        </div> --}}
-                            <div class="grid grid-cols-2 mt-5 md:grid-cols-3 ">
-                                <div class="min-w-10">
-                                    <p class="text-[12.9px] lg:text-lg md:text-lg">Category:</p>
-                                    <p class="mt-4 text-[12.9px] lg:text-lg md:text-lg">Author:</p>
-                                    <p class="mt-4 text-[12.9px] lg:text-lg md:text-lg">Date:</p>
-                                </div>
-                                <div class="min-w-10 md:col-span-2 ">
-                                    <p class=" text-[#323C47] text-[12.9px] lg:text-lg md:text-lg">Campus Name</p>
-                                    <p class="mt-4 text-[#323C47] text-[12.9px] lg:text-lg md:text-lg">Author Name</p>
-                                    <p class="mt-4 text-[#323C47] text-[12.9px] lg:text-lg md:text-lg">Dec 21, 2023</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Description -->
-                    <div class="mt-6">
-                        <h4 class="text-lg font-semibold text-gray-800">Description:</h4>
-                        <p class="mt-2 text-sm text-gray-600">
-                            Lorem Ipsum is simply dummy text
-                            of the printing and typesetting Lorem Ipsum is simply dummy text
-                            of the printing and typesetting text
-                            Lorem Ipsum is simply dummy text
-                            of the printing and typesetting Lorem Ipsum is simply Lorem Ipsum is simply dummy text of the.
-                            Lorem Ipsum is simply dummy text
-                            of the printing and typesetting Lorem Ipsum is simply dummy text
-                            of the printing and typesetting text
-                            Lorem Ipsum is simply dummy text
-                            of the printing and typesetting Lorem Ipsum is simply Lorem Ipsum is simply dummy text of the.
-                            Lorem Ipsum is simply dummy text
-                            of the printing and typesetting Lorem Ipsum is simply dummy text
-                            of the printing and typesetting text
-                            Lorem Ipsum is simply dummy text
-                            of the printing and typesetting Lorem Ipsum is simply Lorem Ipsum is simply dummy text of the.
-                            Lorem Ipsum is simply dummy text
-                            of the printing and typesetting Lorem Ipsum is simply dummy text
-                            of the printing and typesetting text
-                            Lorem Ipsum is simply dummy text
-                            of the printing and typesetting Lorem Ipsum is simply Lorem Ipsum is simply dummy text of the.
-                        </p>
-                    </div>
-                </div>
-            </x-slot>
-        </x-modal>
     </div>
 @endsection
 

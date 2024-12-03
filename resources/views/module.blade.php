@@ -6,6 +6,7 @@
     <div class="w-full pt-10 min-h-[88vh] gradient-border  rounded-lg">
         <div class="flex justify-between px-5">
             <h1 class="text-3xl font-bold ">Modules</h1>
+            <button  data-modal-target="Module-modal" data-modal-toggle="Module-modal"></button>
             {{-- <button id="addModalBtn" data-modal-target="Module-modal" data-modal-toggle="Module-modal"
                 class="px-5 py-3 font-semibold text-white rounded-full shadow-md gradient-bg">Add Module</button> --}}
         </div>
@@ -119,7 +120,6 @@
         })
         // Listen for the custom form submission response event
         $(document).on("formSubmissionResponse", function(event, response, Alert, SuccessAlert, WarningAlert) {
-            console.log(response);
 
             if (response.success) {
                 $('.modalCloseBtn').click();

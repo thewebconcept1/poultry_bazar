@@ -14,8 +14,8 @@
         <div class="p-8 bg-white rounded-lg shadow-md" id="main-container">
             <!-- Profile Header -->
             <div class="flex items-center">
-                <div class="w-24 h-24 overflow-hidden bg-gray-200 rounded-full">
-                    <img src="{{ $user['user_image'] ?? asset('assets/default-logo-1.png') }}" alt="Profile Picture">
+                <div class="w-24 h-24 bg-gray-200 rounded-full">
+                    <img class="w-24 h-24 rounded-full" src="{{ $user['user_image'] ?? asset('assets/default-logo-1.png') }}" alt="Profile Picture">
                 </div>
                 <div class="ml-6">
                     <h2 class="text-2xl font-semibold">{{ $user['name'] }}</h2>

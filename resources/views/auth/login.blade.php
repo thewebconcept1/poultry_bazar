@@ -157,7 +157,8 @@
 
                                 <div class="flex justify-end">
 
-                                        <button type="button" class="mt-5 text-xs text-right text-customOrangeDark" id="showForgot">Forgot password?</button>
+                                    <button type="button" class="mt-5 text-xs text-right text-customOrangeDark"
+                                        id="showForgot">Forgot password?</button>
                                 </div>
 
                                 <button type="submit" id="loginbutton"
@@ -178,7 +179,9 @@
                                         Login
                                     </div>
                                 </button>
-                                <h2 class="absolute bottom-1 left-1/2 -translate-x-1/2 text-sm text-customGrayColorDark">Version 1.0.1</h2>
+                                <h2
+                                    class="absolute bottom-1 left-1/2 -translate-x-1/2 text-sm text-customGrayColorDark">
+                                    Version 1.0.1</h2>
                             </div>
                         </form>
                     </div>
@@ -193,7 +196,8 @@
                             {{-- <form id="animatedForm" action=""> --}}
                             <div class="mt-10">
                                 <div>
-                                    <label for="Femail" class="block text-sm text-center">Enter your Email to receive password reset link.</label>
+                                    <label for="Femail" class="block text-sm text-center">Enter your Email to receive
+                                        password reset link.</label>
                                     <input type="email" id="Femail" required
                                         class="w-full mt-3 bg-white border border-gray-400 rounded-2xl placeholder:text-customGrayColorDark placeholder:text-sm focus:border-customOrangeDark focus:outline-none"
                                         placeholder="Enter your email" name="email">
@@ -201,8 +205,9 @@
 
 
                                 <div class="flex justify-center items-center mt-4 gap-1">
-                                        <span>Remember your password?</span>
-                                        <button type="button" class=" text-customOrangeDark" id="showLogin">Login In</button>
+                                    <span>Remember your password?</span>
+                                    <button type="button" class=" text-customOrangeDark" id="showLogin">Login
+                                        In</button>
                                 </div>
 
                                 <button type="submit" id="forgotbutton"
@@ -223,7 +228,9 @@
                                         Continue
                                     </div>
                                 </button>
-                                <h2 class="absolute bottom-1 left-1/2 -translate-x-1/2 text-sm text-customGrayColorDark">Version 1.0.1</h2>
+                                <h2
+                                    class="absolute bottom-1 left-1/2 -translate-x-1/2 text-sm text-customGrayColorDark">
+                                    Version 1.0.1</h2>
                             </div>
                         </form>
                     </div>
@@ -312,7 +319,8 @@
                             @foreach ($modules as $module)
                                 <div class="relative">
                                     <input type="checkbox" name="module_id[]" value="{{ $module->module_id }}"
-                                        id="market-{{ $module->module_id }}" class="absolute w-6 h-6 transition-all border-2 border-gray-300 rounded-full top-4 right-4 peer checked:text-customOrangeDark checked:bg-customOrangeDark">
+                                        id="market-{{ $module->module_id }}"
+                                        class="absolute w-6 h-6 transition-all border-2 border-gray-300 rounded-full top-4 right-4 peer checked:text-customOrangeDark checked:bg-customOrangeDark">
                                     <label for="market-{{ $module->module_id }}"
                                         class="block h-auto p-4 transition-all bg-white border-2 border-gray-200 cursor-pointer rounded-xl peer-checked:bg-orange-100 peer-checked:border-orange-300">
                                         <img class="w-[88px] h-[88px] rounded-full object-contain bg-black z-0"
@@ -501,30 +509,30 @@
 
     <script>
         $(document).ready(function() {
-            $('#togglePasswordRegister').on('click', function () {
-        const passwordField = $('#regPassword');
-        const icon = $(this).find('i');
+            $('#togglePasswordRegister').on('click', function() {
+                const passwordField = $('#regPassword');
+                const icon = $(this).find('i');
 
-        // Toggle password visibility
-        if (passwordField.attr('type') === 'password') {
-            passwordField.attr('type', 'text');
-            icon.removeClass('fa-eye-slash').addClass('fa-eye'); // Change to "eye" icon
-        } else {
-            passwordField.attr('type', 'password');
-            icon.removeClass('fa-eye').addClass('fa-eye-slash'); // Change back to "eye-slash" icon
-        }
+                // Toggle password visibility
+                if (passwordField.attr('type') === 'password') {
+                    passwordField.attr('type', 'text');
+                    icon.removeClass('fa-eye-slash').addClass('fa-eye'); // Change to "eye" icon
+                } else {
+                    passwordField.attr('type', 'password');
+                    icon.removeClass('fa-eye').addClass('fa-eye-slash'); // Change back to "eye-slash" icon
+                }
 
-    });
-    $('#showForgot').click(function(){
-            $('#ForgotContainer').removeClass('hidden')
-            $('#loginContainer').addClass('hidden')
+            });
+            $('#showForgot').click(function() {
+                $('#ForgotContainer').removeClass('hidden')
+                $('#loginContainer').addClass('hidden')
 
-    });
-    $('#showLogin').click(function(){
-            $('#ForgotContainer').addClass('hidden')
-            $('#loginContainer').removeClass('hidden')
+            });
+            $('#showLogin').click(function() {
+                $('#ForgotContainer').addClass('hidden')
+                $('#loginContainer').removeClass('hidden')
 
-    });
+            });
 
             $("#loginForm").submit(function(event) {
                 event.preventDefault();
@@ -549,22 +557,32 @@
                             window.location.href = '../dashboard';
 
                         } else if (response.success == false) {
-                            Swal.fire(
-                                'Warning!',
-                                response.message,
-                                'warning'
-                            )
+                        
+                            Swal.fire({
+                            position: "center",
+                            icon: "warning",
+                            title: "Error",
+                            text: response.message,
+                            showConfirmButton: false,
+                            timer: 2000,
+                        });
+
                         }
                     },
                     error: function(jqXHR) {
 
                         let response = JSON.parse(jqXHR.responseText);
 
-                        Swal.fire(
-                            'Warning!',
-                            response.message,
-                            'warning'
-                        )
+                 
+                        Swal.fire({
+                            position: "center",
+                            icon: "warning",
+                            title: "Error",
+                            text: response.message,
+                            showConfirmButton: false,
+                            timer: 2000,
+                        });
+
                         $('#text').removeClass('hidden');
                         $('#spinner').addClass('hidden');
                         $('#loginbutton').attr('disabled', false);
@@ -602,27 +620,37 @@
                             // window.location.href = '/';
 
                         } else if (response.success == false) {
-                            Swal.fire(
-                                'Warning!',
-                                response.message,
-                                'warning'
-                            )
+                          
+                        Swal.fire({
+                            position: "center",
+                            icon: "warning",
+                            title: "Error",
+                            text: response.message,
+                            showConfirmButton: false,
+                            timer: 2000,
+                        });
+
                         }
                     },
                     error: function(jqXHR) {
 
                         let response = JSON.parse(jqXHR.responseText);
 
-                        if(response.message == "Request already sent"){
+                        if (response.message == "Request already sent") {
                             $('#signup-Modal').removeClass('hidden');
                             $('#signup-Modal').addClass('flex');
 
-                        }else{
-                            Swal.fire(
-                                'Warning!',
-                                response.message,
-                                'warning'
-                            )
+                        } else {
+                           
+                        Swal.fire({
+                            position: "center",
+                            icon: "warning",
+                            title: "Error",
+                            text: response.message,
+                            showConfirmButton: false,
+                            timer: 2000,
+                        });
+
 
 
                         }
@@ -659,31 +687,37 @@
                             $('#forgotbutton').attr('disabled', true);
                             $('#Ftext').text("Mail Send!");
                             Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Success",
-            text: response.message,
-        });
+                                position: "center",
+                                icon: "success",
+                                title: "Success",
+                                text: response.message,
+                            });
 
 
                         } else if (response.success == false) {
-                            Swal.fire(
-                                'Warning!',
-                                response.message,
-                                'warning'
-                            )
+                            Swal.fire({
+                                position: "center",
+                                icon: "warning",
+                                title: "Error",
+                                text: response.message,
+                                showConfirmButton: false,
+                                timer: 2000,
+                            });
                         }
                     },
                     error: function(jqXHR) {
 
                         let response = JSON.parse(jqXHR.responseText);
 
+                        Swal.fire({
+                            position: "center",
+                            icon: "warning",
+                            title: "Error",
+                            text: response.message,
+                            showConfirmButton: false,
+                            timer: 2000,
+                        });
 
-                            Swal.fire(
-                                'Warning!',
-                                response.message,
-                                'warning'
-                            )
                         $('#Ftext').removeClass('hidden');
                         $('#Fspinner').addClass('hidden');
                         $('#forgotbutton').attr('disabled', false);
@@ -765,6 +799,8 @@
                         icon: "warning",
                         title: "All Fields Required",
                         text: "Please fill data in all required fields.",
+                        showConfirmButton: false,
+                        timer: 2000,
                         // showConfirmButton: false,
                         // timer: 2000,
                     });

@@ -27,9 +27,10 @@ class UserController extends Controller
     // }
     // // user Defined
 
-public function resetPasswordView(){
-return view('resetpassword');
-}
+    public function resetPasswordView()
+    {
+        return view('resetpassword');
+    }
 
     // reset password
     public function resetPassword(Request $request)
@@ -150,7 +151,6 @@ return view('resetpassword');
                 'phone' => 'nullable',
                 'address' => 'nullable',
             ]);
-
             $user = User::where('id', $userDetails['id'])->first();
 
             $user->name = $validatedData['name'];
@@ -171,7 +171,11 @@ return view('resetpassword');
                 $imagePath = $image->store('user_images', 'public'); // stored in 'storage/app/public/animal_images'
                 $imageFullPath = 'storage/' . $imagePath;
                 $user->user_image = $imageFullPath;
+                $userDetails['user_image'] = $imageFullPath;
             }
+            $userDetails['name'] = $validatedData['name'];
+            $userDetails['email'] = $validatedData['email'];
+            session()->put('user_details', $userDetails);
 
             $user->save();
 
@@ -311,11 +315,10 @@ return view('resetpassword');
             $email = $request->input('email');
             $token = Str::random(60);
             $password = $request->input('password');
-            $user = User::with(
-                'city:city_name,city_province'
-            )
-                ->where('email', $email)->first();
-
+            $user = User::with('city:city_name,city_province')->where('email', $email)->first();
+            if (!$user) {
+                return response()->json(['success' => false, 'message' => 'Email or password not found'], 401);
+            }
             if ($user && Hash::check($password, $user->password) && $user->user_status == 1) {
                 // Create a session for the user
                 session(['user_details' => [
@@ -325,6 +328,7 @@ return view('resetpassword');
                     'email' => $user->email,
                     'user_role' => $user->user_role,
                     'city_id' => $user->city_id,
+                    'user_image' => $user->user_image ?? null,
                     'city_name' => $user->city->city_name ?? null,
                     'city_province' => $user->city->city_province ?? null,
                     'user_privileges' => json_decode($user->user_privileges) ?? null,
@@ -335,7 +339,7 @@ return view('resetpassword');
                 return response()->json(['success' => false, 'message' => 'Please contact your admin'], 400);
             } else {
                 // Authentication failed
-                return response()->json(['success' => false, 'message' => 'Invalid credentials'], 401);
+                return response()->json(['success' => false, 'message' => 'Email or password not found'], 401);
             }
         } catch (\Exception $e) {
             return $this->errorResponse($e);
