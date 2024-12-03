@@ -128,8 +128,9 @@
     @endsection
     @section('js')
         <script>
+$('#pendingMediaCount').text({{count($media)}});
             let table = $("#datatable").DataTable();
-
+            
             function viewData() {
                 $(".approveMediaBtn").click(function() {
                     let csrfToken = $('meta[name="csrf-token"]').attr("content");
@@ -160,7 +161,7 @@
                                 beforeSend: function() {},
                                 success: function(response) {
                                     table.destroy();
-
+                                    $('#pendingMediaCount').text({{count($media) - 1}});
                                     $("#tableBody").load(" #tableBody > *", function() {
                                         updateDatafun();
                                         $("#datatable").DataTable();
@@ -216,7 +217,8 @@
             viewData()
 
             function updateDatafun() {
-                viewData()
+                viewData();
+                
             }
             updateDatafun();
 
