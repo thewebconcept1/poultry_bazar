@@ -225,6 +225,7 @@ class MediaController extends Controller
                 ]);
 
                 return response()->json(['success' => true, 'message' => 'Media added successfully'], 200);
+                $this->addNotification($user['id'], 'Media Added', 'media', 'New Media added into the pending list');
             }
         } catch (\Exception $e) {
             return $this->errorResponse($e);
