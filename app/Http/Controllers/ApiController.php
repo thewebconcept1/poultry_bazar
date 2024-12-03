@@ -188,9 +188,15 @@ class ApiController extends Controller
             ]);
 
             // Retrieve the markets based on the provided IDs or fetch all markets if IDs are null
-            $markets = isset($validatedData['market_ids']) && !empty($validatedData['market_ids'])
-                ? Market::whereIn('market_id', $validatedData['market_ids'])->where('market_status', 1)->get()
-                : Market::where('market_status', 1)->limit(4)->get();
+            if ($request->input('key') === 'all') {
+                $markets = Market::where('market_status', 1)->get();
+            } elseif ($request->input('key') === null) {
+                $markets = Market::where('market_status', 1)->limit(4)->get();
+            } else {
+                $markets = isset($validatedData['market_ids']) && !empty($validatedData['market_ids'])
+                    ? Market::whereIn('market_id', $validatedData['market_ids'])->where('market_status', 1)->get()
+                    : Market::where('market_status', 1)->limit(4)->get();
+            }
 
             // Check if markets were found
             if ($markets->isEmpty()) {

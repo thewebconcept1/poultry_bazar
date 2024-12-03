@@ -11,14 +11,14 @@ class NotificationController extends Controller
     public function getNotification()
     {
         $user = session('user_details');
-        $notifications = Notifications::where('added_user_id', $user['id'])->get();
+        $notifications = Notifications::get();
 
         return view('notification', ['notifications' => $notifications]);
     }
     // get notification
 
     // add notification
-    public function addNotification(Request $request)
+    public function createNotification(Request $request)
     {
         try {
             $user = session('user_details');
