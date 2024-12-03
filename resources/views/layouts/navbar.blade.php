@@ -109,7 +109,7 @@
                         <div class="text-sm font-semibold text-white">{{ session('user_details')['name'] }}</div>
                         <div class="text-[10px] text-white">{{ session('user_details')['user_role'] }}</div>
                     </div>
-                    <img class="h-[50px] w-[50px]" src="{{ asset('assets/profille img.png') }}" alt="">
+                    <img class="h-[50px] w-[50px] rounded-full object-cover border border-white" src="{{ isset(session('user_details')['user_image']) ? url(session('user_details')['user_image']) : asset('assets/profille img.png') }}" alt="profile">
                 </button>
                 <div id="dropdownAvatar"
                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">

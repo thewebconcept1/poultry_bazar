@@ -128,9 +128,9 @@
     @endsection
     @section('js')
         <script>
-            let table = $("#datatable").DataTable();
-
+    $('#pendingMediaCount').text({{count($media)}});
             function viewData() {
+                let table = $("#datatable").DataTable();
                 $(".approveMediaBtn").click(function() {
                     let csrfToken = $('meta[name="csrf-token"]').attr("content");
                     let id = $(this).attr("Id");
@@ -160,12 +160,15 @@
                                 beforeSend: function() {},
                                 success: function(response) {
                                     table.destroy();
+                                    let currentValue = parseInt($('#pendingMediaCount').text());
+                                    let updatedValue = currentValue - 1;
+                                    $('#pendingMediaCount').text(updatedValue);
 
+                                    
                                     $("#tableBody").load(" #tableBody > *", function() {
                                         updateDatafun();
                                         $("#datatable").DataTable();
                                     });
-
                                     const alert = Swal.fire({
                                         title: "Status Changed!",
                                         text: response.message,
@@ -216,7 +219,8 @@
             viewData()
 
             function updateDatafun() {
-                viewData()
+                viewData();
+                
             }
             updateDatafun();
 

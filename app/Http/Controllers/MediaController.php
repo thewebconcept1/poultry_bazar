@@ -224,8 +224,8 @@ class MediaController extends Controller
                     'media_status' => $user['user_role'] == 'superadmin' ? 1 : 2,
                 ]);
 
-                return response()->json(['success' => true, 'message' => 'Media added successfully'], 200);
                 $this->addNotification($user['id'], 'Media Added', 'media', 'New Media added into the pending list');
+                return response()->json(['success' => true, 'message' => 'Media added successfully'], 200);
             }
         } catch (\Exception $e) {
             return $this->errorResponse($e);

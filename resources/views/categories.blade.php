@@ -22,8 +22,8 @@
                             class="px-5 py-2  {{ $type == 'all' ? 'gradient-bg text-white font-semibold' : 'bg-white  text-gray-600' }} border border-gray-300  rounded-full "
                             onclick="submitForm('all')">All</button>
                         <button
-                            class="px-5 py-2   rounded-full  {{ $type == 'blog' ? 'gradient-bg text-white  font-semibold' : 'bg-white  text-gray-600' }} border border-gray-300 "
-                            onclick="submitForm('blog')">Blog</button>
+                            class="px-5 py-2   rounded-full  {{ $type == 'blogs' ? 'gradient-bg text-white  font-semibold' : 'bg-white  text-gray-600' }} border border-gray-300 "
+                            onclick="submitForm('blogs')">Blog</button>
                         <button
                             class="px-5 py-2   rounded-full  {{ $type == 'diseases' ? 'gradient-bg text-white  font-semibold' : 'bg-white  text-gray-600' }} border border-gray-300 "
                             onclick="submitForm('diseases')">Diseases</button>
@@ -58,7 +58,7 @@
                             </td>
                             <td>{{ $category->category_type }}</td>
                             <td>{{ $category->category_name }}</td>
-                            <td>0</td>
+                            <td>{{$category->total_post}}</td>
                             <td>
                                 <div class='flex gap-4'>
                                     @if ($userRole === 'superadmin' || isset($privileges['Categories']['edit']))
@@ -117,7 +117,7 @@
                                     <x-select name="category_type" id="categoryType" label="Select Category Type">
                                         <x-slot name="options">
                                             <option disabled selected>Select Category</option>
-                                            <option value="blog">Blog</option>
+                                            <option value="blogs">Blog</option>
                                             <option value="diseases">Diseases</option>
                                             <option value="consultancy">Consultancy</option>
                                         </x-slot>

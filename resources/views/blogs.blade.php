@@ -237,7 +237,7 @@
         }
         updateDatafun();
         $('#addModalBtn').click(function() {
-            $('#postDat aForm')[0].reset();
+            $('#postDataForm')[0].reset();
             $('#categoryId').trigger('change');
             $('#updateId').val('');
             $('#blog-modal #modalTitle').text("Add Blog");

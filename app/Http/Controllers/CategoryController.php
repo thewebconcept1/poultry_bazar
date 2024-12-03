@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Media;
 use Illuminate\Http\Request;
 
 
@@ -12,15 +13,25 @@ class CategoryController extends Controller
     // get category
     public function getCategory($type = null)
     {
-        if ($type == 'blog') {
-            $categories = Category::where('category_status', 1)->where('category_type', 'blog')->get();
-        } elseif ($type == 'diseases') {
-            $categories = Category::where('category_status', 1)->where('category_type', 'diseases')->get();
-        } elseif ($type == 'consultancy') {
-            $categories = Category::where('category_status', 1)->where('category_type', 'consultancy')->get();
+        $categories = Category::where('category_status', 1);
+
+        if ($type == 'blogs' || $type == 'diseases' || $type == 'consultancy') {
+            $categories = $categories->where('category_type', $type)->get();
+        
+            foreach ($categories as $category) {
+                $post_count = Media::where('category_id', $category->category_id)->count();
+                $category->total_post = $post_count;
+            }
         } else {
-            $categories = Category::where('category_status', 1)->get();
+            // Fetch all categories
+            $categories = $categories->get();
+        
+            foreach ($categories as $category) {
+                $post_count = Media::where('category_id', $category->category_id)->count();
+                $category->total_post = $post_count;
+            }
         }
+
         return view('categories', ['categories' => $categories, "type" => $type]);
     }
     // get category

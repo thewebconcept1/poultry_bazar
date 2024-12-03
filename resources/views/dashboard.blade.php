@@ -4,6 +4,12 @@
     Dasboard
 @endsection
 @section('content')
+@php
+    $user = session('user_details');
+    $privileges = json_decode($user['user_privileges'], true)['permissions'] ?? [];
+    // dd($privileges);
+    $userRole = session('user_details')['user_role'];
+@endphp
     <div class="min-h-[88vh] p-8 py-2 rounded-2xl gradient-border ">
         @if (session('user_details')['user_role'] == 'superadmin')
             <h1 class="text-[32px] mt-[10px]  font-bold">Dashboard</h1>
@@ -97,7 +103,7 @@
 
             <div class="mx-auto my-3 ">
                 <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
-
+                    @if (isset($privileges['Blogs']['view']))
                     <!-- Blogs Section -->
                     <div class="bg-white border-4 rounded-xl shadow-lg border-customOrangeLight">
                         <div class="flex items-center justify-between p-3 mb-4 bg-orange-100 rounded-t-lg">
@@ -122,7 +128,8 @@
                         @endforeach
                         
                     </div>
-
+                @endif
+                @if (isset($privileges['Diseases']['view']))
                     <!-- Diseases Section -->
                     <div class="bg-white border-4 rounded-xl shadow-lg border-customOrangeLight">
                         <div class="flex items-center justify-between p-3 mb-4 bg-orange-100 rounded-t-lg">
@@ -146,7 +153,8 @@
                         </div>
                         @endforeach
                     </div>
-
+                    @endif
+                    @if (isset($privileges['Consultancy']['view']))
                     <!-- Consultancy Videos Section -->
                     <div class="bg-white border-4 rounded-xl shadow-lg border-customOrangeLight">
                         <div class="flex items-center justify-between p-3 mb-4 bg-orange-100 rounded-t-lg">
@@ -172,6 +180,7 @@
                         @endforeach
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         @endif
