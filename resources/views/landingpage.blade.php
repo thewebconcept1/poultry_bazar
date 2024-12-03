@@ -11,6 +11,8 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href="{{ asset('assets/default-logo-1.png') }}" type="image/x-icon">
+
 
     <style>
         * {
@@ -26,11 +28,43 @@
             background-color: white;
             z-index: 9999;
         }
+
+        .active {
+            color: black;
+
+        }
+
+        .active::after {
+            content: '';
+            height: 3px;
+            width: 100%;
+            background-color: rgba(23, 22, 22, 0.764);
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+
+        }
     </style>
 
 <body class="relative text-gray-800 bg-white body">
+    <div id="loading">
+        <div class=" text-center z-[9999] h-screen w-screen flex justify-center items-center  ">
+            <svg aria-hidden="true"
+                class="w-12 h-12 mx-auto text-center text-gray-200 animate-spin fill-customOrangeLight"
+                viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                    fill="currentColor" />
+                <path
+                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                    fill="currentFill" />
+            </svg>
+        </div>
+    </div>
+
     <nav
-        class="container sticky z-40 w-full mx-auto border-gray-200 rounded-full shadow-xl gradient-bg top-1 dark:bg-gray-900">
+        class="container sticky z-40 md:w-full w-[95%] mx-auto border-gray-200 rounded-full shadow-xl gradient-bg  top-1 dark:bg-gray-900">
         <div class="flex flex-wrap items-center justify-between w-full px-12 py-3 mx-auto xl:max-w-">
             <!-- Logo -->
             <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -48,19 +82,23 @@
                         d="M1 1h15M1 7h15M1 13h15" />
                 </svg>
             </button>
-            <ul class="hidden md:flex">
-                <li>
-                    <a href="#" class="px-3 text-white rounded hover:bg-orange-500">What is it?</a>
+            <ul class="hidden md:flex gap-8 items-center">
+
+                <li class="relative ">
+                    <a href="#" class=" nav-link relative text-white ">Home</a>
+                </li>
+                <li class="relative ">
+                    <a href="#services" class=" nav-link relative text-white ">Services</a>
+                </li>
+                <li class="relative ">
+                    <a href="#blogs" class=" nav-link relative text-white ">Blogs</a>
                 </li>
                 <li>
-                    <a href="#home" class="px-3 text-white rounded hover:bg-orange-500">Home</a>
+                    <button class="px-6 py-3 font-semibold text-white rounded-full shadow-md bg-black ">
+                        Download App
+                    </button>
                 </li>
-                <li>
-                    <a href="#about" class="px-3 text-white rounded hover:bg-orange-500">About</a>
-                </li>
-                <li>
-                    <a href="#blogs" class="px-3 text-white rounded hover:bg-orange-500">Blogs</a>
-                </li>
+
             </ul>
             <!-- Sidebar Menu -->
             <div id="sidebar-menu"
@@ -71,19 +109,18 @@
                 </svg> --}}
                 </button>
                 <ul class="flex flex-col px-4 space-y-4">
-                    <li>
-                        <a href="#" class="px-3 py-2 rounded textco hover:bg-orange-500">What is it?</a>
+                   
+                    <li class="relative">
+                        <a href="#" class="px-3 py-2 text-white nav-link">Home</a>
                     </li>
-                    <li>
-                        <a href="#home" class="px-3 py-2 text-white rounded hover:bg-orange-500">Home</a>
+                    <li class="relative">
+                        <a href="#services" class="px-3 py-2 text-white nav-link">Services</a>
                     </li>
-                    <li>
-                        <a href="#about" class="px-3 py-2 text-white rounded hover:bg-orange-500">About</a>
-                    </li>
-                    <li>
-                        <a href="#blogs" class="px-3 py-2 text-white rounded hover:bg-orange-500">Blogs</a>
+                    <li class="relative">
+                        <a href="#blogs" class="px-3 py-2 text-white nav-link">Blogs</a>
                     </li>
                 </ul>
+           
             </div>
         </div>
     </nav>
@@ -95,7 +132,7 @@
             <!-- Welcome Section -->
             <div
                 class="relative z-40 flex flex-col items-center lg:mt-0 mt-10 xl:mx-auto justify-center w-[70vw] h-full ">
-                <div id="welcomeDiv" class="text-center lg:text-left">
+                <div id="welcomeDiv" class=" text-left">
                     <h2 class="text-4xl font-bold leading-tight lg:text-5xl text-customOrangeDark">
                         <span>Welcome to</span><br> Poultry Bazar
                     </h2>
@@ -122,7 +159,7 @@
                     </div>
                 </div>
             </div>
-            <div class="z-40 flex items-center  justify-end w-[80vw] px-2 mt-6 md:mt-4 md:px-0 ">
+            <div class="z-40 flex items-center justify-center  lg:justify-end w-[80vw] px-2 mt-6 md:mt-4 md:px-0 ">
                 {{-- <div class="grid grid-cols-2 gap-5 ">
                     <div class="max-w-[250px]  p-4 text-center bg-white rounded-lg shadow-lg">
                         <div class="flex items-center justify-center mx-auto mb-4 ">
@@ -162,7 +199,7 @@
 
         <div class="">
             <div
-                class="container grid grid-cols-2 gap-6 px-4 py-4 mx-auto mt-10 md:gap-10 xl:mt-20 sm:mt-20 lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-4 md:px-12">
+                class="container overflow-x-auto flex  gap-6 px-4 py-4 mx-auto mt-10 md:gap-10 xl:mt-20 sm:mt-20  md:px-12">
                 <div class="w-full h-auto border rounded-lg border-customOrangeDark">
                     <div class="flex gap-14 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
                         <div>
@@ -228,30 +265,13 @@
                 <div class="w-full h-20 border rounded-lg border-customOrangeDark">
                     <div class="m-4 ms-6">
                         <h1 class="font-bold">20+More</h1>
-                        <p class="font-bold lg:text-[15px] md:text-[12px] text-customOrangeDark">Cities in App</p>
+                        <p class="font-bold lg:text-[15px] md:text-[12px] text-customOrangeDark whitespace-nowrap">Cities in App</p>
                     </div>
                 </div>
-                {{-- <div class="h-20 px-4 text-center w-44 ">
-                    <h1 class="mt-1 font-semibold text-[100%] text-customGrayColorDark">Download App</h1>
-                    <div class="flex justify-center">
-                        <svg width="136" height="46" viewBox="0 0 136 46" fill="none"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <rect width="136" height="46" rx="8" fill="url(#pattern0_1897_5533)" />
-                            <defs>
-                                <pattern id="pattern0_1897_5533" patternContentUnits="objectBoundingBox"
-                                    width="1" height="1">
-                                    <use xlink:href="#image0_1897_5533"
-                                        transform="matrix(0.00574866 0 0 0.016996 -1.1688 -0.304348)" />
-                                </pattern>
-                                <image id="image0_1897_5533" width="411" height="110"
-                                    xlink:href="data:image/png;base64,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" />
-                            </defs>
-                        </svg>
-                    </div>
-                </div> --}}
+
             </div>
         </div>
-        <div class="section" id="about">
+        <div class="section" id="services">
             <div class="flex items-center justify-center p-5 mt-12">
                 <div class="text-center">
                     <h2 class="text-2xl font-semibold text-customOrangeDark">Services</h2>
@@ -267,7 +287,7 @@
                     <div class="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
                         <!-- Card 1 -->
                         <div class="flex flex-col items-center">
-                            <img src="{{ asset("assets/icons/market updatesvg.svg") }}" alt="">
+                            <img src="{{ asset('assets/icons/market updatesvg.svg') }}" alt="">
                             <h3 class="text-2xl font-semibold text-customOrangeDark">Market Updates</h3>
                             <p class="mt-2 text-sm text-gray-500">Stay informed with live updates on poultry market
                                 rates, providing real-time price trends for chickens across regions. This feature helps
@@ -276,7 +296,7 @@
                         </div>
                         <!-- Card 2 -->
                         <div class="flex flex-col items-center">
-                            <img src="{{ asset("assets/icons/possvg.svg") }}" alt="">
+                            <img src="{{ asset('assets/icons/possvg.svg') }}" alt="">
                             <h3 class="text-2xl font-semibold text-customOrangeDark">Point of Sale</h3>
                             <p class="mt-2 text-sm text-gray-500 ">Streamline sales and financial management with an
                                 integrated Point of Sale system. Track sales, generate invoices, and gain insights into
@@ -285,7 +305,7 @@
                         </div>
                         <!-- Card 3 -->
                         <div class="flex flex-col items-center">
-                           <img src="{{ asset("assets/icons/flokssvg.svg") }}" alt="">
+                            <img src="{{ asset('assets/icons/flokssvg.svg') }}" alt="">
 
                             <h3 class="text-2xl font-semibold text-customOrangeDark">Flock Management</h3>
                             <p class="mt-2 text-sm text-gray-500">Manage flock health, productivity, and expenses with
@@ -301,7 +321,7 @@
                     <div class="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
                         <!-- Card 1 -->
                         <div class="flex flex-col items-center">
-                           <img src="{{ asset("assets/icons/e-commercesvg.svg") }}" alt="">
+                            <img src="{{ asset('assets/icons/e-commercesvg.svg') }}" alt="">
 
                             <h3 class="text-2xl font-semibold text-customOrangeDark">E-Commerce </h3>
                             <p class="mt-2 text-sm text-gray-500">Expand your reach with the E-Commerce module to buy
@@ -311,7 +331,7 @@
                         </div>
                         <!-- Card 2 -->
                         <div class="flex flex-col items-center">
-                            <img src="{{ asset("assets/icons/market updatesvg.svg") }}" alt="">
+                            <img src="{{ asset('assets/icons/market updatesvg.svg') }}" alt="">
                             <h3 class="text-2xl font-semibold text-customOrangeDark">Knowledge Center </h3>
                             <p class="mt-2 text-sm text-gray-500">Enhance your expertise with the Knowledge Center
                                 module, offering easy access to resources on poultry management. Get valuable guides,
@@ -320,7 +340,7 @@
                         </div>
                         <!-- Card 3 -->
                         <div class="flex flex-col items-center">
-                            <img src="{{ asset("assets/icons/possvg.svg") }}" alt="">
+                            <img src="{{ asset('assets/icons/possvg.svg') }}" alt="">
                             <h3 class="text-2xl font-semibold text-customOrangeDark">Job Portal</h3>
                             <p class="mt-2 text-sm text-gray-500">Connect with top talent using the Job Portal module.
                                 Post job openings, review applications, and find the right candidates. Streamline
@@ -719,12 +739,32 @@
                 <!-- Header -->
                 <div class="flex items-center justify-between mb-8">
                     <h2 class="pb-1 text-3xl font-bold text-customOrangeDark">Our Latest Blog Posts</h2>
-                    <button class="px-6 py-3 font-semibold text-white rounded-full shadow-md gradient-bg ">
-                        See All Blog Posts
+                    <button class="px-6 py-3 font-semibold text-white rounded-full shadow-md gradient-bg text-nowrap ">
+                        See All
                     </button>
                 </div>
 
-                <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
+                        <img src="{{ asset('assets/icons/imageblogs.png') }}" alt="Blog Post Image"
+                            class="object-cover w-full h-48 rounded-t-lg">
+                        <div class="p-4">
+                            <div class="flex items-center mb-2 text-sm text-customOrangeDark">
+                                <span class="px-2 py-1 bg-orange-100 rounded-full">Category</span>
+                            </div>
+                            <div class="flex items-center mb-4 text-xs text-gray-500">
+                                <img src="{{ asset('assets/icons/image 633.png') }}" alt="Author Image"
+                                    class="w-6 h-6 mr-2 rounded-full">
+                                <span class="mr-2">Author Name</span> | <span class="ml-2">25 Oct, 2024</span>
+                            </div>
+                            <h3 class="mb-2 text-lg font-semibold text-gray-800">Believing neglected so so allowance
+                                existence departure.</h3>
+                            <p class="text-sm text-gray-600">
+                                Blessing welcomed ladyship she met humoured sir breeding her. Six curiosity day
+                                assurance bed necessary.
+                            </p>
+                        </div>
+                    </div>
                     <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
                         <img src="{{ asset('assets/icons/imageblogs.png') }}" alt="Blog Post Image"
                             class="object-cover w-full h-48 rounded-t-lg">
@@ -789,24 +829,33 @@
             </div>
         </section>
         <div class="container mx-auto ">
-            <img class="mt-24" src="{{ asset('assets/icons/Subtract.png') }}" alt="">
+            <img class="mt-24 w-full" src="{{ asset('assets/icons/Subtract.png') }}" alt="">
         </div>
-        <div class="mb-16 text-gray-800 bg-white">
+
+
+        <div class=" text-gray-800 bg-white">
             <footer class="mt-6 bg-white ">
-                <div class="container grid gap-8 px-4 mx-auto text-center md:grid-cols-4">
-                    <div class="h-32 lg:mt-20">
-                        <h2 class="mb-2 text-lg font-bold text-customOrangeDark">POUL<span
-                                class="font-extrabold">3</span>Y</h2>
-                        <p class="text-gray-500">Best delivery services in Germany. Using by more than 3,000,000
-                            people
-                            in
-                            the world
-                        </p>
+                <div class="container grid gap-8 px-4 mx-auto  text-center  sm:grid-cols-2 lg:grid-cols-4 ">
+                    <div class="flex justify-center w-full h-32 lg:mt-20 mt-6 ">
+                        <div class="flex justify-center w-full  text-gray-500 ">
+                            <ul class="space-y-2 flex flex-col items-start">
+                                <li><a href="#">
+                                        <h2 class="mb-2 text-lg font-semibold text-customOrangeDark">Poul3y</h2>
+                                    </a></li>
+                                <li><a href="mailto:admin@poul3y.com" class="hover:text-gray-700">admin@poul3y.com</a>
+                                </li>
+                                <li><a href="www.poul3y.com" class="hover:text-gray-700">www.poul3y.com</a></li>
+                                <li><a href="tel:+92 300 1234567" class="hover:text-gray-700">+92 300 1234567</a></li>
+                                <li><span class="hover:text-gray-700">Head office, Peshawar</span></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="flex flex-col items-center justify-center ">
-                        <h2 class="mb-2 text-lg font-semibold lg:mt-20 text-customOrangeDark">Social Links</h2>
-                        <ul class="space-y-2 text-gray-500 ">
-                            <li>
+                    <div class="flex justify-center w-full h-32 lg:mt-20 mt-6 ">
+                        <div class="flex justify-center w-full  text-gray-500 mr-[58px] sm:mr-0 ">
+                            <ul class="space-y-2 flex flex-col items-start">
+                                <li><a href="#">
+                                        <h2 class="mb-2 text-lg font-semibold text-customOrangeDark">Social Links</h2>
+                                    </a></li>
                                 <a href="https://www.facebook.com/profile.php?id=61569679073435" target="_blank"
                                     class="flex items-center group">
                                     <svg class="w-6 h-6 text-gray-500 transition-colors duration-300 fill-current group-hover:text-customOrangeDark"
@@ -819,65 +868,68 @@
                                         Facebook
                                     </span>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/poul3y" target="_blank"
-                                    class="flex items-center group">
-                                    <svg class="w-6 h-6 text-gray-500 transition-colors duration-300 fill-current group-hover:text-customOrangeDark"
-                                        width="25" height="25" viewBox="0 0 25 25"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M8.12468 2.08203H16.8747C20.208 2.08203 22.9163 4.79036 22.9163 8.1237V16.8737C22.9163 18.476 22.2798 20.0128 21.1468 21.1458C20.0137 22.2788 18.477 22.9154 16.8747 22.9154H8.12468C4.79134 22.9154 2.08301 20.207 2.08301 16.8737V8.1237C2.08301 6.52135 2.71954 4.98463 3.85257 3.85159C4.9856 2.71856 6.52233 2.08203 8.12468 2.08203ZM7.91634 4.16536C6.92178 4.16536 5.96795 4.56045 5.26469 5.26371C4.56143 5.96698 4.16634 6.9208 4.16634 7.91536V17.082C4.16634 19.1549 5.84342 20.832 7.91634 20.832H17.083C18.0776 20.832 19.0314 20.4369 19.7347 19.7337C20.4379 19.0304 20.833 18.0766 20.833 17.082V7.91536C20.833 5.84245 19.1559 4.16536 17.083 4.16536H7.91634ZM17.9684 5.72786C18.3138 5.72786 18.645 5.86505 18.8891 6.10924C19.1333 6.35342 19.2705 6.68461 19.2705 7.02995C19.2705 7.37528 19.1333 7.70647 18.8891 7.95066C18.645 8.19485 18.3138 8.33203 17.9684 8.33203C17.6231 8.33203 17.2919 8.19485 17.0477 7.95066C16.8035 7.70647 16.6663 7.37528 16.6663 7.02995C16.6663 6.68461 16.8035 6.35342 17.0477 6.10924C17.2919 5.86505 17.6231 5.72786 17.9684 5.72786ZM12.4997 7.29037C13.881 7.29037 15.2058 7.8391 16.1825 8.81585C17.1593 9.7926 17.708 11.1174 17.708 12.4987C17.708 13.88 17.1593 15.2048 16.1825 16.1815C15.2058 17.1583 13.881 17.707 12.4997 17.707C11.1183 17.707 9.79358 17.1583 8.81683 16.1815C7.84008 15.2048 7.29134 13.88 7.29134 12.4987C7.29134 11.1174 7.84008 9.7926 8.81683 8.81585C9.79358 7.8391 11.1183 7.29037 12.4997 7.29037ZM12.4997 9.3737C11.6709 9.3737 10.876 9.70294 10.29 10.289C9.70391 10.875 9.37467 11.6699 9.37467 12.4987C9.37467 13.3275 9.70391 14.1224 10.29 14.7084C10.876 15.2945 11.6709 15.6237 12.4997 15.6237C13.3285 15.6237 14.1233 15.2945 14.7094 14.7084C15.2954 14.1224 15.6247 13.3275 15.6247 12.4987C15.6247 11.6699 15.2954 10.875 14.7094 10.289C14.1233 9.70294 13.3285 9.3737 12.4997 9.3737Z" />
-                                    </svg>
-                                    <span
-                                        class="ml-2 text-gray-600 duration-300 hover:text-customOrangeDark">Instagram</span>
-                                </a>
-                            </li>
-                            <li> <a href="#" class="flex items-center group">
-                                    <svg class="w-6 h-6 text-gray-500 transition-colors duration-300 group-hover:text-customOrangeDark"
-                                        width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M14.5833 12.5013L10.9375 14.5846V10.418L14.5833 12.5013Z"
-                                            fill="currentColor" stroke="currentColor" stroke-width="1.875"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <path
-                                            d="M2.08301 13.2388V11.7638C2.08301 8.74818 2.08301 7.23984 3.02572 6.27005C3.96947 5.29922 5.45488 5.25755 8.42468 5.17318C9.83093 5.13359 11.2684 5.10547 12.4997 5.10547C13.7309 5.10547 15.1674 5.13359 16.5747 5.17318C19.5445 5.25755 21.0299 5.29922 21.9726 6.27005C22.9153 7.24089 22.9163 8.74922 22.9163 11.7638V13.2378C22.9163 16.2544 22.9163 17.7617 21.9736 18.7326C21.0299 19.7023 19.5455 19.7451 16.5747 19.8284C15.1684 19.869 13.7309 19.8971 12.4997 19.8971C11.2684 19.8971 9.83197 19.869 8.42468 19.8284C5.45488 19.7451 3.96947 19.7034 3.02572 18.7326C2.08197 17.7617 2.08301 16.2534 2.08301 13.2388Z"
-                                            stroke="currentColor" stroke-width="1.875" />
-                                    </svg>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/poul3y" target="_blank"
+                                        class="flex items-center group">
+                                        <svg class="w-6 h-6 text-gray-500 transition-colors duration-300 fill-current group-hover:text-customOrangeDark"
+                                            width="25" height="25" viewBox="0 0 25 25"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M8.12468 2.08203H16.8747C20.208 2.08203 22.9163 4.79036 22.9163 8.1237V16.8737C22.9163 18.476 22.2798 20.0128 21.1468 21.1458C20.0137 22.2788 18.477 22.9154 16.8747 22.9154H8.12468C4.79134 22.9154 2.08301 20.207 2.08301 16.8737V8.1237C2.08301 6.52135 2.71954 4.98463 3.85257 3.85159C4.9856 2.71856 6.52233 2.08203 8.12468 2.08203ZM7.91634 4.16536C6.92178 4.16536 5.96795 4.56045 5.26469 5.26371C4.56143 5.96698 4.16634 6.9208 4.16634 7.91536V17.082C4.16634 19.1549 5.84342 20.832 7.91634 20.832H17.083C18.0776 20.832 19.0314 20.4369 19.7347 19.7337C20.4379 19.0304 20.833 18.0766 20.833 17.082V7.91536C20.833 5.84245 19.1559 4.16536 17.083 4.16536H7.91634ZM17.9684 5.72786C18.3138 5.72786 18.645 5.86505 18.8891 6.10924C19.1333 6.35342 19.2705 6.68461 19.2705 7.02995C19.2705 7.37528 19.1333 7.70647 18.8891 7.95066C18.645 8.19485 18.3138 8.33203 17.9684 8.33203C17.6231 8.33203 17.2919 8.19485 17.0477 7.95066C16.8035 7.70647 16.6663 7.37528 16.6663 7.02995C16.6663 6.68461 16.8035 6.35342 17.0477 6.10924C17.2919 5.86505 17.6231 5.72786 17.9684 5.72786ZM12.4997 7.29037C13.881 7.29037 15.2058 7.8391 16.1825 8.81585C17.1593 9.7926 17.708 11.1174 17.708 12.4987C17.708 13.88 17.1593 15.2048 16.1825 16.1815C15.2058 17.1583 13.881 17.707 12.4997 17.707C11.1183 17.707 9.79358 17.1583 8.81683 16.1815C7.84008 15.2048 7.29134 13.88 7.29134 12.4987C7.29134 11.1174 7.84008 9.7926 8.81683 8.81585C9.79358 7.8391 11.1183 7.29037 12.4997 7.29037ZM12.4997 9.3737C11.6709 9.3737 10.876 9.70294 10.29 10.289C9.70391 10.875 9.37467 11.6699 9.37467 12.4987C9.37467 13.3275 9.70391 14.1224 10.29 14.7084C10.876 15.2945 11.6709 15.6237 12.4997 15.6237C13.3285 15.6237 14.1233 15.2945 14.7094 14.7084C15.2954 14.1224 15.6247 13.3275 15.6247 12.4987C15.6247 11.6699 15.2954 10.875 14.7094 10.289C14.1233 9.70294 13.3285 9.3737 12.4997 9.3737Z" />
+                                        </svg>
+                                        <span
+                                            class="ml-2 text-gray-600 duration-300 hover:text-customOrangeDark">Instagram</span>
+                                    </a>
+                                </li>
+                                <li> <a href="#" class="flex items-center group">
+                                        <svg class="w-6 h-6 text-gray-500 transition-colors duration-300 group-hover:text-customOrangeDark"
+                                            width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14.5833 12.5013L10.9375 14.5846V10.418L14.5833 12.5013Z"
+                                                fill="currentColor" stroke="currentColor" stroke-width="1.875"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path
+                                                d="M2.08301 13.2388V11.7638C2.08301 8.74818 2.08301 7.23984 3.02572 6.27005C3.96947 5.29922 5.45488 5.25755 8.42468 5.17318C9.83093 5.13359 11.2684 5.10547 12.4997 5.10547C13.7309 5.10547 15.1674 5.13359 16.5747 5.17318C19.5445 5.25755 21.0299 5.29922 21.9726 6.27005C22.9153 7.24089 22.9163 8.74922 22.9163 11.7638V13.2378C22.9163 16.2544 22.9163 17.7617 21.9736 18.7326C21.0299 19.7023 19.5455 19.7451 16.5747 19.8284C15.1684 19.869 13.7309 19.8971 12.4997 19.8971C11.2684 19.8971 9.83197 19.869 8.42468 19.8284C5.45488 19.7451 3.96947 19.7034 3.02572 18.7326C2.08197 17.7617 2.08301 16.2534 2.08301 13.2388Z"
+                                                stroke="currentColor" stroke-width="1.875" />
+                                        </svg>
 
-                                    <span
-                                        class="ml-2 text-gray-600 duration-300 hover:text-customOrangeDark">YouTube</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="flex items-center group">
-                                    <svg class="w-6 h-6 text-gray-500 transition-colors duration-300 fill-current group-hover:text-customOrangeDark"
-                                        width="25" height="25" viewBox="0 0 25 25"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M19.8441 5.11334C18.8889 4.14886 17.7514 3.38414 16.4977 2.86371C15.2441 2.34329 13.8994 2.07759 12.542 2.08209C6.85449 2.08209 2.21908 6.7175 2.21908 12.405C2.21908 14.2279 2.69824 15.9988 3.59408 17.5613L2.13574 22.9154L7.60449 21.4779C9.11491 22.3008 10.8128 22.7383 12.542 22.7383C18.2295 22.7383 22.8649 18.1029 22.8649 12.4154C22.8649 9.655 21.792 7.06125 19.8441 5.11334ZM12.542 20.9883C11.0003 20.9883 9.48991 20.5717 8.16699 19.7904L7.85449 19.6029L4.60449 20.4571L5.46908 17.2904L5.26074 16.9675C4.40402 15.5999 3.94921 14.0188 3.94824 12.405C3.94824 7.67584 7.80241 3.82167 12.5316 3.82167C14.8232 3.82167 16.9795 4.7175 18.5941 6.3425C19.3937 7.1382 20.0273 8.08474 20.4583 9.12722C20.8892 10.1697 21.1089 11.2874 21.1045 12.4154C21.1253 17.1446 17.2712 20.9883 12.542 20.9883ZM17.2503 14.5717C16.9899 14.4467 15.7191 13.8217 15.4899 13.7279C15.2503 13.6446 15.0837 13.6029 14.9066 13.8529C14.7295 14.1133 14.2399 14.6967 14.0941 14.8633C13.9482 15.0404 13.792 15.0613 13.5316 14.9258C13.2712 14.8008 12.4378 14.5196 11.4587 13.6446C10.6878 12.9571 10.1774 12.1133 10.0212 11.8529C9.87532 11.5925 10.0003 11.4571 10.1357 11.3217C10.2503 11.2071 10.3962 11.0196 10.5212 10.8738C10.6462 10.7279 10.6982 10.6133 10.7816 10.4467C10.8649 10.2696 10.8232 10.1238 10.7607 9.99875C10.6982 9.87375 10.1774 8.60292 9.96907 8.08209C9.76074 7.58209 9.54199 7.64459 9.38574 7.63417H8.88574C8.70866 7.63417 8.43783 7.69667 8.19824 7.95709C7.96908 8.2175 7.30241 8.8425 7.30241 10.1133C7.30241 11.3842 8.22949 12.6133 8.35449 12.78C8.47949 12.9571 10.1774 15.5613 12.7607 16.6758C13.3753 16.9467 13.8545 17.1029 14.2295 17.2175C14.8441 17.4154 15.4066 17.3842 15.8545 17.3217C16.3545 17.2488 17.3857 16.6967 17.5941 16.0925C17.8128 15.4883 17.8128 14.9779 17.7399 14.8633C17.667 14.7488 17.5107 14.6967 17.2503 14.5717Z" />
-                                    </svg>
-                                    <span
-                                        class="ml-2 text-gray-600 duration-300 hover:text-customOrangeDark">Whatsaap</span>
-                                </a>
-                            </li>
-                        </ul>
+                                        <span
+                                            class="ml-2 text-gray-600 duration-300 hover:text-customOrangeDark">YouTube</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center group">
+                                        <svg class="w-6 h-6 text-gray-500 transition-colors duration-300 fill-current group-hover:text-customOrangeDark"
+                                            width="25" height="25" viewBox="0 0 25 25"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M19.8441 5.11334C18.8889 4.14886 17.7514 3.38414 16.4977 2.86371C15.2441 2.34329 13.8994 2.07759 12.542 2.08209C6.85449 2.08209 2.21908 6.7175 2.21908 12.405C2.21908 14.2279 2.69824 15.9988 3.59408 17.5613L2.13574 22.9154L7.60449 21.4779C9.11491 22.3008 10.8128 22.7383 12.542 22.7383C18.2295 22.7383 22.8649 18.1029 22.8649 12.4154C22.8649 9.655 21.792 7.06125 19.8441 5.11334ZM12.542 20.9883C11.0003 20.9883 9.48991 20.5717 8.16699 19.7904L7.85449 19.6029L4.60449 20.4571L5.46908 17.2904L5.26074 16.9675C4.40402 15.5999 3.94921 14.0188 3.94824 12.405C3.94824 7.67584 7.80241 3.82167 12.5316 3.82167C14.8232 3.82167 16.9795 4.7175 18.5941 6.3425C19.3937 7.1382 20.0273 8.08474 20.4583 9.12722C20.8892 10.1697 21.1089 11.2874 21.1045 12.4154C21.1253 17.1446 17.2712 20.9883 12.542 20.9883ZM17.2503 14.5717C16.9899 14.4467 15.7191 13.8217 15.4899 13.7279C15.2503 13.6446 15.0837 13.6029 14.9066 13.8529C14.7295 14.1133 14.2399 14.6967 14.0941 14.8633C13.9482 15.0404 13.792 15.0613 13.5316 14.9258C13.2712 14.8008 12.4378 14.5196 11.4587 13.6446C10.6878 12.9571 10.1774 12.1133 10.0212 11.8529C9.87532 11.5925 10.0003 11.4571 10.1357 11.3217C10.2503 11.2071 10.3962 11.0196 10.5212 10.8738C10.6462 10.7279 10.6982 10.6133 10.7816 10.4467C10.8649 10.2696 10.8232 10.1238 10.7607 9.99875C10.6982 9.87375 10.1774 8.60292 9.96907 8.08209C9.76074 7.58209 9.54199 7.64459 9.38574 7.63417H8.88574C8.70866 7.63417 8.43783 7.69667 8.19824 7.95709C7.96908 8.2175 7.30241 8.8425 7.30241 10.1133C7.30241 11.3842 8.22949 12.6133 8.35449 12.78C8.47949 12.9571 10.1774 15.5613 12.7607 16.6758C13.3753 16.9467 13.8545 17.1029 14.2295 17.2175C14.8441 17.4154 15.4066 17.3842 15.8545 17.3217C16.3545 17.2488 17.3857 16.6967 17.5941 16.0925C17.8128 15.4883 17.8128 14.9779 17.7399 14.8633C17.667 14.7488 17.5107 14.6967 17.2503 14.5717Z" />
+                                        </svg>
+                                        <span
+                                            class="ml-2 text-gray-600 duration-300 hover:text-customOrangeDark">Whatsapp</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
                     <!-- Quick Links Column 2 -->
-                    <div class="flex justify-center w-full h-32 lg:mt-20 ">
+                    <div class=" h-32 lg:mt-20 mt-6  ">
 
-                        <ul class="flex flex-col items-center w-full space-y-2 text-gray-500 xl:items-start">
-                            <li><a href="#">
-                                    <h2 class="mb-2 text-lg font-semibold text-customOrangeDark">Quick Links</h2>
-                                </a></li>
-                            <li><a href="#" class="hover:text-gray-700">Privacy Policy</a></li>
-                            <li><a href="#" class="hover:text-gray-700">Terms & Conditions</a></li>
-                            <li><a href="#" class="hover:text-gray-700">Disclaimer</a></li>
-                            <li><a href="/login" class="hover:text-gray-700">Get Access</a></li>
-                        </ul>
+                        <div class="flex justify-center w-full  text-gray-500  sm:mr-0">
+                            <ul class="space-y-2 flex flex-col items-start mr-4">
+                                <li><a href="#">
+                                        <h2 class="mb-2 text-lg font-semibold text-customOrangeDark">Quick Links</h2>
+                                    </a></li>
+                                <li><a href="#" class="hover:text-gray-700">Privacy Policy</a></li>
+                                <li><a href="#" class="hover:text-gray-700">Terms & Conditions</a></li>
+                                <li><a href="#" class="hover:text-gray-700">Disclaimer</a></li>
+                                <li><a href="/login" class="hover:text-gray-700">Get Access</a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="flex flex-col items-center md:items-start">
+                    <div class="flex flex-col items-center md:items-start lg:mt-10">
                         <svg width="180" height="180" viewBox="0 0 220 220" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <g filter="url(#filter0_d_1789_9187)">
@@ -988,6 +1040,12 @@
                     </div>
 
                 </div>
+                <div class=" flex justify-center  w-full  bg-[#F1F1F1] py-4 mt-5">
+                    <p class="text-sm text-black text-center">Powered by <span class="text-customOrangeDark">Poul3yBazar</span> &
+                        Developed by
+                        <a target="_blank" class="text-blue-500" href="https://thewebconcept.com/">TheWebConcept</a>.
+                    </p>
+                </div>
             </footer>
 
         </div>
@@ -998,18 +1056,38 @@
         <script src="{{ asset('javascript/script.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script>
+            $(document).ready(function() {
+                function setActiveLink() {
+                    const currentHash = window.location.hash; // Get the current hash from the URL
+
+                    // Remove 'active' class from all links
+                    $('.nav-link').removeClass('active');
+
+                    // Add 'active' class to the matching link
+                    if (currentHash) {
+                        $(`.nav-link[href="${currentHash}"]`).addClass('active');
+                    } else {
+                        // Default to the first link if no hash is present
+                        $('.nav-link').first().addClass('active');
+                    }
+                }
+
+                // On page load, set the active link
+                setActiveLink();
+
+                // Add click event to update active class dynamically
+                $('.nav-link').on('click', function() {
+                    // Remove 'active' class from all links
+                    $('.nav-link').removeClass('active');
+                    // Add 'active' class to the clicked link
+                    $(this).addClass('active');
+                });
+
+            });
+
             $(window).on('load', function() {
                 $('#loading').hide();
             })
-            $(document).ready(function() {
-                $('#datatable').DataTable();
-                $('select').select2({
-                    width: '100%'
-                });
-                $('#Items_dropdown').select2({
-                    minimumResultsForSearch: Infinity
-                });
-            });
         </script>
         <script>
             const menuToggle = document.getElementById('menu-toggle');
