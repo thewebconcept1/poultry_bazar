@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ asset('assets/default-logo-1.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 
 
     <style>
@@ -94,7 +96,12 @@
                     <a href="#blogs" class=" nav-link relative text-white ">Blogs</a>
                 </li>
                 <li>
-                    <button class="px-6 py-3 font-semibold text-white rounded-full shadow-md bg-black ">
+                    <button
+                        class="px-7 py-3 font-semibold text-black rounded-full shadow-md bg-white flex gap-2 justify-center items-center hover:shadow-lg">
+                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path
+                                d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" />
+                        </svg>
                         Download App
                     </button>
                 </li>
@@ -109,7 +116,7 @@
                 </svg> --}}
                 </button>
                 <ul class="flex flex-col px-4 space-y-4">
-                   
+
                     <li class="relative">
                         <a href="#" class="px-3 py-2 text-white nav-link">Home</a>
                     </li>
@@ -120,7 +127,7 @@
                         <a href="#blogs" class="px-3 py-2 text-white nav-link">Blogs</a>
                     </li>
                 </ul>
-           
+
             </div>
         </div>
     </nav>
@@ -196,72 +203,56 @@
                 <img src="{{ asset('assets/icons/svgsection1/imagesvgsec.svg') }}" alt="">
             </div>
         </div>
+        @php
+            $cities = [
+                'Lahore',
+                'Karachi',
+                'Islamabad',
+                'Quetta',
+                'Peshawar',
+                'Multan',
+                'Faisalabad',
+                'Sialkot',
+                'Rawalpindi',
+                'Hyderabad',
+                'Gujranwala',
+            ];
+            $cardCount = rand(11, 12); // Random number between 11 and 12
+        @endphp
+        <div class="container xl:mt-20 mt-20  md:px-12 mx-auto px-4">
+            <div class="swiper mySwiper ">
+                <div class="swiper-wrapper">
+                    @for ($i = 0; $i < $cardCount; $i++)
+                        @php
+                            $marketRate = rand(100, 500); // Random rate between 100 and 500
+                            $randomCity = $cities[array_rand($cities)]; // Random city
+                        @endphp
 
-        <div class="">
-            <div
-                class="container overflow-x-auto flex  gap-6 px-4 py-4 mx-auto mt-10 md:gap-10 xl:mt-20 sm:mt-20  md:px-12">
-                <div class="w-full h-auto border rounded-lg border-customOrangeDark">
-                    <div class="flex gap-14 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
-                        <div>
-                            <h1 class="font-semibold">410</h1>
-                            <p class="font-semibold text-customOrangeDark">Lahore</p>
+                        <div class="swiper-slide">
+                            <div class="w-full h-auto border rounded-lg border-customOrangeDark">
+                                <div class="flex gap-14 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
+                                    <div>
+                                        <h1 class="font-semibold">{{ $marketRate }}</h1>
+                                        <p class="font-semibold text-customOrangeDark">{{ $randomCity }}</p>
+                                    </div>
+                                    <div class="flex flex-col justify-center">
+                                        <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19 11L11 3L7 7L1 1M19 11H13M19 11V5" stroke="#EB2424"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex flex-col justify-center">
-                            <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 11L11 3L7 7L1 1M19 11H13M19 11V5" stroke="#EB2424" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                    </div>
+                    @endfor
                 </div>
-                <div class="w-full h-20 border rounded-lg border-customOrangeDark">
-                    <div class="flex gap-14 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
-                        <div>
-                            <h1 class="font-semibold">330</h1>
-                            <p class="font-semibold text-customOrangeDark">Multan</p>
-                        </div>
-                        <div class="flex flex-col justify-center">
-                            <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 1L11 9L7 5L1 11M19 1H13M19 1V7" stroke="#06C230" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+            </div>
+        </div>
+        <div>
+            {{-- <div
+                class="container overflow-x-auto flex  gap-6 px-4 py-4 mx-auto mt-10 md:gap-10 ">
 
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full h-20 border rounded-lg border-customOrangeDark">
-                    <div class="flex gap-14 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
-                        <div>
-                            <h1 class="font-semibold">280</h1>
-                            <p class="font-semibold text-customOrangeDark">Islamabad</p>
-                        </div>
-                        <div class="flex flex-col justify-center">
-                            <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 11L11 3L7 7L1 1M19 11H13M19 11V5" stroke="#EB2424" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full h-20 border rounded-lg border-customOrangeDark">
-                    <div class="flex gap-14 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
-                        <div>
-                            <h1 class="font-semibold">350</h1>
-                            <p class="font-semibold text-customOrangeDark">Peshawar</p>
-                        </div>
-                        <div class="flex flex-col justify-center">
-                            <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 1L11 9L7 5L1 11M19 1H13M19 1V7" stroke="#06C230" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-
-                        </div>
-                    </div>
-                </div>
                 <div class="w-full h-20 border rounded-lg border-customOrangeDark">
                     <div class="m-4 ms-6">
                         <h1 class="font-bold">20+More</h1>
@@ -269,16 +260,15 @@
                     </div>
                 </div>
 
-            </div>
+            </div> --}}
         </div>
         <div class="section" id="services">
-            <div class="flex items-center justify-center p-5 mt-12">
+            <div class="container mx-auto p-5 mt-12">
                 <div class="text-center">
                     <h2 class="text-2xl font-semibold text-customOrangeDark">Services</h2>
-                    <p class="sm:mx-[150px] mt-2 text-gray-500">Revolutionize your poultry business with tools to stay
-                        informed,
-                        streamline operations, optimize management,
-                        expand your market reach, enhance expertise, and simplify hiring processes.</p>
+                    <p class="sm:mx-[150px] mt-2 text-gray-500">Transform your poultry business with innovative
+                        solution to Boost efficiency, improve management, expand market
+                        access, enhance industry knowledge, empowering you to achieve growth and success with ease</p>
                 </div>
             </div>
 
@@ -744,87 +734,123 @@
                     </button>
                 </div>
 
-                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
-                        <img src="{{ asset('assets/icons/imageblogs.png') }}" alt="Blog Post Image"
-                            class="object-cover w-full h-48 rounded-t-lg">
-                        <div class="p-4">
-                            <div class="flex items-center mb-2 text-sm text-customOrangeDark">
-                                <span class="px-2 py-1 bg-orange-100 rounded-full">Category</span>
+                <div class="py-4">
+                    <div class="swiper mySwiper1 pb-5">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
+                                    <img src="{{ asset('assets/icons/imageblogs.png') }}" alt="Blog Post Image"
+                                        class="object-cover w-full h-48 rounded-t-lg">
+                                    <div class="p-4">
+                                        <div class="flex items-center mb-2 text-sm text-customOrangeDark">
+                                            <span class="px-2 py-1 bg-orange-100 rounded-full">Category</span>
+                                        </div>
+                                        <div class="flex items-center mb-4 text-xs text-gray-500">
+                                            <img src="{{ asset('assets/icons/image 633.png') }}" alt="Author Image"
+                                                class="w-6 h-6 mr-2 rounded-full">
+                                            <span class="mr-2">Author Name</span> | <span class="ml-2">25 Oct,
+                                                2024</span>
+                                        </div>
+                                        <h3 class="mb-2 text-lg font-semibold text-gray-800">Believing neglected so so
+                                            allowance
+                                            existence departure.</h3>
+                                        <p class="text-sm text-gray-600">
+                                            Blessing welcomed ladyship she met humoured sir breeding her. Six curiosity
+                                            day
+                                            assurance bed necessary.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="flex items-center mb-4 text-xs text-gray-500">
-                                <img src="{{ asset('assets/icons/image 633.png') }}" alt="Author Image"
-                                    class="w-6 h-6 mr-2 rounded-full">
-                                <span class="mr-2">Author Name</span> | <span class="ml-2">25 Oct, 2024</span>
+                            <div class="swiper-slide">
+                                <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
+                                    <img src="{{ asset('assets/icons/imageblogs.png') }}" alt="Blog Post Image"
+                                        class="object-cover w-full h-48 rounded-t-lg">
+                                    <div class="p-4">
+                                        <div class="flex items-center mb-2 text-sm text-customOrangeDark">
+                                            <span class="px-2 py-1 bg-orange-100 rounded-full">Category</span>
+                                        </div>
+                                        <div class="flex items-center mb-4 text-xs text-gray-500">
+                                            <img src="{{ asset('assets/icons/image 633.png') }}" alt="Author Image"
+                                                class="w-6 h-6 mr-2 rounded-full">
+                                            <span class="mr-2">Author Name</span> | <span class="ml-2">25 Oct, 2024</span>
+                                        </div>
+                                        <h3 class="mb-2 text-lg font-semibold text-gray-800">Believing neglected so so allowance
+                                            existence departure.</h3>
+                                        <p class="text-sm text-gray-600">
+                                            Blessing welcomed ladyship she met humoured sir breeding her. Six curiosity day
+                                            assurance bed necessary.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <h3 class="mb-2 text-lg font-semibold text-gray-800">Believing neglected so so allowance
-                                existence departure.</h3>
-                            <p class="text-sm text-gray-600">
-                                Blessing welcomed ladyship she met humoured sir breeding her. Six curiosity day
-                                assurance bed necessary.
-                            </p>
+                            <div class="swiper-slide"> <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
+                                <img src="{{ asset('assets/icons/imageblogs.png') }}" alt="Blog Post Image"
+                                    class="object-cover w-full h-48 rounded-t-lg">
+                                <div class="p-4">
+                                    <div class="flex items-center mb-2 text-sm text-customOrangeDark">
+                                        <span class="px-2 py-1 bg-orange-100 rounded-full">Category</span>
+                                    </div>
+                                    <div class="flex items-center mb-4 text-xs text-gray-500">
+                                        <img src="{{ asset('assets/icons/image 633.png') }}" alt="Author Image"
+                                            class="w-6 h-6 mr-2 rounded-full">
+                                        <span class="mr-2">Author Name</span> | <span class="ml-2">25 Oct, 2024</span>
+                                    </div>
+                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">Believing neglected so so allowance
+                                        existence departure.</h3>
+                                    <p class="text-sm text-gray-600">
+                                        Blessing welcomed ladyship she met humoured sir breeding her. Six curiosity day
+                                        assurance bed necessary.
+                                    </p>
+                                </div>
+                            </div></div>
+                            <div class="swiper-slide">
+                                <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
+                                    <img src="{{ asset('assets/icons/imageblogs.png') }}" alt="Blog Post Image"
+                                        class="object-cover w-full h-48 rounded-t-lg">
+                                    <div class="p-4">
+                                        <div class="flex items-center mb-2 text-sm text-customOrangeDark">
+                                            <span class="px-2 py-1 bg-orange-100 rounded-full">Category</span>
+                                        </div>
+                                        <div class="flex items-center mb-4 text-xs text-gray-500">
+                                            <img src="{{ asset('assets/icons/image 633.png') }}" alt="Author Image"
+                                                class="w-6 h-6 mr-2 rounded-full">
+                                            <span class="mr-2">Author Name</span> | <span class="ml-2">25 Oct, 2024</span>
+                                        </div>
+                                        <h3 class="mb-2 text-lg font-semibold text-gray-800">Believing neglected so so allowance
+                                            existence departure.</h3>
+                                        <p class="text-sm text-gray-600">
+                                            Blessing welcomed ladyship she met humoured sir breeding her. Six curiosity day
+                                            assurance bed necessary.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
+                                    <img src="{{ asset('assets/icons/imageblogs.png') }}" alt="Blog Post Image"
+                                        class="object-cover w-full h-48 rounded-t-lg">
+                                    <div class="p-4">
+                                        <div class="flex items-center mb-2 text-sm text-customOrangeDark">
+                                            <span class="px-2 py-1 bg-orange-100 rounded-full">Category</span>
+                                        </div>
+                                        <div class="flex items-center mb-4 text-xs text-gray-500">
+                                            <img src="{{ asset('assets/icons/image 633.png') }}" alt="Author Image"
+                                                class="w-6 h-6 mr-2 rounded-full">
+                                            <span class="mr-2">Author Name</span> | <span class="ml-2">25 Oct, 2024</span>
+                                        </div>
+                                        <h3 class="mb-2 text-lg font-semibold text-gray-800">Believing neglected so so allowance
+                                            existence departure.</h3>
+                                        <p class="text-sm text-gray-600">
+                                            Blessing welcomed ladyship she met humoured sir breeding her. Six curiosity day
+                                            assurance bed necessary.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
-                        <img src="{{ asset('assets/icons/imageblogs.png') }}" alt="Blog Post Image"
-                            class="object-cover w-full h-48 rounded-t-lg">
-                        <div class="p-4">
-                            <div class="flex items-center mb-2 text-sm text-customOrangeDark">
-                                <span class="px-2 py-1 bg-orange-100 rounded-full">Category</span>
-                            </div>
-                            <div class="flex items-center mb-4 text-xs text-gray-500">
-                                <img src="{{ asset('assets/icons/image 633.png') }}" alt="Author Image"
-                                    class="w-6 h-6 mr-2 rounded-full">
-                                <span class="mr-2">Author Name</span> | <span class="ml-2">25 Oct, 2024</span>
-                            </div>
-                            <h3 class="mb-2 text-lg font-semibold text-gray-800">Believing neglected so so allowance
-                                existence departure.</h3>
-                            <p class="text-sm text-gray-600">
-                                Blessing welcomed ladyship she met humoured sir breeding her. Six curiosity day
-                                assurance bed necessary.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
-                        <img src="{{ asset('assets/icons/imageblogs.png') }}" alt="Blog Post Image"
-                            class="object-cover w-full h-48 rounded-t-lg">
-                        <div class="p-4">
-                            <div class="flex items-center mb-2 text-sm text-customOrangeDark">
-                                <span class="px-2 py-1 bg-orange-100 rounded-full">Category</span>
-                            </div>
-                            <div class="flex items-center mb-4 text-xs text-gray-500">
-                                <img src="{{ asset('assets/icons/image 633.png') }}" alt="Author Image"
-                                    class="w-6 h-6 mr-2 rounded-full">
-                                <span class="mr-2">Author Name</span> | <span class="ml-2">25 Oct, 2024</span>
-                            </div>
-                            <h3 class="mb-2 text-lg font-semibold text-gray-800">Believing neglected so so allowance
-                                existence departure.</h3>
-                            <p class="text-sm text-gray-600">
-                                Blessing welcomed ladyship she met humoured sir breeding her. Six curiosity day
-                                assurance bed necessary.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
-                        <img src="{{ asset('assets/icons/imageblogs.png') }}" alt="Blog Post Image"
-                            class="object-cover w-full h-48 rounded-t-lg">
-                        <div class="p-4">
-                            <div class="flex items-center mb-2 text-sm text-customOrangeDark">
-                                <span class="px-2 py-1 bg-orange-100 rounded-full">Category</span>
-                            </div>
-                            <div class="flex items-center mb-4 text-xs text-gray-500">
-                                <img src="{{ asset('assets/icons/image 633.png') }}" alt="Author Image"
-                                    class="w-6 h-6 mr-2 rounded-full">
-                                <span class="mr-2">Author Name</span> | <span class="ml-2">25 Oct, 2024</span>
-                            </div>
-                            <h3 class="mb-2 text-lg font-semibold text-gray-800">Believing neglected so so allowance
-                                existence departure.</h3>
-                            <p class="text-sm text-gray-600">
-                                Blessing welcomed ladyship she met humoured sir breeding her. Six curiosity day
-                                assurance bed necessary.
-                            </p>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </section>
@@ -1041,7 +1067,8 @@
 
                 </div>
                 <div class=" flex justify-center  w-full  bg-[#F1F1F1] py-4 mt-5">
-                    <p class="text-sm text-black text-center">Powered by <span class="text-customOrangeDark">Poul3yBazar</span> &
+                    <p class="text-sm text-black text-center">Powered by <span
+                            class="text-customOrangeDark">Poul3yBazar</span> &
                         Developed by
                         <a target="_blank" class="text-blue-500" href="https://thewebconcept.com/">TheWebConcept</a>.
                     </p>
@@ -1049,6 +1076,69 @@
             </footer>
 
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+        <!-- Initialize Swiper -->
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+                slidesPerView: 5,
+                spaceBetween: 30,
+                freeMode: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                breakpoints: {
+                    1: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 25,
+                    },
+
+                    1050: {
+                        slidesPerView: 4,
+                        spaceBetween: 30,
+                    },
+                    1500: {
+                        slidesPerView: 5,
+                        spaceBetween: 30,
+                    },
+                },
+
+            });
+            var swiper = new Swiper(".mySwiper1", {
+                slidesPerView: 4,
+                spaceBetween: 20,
+                freeMode: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                breakpoints: {
+                    1: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    580: {
+                        slidesPerView: 2,
+                        spaceBetween: 25,
+                    },
+
+                    1050: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                    1500: {
+                        slidesPerView: 4,
+                        spaceBetween: 20,
+                    },
+                },
+
+            });
+        </script>
         <script src="{{ asset('javascript/jquery.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="{{ asset('javascript/canvas.js') }}"></script>
