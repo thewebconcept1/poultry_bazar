@@ -183,7 +183,7 @@ class UserController extends Controller
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
-    }
+    }   
     // update user details
 
     // update user status
@@ -371,5 +371,11 @@ class UserController extends Controller
         $user = User::where('id', session('user_details')['id'])->first();
         // return response()->json($user);
         return view('setting', compact('user'));
+    }
+
+    // get admin role user
+    public function getAdmins(){
+        $users = User::where('user_role', 'superadmin')->get();
+        return view('admins' , compact('users'));
     }
 }

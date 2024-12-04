@@ -16,48 +16,63 @@
 <aside id="sidebar"
     class="fixed top-0  z-40   w-64 h-[88vh]  transition-transform -translate-x-full  sm:translate-x-0  md:ml-[10px]  sm:mt-[100px]  left-auto   "
     aria-label="Sidebar">
-    <div class="h-full px-3 py-4  overflow-y-scroll scrollbar-hide  sidebar-main gradient-border-sidebar rounded-2xl z-20 relative">
+    <div
+        class="h-full px-3 py-4  overflow-y-scroll scrollbar-hide  sidebar-main gradient-border-sidebar rounded-2xl z-20 relative">
         <ul class="pb-10 space-y-2 font-medium">
-          <li>
-            <li class="relative z-20">
-                <span  class="flex items-center py-1 px-4 rounded-md  text-white  gradient-bg   ">
-                    <svg class="h-8 w-8" viewBox="0 0 50 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M22.329 7.86882C20.4411 7.86882 18.5525 7.87617 16.6639 7.86514C15.7862 7.86072 15.2594 7.21329 15.4867 6.42827C15.6 6.03098 15.8649 5.75288 16.2924 5.68519C16.5103 5.65292 16.7305 5.63791 16.9508 5.64031C20.4695 5.63688 23.9885 5.63688 27.5077 5.64031C27.8579 5.64031 28.047 5.5454 28.1846 5.18711C28.9858 3.10427 30.4469 1.61149 32.4518 0.681537C33.1625 0.351933 33.9409 0.190073 34.7325 0.0716213C35.5682 -0.0481551 36.4186 -0.0175072 37.2435 0.162116C38.4545 0.414469 39.6288 0.865468 40.5786 1.70051C41.1561 2.20816 41.6432 2.81734 42.1766 3.37576C42.2867 3.47842 42.4035 3.57377 42.526 3.66122C42.6224 3.53541 42.7468 3.42063 42.8115 3.28085C43.1911 2.50834 43.5649 1.73583 43.9269 0.953019C44.1078 0.56235 44.3028 0.228331 44.7597 0.0767719C45.2342 -0.0814086 45.5822 0.064265 45.9045 0.378419C46.2532 0.719059 46.2974 1.14578 46.1127 1.55558C45.6242 2.64886 45.1003 3.7267 44.5875 4.80895C44.4073 5.19005 44.2131 5.5638 44.035 5.94564C43.9438 6.14207 44.0409 6.26935 44.2226 6.35249L48.3478 8.2433C48.9364 8.51405 49.2447 8.93635 49.2057 9.46681C49.163 10.0613 48.6377 10.6984 47.8409 10.4284C47.1008 10.1783 46.3945 9.82216 45.6808 9.49697C44.8892 9.13573 44.1071 8.75169 43.3162 8.38898C43.1006 8.29039 42.93 8.33894 42.8144 8.58762C42.0478 10.2437 41.2643 11.8932 40.4969 13.5486C39.6832 15.3026 38.8849 17.0632 38.0734 18.8179C37.5099 20.0384 36.9478 21.2605 36.3592 22.4692C36.1164 22.9681 35.6743 23.1939 35.1085 23.1932C31.9571 23.1888 28.806 23.1873 25.6552 23.1888C23.3872 23.1888 21.1187 23.1905 18.8497 23.1939C18.1839 23.1939 17.7572 22.9099 17.4732 22.2838C16.7375 20.6653 15.9436 19.0709 15.1925 17.4582C14.3743 15.7035 13.5842 13.9356 12.7704 12.1787C12.2554 11.0692 11.7206 9.97152 11.1975 8.86425C10.6332 7.67238 10.9525 7.87912 9.58403 7.87029C6.86186 7.85337 4.13968 7.85999 1.4175 7.84601C1.15185 7.8418 0.887999 7.80146 0.633223 7.72609C0.165303 7.59292 -0.0487922 6.93004 0.00932991 6.56291C0.0464595 6.33321 0.157619 6.12193 0.32589 5.96123C0.494161 5.80053 0.710328 5.69921 0.941491 5.67268C1.16106 5.64469 1.38231 5.63191 1.60364 5.63443C4.71796 5.63443 7.83227 5.64914 10.9473 5.62928C12.3275 5.62045 12.3084 5.96256 12.7785 6.87265C13.1773 7.64516 13.5099 8.45225 13.8704 9.24462C14.3059 10.2011 14.737 11.1575 15.1763 12.1139C15.3256 12.4594 15.4977 12.7947 15.6913 13.1175C15.7553 13.2197 15.9547 13.2823 16.0937 13.2845C16.9516 13.2985 17.8102 13.2904 18.6687 13.2896C20.8887 13.2896 23.1081 13.2896 25.327 13.2896C26.9206 13.2896 28.0772 12.5649 28.7283 11.117C29.1749 10.1253 29.0616 9.1269 28.5679 8.16237C28.4391 7.91075 28.2493 7.86808 27.9984 7.86808C26.1098 7.87397 24.222 7.86808 22.3334 7.86808L22.329 7.86882ZM16.8515 15.602C16.9391 15.8316 16.9854 15.9816 17.0516 16.1222C17.752 17.5936 18.476 19.0599 19.1425 20.5497C19.2801 20.8565 19.442 20.9176 19.7098 20.9235C19.8694 20.9235 20.0291 20.9235 20.188 20.9235C24.7985 20.9235 29.4091 20.9235 34.0196 20.9235C34.1663 20.9318 34.3133 20.9167 34.4552 20.8786C34.5648 20.8392 34.656 20.7606 34.7112 20.6579C35.2998 19.4072 35.8641 18.1498 36.449 16.8991C37.3399 14.9928 38.2427 13.0917 39.1388 11.1869C39.8009 9.78906 40.4631 8.38456 41.109 6.97786C41.1826 6.81158 41.2525 6.58645 41.2039 6.42386C40.8361 5.19667 40.1666 4.16666 39.1292 3.38826C37.5415 2.19713 35.7633 1.99627 33.924 2.53262C32.3885 2.98362 31.2467 3.99671 30.5176 5.44093C30.0805 6.30835 30.11 6.28922 30.5499 7.14266C30.8192 7.66502 31.0649 8.23521 31.1466 8.80834C31.2687 9.67355 31.2805 10.5542 31.009 11.4231C30.6321 12.6699 29.844 13.7523 28.7732 14.494C27.7432 15.2231 26.5984 15.5174 25.3447 15.5093C22.6961 15.4909 20.0475 15.5027 17.3989 15.5093C17.2223 15.5093 17.0457 15.5674 16.8515 15.602Z" fill="white"/>
-                        <path d="M22.0312 28.8373C21.1115 28.8999 20.6296 28.1649 20.6428 27.449C20.6568 26.7133 21.1843 26.0511 22.0312 26.0769C22.8522 26.0997 23.4246 26.6456 23.429 27.4674C23.4334 28.2892 22.8669 28.8344 22.0312 28.8373Z" fill="white"/>
-                        <path d="M31.836 28.836C31.0267 28.925 30.4624 28.0944 30.4882 27.447C30.5161 26.7451 31.0399 26.0278 31.9758 26.0638C32.7034 26.091 33.3001 26.8113 33.2898 27.4948C33.2832 28.1187 32.7248 28.953 31.836 28.836Z" fill="white"/>
-                        <path d="M35.6772 5.34576C36.4659 5.34208 37.0751 5.95715 37.0839 6.75247C37.0812 7.12536 36.9327 7.4824 36.67 7.74711C36.4074 8.01182 36.0515 8.16317 35.6787 8.16874C34.9768 8.16874 34.3154 7.65373 34.294 6.77086C34.2867 6.5853 34.3172 6.4002 34.3836 6.22678C34.45 6.05335 34.5509 5.89522 34.6803 5.76196C34.8096 5.62871 34.9646 5.52311 35.136 5.45156C35.3074 5.38002 35.4915 5.34403 35.6772 5.34576Z" fill="white"/>
+            @if ($userRole === 'superadmin')
+                <li>
+                <li class="relative z-20">
+                    <span class="flex items-center py-1 px-4 rounded-md  text-white  gradient-bg   ">
+                        <svg class="h-8 w-8" viewBox="0 0 50 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M22.329 7.86882C20.4411 7.86882 18.5525 7.87617 16.6639 7.86514C15.7862 7.86072 15.2594 7.21329 15.4867 6.42827C15.6 6.03098 15.8649 5.75288 16.2924 5.68519C16.5103 5.65292 16.7305 5.63791 16.9508 5.64031C20.4695 5.63688 23.9885 5.63688 27.5077 5.64031C27.8579 5.64031 28.047 5.5454 28.1846 5.18711C28.9858 3.10427 30.4469 1.61149 32.4518 0.681537C33.1625 0.351933 33.9409 0.190073 34.7325 0.0716213C35.5682 -0.0481551 36.4186 -0.0175072 37.2435 0.162116C38.4545 0.414469 39.6288 0.865468 40.5786 1.70051C41.1561 2.20816 41.6432 2.81734 42.1766 3.37576C42.2867 3.47842 42.4035 3.57377 42.526 3.66122C42.6224 3.53541 42.7468 3.42063 42.8115 3.28085C43.1911 2.50834 43.5649 1.73583 43.9269 0.953019C44.1078 0.56235 44.3028 0.228331 44.7597 0.0767719C45.2342 -0.0814086 45.5822 0.064265 45.9045 0.378419C46.2532 0.719059 46.2974 1.14578 46.1127 1.55558C45.6242 2.64886 45.1003 3.7267 44.5875 4.80895C44.4073 5.19005 44.2131 5.5638 44.035 5.94564C43.9438 6.14207 44.0409 6.26935 44.2226 6.35249L48.3478 8.2433C48.9364 8.51405 49.2447 8.93635 49.2057 9.46681C49.163 10.0613 48.6377 10.6984 47.8409 10.4284C47.1008 10.1783 46.3945 9.82216 45.6808 9.49697C44.8892 9.13573 44.1071 8.75169 43.3162 8.38898C43.1006 8.29039 42.93 8.33894 42.8144 8.58762C42.0478 10.2437 41.2643 11.8932 40.4969 13.5486C39.6832 15.3026 38.8849 17.0632 38.0734 18.8179C37.5099 20.0384 36.9478 21.2605 36.3592 22.4692C36.1164 22.9681 35.6743 23.1939 35.1085 23.1932C31.9571 23.1888 28.806 23.1873 25.6552 23.1888C23.3872 23.1888 21.1187 23.1905 18.8497 23.1939C18.1839 23.1939 17.7572 22.9099 17.4732 22.2838C16.7375 20.6653 15.9436 19.0709 15.1925 17.4582C14.3743 15.7035 13.5842 13.9356 12.7704 12.1787C12.2554 11.0692 11.7206 9.97152 11.1975 8.86425C10.6332 7.67238 10.9525 7.87912 9.58403 7.87029C6.86186 7.85337 4.13968 7.85999 1.4175 7.84601C1.15185 7.8418 0.887999 7.80146 0.633223 7.72609C0.165303 7.59292 -0.0487922 6.93004 0.00932991 6.56291C0.0464595 6.33321 0.157619 6.12193 0.32589 5.96123C0.494161 5.80053 0.710328 5.69921 0.941491 5.67268C1.16106 5.64469 1.38231 5.63191 1.60364 5.63443C4.71796 5.63443 7.83227 5.64914 10.9473 5.62928C12.3275 5.62045 12.3084 5.96256 12.7785 6.87265C13.1773 7.64516 13.5099 8.45225 13.8704 9.24462C14.3059 10.2011 14.737 11.1575 15.1763 12.1139C15.3256 12.4594 15.4977 12.7947 15.6913 13.1175C15.7553 13.2197 15.9547 13.2823 16.0937 13.2845C16.9516 13.2985 17.8102 13.2904 18.6687 13.2896C20.8887 13.2896 23.1081 13.2896 25.327 13.2896C26.9206 13.2896 28.0772 12.5649 28.7283 11.117C29.1749 10.1253 29.0616 9.1269 28.5679 8.16237C28.4391 7.91075 28.2493 7.86808 27.9984 7.86808C26.1098 7.87397 24.222 7.86808 22.3334 7.86808L22.329 7.86882ZM16.8515 15.602C16.9391 15.8316 16.9854 15.9816 17.0516 16.1222C17.752 17.5936 18.476 19.0599 19.1425 20.5497C19.2801 20.8565 19.442 20.9176 19.7098 20.9235C19.8694 20.9235 20.0291 20.9235 20.188 20.9235C24.7985 20.9235 29.4091 20.9235 34.0196 20.9235C34.1663 20.9318 34.3133 20.9167 34.4552 20.8786C34.5648 20.8392 34.656 20.7606 34.7112 20.6579C35.2998 19.4072 35.8641 18.1498 36.449 16.8991C37.3399 14.9928 38.2427 13.0917 39.1388 11.1869C39.8009 9.78906 40.4631 8.38456 41.109 6.97786C41.1826 6.81158 41.2525 6.58645 41.2039 6.42386C40.8361 5.19667 40.1666 4.16666 39.1292 3.38826C37.5415 2.19713 35.7633 1.99627 33.924 2.53262C32.3885 2.98362 31.2467 3.99671 30.5176 5.44093C30.0805 6.30835 30.11 6.28922 30.5499 7.14266C30.8192 7.66502 31.0649 8.23521 31.1466 8.80834C31.2687 9.67355 31.2805 10.5542 31.009 11.4231C30.6321 12.6699 29.844 13.7523 28.7732 14.494C27.7432 15.2231 26.5984 15.5174 25.3447 15.5093C22.6961 15.4909 20.0475 15.5027 17.3989 15.5093C17.2223 15.5093 17.0457 15.5674 16.8515 15.602Z"
+                                fill="white" />
+                            <path
+                                d="M22.0312 28.8373C21.1115 28.8999 20.6296 28.1649 20.6428 27.449C20.6568 26.7133 21.1843 26.0511 22.0312 26.0769C22.8522 26.0997 23.4246 26.6456 23.429 27.4674C23.4334 28.2892 22.8669 28.8344 22.0312 28.8373Z"
+                                fill="white" />
+                            <path
+                                d="M31.836 28.836C31.0267 28.925 30.4624 28.0944 30.4882 27.447C30.5161 26.7451 31.0399 26.0278 31.9758 26.0638C32.7034 26.091 33.3001 26.8113 33.2898 27.4948C33.2832 28.1187 32.7248 28.953 31.836 28.836Z"
+                                fill="white" />
+                            <path
+                                d="M35.6772 5.34576C36.4659 5.34208 37.0751 5.95715 37.0839 6.75247C37.0812 7.12536 36.9327 7.4824 36.67 7.74711C36.4074 8.01182 36.0515 8.16317 35.6787 8.16874C34.9768 8.16874 34.3154 7.65373 34.294 6.77086C34.2867 6.5853 34.3172 6.4002 34.3836 6.22678C34.45 6.05335 34.5509 5.89522 34.6803 5.76196C34.8096 5.62871 34.9646 5.52311 35.136 5.45156C35.3074 5.38002 35.4915 5.34403 35.6772 5.34576Z"
+                                fill="white" />
                         </svg>
-                        
-                    <span class="ms-3">Super Dashboard</span>
-                </span>
-                <div class="grid grid-cols-2 gap-2 mt-2 mb-5 bg-white">
-                    <a href="">
-                        <button  class="flex drop-shadow w-full items-center  gap-[.5px] rounded-md py-[2px]">
-                            <img class="h-12 w-12" src="{{asset('assets/icons/market updatesvg.svg')}}" alt="Markets">
-                            <h3 class="text-[12px] text-gray-500">Markets</h3>
-                        </button>
-                    </a>
-                    <a href="">
-                        <button  class="flex w-full drop-shadow items-center  gap-[.5px] rounded-md py-[2px]">
-                            <img class="h-12 w-12" src="{{asset('assets/icons/pos.png')}}" alt="POS">
-                            <h3 class="text-[12px] text-gray-500">POS</h3>
-                        </button>
-                    </a>
-                    <a href="">
-                        <button  class="flex w-full drop-shadow items-center  gap-[.5px] rounded-md py-[2px]">
-                            <img class="h-12 w-12" src="{{asset('assets/icons/floks.png')}}" alt="FLOCK">
-                            <h3 class="text-[12px] text-gray-500">Flocks</h3>
-                        </button>
-                    </a>
-                    <a href="">
-                        <button  class="flex w-full drop-shadow items-center  gap-[.5px] rounded-md py-[2px]">
-                            <img class="h-12 w-12" src="{{asset('assets/icons/e-commerce.png')}}" alt="E-Commerce">
-                            <h3 class="text-[12px] text-gray-500 whitespace-nowrap">E-Com...</h3>
-                        </button>
-                    </a>
-                </div>
-            </li>
-          </li>
+
+                        <span class="ms-3">Super Dashboard</span>
+                    </span>
+                    <div class="grid grid-cols-2 gap-2 mt-2 mb-5 bg-white">
+                        <a href="">
+                            <button class="flex drop-shadow w-full items-center  gap-[.5px] rounded-md py-[2px]">
+                                <img class="h-12 w-12" src="{{ asset('assets/icons/market updatesvg.svg') }}"
+                                    alt="Markets">
+                                <h3 class="text-[12px] font-semibold tracking-wider">Markets</h3>
+                            </button>
+                        </a>
+                        <a href="">
+                            <button class="flex w-full drop-shadow items-center  gap-[.5px] rounded-md py-[2px]">
+                                <img class="h-12 w-12" src="{{ asset('assets/icons/pos.png') }}" alt="POS">
+                                <h3 class="text-[12px] font-semibold tracking-wider">POS</h3>
+                            </button>
+                        </a>
+                        <a href="">
+                            <button
+                                class="flex w-full drop-shadow items-center bg-gray-200  gap-[.5px] rounded-md py-[2px]">
+                                <img class="h-12 w-12" src="{{ asset('assets/icons/floks.png') }}" alt="FLOCK">
+                                <h3 class="text-[12px] font-semibold tracking-wider">Flocks</h3>
+                            </button>
+                        </a>
+                        <a href="">
+                            <button
+                                class="flex w-full drop-shadow items-center bg-gray-200 gap-[.5px] rounded-md py-[2px]">
+                                <img class="h-12 w-12" src="{{ asset('assets/icons/e-commerce.png') }}"
+                                    alt="E-Commerce">
+                                <h3 class="text-[12px] font-semibold  tracking-widerwhitespace-nowrap">E-Com...</h3>
+                            </button>
+                        </a>
+                    </div>
+                </li>
+                </li>
+            @endif
             <li class="relative z-20">
                 <a href="../dashboard"
                     class="flex items-center py-2 px-4 text-gray-900 rounded-full transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('dashboard') ? 'active gradient-bg text-white' : '' }}">
@@ -71,36 +86,47 @@
                     </svg>
                     <span class="ms-3">Dashboard</span>
                 </a>
-                </a>
             </li>
             @if ($userRole === 'superadmin')
-            <li class="relative z-20">
-                <a href="../modules"
-                    class="flex items-center py-2 px-4  text-gray-900 rounded-full transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('modules') ? 'active gradient-bg text-white ' : '' }} ">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('modules') ? 'text-white' : '' }}"
-                        viewBox="0 0 576 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                        <path fill="currentColor"
-                            d="M384 48c8.8 0 16 7.2 16 16l0 128 48 0 0-128c0-35.3-28.7-64-64-64L192 0c-35.3 0-64 28.7-64 64l0 128 48 0 0-128c0-8.8 7.2-16 16-16l56 0 0 64c0 8.8 7.2 16 16 16l48 0c8.8 0 16-7.2 16-16l0-64 56 0zM327.6 512L512 512c35.3 0 64-28.7 64-64l0-160c0-35.3-28.7-64-64-64l-184.4 0c11.8 13.2 20.1 29.7 23.1 48l25.3 0 0 64c0 8.8 7.2 16 16 16l48 0c8.8 0 16-7.2 16-16l0-64 56 0c8.8 0 16 7.2 16 16l0 160c0 8.8-7.2 16-16 16l-161.3 0c-3.1 18.3-11.3 34.8-23.1 48zM256 272c8.8 0 16 7.2 16 16l0 160c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-160c0-8.8 7.2-16 16-16l56 0 0 64c0 8.8 7.2 16 16 16l48 0c8.8 0 16-7.2 16-16l0-64 56 0zM64 224c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-160c0-35.3-28.7-64-64-64L64 224z" />
-                    </svg>
-                    <span class="ms-3 ">Modules</span>
-                </a>
-            </li>
-        @endif
-        @if ($userRole === 'superadmin' || isset($privileges['Operators']['view']))
-            <li class="relative z-20">
-                <a href="../operators"
-                    class="flex items-center py-2 px-4 text-gray-900 rounded-full transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('operators') ? 'active gradient-bg text-white' : '' }}">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        class="w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('operators') ? 'text-white' : '' }}"
+                <li class="relative z-20">
+                    <a href="../modules"
+                        class="flex items-center py-2 px-4  text-gray-900 rounded-full transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('modules') ? 'active gradient-bg text-white ' : '' }} ">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('modules') ? 'text-white' : '' }}"
+                            viewBox="0 0 576 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                            <path fill="currentColor"
+                                d="M384 48c8.8 0 16 7.2 16 16l0 128 48 0 0-128c0-35.3-28.7-64-64-64L192 0c-35.3 0-64 28.7-64 64l0 128 48 0 0-128c0-8.8 7.2-16 16-16l56 0 0 64c0 8.8 7.2 16 16 16l48 0c8.8 0 16-7.2 16-16l0-64 56 0zM327.6 512L512 512c35.3 0 64-28.7 64-64l0-160c0-35.3-28.7-64-64-64l-184.4 0c11.8 13.2 20.1 29.7 23.1 48l25.3 0 0 64c0 8.8 7.2 16 16 16l48 0c8.8 0 16-7.2 16-16l0-64 56 0c8.8 0 16 7.2 16 16l0 160c0 8.8-7.2 16-16 16l-161.3 0c-3.1 18.3-11.3 34.8-23.1 48zM256 272c8.8 0 16 7.2 16 16l0 160c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-160c0-8.8 7.2-16 16-16l56 0 0 64c0 8.8 7.2 16 16 16l48 0c8.8 0 16-7.2 16-16l0-64 56 0zM64 224c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-160c0-35.3-28.7-64-64-64L64 224z" />
+                        </svg>
+                        <span class="ms-3 ">Modules</span>
+                    </a>
+                </li>
+                <li class="relative z-20">
+                    <a href="../admins"
+                        class="flex items-center py-2 px-4  text-gray-900 rounded-full transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('admins') ? 'active gradient-bg text-white ' : '' }} ">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                        class="w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('admins') ? 'text-white' : '' }}"
                         viewBox="0 0 448 512" fill="currentColor">
                         <path
                             d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z" />
                     </svg>
-                    <span class="ms-3 ">Operators</span>
-                </a>
-            </li>
-        @endif
+                        <span class="ms-3 ">Admins</span>
+                    </a>
+                </li>
+            @endif
+            @if ($userRole === 'superadmin' || isset($privileges['Operators']['view']))
+                <li class="relative z-20">
+                    <a href="../operators"
+                        class="flex items-center py-2 px-4 text-gray-900 rounded-full transition duration-200 hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('operators') ? 'active gradient-bg text-white' : '' }}">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('operators') ? 'text-white' : '' }}"
+                            viewBox="0 0 448 512" fill="currentColor">
+                            <path
+                                d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z" />
+                        </svg>
+                        <span class="ms-3 ">Operators</span>
+                    </a>
+                </li>
+            @endif
             @if ($userRole === 'superadmin' || isset($privileges['City']['view']))
                 <li class="relative z-20">
                     <a href="../Cities"
@@ -184,7 +210,7 @@
             @endif
             <li>
                 <button type="button"
-                    class="flex items-center {{ request()->is('categories', 'blogs', 'media/diseases', 'media/blogs', 'media/consultancy' , 'categories/all' , 'categories/blog' , 'categories/diseases' , 'categories/consultancy' , 'pendingMedia/pending') ? "gradient-bg text-white rounded-t-xl rounded-b-none" : "text-gray-900"}}  w-full text-base px-4 py-2   transition duration-200 rounded-full hover:text-white  hover:bg-customOrangeDark  group"
+                    class="flex items-center {{ request()->is('categories', 'blogs', 'media/diseases', 'media/blogs', 'media/consultancy', 'categories/all', 'categories/blog', 'categories/diseases', 'categories/consultancy', 'pendingMedia/pending') ? 'gradient-bg text-white rounded-t-xl rounded-b-none' : 'text-gray-900' }}  w-full text-base px-4 py-2   transition duration-200 rounded-full hover:text-white  hover:bg-customOrangeDark  group"
                     aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
 
                     <svg class="flex-shrink-0 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -198,18 +224,25 @@
                             d="m1 1 4 4 4-4" />
                     </svg>
                 </button>
-                <ul id="dropdown-example" class=" {{ request()->is('categories', 'blogs', 'media/diseases', 'media/blogs', 'media/consultancy' , 'categories/all' , 'categories/blog' , 'categories/diseases' , 'categories/consultancy' , 'pendingMedia/pending') ? "" : "hidden"}} py-2 space-y-2 bg-gray-100 rounded-b-xl">
+                <ul id="dropdown-example"
+                    class=" {{ request()->is('categories', 'blogs', 'media/diseases', 'media/blogs', 'media/consultancy', 'categories/all', 'categories/blog', 'categories/diseases', 'categories/consultancy', 'pendingMedia/pending') ? '' : 'hidden' }} py-2 space-y-2 bg-gray-100 rounded-b-xl">
                     @if ($userRole === 'superadmin')
-                        
-                    <li>
+                        <li>
                             <a href="../pendingMedia/pending"
                                 class="flex items-center px-4  py-2 text-sm text-gray-900 transition duration-200  hover:text-white dark:text-white hover:bg-gray-400 dark:hover:bg-gray-700 group {{ request()->is('pendingMedia/pending') ? 'active bg-gray-400 text-white' : '' }} ">
-                                <svg fill="currentColor" class="flex-shrink-0 w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('pendingMedia/pending') ? 'text-white' : '' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2 160 448c0 17.7 14.3 32 32 32s32-14.3 32-32l0-306.7L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg>
+                                <svg fill="currentColor"
+                                    class="flex-shrink-0 w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('pendingMedia/pending') ? 'text-white' : '' }}"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                    <path
+                                        d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2 160 448c0 17.7 14.3 32 32 32s32-14.3 32-32l0-306.7L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
+                                </svg>
                                 <span class="flex-1 ms-3 whitespace-nowrap">Pending Media</span>
-                                <span class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-xs font-medium text-white bg-customOrangeDark rounded-full" id="pendingMediaCount">3</span>
+                                <span
+                                    class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-xs font-medium text-white bg-customOrangeDark rounded-full"
+                                    id="pendingMediaCount">3</span>
                             </a>
                         </li>
-                        @endif
+                    @endif
                     @if ($userRole === 'superadmin' || isset($privileges['Categories']['view']))
                         <li class="">
                             <a href="../categories/all"
@@ -232,7 +265,7 @@
                     @if ($userRole === 'superadmin' || (isset($privileges['Blogs']['view']) && $userRole !== 'superadmin'))
                         <li>
                             <a href="/media/blogs"
-                            class="flex items-center px-4  py-2 text-sm text-gray-900 transition duration-200  hover:text-white dark:text-white hover:bg-gray-400 dark:hover:bg-gray-700 group {{ request()->is('media/blogs') ? 'active bg-gray-400 text-white' : '' }} ">
+                                class="flex items-center px-4  py-2 text-sm text-gray-900 transition duration-200  hover:text-white dark:text-white hover:bg-gray-400 dark:hover:bg-gray-700 group {{ request()->is('media/blogs') ? 'active bg-gray-400 text-white' : '' }} ">
                                 <svg class="flex-shrink-0 w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('media/blogs') ? 'text-white' : '' }}"
                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     viewBox="0 0 22 22">
@@ -442,14 +475,17 @@
             @endif
 
             @if ($userRole === 'superadmin')
-
-            <li class="relative z-20">
-                <a href="../FAQs"
-                    class="flex items-center py-2 px-4 text-gray-900 transition duration-200 rounded-full hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('FAQs') ? 'active gradient-bg text-white ' : '' }} ">
-                    <svg class="flex-shrink-0 w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('FAQs') ? 'text-white' : '' }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M80 160c0-35.3 28.7-64 64-64l32 0c35.3 0 64 28.7 64 64l0 3.6c0 21.8-11.1 42.1-29.4 53.8l-42.2 27.1c-25.2 16.2-40.4 44.1-40.4 74l0 1.4c0 17.7 14.3 32 32 32s32-14.3 32-32l0-1.4c0-8.2 4.2-15.8 11-20.2l42.2-27.1c36.6-23.6 58.8-64.1 58.8-107.7l0-3.6c0-70.7-57.3-128-128-128l-32 0C73.3 32 16 89.3 16 160c0 17.7 14.3 32 32 32s32-14.3 32-32zm80 320a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"/></svg>
-                    <span class="flex-1 ms-3 whitespace-nowrap">FAQs</span>
-                </a>
-            </li>
+                <li class="relative z-20">
+                    <a href="../FAQs"
+                        class="flex items-center py-2 px-4 text-gray-900 transition duration-200 rounded-full hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('FAQs') ? 'active gradient-bg text-white ' : '' }} ">
+                        <svg class="flex-shrink-0 w-5 h-5 text-black transition duration-75 dark:text-gray-400 group-hover:text-white {{ request()->is('FAQs') ? 'text-white' : '' }}"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                            <path fill="currentColor"
+                                d="M80 160c0-35.3 28.7-64 64-64l32 0c35.3 0 64 28.7 64 64l0 3.6c0 21.8-11.1 42.1-29.4 53.8l-42.2 27.1c-25.2 16.2-40.4 44.1-40.4 74l0 1.4c0 17.7 14.3 32 32 32s32-14.3 32-32l0-1.4c0-8.2 4.2-15.8 11-20.2l42.2-27.1c36.6-23.6 58.8-64.1 58.8-107.7l0-3.6c0-70.7-57.3-128-128-128l-32 0C73.3 32 16 89.3 16 160c0 17.7 14.3 32 32 32s32-14.3 32-32zm80 320a40 40 0 1 0 0-80 40 40 0 1 0 0 80z" />
+                        </svg>
+                        <span class="flex-1 ms-3 whitespace-nowrap">FAQs</span>
+                    </a>
+                </li>
             @endif
             <li class="relative z-20">
                 <a href="../notification"

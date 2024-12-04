@@ -43,7 +43,7 @@
             </x-slot>
         </x-table>
     </div>
-
+    
     <x-modal id="status-modal">
         <x-slot name="title">Change Status</x-slot>
         <x-slot name="modal_width">max-w-xl</x-slot>
