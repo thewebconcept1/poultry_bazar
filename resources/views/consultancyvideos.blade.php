@@ -41,7 +41,7 @@
                             </video>
                         </td>
                         <td class='text-xs xl:text-[15px]'>{{ $data->media_title }}</td>
-                        <td class='text-xs xl:text-[15px] min-w-[280px]'>{{ $data->media_description }} </td>
+                        <td class='text-xs xl:text-[15px] min-w-[280px]'>{{ \Illuminate\Support\Str::limit($data->media_description, 60, '...') }}</td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->category_name }}</td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->date }} </td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->media_author }}</td>
