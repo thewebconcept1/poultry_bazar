@@ -128,7 +128,6 @@
     @endsection
     @section('js')
         <script>
-    $('#pendingMediaCount').text({{count($media)}});
             function viewData() {
                 let table = $("#datatable").DataTable();
                 $(".approveMediaBtn").click(function() {

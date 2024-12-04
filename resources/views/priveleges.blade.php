@@ -7,7 +7,7 @@
      <div class="w-full min-h-[88vh] gradient-border space-x-2  rounded-lg">
          <div class="mx-4 mt-8">
              <div class="flex items-center gap-2 ">
-                 <img class="h-[50px] w-[50px]" src="{{$user->user_image ?? asset('assets/default-logo-1.png') }}" alt="">
+                 <img class="h-[50px] w-[50px]" src="{{ isset($user->user_image) ? url($user->user_image) : asset('assets/default-logo-1.png') }}" alt="">
                  <div class="">
                      <div class="text-sm font-semibold text-black">{{$user->name}}</div>
                      <div class="text-[10px] text-black">{{$user->user_role}}</div>

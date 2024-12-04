@@ -28,6 +28,7 @@ Route::middleware(['custom_auth'])->group(function () {
     Route::get('/setting', [UserController::class, 'settings']);
 
     Route::middleware(['check_privileges'])->group(function () {
+        Route::get('/admins', [UserController::class, 'getAdmins']);
 
         Route::get('/modules', [ModuleController::class, 'getModules']);
         Route::post('/saveModule', [ModuleController::class, 'addModule']);

@@ -57,6 +57,11 @@
     <script src="{{ asset('javascript/script.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
+    @php
+        $pending_media_count = App\Models\Media::where('media_status', 2)->get()->count();
+    @endphp
+    $('#pendingMediaCount').text({{$pending_media_count}});
+    
         $(window).on('load', function() {
             $('#loading').hide();
         })
