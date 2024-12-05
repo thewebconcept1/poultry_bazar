@@ -84,8 +84,8 @@ class ProductController extends Controller
                 'product_id'  => 'required',
                 'variation_name'  => 'required',
                 'variation_sale_rate'  => 'required',
-                'variation_consumed'  => 'required',
-                'variation_wastage'  => 'required',
+                'variation_consumed'  => 'nullable',
+                'variation_wastage'  => 'nullable',
                 'variation_image'  => 'nullable',
 
             ]);
