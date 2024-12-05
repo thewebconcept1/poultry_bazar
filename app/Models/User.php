@@ -31,6 +31,7 @@ class User extends Authenticatable
         'user_verified',
         'user_privileges',
         'address',
+        'company_id',
         'transaction_id',
         'expiry_date',
     ];

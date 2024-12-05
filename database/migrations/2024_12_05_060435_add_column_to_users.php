@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->integer('company_id')->nullable();
             $table->integer('transaction_id')->nullable();
             $table->date('expiry_date')->nullable();
         });
