@@ -55,33 +55,6 @@ class OrderController extends Controller
 
     public function saleReport()
     {
-        // $user = Auth::user();
-        // $report = [];
-
-        // $filter = request('filter');
-        // $query = Orders::select('customer_name', 'customer_phone', 'grand_total' , 'created_at')->where('user_id', $user->id);
-
-        // if ($filter === 'tody') {
-        //     $query->whereDate('created_at', Carbon::today());
-        // } elseif ($filter === 'week') {
-        //     $query->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]);
-        // } elseif ($filter === 'month') {
-        //     $query->whereMonth('created_at', Carbon::now()->month)->whereYear('created_at', Carbon::now()->year);
-        // }
-
-        // $orders = $query->get();
-
-
-        // // Calculate the grand total
-        // $grandTotal = $orders->sum('grand_total');
-
-        // $report['grand_total'] = $grandTotal;
-        // $report['orders'] = $orders;    
-
-        // return response()->json(['success' => true, 'message' => 'Report get successfully','report' => $report], 200);
-
-
-
         $user = Auth::user();
         $report = [];
 
@@ -105,14 +78,11 @@ class OrderController extends Controller
         if ($dateTo) {
             $query->whereDate('created_at', '<=', Carbon::parse($dateTo));
         }
-
         $orders = $query->get();
-
         foreach ($orders as $order) {
             $order->order_date = Carbon::parse($order->created_at)->format('M d, Y');
         }
-
-        $grandTotal = $orders->sum('console.log('', )grand_total');
+        $grandTotal = $orders->sum('grand_total');
 
         $report['grand_total'] = $grandTotal;
         $report['orders'] = $orders;
