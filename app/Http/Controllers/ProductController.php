@@ -25,11 +25,26 @@ class ProductController extends Controller
                         $variation->variation_image = asset($variation->variation_image);
                     }
                     $product->variation = $variation;
-                }else{
+                } else {
                     $product->variation = [];
                 }
             }
             return response()->json(['success' => true, 'message' => ' Product Get Successfully', 'products' => $products], 200);
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    public function getVariations($product_id)
+    {
+        try {
+            $variations = ProductVariations::where('product_id', $product_id)->where('variation_status', 1)->get();
+
+            foreach ($variations as $variation) {
+                if (str_contains($variation->variation_image, 'storage/variation_images')) {
+                    $variation->variation_image = asset($variation->variation_image);
+                }
+            }
+            return response()->json(['success' => true, 'message' => ' Product Get Successfully', 'variations' => $variations], 200);
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
@@ -165,7 +180,7 @@ class ProductController extends Controller
                 }
                 $imagePath = $image->store('product_images', 'public');
                 $imageFullPath = 'storage/' . $imagePath;
-            }else {
+            } else {
                 $imageFullPath = $request->product_image;
             }
 
