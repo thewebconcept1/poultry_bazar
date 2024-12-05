@@ -22,6 +22,8 @@ class ProductVariations extends Model
         'variation_consumed',
         'variation_wastage',
         'variation_status',
+        'variation_image',
+        'is_fav',
     ];
 
     public $timestamps = true;

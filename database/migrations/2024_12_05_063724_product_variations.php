@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('product_variations', function (Blueprint $table) {
             $table->id('product_variation_id');
-            $table->integer('user_id');
             $table->integer('product_id');
             $table->string('product_name');
             $table->string('variation_name');
@@ -21,6 +20,8 @@ return new class extends Migration
             $table->float('variation_consumed')->default(0);
             $table->float('variation_wastage')->default(0);
             $table->integer('variation_status')->default(1);
+            $table->string('variation_image')->nullable();
+            $table->integer('is_fav')->default(0);
             $table->timestamps();
         });
     }
