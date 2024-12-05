@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function getOrders()
+    public function getOrders($user_id)
     {
-        $orders = Orders::all();
+        $orders = Orders::where('user_id' , $user_id)->get();
             foreach($orders as $order){
                 $order->order_item_details = json_decode($order->order_item_details);
             }
@@ -20,10 +20,6 @@ class OrderController extends Controller
     public function addOrder(Request $request)
     {
         try {
-// "variation_id"
-// "variation_quantity"
-// "variation_weight"
-// "variation_total"
             $validatedData = $request->validate([
                 "user_id" => "required",
                 "product_id" => "required",

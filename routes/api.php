@@ -48,7 +48,7 @@ Route::controller(CustomerController::class)->group(function () {
     Route::match(['get', 'post'], '/del eteCustomer/{customer_id}', 'deleteCustomer');
 });
 Route::controller(OrderController::class)->group(function () {
-    Route::get('/getOrders', 'getOrders');
+    Route::get('/getOrders/{user_id}', 'getOrders');
     Route::post('/addOrder', 'addOrder');
 });
 Route::controller(CompanyController::class)->group(function () {
