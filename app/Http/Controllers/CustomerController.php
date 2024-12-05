@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
@@ -16,8 +17,8 @@ class CustomerController extends Controller
     public function addCustomer(Request $request)
     {
         try {
+            $user = Auth::user();
             $validatedData = $request->validate([
-                'user_id'  => 'required',
                 'customer_name' => 'required',
                 'customer_email' => 'nullable',
                 'customer_phone' => 'nullable',
@@ -25,7 +26,7 @@ class CustomerController extends Controller
             ]);
 
             Customers::create([
-                'user_id' => $validatedData['user_id'],
+                'user_id' => $user->id,
                 'customer_name' => $validatedData['customer_name'],
                 'customer_email' => $validatedData['customer_email'],
                 'customer_phone' => $validatedData['customer_phone'],

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Products;
 use App\Models\ProductVariations;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -12,7 +13,8 @@ class ProductController extends Controller
     public function getProducts()
     {
         try {
-            $products = Products::where('product_status', 1)->get();
+            $user = Auth::user();
+            $products = Products::where('product_status', 1)->where('user_id' , $user->id)->get();
 
             foreach ($products as $product) {
                 if (str_contains($product->product_image, 'storage/product_images')) {
@@ -52,8 +54,8 @@ class ProductController extends Controller
     public function addProduct(Request $request)
     {
         try {
+            $user = Auth::user();
             $validatedData = $request->validate([
-                'user_id'  => 'required',
                 'product_name'  => 'required',
                 'product_sec_name'  => 'nullable',
                 'product_description'  => 'nullable',
@@ -73,7 +75,7 @@ class ProductController extends Controller
             }
 
             $product = Products::create([
-                'user_id' => $validatedData['user_id'],
+                'user_id' => $user->id,
                 'product_name' => $validatedData['product_name'],
                 'product_sec_name' => $validatedData['product_sec_name'],
                 'product_description' => $validatedData['product_description'],
@@ -161,7 +163,7 @@ class ProductController extends Controller
             return $this->errorResponse($e);
         }
     }
-
+    
 
     public function updateProduct(Request $request, $product_id)
     {
