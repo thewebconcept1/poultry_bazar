@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,9 @@ Route::get('/getMedia/{type?}', [ApiController::class, 'getMedia']);
 Route::post('/register', [ApiController::class, 'register']);
 Route::post('/login', [ApiController::class, 'login']);
 Route::get('/getFAQs', [ApiController::class, 'getFAQs']);
+
+// product 
+Route::post('/addProduct', [ProductController::class, 'addProduct']);
+Route::get('/getProducts', [ProductController::class, 'getProducts']);
+
+Route::post('/addVariation', [ProductController::class, 'addVariation']);
