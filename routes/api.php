@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +18,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/getUser', [ApiController::class, 'getUser']);
     Route::post('/updateUser', [ApiController::class, 'updateUser']);
-    
 });
 Route::get('/getMarkets', [ApiController::class, 'getMarkets']);
 Route::post('/getMarketRates', [ApiController::class, 'getMarketRates']);
@@ -26,13 +28,29 @@ Route::get('/getFAQs', [ApiController::class, 'getFAQs']);
 
 // product 
 
-Route::post('/addProduct', [ProductController::class, 'addProduct']);
-Route::get('/getProducts', [ProductController::class, 'getProducts']);
-Route::match(['get', 'post'], '/deleteProduct/{product_id}', [ProductController::class, 'deleteProduct']);
-Route::post('/updateProduct/{product_id}', [ProductController::class, 'updateProduct']);
+Route::controller(ProductController::class)->group(function () {
+    Route::post('/addProduct',  'addProduct');
+    Route::get('/getProducts',  'getProducts');
+    Route::match(['get', 'post'], '/deleteProduct/{product_id}',  'deleteProduct');
+    Route::post('/updateProduct/{product_id}',  'updateProduct');
+    // Variations
+    Route::post('/addVariation', 'addVariation');
+    Route::get('/getVariations/{product_id}', 'getVariations');
+    Route::match(['get', 'post'], '/deleteVariation/{variation_id}',  'deleteVariation');
+    Route::post('/updateVariation/{variation_id}', 'updateVariation');
+});
 
 
-
-Route::post('/addVariation', [ProductController::class, 'addVariation']);
-Route::match(['get', 'post'], '/deleteVariation/{variation_id}', [ProductController::class, 'deleteVariation']);
-Route::post('/updateVariation/{variation_id}', [ProductController::class, 'updateVariation']);
+Route::controller(CustomerController::class)->group(function () {
+    Route::get('/getCustomers', 'getCustomers');
+    Route::post('/addCustomer', 'addCustomer');
+    Route::post('/updateCustomer/{customer_id}', 'updateCustomer');
+    Route::match(['get', 'post'], '/del eteCustomer/{customer_id}', 'deleteCustomer');
+});
+Route::controller(OrderController::class)->group(function () {
+    Route::get('/getOrders', 'getOrders');
+    Route::post('/addOrder', 'addOrder');
+});
+Route::controller(CompanyController::class)->group(function () {
+    Route::post('/addCompany', 'addCompany');
+});

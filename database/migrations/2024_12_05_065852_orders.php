@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->integer('product_id');
             $table->integer('transaction_id')->nullable();
-            $table->string('customer_id');
+            $table->string('customer_id')->nullable();
             $table->string('customer_name')->nullable();
             $table->bigInteger('customer_phone')->nullable();
             $table->text('order_item_details');
