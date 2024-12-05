@@ -25,7 +25,14 @@ Route::post('/login', [ApiController::class, 'login']);
 Route::get('/getFAQs', [ApiController::class, 'getFAQs']);
 
 // product 
+
 Route::post('/addProduct', [ProductController::class, 'addProduct']);
 Route::get('/getProducts', [ProductController::class, 'getProducts']);
+Route::match(['get', 'post'], '/deleteProduct/{product_id}', [ProductController::class, 'deleteProduct']);
+Route::post('/updateProduct/{product_id}', [ProductController::class, 'updateProduct']);
+
+
 
 Route::post('/addVariation', [ProductController::class, 'addVariation']);
+Route::match(['get', 'post'], '/deleteVariation/{variation_id}', [ProductController::class, 'deleteVariation']);
+Route::post('/updateVariation/{variation_id}', [ProductController::class, 'updateVariation']);
