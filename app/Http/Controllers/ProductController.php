@@ -132,7 +132,6 @@ class ProductController extends Controller
                 'variation_consumed' => $validatedData['variation_consumed'],
                 'variation_wastage' => $validatedData['variation_wastage'],
                 'variation_image' => $imageFullPath,
-                'is_fav' => 0
             ]);
             return response()->json(['success' => true, 'message' => 'Variation Add Successfully', 'productVariation' => $ProductVariations], 200);
         } catch (\Exception $e) {
@@ -178,22 +177,38 @@ class ProductController extends Controller
             if (!$product) {
                 return response()->json(['success' => false, 'message' => 'Product not found'], 404);
             }
+            $validatedData = $request->validate([
+                'product_name'  => 'required',
+                'product_sec_name'  => 'nullable',
+                'product_description'  => 'nullable',
+                'product_image'  => 'nullable',
+                'product_unit'  => 'required',
+                'product_purchase_rate'  => 'required',
+                'product_sale_rate'  => 'required',
+                'product_stock'  => 'required',
+            ]);
 
-            $imageFullPath = $product->product_image;
+            $product->product_name = $validatedData['product_name'];
+            $product->product_sec_name = $validatedData['product_sec_name'];
+            $product->product_description = $validatedData['product_description'];
+            $product->product_unit = $validatedData['product_unit'];
+            $product->product_purchase_rate = $validatedData['product_purchase_rate'];
+            $product->product_sale_rate = $validatedData['product_sale_rate'];
+            $product->product_stock = $validatedData['product_stock'];
 
             if ($request->hasFile('product_image')) {
                 $image = $request->file('product_image');
-                if ($product->product_image && file_exists(public_path($product->product_image))) {
-                    unlink(public_path($product->product_image));
+                if ($product->variation_image && file_exists(public_path($product->product_image))) {
+                    unlink(public_path($product->variation_image));
                 }
                 $imagePath = $image->store('product_images', 'public');
-                $imageFullPath = 'storage/' . $imagePath;
-            } else {
-                $imageFullPath = $request->product_image;
+                $product->product_image = 'storage/' . $imagePath;
+            }
+            if ($request->has('product_image')) {
+                $product->product_image = $request->product_image;
             }
 
-
-            $product->update(array_merge($request->except(['product_image']), ['product_image' => $imageFullPath]));
+            $product->update();
 
 
             return response()->json(['success' => true, 'message' => 'Product updated successfully'], 200);
@@ -204,26 +219,46 @@ class ProductController extends Controller
     public function updateVariation(Request $request, $variation_id)
     {
         try {
-            $variation = ProductVariations::find($variation_id);
 
+            $validatedData = $request->validate([
+                'product_id'  => 'required',
+                'product_name'  => 'required',
+                'variation_name'  => 'required',
+                'variation_sale_rate'  => 'required',
+                'variation_consumed'  => 'nullable',
+                'variation_wastage'  => 'nullable',
+                'variation_image'  => 'nullable',
+
+            ]);
+
+            $variation = ProductVariations::find($variation_id);
             if (!$variation) {
                 return response()->json(['success' => false, 'message' => 'Variation not found'], 404);
             }
 
-            $imageFullPath = $variation->variation_image;
             if ($request->hasFile('variation_image')) {
                 $image = $request->file('variation_image');
                 if ($variation->variation_image && file_exists(public_path($variation->variation_image))) {
                     unlink(public_path($variation->variation_image));
                 }
                 $imagePath = $image->store('variation_images', 'public');
-                $imageFullPath = 'storage/' . $imagePath;
-            } else {
-
-                $imageFullPath = $request->variation_image;
+                $variation->variation_image = 'storage/' . $imagePath;
+            }
+            if ($request->has('variation_image')) {
+                $variation->variation_image = $request->variation_image;
             }
 
-            $variation->update(array_merge($request->except(['variation_image']), ['variation_image' => $imageFullPath]));
+            $variation->product_id = $validatedData['product_id'];
+            $variation->product_name = $validatedData['product_name'];
+            $variation->variation_name = $validatedData['variation_name'];
+            $variation->variation_sale_rate = $validatedData['variation_sale_rate'];
+            $variation->variation_consumed = $validatedData['variation_consumed'];
+            $variation->variation_wastage = $validatedData['variation_wastage'];
+            $variation->is_fav = $request->is_fav;
+
+
+
+            $variation->update();
 
             return response()->json(['success' => true, 'message' => 'Variation updated successfully'], 200);
         } catch (\Exception $e) {
