@@ -14,7 +14,7 @@ class ProductController extends Controller
     {
         try {
             $user = Auth::user();
-            $products = Products::where('product_status', 1)->where('user_id' , $user->id)->get();
+            $products = Products::where('product_status', 1)->where('user_id', $user->id)->get();
 
             foreach ($products as $product) {
                 if (str_contains($product->product_image, 'storage/product_images')) {
@@ -36,10 +36,15 @@ class ProductController extends Controller
             return $this->errorResponse($e);
         }
     }
-    public function getVariations($product_id)
+    public function getVariations($product_id = null)
     {
         try {
-            $variations = ProductVariations::where('product_id', $product_id)->where('variation_status', 1)->get();
+            if ($product_id) {
+
+                $variations = ProductVariations::where('product_id', $product_id)->where('variation_status', 1)->get();
+            } else {
+                $variations = ProductVariations::where('variation_status', 1)->get();
+            }
 
             foreach ($variations as $variation) {
                 if (str_contains($variation->variation_image, 'storage/variation_images')) {
@@ -163,7 +168,7 @@ class ProductController extends Controller
             return $this->errorResponse($e);
         }
     }
-    
+
 
     public function updateProduct(Request $request, $product_id)
     {

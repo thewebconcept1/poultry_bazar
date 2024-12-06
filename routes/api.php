@@ -28,7 +28,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/updateProduct/{product_id}',  'updateProduct');
         // Variations
         Route::post('/addVariation', 'addVariation');
-        Route::get('/getVariations/{product_id}', 'getVariations');
+        Route::get('/getVariation/{product_id?}', 'getVariations');
         Route::match(['get', 'post'], '/deleteVariation/{variation_id}',  'deleteVariation');
         Route::post('/updateVariation/{variation_id}', 'updateVariation');
     });
