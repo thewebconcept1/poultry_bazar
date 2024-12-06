@@ -177,24 +177,12 @@ class ProductController extends Controller
             if (!$product) {
                 return response()->json(['success' => false, 'message' => 'Product not found'], 404);
             }
-            $validatedData = $request->validate([
-                'product_name'  => 'required',
-                'product_sec_name'  => 'nullable',
-                'product_description'  => 'nullable',
-                'product_image'  => 'nullable',
-                'product_unit'  => 'required',
-                'product_purchase_rate'  => 'required',
-                'product_sale_rate'  => 'required',
-                'product_stock'  => 'required',
-            ]);
-
-            $product->product_name = $validatedData['product_name'];
-            $product->product_sec_name = $validatedData['product_sec_name'];
-            $product->product_description = $validatedData['product_description'];
-            $product->product_unit = $validatedData['product_unit'];
-            $product->product_purchase_rate = $validatedData['product_purchase_rate'];
-            $product->product_sale_rate = $validatedData['product_sale_rate'];
-            $product->product_stock = $validatedData['product_stock'];
+            $product->product_sec_name = $request['product_sec_name'];
+            $product->product_description = $request['product_description'];
+            $product->product_unit = $request['product_unit'];
+            $product->product_purchase_rate = $request['product_purchase_rate'];
+            $product->product_sale_rate = $request['product_sale_rate'];
+            $product->product_stock = $request['product_stock'];
 
             if ($request->hasFile('product_image')) {
                 $image = $request->file('product_image');
@@ -220,16 +208,6 @@ class ProductController extends Controller
     {
         try {
 
-            $validatedData = $request->validate([
-                'product_id'  => 'required',
-                'product_name'  => 'required',
-                'variation_name'  => 'required',
-                'variation_sale_rate'  => 'required',
-                'variation_consumed'  => 'nullable',
-                'variation_wastage'  => 'nullable',
-                'variation_image'  => 'nullable',
-
-            ]);
 
             $variation = ProductVariations::find($variation_id);
             if (!$variation) {
@@ -248,12 +226,12 @@ class ProductController extends Controller
                 $variation->variation_image = $request->variation_image;
             }
 
-            $variation->product_id = $validatedData['product_id'];
-            $variation->product_name = $validatedData['product_name'];
-            $variation->variation_name = $validatedData['variation_name'];
-            $variation->variation_sale_rate = $validatedData['variation_sale_rate'];
-            $variation->variation_consumed = $validatedData['variation_consumed'];
-            $variation->variation_wastage = $validatedData['variation_wastage'];
+            $variation->product_id = $request['product_id'];
+            $variation->product_name = $request['product_name'];
+            $variation->variation_name = $request['variation_name'];
+            $variation->variation_sale_rate = $request['variation_sale_rate'];
+            $variation->variation_consumed = $request['variation_consumed'];
+            $variation->variation_wastage = $request['variation_wastage'];
             $variation->is_fav = $request->is_fav;
 
 
