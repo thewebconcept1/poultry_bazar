@@ -43,6 +43,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/getOrders', 'getOrders');
         Route::post('/addOrder', 'addOrder');
         Route::match(['get', 'post'], '/saleReport', 'saleReport');
+        Route::match(['get', 'post'], '/dashboardData', 'dashboardData');
 
     });
 

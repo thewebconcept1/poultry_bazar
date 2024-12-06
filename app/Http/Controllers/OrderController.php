@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Orders;
+use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -53,8 +54,53 @@ class OrderController extends Controller
         }
     }
 
+    public function dashboardData()
+    {
+        $user = Auth::user();
+        
+        $filter = request('filter');
+        
+        $query = Orders::select('grand_total', 'created_at')->where('user_id', $user->id);
+        $productsQuery = Products::where('user_id', $user->id);
+        
+        if ($filter === 'today') {
+            $query->whereDate('created_at', Carbon::today());
+            $productsQuery->whereDate('created_at', Carbon::today());
+        } elseif ($filter === 'week') {
+            $fromDate = Carbon::now()->startOfWeek()->format('Y-m-d');
+            $toDate = Carbon::now()->endOfWeek()->format('Y-m-d');
+            $query->whereBetween('created_at', [$fromDate, $toDate]);
+            $productsQuery->whereBetween('created_at', [$fromDate, $toDate]);
+        } elseif ($filter === 'month') {
+            $query->whereMonth('created_at', Carbon::now()->month)->whereYear('created_at', Carbon::now()->year);
+            $productsQuery->whereMonth('created_at', Carbon::now()->month)->whereYear('created_at', Carbon::now()->year);
+        }
+            
+            $totalSales = $query->sum('grand_total');
+        $totalOrders = $query->count();
+        $totalProducts = $productsQuery->count();
+        
+        // Build response data
+        $data = [
+            ['total_products' => $totalProducts],
+            ['total_sales' => $totalSales],
+            ['total_orders' => $totalOrders],
+        ];
+        
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Report fetched successfully',
+            'data' => $data
+        ], 200);
+        
+        
+    }
+
+
     public function saleReport()
     {
+
         $user = Auth::user();
         $report = [];
 
@@ -66,27 +112,38 @@ class OrderController extends Controller
 
         if ($filter === 'today') {
             $query->whereDate('created_at', Carbon::today());
+            $fromDate = Carbon::today()->format('Y-m-d');
+            $toDate = Carbon::today()->format('Y-m-d');
         } elseif ($filter === 'week') {
-            $query->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]);
+            $fromDate = Carbon::now()->startOfWeek()->format('Y-m-d');
+            $toDate = Carbon::now()->endOfWeek()->format('Y-m-d');
+            $query->whereBetween('created_at', [$fromDate, $toDate]);
         } elseif ($filter === 'month') {
+            $fromDate = Carbon::now()->startOfMonth()->format('Y-m-d');
+            $toDate = Carbon::now()->endOfMonth()->format('Y-m-d');
             $query->whereMonth('created_at', Carbon::now()->month)->whereYear('created_at', Carbon::now()->year);
+        } else {
+            $fromDate = $dateFrom ? Carbon::parse($dateFrom)->format('Y-m-d') : null;
+            $toDate = $dateTo ? Carbon::parse($dateTo)->format('Y-m-d') : null;
         }
 
         if ($dateFrom) {
             $query->whereDate('created_at', '>=', Carbon::parse($dateFrom));
+            $fromDate = Carbon::parse($dateFrom)->format('Y-m-d');
         }
         if ($dateTo) {
             $query->whereDate('created_at', '<=', Carbon::parse($dateTo));
+            $toDate = Carbon::parse($dateTo)->format('Y-m-d');
         }
+
         $orders = $query->get();
         foreach ($orders as $order) {
             $order->order_date = Carbon::parse($order->created_at)->format('M d, Y');
         }
-        $grandTotal = $orders->sum('grand_total');
 
-        $report['grand_total'] = $grandTotal;
+        $report['from_date'] = $fromDate;
+        $report['to_date'] = $toDate;
         $report['orders'] = $orders;
-
         return response()->json(['success' => true, 'message' => 'Report fetched successfully', 'report' => $report], 200);
     }
 }
