@@ -177,12 +177,12 @@ class ProductController extends Controller
             if (!$product) {
                 return response()->json(['success' => false, 'message' => 'Product not found'], 404);
             }
-            $product->product_sec_name = $request['product_sec_name'];
-            $product->product_description = $request['product_description'];
-            $product->product_unit = $request['product_unit'];
-            $product->product_purchase_rate = $request['product_purchase_rate'];
-            $product->product_sale_rate = $request['product_sale_rate'];
-            $product->product_stock = $request['product_stock'];
+            $product->product_sec_name = $request['product_sec_name'] ?? $product->product_sec_name;
+            $product->product_description = $request['product_description'] ?? $product->product_description;
+            $product->product_unit = $request['product_unit'] ?? $product->product_unit;
+            $product->product_purchase_rate = $request['product_purchase_rate'] ?? $product->product_purchase_rate;
+            $product->product_sale_rate = $request['product_sale_rate'] ?? $product->product_sale_rate;
+            $product->product_stock = $request['product_stock'] ?? $product->product_stock;
 
             if ($request->hasFile('product_image')) {
                 $image = $request->file('product_image');
@@ -207,8 +207,6 @@ class ProductController extends Controller
     public function updateVariation(Request $request, $variation_id)
     {
         try {
-
-
             $variation = ProductVariations::find($variation_id);
             if (!$variation) {
                 return response()->json(['success' => false, 'message' => 'Variation not found'], 404);
@@ -226,13 +224,13 @@ class ProductController extends Controller
                 $variation->variation_image = $request->variation_image;
             }
 
-            $variation->product_id = $request['product_id'];
-            $variation->product_name = $request['product_name'];
-            $variation->variation_name = $request['variation_name'];
-            $variation->variation_sale_rate = $request['variation_sale_rate'];
-            $variation->variation_consumed = $request['variation_consumed'];
-            $variation->variation_wastage = $request['variation_wastage'];
-            $variation->is_fav = $request->is_fav;
+            $variation->product_id = $request['product_id'] ??  $variation->product_id ;
+            $variation->product_name = $request['product_name'] ?? $variation->product_name;
+            $variation->variation_name = $request['variation_name'] ?? $variation->variation_name;
+            $variation->variation_sale_rate = $request['variation_sale_rate'] ?? $variation->variation_sale_rate;
+            $variation->variation_consumed = $request['variation_consumed'] ?? $variation->variation_consumed;
+            $variation->variation_wastage = $request['variation_wastage'] ?? $variation->variation_wastage;
+            $variation->is_fav = $request->is_fav ?? $variation->is_fav;
 
 
 
