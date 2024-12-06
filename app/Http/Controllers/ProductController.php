@@ -132,6 +132,7 @@ class ProductController extends Controller
                 'variation_consumed' => $validatedData['variation_consumed'],
                 'variation_wastage' => $validatedData['variation_wastage'],
                 'variation_image' => $imageFullPath,
+                'is_fav' => 0
             ]);
             return response()->json(['success' => true, 'message' => 'Variation Add Successfully', 'productVariation' => $ProductVariations], 200);
         } catch (\Exception $e) {
