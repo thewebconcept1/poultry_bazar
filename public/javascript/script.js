@@ -191,6 +191,7 @@ $(document).ready(function () {
                 return xhr;
             },
             success: function (response) {
+                $('#progressBar').addClass('hidden');
                 $("#postDataForm")[0].reset();
                 BtnSpinnerHide();
                 // Reload the table body content
