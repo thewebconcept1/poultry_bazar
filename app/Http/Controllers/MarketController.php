@@ -13,7 +13,7 @@ class MarketController extends Controller
     public function getMarkets()
     {
         $markets = Market::where('market_status', 1)->get();
-        $cities = City::select('city_id', 'city_name')->where('city_status' , 1)->get();
+        $cities = City::select('city_id', 'city_name')->where('city_status', 1)->get();
         foreach ($markets as $market) {
             $market->updated_date = Carbon::parse($market->created_at)->format('M d, Y');
         }
@@ -43,10 +43,10 @@ class MarketController extends Controller
 
             $market = Market::where('market_id', $vlaidatedData['market_id'])->first();
 
-            $market->market_rate = $vlaidatedData['market_rate'];
-            $market->market_openrate = $vlaidatedData['market_openrate'];
-            $market->market_closerate = $vlaidatedData['market_closerate'];
-            $market->market_doc = $vlaidatedData['market_doc'];
+            $market->market_rate = $vlaidatedData['market_rate'] ?? 0;
+            $market->market_openrate = $vlaidatedData['market_openrate'] ?? 0;
+            $market->market_closerate = $vlaidatedData['market_closerate'] ?? 0;
+            $market->market_doc = $vlaidatedData['market_doc'] ?? 0;
 
             $market->save();
 
@@ -105,12 +105,12 @@ class MarketController extends Controller
                     // Store the image in the 'animal_images' folder and get the file path
                     $imagePath = $image->store('market_images', 'public'); // stored in 'storage/app/public/animal_images'
                     $imageFullPath = 'storage/' . $imagePath;
-                    $user->market_image = $imageFullPath ?? null;
+                    $market->market_image = $imageFullPath ?? null;
                 }
                 $market->market_name = $vlaidatedData['market_name'];
                 $market->city_id = $vlaidatedData['city_id'];
 
-                $market->save();
+                $market->update();
 
                 return response()->json(['success' => true, 'message' => 'Market update successfully'], 200);
             } else {
