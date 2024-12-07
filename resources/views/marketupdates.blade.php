@@ -22,7 +22,8 @@
             @endif
         </div>
         @php
-            $headers = ['Sr.', 'Markets', 'Rates', 'Open ', 'Close ', 'DOC ', 'Action'];
+            $headers = ['Sr.', 'Markets', 'Rates', 'DOC ', 'Action'];
+            // $headers = ['Sr.', 'Markets', 'Rates', 'Open ', 'Close ', 'DOC ', 'Action'];
         @endphp
         <x-table :headers="$headers">
             <x-slot name="tablebody">
@@ -36,14 +37,10 @@
                             <input class="w-20 h-10 text-black rounded-md border-1" type="text" name="market_rate"
                                 placeholder="00.0" value="{{ $market->market_rate ?? 0 }}" pattern="^\d+(\.\d+)?$">
                         </td>
-                        <td>
-                            <input class="w-20 h-10 text-black rounded-md border-1" type="text" name="market_openrate"
+                            <input class="w-20 h-10 text-black rounded-md border-1" type="hidden" name="market_openrate"
                                 placeholder="00.0" value="{{ $market->market_openrate ?? 0 }}" pattern="^\d+(\.\d+)?$">
-                        </td>
-                        <td>
-                            <input class="w-20 h-10 text-black rounded-md border-1" type="text" name="market_closerate"
+                            <input class="w-20 h-10 text-black rounded-md border-1" type="hidden" name="market_closerate"
                                 placeholder="00.0" value="{{ $market->market_closerate ?? 0 }}" pattern="^\d+(\.\d+)?$">
-                        </td>
                         <td>
                             <input class="w-20 h-10 text-black rounded-md border-1" type="text" name="market_doc"
                                 placeholder="00.0" value="{{ $market->market_doc ?? 0 }}" pattern="^\d+(\.\d+)?$">
