@@ -52,7 +52,7 @@ class MarketController extends Controller
 
             return response()->json(['success' => true, 'message' => 'Rates updated'], 200);
         } catch (\Exception $e) {
-            return $this->errorResponse($e);
+            return $this->errorResponse($e);   
         }
     }
     // update market rates

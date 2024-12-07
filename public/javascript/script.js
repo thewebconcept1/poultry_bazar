@@ -175,6 +175,20 @@ $(document).ready(function () {
             contentType: false,
             beforeSend: function () {
                 BtnSpinnerShow();
+                $('#progressBar').removeClass('hidden');
+            },
+            xhr: function() {
+                let xhr = new XMLHttpRequest();
+                xhr.upload.addEventListener('progress', function(e) {
+                    if (e.lengthComputable) {
+                        let percentCompleted = Math.round((e.loaded * 100) / e.total);
+                        $('#progressBar').css('width', percentCompleted + '%');
+                        $('#uploadProgress').text(percentCompleted + '% uploaded');
+                        
+
+                    }
+                });
+                return xhr;
             },
             success: function (response) {
                 $("#postDataForm")[0].reset();
@@ -189,6 +203,9 @@ $(document).ready(function () {
 
             error: function (jqXHR) {
                 BtnSpinnerHide();
+                $('#progressBar').addClass('hidden');
+                $('#uploadProgress').text(0 + '% uploaded');
+
                 let response = JSON.parse(jqXHR.responseText);
 
                 $(document).trigger("formSubmissionResponse", [

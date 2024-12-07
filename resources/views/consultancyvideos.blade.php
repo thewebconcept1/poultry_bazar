@@ -9,8 +9,8 @@
         $privileges = json_decode($user['user_privileges'], true)['permissions'] ?? [];
         $userRole = session('user_details')['user_role'];
 
-        @endphp
-        <button data-modal-target='view-modal' data-modal-toggle='view-modal'></button>
+    @endphp
+    <button data-modal-target='view-modal' data-modal-toggle='view-modal'></button>
     <div class="w-full pt-10 min-h-[88vh] gradient-border  rounded-lg">
         <div class="flex justify-between px-5">
             <h1 class="text-3xl font-bold ">Consultancy Videos</h1>
@@ -22,7 +22,7 @@
             @endif
         </div>
         @php
-            $headers = ['Sr.' ,  'Video', 'Title', 'Description', 'Category', 'Date', 'Author', 'Action'];
+            $headers = ['Sr.', 'Video', 'Title', 'Description', 'Category', 'Date', 'Author', 'Action'];
         @endphp
 
         <x-table :headers="$headers">
@@ -32,8 +32,8 @@
                         <td>{{ $loop->iteration }}</td>
                         {{-- <td><img class="h-16 w-16 object-cover  bg-customOrangeDark rounded-full "
                             src="{{ $data->media_image ??  asset('assets/default-logo-1.png') }}" alt='consultancy Image'></td> --}}
-                            {{-- <td class="whitespace-nowrap">{{ $data->added_username  }}</td> --}}
-                            <td class="min-w-[200px]">
+                        {{-- <td class="whitespace-nowrap">{{ $data->added_username  }}</td> --}}
+                        <td class="min-w-[200px]">
                             <video poster="{{ $data->media_image ? '' : asset('assets/default-logo-req.png') }}"
                                 class="h-[140px] w-[170px] rounded-md" height="140px" width="170px"z
                                 {{ $data->media_image ? 'controls' : '' }}
@@ -41,7 +41,8 @@
                             </video>
                         </td>
                         <td class='text-xs xl:text-[15px]'>{{ $data->media_title }}</td>
-                        <td class='text-xs xl:text-[15px] min-w-[280px]'>{{ \Illuminate\Support\Str::limit($data->media_description, 60, '...') }}</td>
+                        <td class='text-xs xl:text-[15px] min-w-[280px]'>
+                            {{ \Illuminate\Support\Str::limit($data->media_description, 60, '...') }}</td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->category_name }}</td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->date }} </td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->media_author }}</td>
@@ -71,8 +72,7 @@
                                         </svg>
                                     </button>
                                 @endif
-                                <button
-                                    mediaTitle="{{ $data->media_title }}" mediaAuthor="{{ $data->media_author }}"
+                                <button mediaTitle="{{ $data->media_title }}" mediaAuthor="{{ $data->media_author }}"
                                     mediaCategory="{{ $data->category_name }}" mediaCategoryId={{ $data->category_id }}
                                     mediaDate="{{ $data->date }}" mediaDescription="{{ $data->media_description }}"
                                     mediaId="{{ $data->media_id }}"
@@ -121,7 +121,8 @@
                         <div>
                             <div class="relative flex items-center justify-center w-full h-full" id="VideoUploader">
                                 <label
-                                    class="file-upload-label flex flex-col items-center justify-center w-full h-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
+                                    class="file-upload-label flex flex-col relative items-center justify-center w-full h-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
+                                    
                                     <div class="file-upload-content flex flex-col items-center justify-center pt-5 pb-6">
                                         <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
@@ -134,10 +135,11 @@
                                         </p>
                                         <p class="text-xs text-gray-500 dark:text-gray-400">Mp4 (MAX. 1920x1080px)</p>
                                     </div>
-                                    <input id="videoLabel" type="file" class="file-input hidden" name="media_image" accept="video/*"
-                                        onchange="previewFile(event)" />
+                                    <input id="videoLabel" type="file" class="file-input hidden" name="media_image"
+                                        accept="video/*" onchange="previewFile(event)" />
                                     <video id="" autoplay muted controls
                                         class="file-preview absolute top-0 left-0 w-full h-full hidden bg-customOrangeDark rounded-lg"></video>
+                                   
                                 </label>
                             </div>
                         </div>
@@ -147,15 +149,16 @@
                             <div class="mt-2">
                                 {{-- <x-input id="mediaAuthor" label="Consultancy Author"
                                     placeholder="Enter Consultancy Author" name='media_author' type="text"></x-input> --}}
-                                    <div class="w-full">
-                                        <label for="mediaAuthor"
-                                            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Consultancy Author</label>
-                                        <input type="text" name="media_author" id="mediaAuthor"
-                                            placeholder="Enter Consultancy Author"
-                                            class=" border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-customOrangeDark focus:border-customOrangeDark block w-full p-2.5"
-                                            required value="{{ session('user_details')['name'] }}" readonly />
-                                    </div>
+                                <div class="w-full">
+                                    <label for="mediaAuthor"
+                                        class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Consultancy
+                                        Author</label>
+                                    <input type="text" name="media_author" id="mediaAuthor"
+                                        placeholder="Enter Consultancy Author"
+                                        class=" border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-customOrangeDark focus:border-customOrangeDark block w-full p-2.5"
+                                        required value="{{ session('user_details')['name'] }}" readonly />
                                 </div>
+                            </div>
                             <div class="mt-2">
                                 <x-select id="categoryId" name="category_id" label="Consultancy Category">
                                     <x-slot name="options">
@@ -189,7 +192,7 @@
                         <!-- Image Placeholder -->
 
 
-                        <video class="w-52 h-48 bg-black object-contain" controls   id="dImage"></video>
+                        <video class="w-52 h-48 bg-black object-contain" controls id="dImage"></video>
 
                         <!-- Text Details -->
                         <div class="ml-5">
