@@ -27,7 +27,6 @@ class OrderController extends Controller
         try {
             $user = Auth::user();
             $validatedData = $request->validate([
-                "product_id" => "required",
                 "customer_id" => "nullable",
                 "customer_name" => "required",
                 "customer_phone" => "nullable",
@@ -38,7 +37,6 @@ class OrderController extends Controller
             ]);
             Orders::create([
                 "user_id" => $user->id,
-                "product_id" => $validatedData['product_id'],
                 "customer_id" => $validatedData['customer_id'],
                 "customer_name" => $validatedData['customer_name'],
                 "customer_phone" => $validatedData['customer_phone'],
@@ -57,12 +55,12 @@ class OrderController extends Controller
     public function dashboardData()
     {
         $user = Auth::user();
-        
+
         $filter = request('filter');
-        
+
         $query = Orders::select('grand_total', 'created_at')->where('user_id', $user->id);
         $productsQuery = Products::where('user_id', $user->id);
-        
+
         if ($filter === 'today') {
             $query->whereDate('created_at', Carbon::today());
             $productsQuery->whereDate('created_at', Carbon::today());
@@ -75,26 +73,26 @@ class OrderController extends Controller
             $query->whereMonth('created_at', Carbon::now()->month)->whereYear('created_at', Carbon::now()->year);
             $productsQuery->whereMonth('created_at', Carbon::now()->month)->whereYear('created_at', Carbon::now()->year);
         }
-            
+
             $totalSales = $query->sum('grand_total');
         $totalOrders = $query->count();
         $totalProducts = $productsQuery->count();
-        
+
         // Build response data
         $data = [
             ['total_products' => $totalProducts],
             ['total_sales' => $totalSales],
             ['total_orders' => $totalOrders],
         ];
-        
-        
+
+
         return response()->json([
             'success' => true,
             'message' => 'Report fetched successfully',
             'data' => $data
         ], 200);
-        
-        
+
+
     }
 
 
