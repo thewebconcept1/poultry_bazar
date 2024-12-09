@@ -26,7 +26,7 @@ class CustomerController extends Controller
             ]);
 
             Customers::create([
-                'user_id' => $validatedData['user_id'],
+                'user_id' => $user->id,
                 'customer_name' => $validatedData['customer_name'],
                 'customer_email' => $validatedData['customer_email'],
                 'customer_phone' => $validatedData['customer_phone'],

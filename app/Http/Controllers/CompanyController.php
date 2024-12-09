@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Company;
 use Illuminate\Http\Request;
@@ -10,8 +11,8 @@ class CompanyController extends Controller
     public function addCompany(Request $request)
     {
         try {
+            $user = Auth::user();
             $validatedData = $request->validate([
-                'user_id' => 'required',
                 'company_name' => 'required',
                 'company_address' => 'required',
                 'company_phone' => 'required',
@@ -26,7 +27,7 @@ class CompanyController extends Controller
                 $imageFullPath = null;
             }
             Company::create([
-                'user_id' => $validatedData['user_id'],
+                'user_id' => $user->id,
                 'company_name' => $validatedData['company_name'],
                 'company_address' => $validatedData['company_address'],
                 'company_phone' => $validatedData['company_phone'],
