@@ -378,4 +378,10 @@ class UserController extends Controller
         $users = User::where('user_role', 'superadmin')->get();
         return view('admins' , compact('users'));
     }
+
+     // get pos user 
+
+         public function posUsers(){
+        return view('pos.users');
+     }
 }

@@ -211,7 +211,7 @@ class ProductController extends Controller
             if (!$variation) {
                 return response()->json(['success' => false, 'message' => 'Variation not found'], 404);
             }
-
+            
             if ($request->hasFile('variation_image')) {
                 $image = $request->file('variation_image');
                 if ($variation->variation_image && file_exists(public_path($variation->variation_image))) {
