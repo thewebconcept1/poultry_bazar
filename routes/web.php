@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\MarketController;
 use App\Http\Controllers\MediaController;
@@ -69,6 +70,9 @@ Route::middleware(['custom_auth'])->group(function () {
         Route::post('/addFAQs', [FAQController::class, 'addFAQs']);
         Route::post('/deleteFAQ', [FAQController::class, 'deleteFAQ']);
     });
+    // pos 
+    Route::get('/pos/users', [UserController::class, 'posUsers']);
+    Route::get('/pos/shops', [CompanyController::class, 'shops']);
 });
 Route::post('/register', [UserController::class, 'RequestForService']);
 Route::get('/login', [ModuleController::class, 'loginData']);

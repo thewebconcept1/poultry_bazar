@@ -48,7 +48,7 @@
                                 <h3 class="text-[12px] font-semibold tracking-wider">Markets</h3>
                             </button>
                         </a>
-                        <a href="">
+                        <a href="../pos/users">
                             <button class="flex w-full drop-shadow items-center  gap-[.5px] rounded-md py-[2px]">
                                 <img class="h-12 w-12" src="{{ asset('assets/icons/pos.png') }}" alt="POS">
                                 <h3 class="text-[12px] font-semibold tracking-wider">POS</h3>

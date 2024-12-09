@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Company;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -37,5 +39,38 @@ class CompanyController extends Controller
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
+    }
+
+    public function updateCompany(Request $request, $company_id)
+    {
+
+        try {
+            $company  = Company::find($company_id);
+            if (!$company) {
+                return response()->json(['success' => false, 'message' => 'Company not found'], 422);
+            }
+            if ($request->hasFile('company_logo')) {
+                $image = $request->file('company_logo');
+                $imagePath = $image->store('company_logos', 'public');
+                $imageFullPath = 'storage/' . $imagePath;
+            }
+
+            $company->company_name = $request['company_name'] ?? $company->company_name;
+            $company->company_address = $request['company_address'] ?? $company->company_address;
+            $company->company_phone = $request['company_phone'] ?? $company->company_phone;
+            $company->company_logo = $imageFullPath ?? $company->company_logo;
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    // get shops 
+    public function shops()
+    {
+        $companies = Company::whereNot('company_status', 0)->get(); 
+        foreach ($companies as  $company) {
+            $company->company_owner = User::where('id', $company->user_id)->value('name');
+
+        }
+        return view('pos.shops', compact('companies'));
     }
 }

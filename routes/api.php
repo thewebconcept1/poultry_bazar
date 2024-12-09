@@ -47,6 +47,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     });
 
+    Route::controller(CompanyController::class)->group(function () {
+        Route::post('/addCompany', 'addCompany');
+        Route::post('/updateCompany/{company_id}', 'updateCompany');
+    });
+
 });
 Route::get('/getMarkets', [ApiController::class, 'getMarkets']);
 Route::post('/getMarketRates', [ApiController::class, 'getMarketRates']);
@@ -59,6 +64,4 @@ Route::get('/getFAQs', [ApiController::class, 'getFAQs']);
 
 
 
-Route::controller(CompanyController::class)->group(function () {
-    Route::post('/addCompany', 'addCompany');
-});
+
