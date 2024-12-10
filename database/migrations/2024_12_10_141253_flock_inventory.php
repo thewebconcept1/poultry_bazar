@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('flock_sites', function(Blueprint $table) {
-            $table->id('site_id');
+        Schema::create('flock_inventory', function(Blueprint $table) {
+            $table->id('fi_id');
+            $table->id('flock_id');
+            $table->integer('company_id');
             $table->integer('user_id');
-            $table->text('site_name');
-            $table->text('site_manager')->nullable();
-            $table->bigInteger('site_phone')->nullable();
-            $table->text('site_loction')->nullable();
-            $table->timestamp('site_closing_date')->nullable();
+            $table->longText('fi_detail');
+            $table->string('fi_status')->default('in');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('flock_sites');
+        Schema::dropIfExists('flock_inventory');
     }
 };
