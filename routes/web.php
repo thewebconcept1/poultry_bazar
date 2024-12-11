@@ -70,7 +70,7 @@ Route::middleware(['custom_auth'])->group(function () {
         Route::post('/addFAQs', [FAQController::class, 'addFAQs']);
         Route::post('/deleteFAQ', [FAQController::class, 'deleteFAQ']);
     });
-    // pos 
+    // pos
     Route::get('/pos/users', [UserController::class, 'posUsers']);
     Route::get('/pos/shops', [CompanyController::class, 'shops']);
 });
@@ -84,6 +84,7 @@ Route::get('/resetPassword', [UserController::class, 'resetPasswordView']);
 Route::match(['get', 'post'], '/logout', [UserController::class, 'logout']);
 
 Route::get('/', function () {
-    return view('landingpage');
+    return view('landingPage.home');
 });
+Route::get('/knowledgeCenter',[MediaController::class , 'knowledgeCenter']);
 Route::get('pendingMedia/{type?}', [MediaController::class , 'getMedia']);
