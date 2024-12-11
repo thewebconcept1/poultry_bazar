@@ -107,7 +107,7 @@ class MediaController extends Controller
                     $blog->date = Carbon::parse($blog->created_at)->format('M d, Y');
                     $category = $categories->firstWhere('category_id', $blog->category_id);
                     $blog->category_name = $category ? $category->category_name : null;
-                     
+
                     $username = User::where('id', $blog->added_user_id)->value('name');
                     $blog->added_username = $username;
                 }
@@ -119,7 +119,7 @@ class MediaController extends Controller
                     $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
                     $category = $categories->firstWhere('category_id', $diseases->category_id);
                     $diseases->category_name = $category ? $category->category_name : null;
-                     
+
                     $username = User::where('id', $diseases->added_user_id)->value('name');
                     $diseases->added_username = $username;
                 }
@@ -131,7 +131,7 @@ class MediaController extends Controller
                     $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
                     $category = $categories->firstWhere('category_id', $diseases->category_id);
                     $diseases->category_name = $category ? $category->category_name : null;
-                     
+
                     $username = User::where('id', $diseases->added_user_id)->value('name');
                     $diseases->added_username = $username;
                 }
@@ -231,5 +231,28 @@ class MediaController extends Controller
             return $this->errorResponse($e);
         }
     }
-    // add media
+    // get media data for knowledge center
+
+    public function knowledgeCenter(Request $request){
+        $mediaTypes = ['blogs', 'diseases', 'consultancy'];
+        $data = [];
+
+        foreach ($mediaTypes as $type) {
+            $media = Media::where('media_type', $type)->where('media_status', 1)->get();
+            $categories = Category::where('category_status', 1)->get();
+
+            foreach ($media as $item) {
+                $item->date = Carbon::parse($item->created_at)->format('M d, Y');
+                $category = $categories->firstWhere('category_id', $item->category_id);
+                $item->category_name = $category ? $category->category_name : null;
+            }
+
+            $data[$type] = $media;
+        }
+
+// return response()->json($data);
+        return view('landingPage.knowledge_center' , compact('data'));
+
+
+    }
 }
