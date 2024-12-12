@@ -83,8 +83,6 @@ Route::get('/resetPassword', [UserController::class, 'resetPasswordView']);
 
 Route::match(['get', 'post'], '/logout', [UserController::class, 'logout']);
 
-Route::get('/', function () {
-    return view('landingPage.home');
-});
-Route::get('/knowledgeCenter',[MediaController::class , 'knowledgeCenter']);
-Route::get('pendingMedia/{type?}', [MediaController::class , 'getMedia']);
+Route::get('/',  [MediaController::class, 'homeData']);
+Route::get('/knowledgeCenter', [MediaController::class, 'knowledgeCenter']);
+Route::get('pendingMedia/{type?}', [MediaController::class, 'getMedia']);
