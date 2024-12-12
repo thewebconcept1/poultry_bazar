@@ -53,7 +53,7 @@
                                 mediaDescription="{{ $blog->media_description }}" mediaId="{{ $blog->media_id }}"
                                 mediaImage="{{ $blog->media_image ?? asset('assets/default-logo-req.png') }}">
                                 <img loading="lazy"
-                                    src="{{ $blog->media_image ?? asset('assets/default-logo-squere.png') }}"
+                                    src="{{ $blog->media_image ?? asset('assets/default-logo-req.png') }}"
                                     alt="Blog Post Image" class="object-cover w-full h-60 rounded-t-lg rounded-b-none">
                                 <div class="p-4">
                                     <div class="flex items-center mb-2 text-sm text-customOrangeDark">
@@ -64,7 +64,7 @@
                                             class="ml-2">{{ $blog->date }}</span>
                                     </div>
                                     <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ $blog->media_title }}</h3>
-                                    <p class="text-sm text-gray-600">{{ $blog->media_description }}</p>
+                                    <p class="text-sm text-gray-600">{{   Str::limit($blog->media_description, 80, '...') }}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -81,7 +81,7 @@
                                 mediaCategory="{{ $diseases->category_name }}" mediaDate="{{ $diseases->date }}"
                                 mediaDescription="{{ $diseases->media_description }}" mediaId="{{ $diseases->media_id }}"
                                 mediaImage="{{ $diseases->media_image ?? asset('assets/default-logo-req.png') }}">
-                                <img src="{{ $diseases->media_image ?? asset('assets/default-logo-squere.png') }}"
+                                <img src="{{ $diseases->media_image ?? asset('assets/default-logo-req.png') }}"
                                     alt="Blog Post Image" class="object-cover w-full h-60 rounded-t-lg rounded-b-none">
                                 <div class="p-4">
                                     <div class="flex items-center mb-2 text-sm text-customOrangeDark">
@@ -93,7 +93,7 @@
                                             class="ml-2">{{ $diseases->date }}</span>
                                     </div>
                                     <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ $diseases->media_title }}</h3>
-                                    <p class="text-sm text-gray-600">{{ $diseases->media_description }}</p>
+                                    <p class="text-sm text-gray-600">{{   Str::limit($diseases->media_description, 80, '...') }}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -119,7 +119,7 @@
                                     poster="{{ $consultancy->media_image ? '' : asset('assets/default-logo-req.png') }}"
                                     class="h-60 w-full rounded-md" height="140px" width="170px"
                                     {{ $consultancy->media_image ? 'controls' : '' }}
-                                    src="{{ $consultancy->media_image ?? asset('assets/default-logo-1.png') }}">
+                                    src="{{ $consultancy->media_image ?? asset('assets/default-logo-req.png') }}">
                                 </video>
 
                                 <div class="p-4">
@@ -131,9 +131,8 @@
                                         <span class="mr-2">{{ $consultancy->media_author }}</span> | <span
                                             class="ml-2">{{ $consultancy->date }}</span>
                                     </div>
-                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ $consultancy->media_title }}
-                                    </h3>
-                                    <p class="text-sm text-gray-600">{{ $consultancy->media_description }}</p>
+                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ $consultancy->media_title }}</h3>
+                                    <p class="text-sm text-gray-600">{{  Str::limit($consultancy->media_description, 80, '...') }}</p>
                                 </div>
                             </div>
                         @endforeach

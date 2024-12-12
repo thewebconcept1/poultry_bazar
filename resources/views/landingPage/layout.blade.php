@@ -126,13 +126,21 @@
                 <ul class="flex flex-col px-4 space-y-4">
 
                     <li class="relative">
-                        <a href="#" class="px-3 py-2 text-white nav-link">Home</a>
+                        <a href=" {{ request()->is('knowledgeCenter') ? '../#' : '#services' }}"
+                            class="px-3 py-2 text-white  {{ request()->is('knowledgeCenter') ? '' : 'nav-link' }}">Home</a>
                     </li>
                     <li class="relative">
-                        <a href="#services" class="px-3 py-2 text-white nav-link">Services</a>
+                        <a href="{{ request()->is('knowledgeCenter') ? '../#services' : '#services' }}"
+                            class="px-3 py-2 text-white  {{ request()->is('knowledgeCenter') ? '' : 'nav-link' }}">Services</a>
                     </li>
                     <li class="relative">
-                        <a href="#blogs" class="px-3 py-2 text-white nav-link">Blogs</a>
+                        <a href="{{ request()->is('knowledgeCenter') ? '../#blogs' : '#blogs' }}"
+                            class="px-3 py-2 text-white  {{ request()->is('knowledgeCenter') ? '' : 'nav-link' }}">Blogs</a>
+                    </li>
+                    <li class="relative">
+                        <a href="../knowledgeCenter"
+                            class="px-3 py-2 text-white nav-link  {{ request()->is('knowledgeCenter') ? 'active' : '' }}">Knowledge
+                            Center</a>
                     </li>
                 </ul>
 
@@ -350,13 +358,13 @@
                 </div>
 
             </div>
-            <div class=" flex justify-center  w-full  bg-[#F1F1F1] py-4 mt-5">
+            {{-- <div class=" flex justify-center  w-full  bg-[#F1F1F1] py-4 mt-5">
                 <p class="text-sm text-black text-center">Powered by <span
                         class="text-customOrangeDark">Poul3yBazar</span> &
                     Developed by
                     <a target="_blank" class="text-blue-500" href="https://thewebconcept.com/">TheWebConcept</a>.
                 </p>
-            </div>
+            </div> --}}
         </footer>
 
     </div>

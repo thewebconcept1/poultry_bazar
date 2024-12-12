@@ -47,7 +47,6 @@ class MediaController extends Controller
             $media->save();
 
             return response()->json(['success' => true, 'message' => 'Media Approved'], 200);
-
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
@@ -146,8 +145,6 @@ class MediaController extends Controller
 
                     $username = User::where('id', $diseases->added_user_id)->value('name');
                     $diseases->added_username = $username;
-
-
                 }
                 // return response()->json($media);
                 return view('pending_media', ['media' => $media, "categories" => $categories]);
@@ -233,7 +230,8 @@ class MediaController extends Controller
     }
     // get media data for knowledge center
 
-    public function knowledgeCenter(Request $request){
+    public function knowledgeCenter(Request $request)
+    {
         $mediaTypes = ['blogs', 'diseases', 'consultancy'];
         $data = [];
 
@@ -249,10 +247,56 @@ class MediaController extends Controller
 
             $data[$type] = $media;
         }
+        return view('landingPage.knowledge_center', compact('data'));
+    }
+    public function homeData(Request $request)
+    {
+        // $media_type = $request->input('type'); // Ensure $mediaTypes is always an array
+        // $data = [];
 
-// return response()->json($data);
-        return view('landingPage.knowledge_center' , compact('data'));
+        // // Fetch active media and categories
+        // $media = Media::where('media_type', $media_type)->where('media_status', 1)->get();
+        // $categories = Category::where('category_status', 1)->get();
 
+        // // Process media items
+        // $media->each(function ($item) use ($categories) {
+        //     $item->date = Carbon::parse($item->created_at)->format('M d, Y');
+        //     $category = $categories->firstWhere('category_id', $item->category_id);
+        //     $item->category_name = $category ? $category->category_name : null;
+        // });
 
+        // // Randomize and limit to 8 items
+        // $data = $media->shuffle()->take(8)->values(); // Reset array keys
+
+        // return response()->json($data);
+        
+        $mediaTypes = ['blogs', 'diseases', 'consultancy'];
+        $allMedia = collect(); // Initialize an empty collection
+        
+        foreach ($mediaTypes as $type) {
+            // Fetch active media and categories
+            $media = Media::where('media_type', $type)->where('media_status', 1)->get();
+            $categories = Category::where('category_status', 1)->get();
+        
+            // Process and format media items
+            $media->each(function ($item) use ($categories) {
+                $item->date = Carbon::parse($item->created_at)->format('M d, Y');
+                $category = $categories->firstWhere('category_id', $item->category_id);
+                $item->category_name = $category ? $category->category_name : null;
+            });
+        
+            // Merge the media items into the main collection
+            $allMedia = $allMedia->merge($media);
+        }
+        
+        // Randomize and limit to 8 items
+        $medias = $allMedia->shuffle()->take(8)->values(); // Use `values()` to reset keys
+        
+        // return response()->json($media);
+        
+        
+        
+
+        return view('landingPage.home', compact('medias'));
     }
 }

@@ -1,42 +1,40 @@
 @extends('landingPage.layout')
 @section('content')
-
-<div class=" section" id="home">
-    <div
-        class="container relative z-20 flex flex-col items-center justify-center w-full px-6 mx-auto mt-10 xl:px-14 lg:flex-row lg:justify-between xl:mx-auto">
-
-        <!-- Welcome Section -->
+    <div class=" section" id="home">
         <div
-            class="relative z-40 flex flex-col items-center lg:mt-0 mt-10 xl:mx-auto justify-center w-[70vw] h-full ">
-            <div id="welcomeDiv" class=" text-left">
-                <h2 class="text-4xl font-bold leading-tight lg:text-5xl text-customOrangeDark">
-                    <span>Welcome to</span><br> Poultry Bazar
-                </h2>
-                <p class="mt-4 text-sm font-light text-gray-600 lg:text-base">
-                    Stay informed with live updates on the latest poultry market rates. This feature provides users
-                    with real-time price trends for chickens across different regions. Gain insights to make
-                    informed decisions on buying and selling, helping you maximize your profits in a competitive
-                    market.
-                </p>
+            class="container relative z-20 flex flex-col items-center justify-center w-full px-6 mx-auto mt-10 xl:px-14 lg:flex-row lg:justify-between xl:mx-auto">
+
+            <!-- Welcome Section -->
+            <div class="relative z-40 flex flex-col items-center lg:mt-0 mt-10 xl:mx-auto justify-center w-[70vw] h-full ">
+                <div id="welcomeDiv" class=" text-left">
+                    <h2 class="text-4xl font-bold leading-tight lg:text-5xl text-customOrangeDark">
+                        <span>Welcome to</span><br> Poultry Bazar
+                    </h2>
+                    <p class="mt-4 text-sm font-light text-gray-600 lg:text-base">
+                        Stay informed with live updates on the latest poultry market rates. This feature provides users
+                        with real-time price trends for chickens across different regions. Gain insights to make
+                        informed decisions on buying and selling, helping you maximize your profits in a competitive
+                        market.
+                    </p>
+                </div>
             </div>
-        </div>
-        <!-- Signup Form Section (Initially hidden) -->
-        <div class="hidden w-[30vw] h-full lg:block">
-            <div class="p-5 w-5xl xl:px-5 xl:p-0">
-                <div>
-                    <div class="absolute z-20 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                        <img id="henImage" class="xl:w-[260px]  object-contain lg:w-[20vw]"
-                            style="transform: rotateY(360deg)" src="{{ asset('assets/hen-avatar-withbg.png') }}"
-                            alt="hen">
-                    </div>
-                    <div class="absolute z-10 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-                        <div style="box-shadow: 0px 0px 179px 300px #FCB276A0;"></div>
+            <!-- Signup Form Section (Initially hidden) -->
+            <div class="hidden w-[30vw] h-full lg:block">
+                <div class="p-5 w-5xl xl:px-5 xl:p-0">
+                    <div>
+                        <div class="absolute z-20 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                            <img id="henImage" class="xl:w-[260px]  object-contain lg:w-[20vw]"
+                                style="transform: rotateY(360deg)" src="{{ asset('assets/hen-avatar-withbg.png') }}"
+                                alt="hen">
+                        </div>
+                        <div class="absolute z-10 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                            <div style="box-shadow: 0px 0px 179px 300px #FCB276A0;"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="z-40 flex items-center justify-center  lg:justify-end w-[80vw] px-2 mt-6 md:mt-4 md:px-0 ">
-            {{-- <div class="grid grid-cols-2 gap-5 ">
+            <div class="z-40 flex items-center justify-center  lg:justify-end w-[80vw] px-2 mt-6 md:mt-4 md:px-0 ">
+                {{-- <div class="grid grid-cols-2 gap-5 ">
                 <div class="max-w-[250px]  p-4 text-center bg-white rounded-lg shadow-lg">
                     <div class="flex items-center justify-center mx-auto mb-4 ">
                         <img src="{{ asset('assets/icons/Group 44.png') }}" alt="Market Rates Icon"
@@ -69,57 +67,57 @@
                     <p class="text-sm text-gray-600">Get real-time poultry prices to stay ahead in the market.</p>
                 </div>
             </div> --}}
-            <img src="{{ asset('assets/icons/svgsection1/imagesvgsec.svg') }}" alt="">
+                <img src="{{ asset('assets/icons/svgsection1/imagesvgsec.svg') }}" alt="">
+            </div>
         </div>
-    </div>
-    @php
-        $cities = [
-            'Lahore',
-            'Karachi',
-            'Islamabad',
-            'Quetta',
-            'Peshawar',
-            'Multan',
-            'Faisalabad',
-            'Sialkot',
-            'Rawalpindi',
-            'Hyderabad',
-            'Gujranwala',
-        ];
-        $cardCount = rand(11, 12); // Random number between 11 and 12
-    @endphp
-    <div class="container xl:mt-20 mt-20  md:px-12 mx-auto px-4">
-        <div class="swiper mySwiper ">
-            <div class="swiper-wrapper">
-                @for ($i = 0; $i < $cardCount; $i++)
-                    @php
-                        $marketRate = rand(100, 500); // Random rate between 100 and 500
-                        $randomCity = $cities[array_rand($cities)]; // Random city
-                    @endphp
+        @php
+            $cities = [
+                'Lahore',
+                'Karachi',
+                'Islamabad',
+                'Quetta',
+                'Peshawar',
+                'Multan',
+                'Faisalabad',
+                'Sialkot',
+                'Rawalpindi',
+                'Hyderabad',
+                'Gujranwala',
+            ];
+            $cardCount = rand(11, 12); // Random number between 11 and 12
+        @endphp
+        <div class="container xl:mt-20 mt-20  md:px-12 mx-auto px-4">
+            <div class="swiper mySwiper ">
+                <div class="swiper-wrapper">
+                    @for ($i = 0; $i < $cardCount; $i++)
+                        @php
+                            $marketRate = rand(100, 500); // Random rate between 100 and 500
+                            $randomCity = $cities[array_rand($cities)]; // Random city
+                        @endphp
 
-                    <div class="swiper-slide">
-                        <div class="w-full h-auto border rounded-lg border-customOrangeDark">
-                            <div class="flex gap-14 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
-                                <div>
-                                    <h1 class="font-semibold">{{ $marketRate }}</h1>
-                                    <p class="font-semibold text-customOrangeDark">{{ $randomCity }}</p>
-                                </div>
-                                <div class="flex flex-col justify-center">
-                                    <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M19 11L11 3L7 7L1 1M19 11H13M19 11V5" stroke="#EB2424"
-                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
+                        <div class="swiper-slide">
+                            <div class="w-full h-auto border rounded-lg border-customOrangeDark">
+                                <div class="flex gap-14 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
+                                    <div>
+                                        <h1 class="font-semibold">{{ $marketRate }}</h1>
+                                        <p class="font-semibold text-customOrangeDark">{{ $randomCity }}</p>
+                                    </div>
+                                    <div class="flex flex-col justify-center">
+                                        <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19 11L11 3L7 7L1 1M19 11H13M19 11V5" stroke="#EB2424"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endfor
+                    @endfor
+                </div>
             </div>
         </div>
-    </div>
-    <div>
-        {{-- <div
+        <div>
+            {{-- <div
             class="container overflow-x-auto flex  gap-6 px-4 py-4 mx-auto mt-10 md:gap-10 ">
 
             <div class="w-full h-20 border rounded-lg border-customOrangeDark">
@@ -130,86 +128,86 @@
             </div>
 
         </div> --}}
-    </div>
-    <div class="section" id="services">
-        <div class="container mx-auto p-5 mt-12">
-            <div class="text-center">
-                <h2 class="text-2xl font-semibold text-customOrangeDark">Services</h2>
-                <p class="sm:mx-[150px] mt-2 text-gray-500">Transform your poultry business with innovative
-                    solution to Boost efficiency, improve management, expand market
-                    access, enhance industry knowledge, empowering you to achieve growth and success with ease</p>
-            </div>
         </div>
+        <div class="section" id="services">
+            <div class="container mx-auto p-5 mt-12">
+                <div class="text-center">
+                    <h2 class="text-2xl font-semibold text-customOrangeDark">Services</h2>
+                    <p class="sm:mx-[150px] mt-2 text-gray-500">Transform your poultry business with innovative
+                        solution to Boost efficiency, improve management, expand market
+                        access, enhance industry knowledge, empowering you to achieve growth and success with ease</p>
+                </div>
+            </div>
 
-        <div class="flex items-center justify-center mt-16">
-            <div class="container px-5 ">
-                <div class="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
-                    <!-- Card 1 -->
-                    <div class="flex flex-col items-center">
-                        <img src="{{ asset('assets/icons/market updatesvg.svg') }}" alt="">
-                        <h3 class="text-2xl font-semibold text-customOrangeDark">Market Updates</h3>
-                        <p class="mt-2 text-sm text-gray-500">Stay informed with live updates on poultry market
-                            rates, providing real-time price trends for chickens across regions. This feature helps
-                            you make informed decisions, adapt to price changes, and maximize profits in the
-                            competitive poultry market.</p>
-                    </div>
-                    <!-- Card 2 -->
-                    <div class="flex flex-col items-center">
-                        <img src="{{ asset('assets/icons/possvg.svg') }}" alt="">
-                        <h3 class="text-2xl font-semibold text-customOrangeDark">Point of Sale</h3>
-                        <p class="mt-2 text-sm text-gray-500 ">Streamline sales and financial management with an
-                            integrated Point of Sale system. Track sales, generate invoices, and gain insights into
-                            daily transactions. A free printer and initial receipt roll will be provided by POUL3Y
-                            to help you start smoothly.</p>
-                    </div>
-                    <!-- Card 3 -->
-                    <div class="flex flex-col items-center">
-                        <img src="{{ asset('assets/icons/flokssvg.svg') }}" alt="">
+            <div class="flex items-center justify-center mt-16">
+                <div class="container px-5 ">
+                    <div class="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
+                        <!-- Card 1 -->
+                        <div class="flex flex-col items-center">
+                            <img src="{{ asset('assets/icons/market updatesvg.svg') }}" alt="">
+                            <h3 class="text-2xl font-semibold text-customOrangeDark">Market Updates</h3>
+                            <p class="mt-2 text-sm text-gray-500">Stay informed with live updates on poultry market
+                                rates, providing real-time price trends for chickens across regions. This feature helps
+                                you make informed decisions, adapt to price changes, and maximize profits in the
+                                competitive poultry market.</p>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="flex flex-col items-center">
+                            <img src="{{ asset('assets/icons/possvg.svg') }}" alt="">
+                            <h3 class="text-2xl font-semibold text-customOrangeDark">Point of Sale</h3>
+                            <p class="mt-2 text-sm text-gray-500 ">Streamline sales and financial management with an
+                                integrated Point of Sale system. Track sales, generate invoices, and gain insights into
+                                daily transactions. A free printer and initial receipt roll will be provided by POUL3Y
+                                to help you start smoothly.</p>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="flex flex-col items-center">
+                            <img src="{{ asset('assets/icons/flokssvg.svg') }}" alt="">
 
-                        <h3 class="text-2xl font-semibold text-customOrangeDark">Flock Management</h3>
-                        <p class="mt-2 text-sm text-gray-500">Manage flock health, productivity, and expenses with
-                            comprehensive tools. Improve flock health, streamline operations, and optimize
-                            profitability. Monitor feed, track growth, and ensure flocks thrive with this all-in-one
-                            solution designed for poultry farming success.</p>
+                            <h3 class="text-2xl font-semibold text-customOrangeDark">Flock Management</h3>
+                            <p class="mt-2 text-sm text-gray-500">Manage flock health, productivity, and expenses with
+                                comprehensive tools. Improve flock health, streamline operations, and optimize
+                                profitability. Monitor feed, track growth, and ensure flocks thrive with this all-in-one
+                                solution designed for poultry farming success.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-center mt-8">
+                <div class="container px-4 mx-auto">
+                    <div class="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
+                        <!-- Card 1 -->
+                        <div class="flex flex-col items-center">
+                            <img src="{{ asset('assets/icons/e-commercesvg.svg') }}" alt="">
+
+                            <h3 class="text-2xl font-semibold text-customOrangeDark">E-Commerce </h3>
+                            <p class="mt-2 text-sm text-gray-500">Expand your reach with the E-Commerce module to buy
+                                and sell poultry products online. Simplify online trading, attract new customers, and
+                                boost revenue while streamlining operations for greater efficiency and profitability.
+                            </p>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="flex flex-col items-center">
+                            <img src="{{ asset('assets/icons/market updatesvg.svg') }}" alt="">
+                            <h3 class="text-2xl font-semibold text-customOrangeDark">Knowledge Center </h3>
+                            <p class="mt-2 text-sm text-gray-500">Enhance your expertise with the Knowledge Center
+                                module, offering easy access to resources on poultry management. Get valuable guides,
+                                best practices, and insights to make informed decisions and optimize your farm's
+                                productivity.</p>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="flex flex-col items-center">
+                            <img src="{{ asset('assets/icons/possvg.svg') }}" alt="">
+                            <h3 class="text-2xl font-semibold text-customOrangeDark">Job Portal</h3>
+                            <p class="mt-2 text-sm text-gray-500">Connect with top talent using the Job Portal module.
+                                Post job openings, review applications, and find the right candidates. Streamline
+                                recruitment to build a skilled, motivated team to drive your business forward.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="flex items-center justify-center mt-8">
-            <div class="container px-4 mx-auto">
-                <div class="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
-                    <!-- Card 1 -->
-                    <div class="flex flex-col items-center">
-                        <img src="{{ asset('assets/icons/e-commercesvg.svg') }}" alt="">
-
-                        <h3 class="text-2xl font-semibold text-customOrangeDark">E-Commerce </h3>
-                        <p class="mt-2 text-sm text-gray-500">Expand your reach with the E-Commerce module to buy
-                            and sell poultry products online. Simplify online trading, attract new customers, and
-                            boost revenue while streamlining operations for greater efficiency and profitability.
-                        </p>
-                    </div>
-                    <!-- Card 2 -->
-                    <div class="flex flex-col items-center">
-                        <img src="{{ asset('assets/icons/market updatesvg.svg') }}" alt="">
-                        <h3 class="text-2xl font-semibold text-customOrangeDark">Knowledge Center </h3>
-                        <p class="mt-2 text-sm text-gray-500">Enhance your expertise with the Knowledge Center
-                            module, offering easy access to resources on poultry management. Get valuable guides,
-                            best practices, and insights to make informed decisions and optimize your farm's
-                            productivity.</p>
-                    </div>
-                    <!-- Card 3 -->
-                    <div class="flex flex-col items-center">
-                        <img src="{{ asset('assets/icons/possvg.svg') }}" alt="">
-                        <h3 class="text-2xl font-semibold text-customOrangeDark">Job Portal</h3>
-                        <p class="mt-2 text-sm text-gray-500">Connect with top talent using the Job Portal module.
-                            Post job openings, review applications, and find the right candidates. Streamline
-                            recruitment to build a skilled, motivated team to drive your business forward.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- <div class="flex items-center justify-center px-4 mt-14">
+        {{-- <div class="flex items-center justify-center px-4 mt-14">
         <div class="text-center">
             <!-- App Store Buttons -->
             <div class="flex justify-center gap-4 mb-4">
@@ -593,137 +591,66 @@
             </div>
         </div>
     </div> --}}
-    <section id="blogs" class="container py-10 mx-auto mt-20 xl:px-0">
-        <div class="px-4 mx-auto lg:px-8">
-            <!-- Header -->
-            <div class="flex items-center justify-between mb-8">
-                <h2 class="pb-1 text-3xl font-bold text-customOrangeDark">Our Latest Blog Posts</h2>
-                <a href="../knowledgeCenter"><button class="px-6 py-3 font-semibold text-white rounded-full shadow-md gradient-bg text-nowrap ">
-                    See All
-                </button>
-            </a>
-            </div>
-
-            <div class="py-4">
-                <div class="swiper mySwiper1 pb-5">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
-                                <img src="{{ asset('assets/icons/imageblogs.png') }}" alt="Blog Post Image"
-                                    class="object-cover w-full h-48 rounded-t-lg">
-                                <div class="p-4">
-                                    <div class="flex items-center mb-2 text-sm text-customOrangeDark">
-                                        <span class="px-2 py-1 bg-orange-100 rounded-full">Category</span>
-                                    </div>
-                                    <div class="flex items-center mb-4 text-xs text-gray-500">
-                                        <img src="{{ asset('assets/icons/image 633.png') }}" alt="Author Image"
-                                            class="w-6 h-6 mr-2 rounded-full">
-                                        <span class="mr-2">Author Name</span> | <span class="ml-2">25 Oct,
-                                            2024</span>
-                                    </div>
-                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">Believing neglected so so
-                                        allowance
-                                        existence departure.</h3>
-                                    <p class="text-sm text-gray-600">
-                                        Blessing welcomed ladyship she met humoured sir breeding her. Six curiosity
-                                        day
-                                        assurance bed necessary.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
-                                <img src="{{ asset('assets/icons/imageblogs.png') }}" alt="Blog Post Image"
-                                    class="object-cover w-full h-48 rounded-t-lg">
-                                <div class="p-4">
-                                    <div class="flex items-center mb-2 text-sm text-customOrangeDark">
-                                        <span class="px-2 py-1 bg-orange-100 rounded-full">Category</span>
-                                    </div>
-                                    <div class="flex items-center mb-4 text-xs text-gray-500">
-                                        <img src="{{ asset('assets/icons/image 633.png') }}" alt="Author Image"
-                                            class="w-6 h-6 mr-2 rounded-full">
-                                        <span class="mr-2">Author Name</span> | <span class="ml-2">25 Oct, 2024</span>
-                                    </div>
-                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">Believing neglected so so allowance
-                                        existence departure.</h3>
-                                    <p class="text-sm text-gray-600">
-                                        Blessing welcomed ladyship she met humoured sir breeding her. Six curiosity day
-                                        assurance bed necessary.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide"> <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
-                            <img src="{{ asset('assets/icons/imageblogs.png') }}" alt="Blog Post Image"
-                                class="object-cover w-full h-48 rounded-t-lg">
-                            <div class="p-4">
-                                <div class="flex items-center mb-2 text-sm text-customOrangeDark">
-                                    <span class="px-2 py-1 bg-orange-100 rounded-full">Category</span>
-                                </div>
-                                <div class="flex items-center mb-4 text-xs text-gray-500">
-                                    <img src="{{ asset('assets/icons/image 633.png') }}" alt="Author Image"
-                                        class="w-6 h-6 mr-2 rounded-full">
-                                    <span class="mr-2">Author Name</span> | <span class="ml-2">25 Oct, 2024</span>
-                                </div>
-                                <h3 class="mb-2 text-lg font-semibold text-gray-800">Believing neglected so so allowance
-                                    existence departure.</h3>
-                                <p class="text-sm text-gray-600">
-                                    Blessing welcomed ladyship she met humoured sir breeding her. Six curiosity day
-                                    assurance bed necessary.
-                                </p>
-                            </div>
-                        </div></div>
-                        <div class="swiper-slide">
-                            <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
-                                <img src="{{ asset('assets/icons/imageblogs.png') }}" alt="Blog Post Image"
-                                    class="object-cover w-full h-48 rounded-t-lg">
-                                <div class="p-4">
-                                    <div class="flex items-center mb-2 text-sm text-customOrangeDark">
-                                        <span class="px-2 py-1 bg-orange-100 rounded-full">Category</span>
-                                    </div>
-                                    <div class="flex items-center mb-4 text-xs text-gray-500">
-                                        <img src="{{ asset('assets/icons/image 633.png') }}" alt="Author Image"
-                                            class="w-6 h-6 mr-2 rounded-full">
-                                        <span class="mr-2">Author Name</span> | <span class="ml-2">25 Oct, 2024</span>
-                                    </div>
-                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">Believing neglected so so allowance
-                                        existence departure.</h3>
-                                    <p class="text-sm text-gray-600">
-                                        Blessing welcomed ladyship she met humoured sir breeding her. Six curiosity day
-                                        assurance bed necessary.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
-                                <img src="{{ asset('assets/icons/imageblogs.png') }}" alt="Blog Post Image"
-                                    class="object-cover w-full h-48 rounded-t-lg">
-                                <div class="p-4">
-                                    <div class="flex items-center mb-2 text-sm text-customOrangeDark">
-                                        <span class="px-2 py-1 bg-orange-100 rounded-full">Category</span>
-                                    </div>
-                                    <div class="flex items-center mb-4 text-xs text-gray-500">
-                                        <img src="{{ asset('assets/icons/image 633.png') }}" alt="Author Image"
-                                            class="w-6 h-6 mr-2 rounded-full">
-                                        <span class="mr-2">Author Name</span> | <span class="ml-2">25 Oct, 2024</span>
-                                    </div>
-                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">Believing neglected so so allowance
-                                        existence departure.</h3>
-                                    <p class="text-sm text-gray-600">
-                                        Blessing welcomed ladyship she met humoured sir breeding her. Six curiosity day
-                                        assurance bed necessary.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <section id="blogs" class="container py-10 mx-auto mt-20 xl:px-0">
+            <div class="px-4 mx-auto lg:px-8">
+                <!-- Header -->
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="pb-1 text-3xl font-bold text-customOrangeDark">Our Latest Blog Posts</h2>
+                    <a href="../knowledgeCenter"><button
+                            class="px-6 py-3 font-semibold text-white rounded-full shadow-md gradient-bg text-nowrap ">
+                            See All
+                        </button>
+                    </a>
                 </div>
 
+                <div class="py-4">
+                    <div class="swiper mySwiper1 pb-5">
+                        <div class="swiper-wrapper">
+                            @foreach ($medias as $media)
+                                <div class="swiper-slide">
+                                    <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
+
+
+                                        @php
+                                            $fileExtension = pathinfo($media->media_image, PATHINFO_EXTENSION);
+                                            $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
+                                        @endphp
+
+                                        @if (in_array(strtolower($fileExtension), $imageExtensions))
+                                            <img src="{{ $media->media_image ?? asset('assets/default-logo-req.png') }}"
+                                                alt="Blog Post Image" class="object-cover w-full h-48 rounded-t-lg">
+                                        @else
+                                            <video loading="lazy"
+                                                poster="{{ $media->media_image ? '' : asset('assets/default-logo-req.png') }}"
+                                                class="h-48 w-full rounded-t-lg bg-black"
+                                                {{ $media->media_image ? 'controls' : '' }}
+                                                src="{{ $media->media_image ?? asset('assets/default-logo-req.png') }}">
+                                            </video>
+                                        @endif
+
+                                        <div class="p-4">
+                                            <div class="flex items-center mb-2 text-sm text-customOrangeDark">
+                                                <span
+                                                    class="px-2 py-1 bg-orange-100 rounded-full">{{ $media->category_name }}</span>
+                                            </div>
+                                            <div class="flex items-center mb-4 text-xs text-gray-500">
+                                                <span class="mr-2">{{ $media->media_author }}</span> | <span
+                                                    class="ml-2">{{ $media->date }}</span>
+                                            </div>
+                                            <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ $media->media_title }}
+                                            </h3>
+                                            <p class="text-sm text-gray-600">
+                                                {{ \Illuminate\Support\Str::limit($media->media_description, 60, '...') }}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </div>
-    </section>
-
-
-@endsection
+        </section>
+    @endsection
