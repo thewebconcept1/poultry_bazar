@@ -33,7 +33,6 @@ class UserController extends Controller
             return response()->json(['success' => false, 'message' => 'Module ID or View is missing'], 400);
         }
         $users = User::where('module_id', 'like', '%' . $moduleId . '%')->get();
-
         return view($view, ['users' => $users]);
     }
 
@@ -193,7 +192,7 @@ class UserController extends Controller
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
-    }   
+    }
     // update user details
 
     // update user status
@@ -384,14 +383,18 @@ class UserController extends Controller
     }
 
     // get admin role user
-    public function getAdmins(){
+    public function getAdmins()
+    {
         $users = User::where('user_role', 'superadmin')->get();
-        return view('admins' , compact('users'));
+        return view('admins', compact('users'));
     }
 
-     // get pos user 
+    // get pos user 
 
-         public function posUsers(){
-        return view('pos.users');
-     }
+    public function posUsers()
+    {
+
+        $users = User::where('module_id', 'like', '%' . 3 . '%')->get();
+        return view("pos.users", ['users' => $users]);
+    }
 }

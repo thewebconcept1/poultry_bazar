@@ -36,7 +36,6 @@ class CompanyController extends Controller
                 'company_logo' => $imageFullPath,
              ]);
             return response()->json(['success' => true, 'message' => 'Company Add Successfully'], 200);
-            ]);
 
             $user->company_id = $company->company_id;
             $user->save();

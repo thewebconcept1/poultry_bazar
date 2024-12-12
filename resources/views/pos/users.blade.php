@@ -11,12 +11,21 @@
         
         </div>
         @php
-            $headers = ['Sr.' , 'Image', 'Name', 'Email', 'Phone No', 'Status' , 'Type'];
+            $headers = ['Sr.' , 'Image', 'Name', 'Email', 'Phone No' , 'Status'];
         @endphp
 
         <x-table :headers="$headers">
             <x-slot name="tablebody">
-            
+            @foreach ($users as $user )
+                <tr>
+                    <td>{{$loop->iteration}}</td>
+                    <td> <img class="h-20 w-20 object-cover rounded-full" src="{{$user->user_image ?? asset('assets/default-logo-1.png')}}" alt="user"></td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>{{$user->user_phone}}</td>
+                    <td><span class="text-green-700 font-semibold">Active</span> </td>
+                </tr>
+            @endforeach
 
             </x-slot>
         </x-table>
