@@ -28,14 +28,14 @@ class CompanyController extends Controller
             } else {
                 $imageFullPath = null;
             }
-           $company =  Company::create([
+            Company::create([
                 'user_id' => $user->id,
                 'company_name' => $validatedData['company_name'],
                 'company_address' => $validatedData['company_address'],
                 'company_phone' => $validatedData['company_phone'],
                 'company_logo' => $imageFullPath,
-            ]);
-            return response()->json(['success' => true, 'message' => 'Company Add Successfully' , 'company' => $company], 200);
+             ]);
+            return response()->json(['success' => true, 'message' => 'Company Add Successfully'], 200);
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
@@ -63,10 +63,10 @@ class CompanyController extends Controller
             return $this->errorResponse($e);
         }
     }
-    // get shops 
+    // get shops
     public function shops()
     {
-        $companies = Company::whereNot('company_status', 0)->get(); 
+        $companies = Company::whereNot('company_status', 0)->get();
         foreach ($companies as  $company) {
             $company->company_owner = User::where('id', $company->user_id)->value('name');
 

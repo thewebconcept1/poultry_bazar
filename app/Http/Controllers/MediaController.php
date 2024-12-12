@@ -270,7 +270,7 @@ class MediaController extends Controller
 
         // return response()->json($data);
         
-        $mediaTypes = ['blogs', 'diseases', 'consultancy'];
+        $mediaTypes = ['blogs', 'diseases'];
         $allMedia = collect(); // Initialize an empty collection
         
         foreach ($mediaTypes as $type) {
