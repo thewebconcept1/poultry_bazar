@@ -70,6 +70,9 @@ Route::middleware(['custom_auth'])->group(function () {
         Route::post('/addFAQs', [FAQController::class, 'addFAQs']);
         Route::post('/deleteFAQ', [FAQController::class, 'deleteFAQ']);
     });
+
+    Route::get('/getModuleUsers/{module_id}/{view}', [UserController::class, 'getModuleUsers']);
+
     // pos
     Route::get('/pos/users', [UserController::class, 'posUsers']);
     Route::get('/pos/shops', [CompanyController::class, 'shops']);
