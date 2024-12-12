@@ -35,6 +35,10 @@ class CompanyController extends Controller
                 'company_phone' => $validatedData['company_phone'],
                 'company_logo' => $imageFullPath,
             ]);
+
+            $user->company_id = $company->company_id;
+            $user->save();
+
             return response()->json(['success' => true, 'message' => 'Company Add Successfully' , 'company' => $company], 200);
         } catch (\Exception $e) {
             return $this->errorResponse($e);

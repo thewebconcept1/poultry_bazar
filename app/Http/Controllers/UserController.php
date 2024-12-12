@@ -27,6 +27,16 @@ class UserController extends Controller
     // }
     // // user Defined
 
+    public function getModuleUsers($moduleId = null, $view = null)
+    {
+        if ($moduleId == null && $view == null) {
+            return response()->json(['success' => false, 'message' => 'Module ID or View is missing'], 400);
+        }
+        $users = User::where('module_id', 'like', '%' . $moduleId . '%')->get();
+
+        return view($view, ['users' => $users]);
+    }
+
     public function resetPasswordView()
     {
         return view('resetpassword');
