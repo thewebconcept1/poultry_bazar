@@ -59,9 +59,24 @@ class User extends Authenticatable
         ];
     }
 
+    // public function getModuleIdAttribute()
+    // {
+    //     return Module::whereIn('module_id', explode(',', $this->attributes['module_id']))->get();
+    // }
+    
+    public function getModulesAttribute()
+    {
+        return Module::whereIn('module_id', explode(',', $this->attributes['module_id']))->get();
+    }
+
+    public function getCompanyAttribute()
+    {
+        return Company::find($this->attributes['company_id']);
+    }
+
+
     public function city()
     {
         return $this->belongsTo(City::class, 'city_id');
     }
-
 }

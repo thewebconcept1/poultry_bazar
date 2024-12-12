@@ -96,7 +96,7 @@ class ApiController extends Controller
             // Generate a personal access token for the user
             $token = $user->createToken('api-token')->plainTextToken;
 
-            return response()->json(['success' => true, 'message' => 'Login successful!', 'token' => $token, 'user_details' => $user], 200);
+            return response()->json(['success' => true, 'message' => 'Login successful!', 'token' => $token, 'company' => $user->company, 'modules' => $user->modules, 'user_details' => $user], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
         }
