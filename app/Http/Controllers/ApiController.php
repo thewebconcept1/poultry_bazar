@@ -120,6 +120,7 @@ class ApiController extends Controller
                 'address' => $validatedData['address'],
                 'password' => $validatedData['password'],
                 'user_role' => 'appuser',
+                'module_id' => '2',
                 'user_status' => 1,
             ]);
 

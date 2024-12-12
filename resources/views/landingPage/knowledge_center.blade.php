@@ -63,14 +63,14 @@
                                         <span class="mr-2">{{ $blog->media_author }}</span> | <span
                                             class="ml-2">{{ $blog->date }}</span>
                                     </div>
-                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ $blog->media_title }}</h3>
+                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">{{  \Illuminate\Support\Str::limit($blog->media_title, 25, '...')}}</h3>
                                     <p class="text-sm text-gray-600">{{   Str::limit($blog->media_description, 80, '...') }}</p>
                                 </div>
                             </div>
                         @endforeach
                     </div>
                 </div>
-                <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="disease" role="tabpanel"
+                <div class="hidden p-4 " id="disease" role="tabpanel"
                     aria-labelledby="disease-tab">
                     <div class="grid  xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-6 gap-y-10">
 
@@ -92,14 +92,14 @@
                                         <span class="mr-2">{{ $diseases->media_author }}</span> | <span
                                             class="ml-2">{{ $diseases->date }}</span>
                                     </div>
-                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ $diseases->media_title }}</h3>
+                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ \Illuminate\Support\Str::limit($diseases->media_title, 25, '...') }}</h3>
                                     <p class="text-sm text-gray-600">{{   Str::limit($diseases->media_description, 80, '...') }}</p>
                                 </div>
                             </div>
                         @endforeach
                     </div>
                 </div>
-                <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="Consultancy" role="tabpanel"
+                <div class="hidden p-4 " id="Consultancy" role="tabpanel"
                     aria-labelledby="Consultancy-tab">
                     <div class="grid  xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-6 gap-y-10">
 
@@ -117,7 +117,7 @@
 
                                 <video loading="lazy"
                                     poster="{{ $consultancy->media_image ? '' : asset('assets/default-logo-req.png') }}"
-                                    class="h-60 w-full rounded-md" height="140px" width="170px"
+                                    class="h-60 bg-black w-full rounded-md" height="140px" width="170px"
                                     {{ $consultancy->media_image ? 'controls' : '' }}
                                     src="{{ $consultancy->media_image ?? asset('assets/default-logo-req.png') }}">
                                 </video>
@@ -131,7 +131,7 @@
                                         <span class="mr-2">{{ $consultancy->media_author }}</span> | <span
                                             class="ml-2">{{ $consultancy->date }}</span>
                                     </div>
-                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ $consultancy->media_title }}</h3>
+                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">{{  \Illuminate\Support\Str::limit($consultancy->media_title, 25, '...') }}</h3>
                                     <p class="text-sm text-gray-600">{{  Str::limit($consultancy->media_description, 80, '...') }}</p>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@
                                                 <span class="mr-2">{{ $media->media_author }}</span> | <span
                                                     class="ml-2">{{ $media->date }}</span>
                                             </div>
-                                            <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ $media->media_title }}
+                                            <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ \Illuminate\Support\Str::limit($media->media_title, 25, '...') }}
                                             </h3>
                                             <p class="text-sm text-gray-600">
                                                 {{ \Illuminate\Support\Str::limit($media->media_description, 60, '...') }}

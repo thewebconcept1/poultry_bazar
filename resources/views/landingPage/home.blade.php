@@ -173,7 +173,7 @@
                         </div>
                         <!-- Card 3 -->
                         <div class="flex flex-col items-center">
-                            <img src="{{ asset('assets/icons/flokssvg.svg') }}" alt="">
+                            <img src="{{ asset('assets/icons/flokssvg.svg') }}" alt="Flock Management">
 
                             <h3 class="text-2xl font-semibold text-customOrangeDark">Flock Management</h3>
                             <p class="mt-2 text-sm text-gray-500">Manage flock health, productivity, and expenses with
@@ -189,7 +189,7 @@
                     <div class="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
                         <!-- Card 1 -->
                         <div class="flex flex-col items-center">
-                            <img src="{{ asset('assets/icons/e-commercesvg.svg') }}" alt="">
+                            <img src="{{ asset('assets/icons/e-commercesvg.svg') }}" alt="E-Commerce">
 
                             <h3 class="text-2xl font-semibold text-customOrangeDark">E-Commerce </h3>
                             <p class="mt-2 text-sm text-gray-500">Expand your reach with the E-Commerce module to buy
@@ -199,7 +199,7 @@
                         </div>
                         <!-- Card 2 -->
                         <div class="flex flex-col items-center">
-                            <img src="{{ asset('assets/icons/market updatesvg.svg') }}" alt="">
+                            <img src="{{ asset('assets/icons/knowledge-Center.png') }}" alt="Knowledge Center">
                             <h3 class="text-2xl font-semibold text-customOrangeDark">Knowledge Center </h3>
                             <p class="mt-2 text-sm text-gray-500">Enhance your expertise with the Knowledge Center
                                 module, offering easy access to resources on poultry management. Get valuable guides,
@@ -208,7 +208,7 @@
                         </div>
                         <!-- Card 3 -->
                         <div class="flex flex-col items-center">
-                            <img src="{{ asset('assets/icons/possvg.svg') }}" alt="">
+                            <img src="{{ asset('assets/icons/job-portal.png') }}" alt="Job portal">
                             <h3 class="text-2xl font-semibold text-customOrangeDark">Job Portal</h3>
                             <p class="mt-2 text-sm text-gray-500">Connect with top talent using the Job Portal module.
                                 Post job openings, review applications, and find the right candidates. Streamline
@@ -619,6 +619,7 @@
                         <div class="swiper-wrapper">
                             @foreach ($medias as $media)
                                 <div class="swiper-slide">
+                                   <a href="../knowledgeCenter">
                                     <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
 
 
@@ -635,13 +636,14 @@
                                                 <span class="mr-2">{{ $media->media_author }}</span> | <span
                                                     class="ml-2">{{ $media->date }}</span>
                                             </div>
-                                            <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ $media->media_title }}
+                                            <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ \Illuminate\Support\Str::limit($media->media_title, 25, '...') }}
                                             </h3>
                                             <p class="text-sm text-gray-600">
                                                 {{ \Illuminate\Support\Str::limit($media->media_description, 60, '...') }}
                                             </p>
                                         </div>
                                     </div>
+                                   </a>
                                 </div>
                             @endforeach
 
