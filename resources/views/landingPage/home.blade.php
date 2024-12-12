@@ -84,12 +84,12 @@
                 'Hyderabad',
                 'Gujranwala',
             ];
-            $cardCount = rand(11, 12); // Random number between 11 and 12
+
         @endphp
         <div class="container xl:mt-20 mt-20  md:px-12 mx-auto px-4">
             <div class="swiper mySwiper ">
                 <div class="swiper-wrapper">
-                    @for ($i = 0; $i < $cardCount; $i++)
+                    @for ($i = 0; $i < 4; $i++)
                         @php
                             $marketRate = rand(100, 500); // Random rate between 100 and 500
                             $randomCity = $cities[array_rand($cities)]; // Random city
@@ -113,6 +113,17 @@
                             </div>
                         </div>
                     @endfor
+                    <div class="swiper-slide">
+
+                        <div class="w-full h-20 border rounded-lg border-customOrangeDark">
+                            <div class="m-4 ms-6">
+                                <h1 class="font-bold">20+More</h1>
+                                <p class="font-bold lg:text-[15px] md:text-[12px] text-customOrangeDark whitespace-nowrap">
+                                    Cities in App</p>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -611,22 +622,9 @@
                                     <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
 
 
-                                        @php
-                                            $fileExtension = pathinfo($media->media_image, PATHINFO_EXTENSION);
-                                            $imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
-                                        @endphp
 
-                                        @if (in_array(strtolower($fileExtension), $imageExtensions))
-                                            <img src="{{ $media->media_image ?? asset('assets/default-logo-req.png') }}"
-                                                alt="Blog Post Image" class="object-cover w-full h-48 rounded-t-lg">
-                                        @else
-                                            <video loading="lazy"
-                                                poster="{{ $media->media_image ? '' : asset('assets/default-logo-req.png') }}"
-                                                class="h-48 w-full rounded-t-lg bg-black"
-                                                {{ $media->media_image ? 'controls' : '' }}
-                                                src="{{ $media->media_image ?? asset('assets/default-logo-req.png') }}">
-                                            </video>
-                                        @endif
+                                        <img src="{{ $media->media_image ?? asset('assets/default-logo-req.png') }}"
+                                            alt="Blog Post Image" class="object-cover w-full h-48 rounded-t-lg">
 
                                         <div class="p-4">
                                             <div class="flex items-center mb-2 text-sm text-customOrangeDark">
@@ -640,7 +638,7 @@
                                             <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ $media->media_title }}
                                             </h3>
                                             <p class="text-sm text-gray-600">
-                                                {{ \Illuminate\Support\Str::limit($media->media_description, 60, '...') }}}
+                                                {{ \Illuminate\Support\Str::limit($media->media_description, 60, '...') }}
                                             </p>
                                         </div>
                                     </div>

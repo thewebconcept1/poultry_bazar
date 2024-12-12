@@ -4,8 +4,8 @@
 @section('content')
     <div class="mt-10">
         <div class="bg-gradient-to-b from-[#fcb2764c] to-[#fe89296f]  min-h-[360px] flex justify-center items-center">
-            <div class="xl:w-[70%] p-4   ">
-                <h2 class="text-customOrangeDark text-6xl font-semibold text-center">Knowledge Center</h2>
+            <div class="xl:w-[70%] p-6  ">
+                <h2 class="text-customOrangeDark md:text-6xl text-4xl font-semibold text-center">Knowledge Center</h2>
                 <p class="text-gray-500 mt-8 text-center">Stay informed with live updates on the latest poultry market rates.
                     This feature provides users with real-time price trends for chickens across different regions. Gain
                     insights to make informed decisions on buying and selling, helping you maximize your profits in a
@@ -42,7 +42,7 @@
                 </ul>
             </div>
             <div id="default-tab-content" class="mt-10 px-4">
-                <div class="hidden " id="blog" role="tabpanel" aria-labelledby="blog-tab">
+                <div class="hidden p-4" id="blog" role="tabpanel" aria-labelledby="blog-tab">
                     <div class="grid  xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-6 gap-y-10">
                         {{-- @for ($i = 1; $i < 8; $i++) --}}
                         @foreach ($data['blogs'] as $blog)
@@ -142,6 +142,52 @@
             </div>
 
         </div>
+
+        <section id="blogs" class="container py-10 mx-auto mt-20 xl:px-0">
+            <div class="px-4 mx-auto lg:px-8">
+                <!-- Header -->
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="pb-1 text-3xl font-bold text-customOrangeDark">Our Latest Blog Posts</h2>
+                    
+                </div>
+
+                <div class="py-4">
+                    <div class="swiper mySwiper1 pb-5">
+                        <div class="swiper-wrapper">
+                            @foreach ($data['blogs'] as $media)
+                                <div class="swiper-slide">
+                                    <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
+
+
+
+                                        <img src="{{ $media->media_image ?? asset('assets/default-logo-req.png') }}"
+                                            alt="Blog Post Image" class="object-cover w-full h-48 rounded-t-lg">
+
+                                        <div class="p-4">
+                                            <div class="flex items-center mb-2 text-sm text-customOrangeDark">
+                                                <span
+                                                    class="px-2 py-1 bg-orange-100 rounded-full">{{ $media->category_name }}</span>
+                                            </div>
+                                            <div class="flex items-center mb-4 text-xs text-gray-500">
+                                                <span class="mr-2">{{ $media->media_author }}</span> | <span
+                                                    class="ml-2">{{ $media->date }}</span>
+                                            </div>
+                                            <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ $media->media_title }}
+                                            </h3>
+                                            <p class="text-sm text-gray-600">
+                                                {{ \Illuminate\Support\Str::limit($media->media_description, 60, '...') }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
     </div>
     <button data-modal-target="details-Modal" data-modal-toggle="details-Modal"></button>
 
