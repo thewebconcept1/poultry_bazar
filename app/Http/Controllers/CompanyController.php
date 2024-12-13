@@ -64,6 +64,7 @@ class CompanyController extends Controller
             $company->company_address = $request['company_address'] ?? $company->company_address;
             $company->company_phone = $request['company_phone'] ?? $company->company_phone;
             $company->company_logo = $imageFullPath ?? $company->company_logo;
+            return response()->json(['success' => true, 'message' => 'Company update successfully' , 'company' => $company], 200);
         } catch (\Exception $e) {
             return $this->errorResponse($e);
         }
