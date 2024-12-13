@@ -77,7 +77,7 @@ class ApiController extends Controller
     {
         $user = Auth::user();
 
-        return response()->json(['success' => true, 'data' => $user], 200);
+        return response()->json(['success' => true, 'data' => $user , 'company' => $user->company, 'modules' => $user->modules], 200);
 
     }
     // get User
