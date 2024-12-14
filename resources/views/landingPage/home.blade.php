@@ -70,7 +70,7 @@
                 <img src="{{ asset('assets/icons/svgsection1/imagesvgsec.svg') }}" alt="">
             </div>
         </div>
-        @php
+        {{-- @php
             $cities = [
                 'Lahore',
                 'Karachi',
@@ -85,39 +85,59 @@
                 'Gujranwala',
             ];
 
-        @endphp
-        <div class="container xl:mt-20 mt-20  md:px-12 mx-auto px-4">
-            <div class="swiper mySwiper ">
-                <div class="swiper-wrapper">
-                    @for ($i = 0; $i < 4; $i++)
                         @php
                             $marketRate = rand(100, 500); // Random rate between 100 and 500
                             $randomCity = $cities[array_rand($cities)]; // Random city
                         @endphp
-
+        @endphp --}}
+        <div class="container xl:mt-20 mt-20  md:px-12 mx-auto px-4">
+            <div class="swiper mySwiper ">
+                <div class="swiper-wrapper">
+                    @foreach ($marketRates as $market)
                         <div class="swiper-slide">
                             <div class="w-full h-auto border rounded-lg border-customOrangeDark">
-                                <div class="flex gap-14 sm:gap-40 m-4 md:gap-8 xl:gap-[105px]">
+                                <div class="flex justify-between   m-4 ">
                                     <div>
-                                        <h1 class="font-semibold">{{ $marketRate }}</h1>
-                                        <p class="font-semibold text-customOrangeDark">{{ $randomCity }}</p>
+                                        <h1 class="font-semibold"> {{ $market->market_rate }} <span
+                                                class="text-xs text-gray-500">Rs</span></h1>
+                                        <p class="font-semibold text-customOrangeDark">{{ $market->market_name }}</p>
                                     </div>
-                                    <div class="flex flex-col justify-center">
-                                        <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
+                                    <div class="flex flex-col justify-center ">
+                                        {{-- <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19 11L11 3L7 7L1 1M19 11H13M19 11V5" stroke="#EB2424"
                                                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
+                                        </svg> --}}
+                                        {{-- <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19 1L11 9L7 5L1 11M19 1H13M19 1V7" stroke="#06C230" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg> --}}
+
+                                        @if (rand(0, 1) === 0)
+                                            <!-- First SVG -->
+                                            <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M19 11L11 3L7 7L1 1M19 11H13M19 11V5" stroke="#EB2424"
+                                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        @else
+                                            <!-- Second SVG -->
+                                            <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M19 1L11 9L7 5L1 11M19 1H13M19 1V7" stroke="#06C230"
+                                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        @endif
+
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    @endfor
+                    @endforeach
                     <div class="swiper-slide">
 
                         <div class="w-full h-20 border rounded-lg border-customOrangeDark">
                             <div class="m-4 ms-6">
-                                <h1 class="font-bold">20+More</h1>
+                                <h1 class="font-bold">{{ $marketCount }}+ <span class="">More</span></h1>
                                 <p class="font-bold lg:text-[15px] md:text-[12px] text-customOrangeDark whitespace-nowrap">
                                     Cities in App</p>
                             </div>
@@ -619,31 +639,32 @@
                         <div class="swiper-wrapper">
                             @foreach ($medias as $media)
                                 <div class="swiper-slide">
-                                   <a href="../knowledgeCenter">
-                                    <div class="transition bg-white rounded-lg  h-[430px] shadow hover:shadow-lg">
+                                    <a href="../knowledgeCenter">
+                                        <div class="transition bg-white rounded-lg  h-[430px] shadow hover:shadow-lg">
 
 
 
-                                        <img src="{{ $media->media_image ?? asset('assets/default-logo-req.png') }}"
-                                            alt="Blog Post Image" class="object-cover w-full h-48 rounded-t-lg">
+                                            <img src="{{ $media->media_image ?? asset('assets/default-logo-req.png') }}"
+                                                alt="Blog Post Image" class="object-cover w-full h-48 rounded-t-lg">
 
-                                        <div class="p-4">
-                                            <div class="flex items-center mb-2 text-sm text-customOrangeDark">
-                                                <span
-                                                    class="px-2 py-1 bg-orange-100 rounded-full">{{ $media->category_name }}</span>
+                                            <div class="p-4">
+                                                <div class="flex items-center mb-2 text-sm text-customOrangeDark">
+                                                    <span
+                                                        class="px-2 py-1 bg-orange-100 rounded-full">{{ $media->category_name }}</span>
+                                                </div>
+                                                <div class="flex items-center mb-4 text-xs text-gray-500">
+                                                    <span class="mr-2">{{ $media->media_author }}</span> | <span
+                                                        class="ml-2">{{ $media->date }}</span>
+                                                </div>
+                                                <h3 class="mb-2 text-lg font-semibold text-gray-800">
+                                                    {{ \Illuminate\Support\Str::limit($media->media_title, 45, '...') }}
+                                                </h3>
+                                                <p class="text-sm text-gray-600">
+                                                    {{ \Illuminate\Support\Str::limit($media->media_description, 70, '...') }}
+                                                </p>
                                             </div>
-                                            <div class="flex items-center mb-4 text-xs text-gray-500">
-                                                <span class="mr-2">{{ $media->media_author }}</span> | <span
-                                                    class="ml-2">{{ $media->date }}</span>
-                                            </div>
-                                            <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ \Illuminate\Support\Str::limit($media->media_title, 45, '...') }}
-                                            </h3>
-                                            <p class="text-sm text-gray-600">
-                                                {{ \Illuminate\Support\Str::limit($media->media_description, 70, '...') }}
-                                            </p>
                                         </div>
-                                    </div>
-                                   </a>
+                                    </a>
                                 </div>
                             @endforeach
 

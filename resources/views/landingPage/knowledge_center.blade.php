@@ -1,6 +1,8 @@
 @extends('landingPage.layout')
-
-
+    @section('title')
+    Knowledge Center
+    @endsection
+    
 @section('content')
     <div class="mt-10">
         <div class="bg-gradient-to-b from-[#fcb2764c] to-[#fe89296f]  min-h-[360px] flex justify-center items-center">
@@ -11,30 +13,30 @@
                     insights to make informed decisions on buying and selling, helping you maximize your profits in a
                     competitive market.</p>
             </div>
-        </div>
+        </div>  
 
         <div class="m-10   container mx-auto">
 
 
             <div class="mb-4  ">
-                <ul class=" -mb-px text-sm font-medium text-center grid grid-cols-3 xl:gap-32 lg:gap-10" id="default-tab"
-                    data-tabs-toggle="#default-tab-content" role="tablist"
+                <ul class="  text-sm font-medium text-center grid grid-cols-3 xl:gap-32 lg:gap-10" id="default-tab"
+                    data-tabs-toggle="#default-tab-content" role="tablist"  
                     data-tabs-active-classes="text-white bg-[#FE8A29]">
                     <li class="me-2" role="presentation">
                         <button
-                            class="inline-block tabBtn p-4 border-2 border-gray-200 rounded-full w-full py-6 text-2xl text-gray-600 "
+                            class="inline-block tabBtn p-4 border-2 border-gray-200 rounded-full w-full lg:py-6 md:py-4 py-2 sm:text-lg text-sm md:text-2xl text-gray-600 "
                             id="blog-tab" data-tabs-target="#blog" type="button" role="tab" aria-controls="blog"
                             aria-selected="false">Blogs</button>
                     </li>
                     <li class="me-2" role="presentation">
                         <button
-                            class="inline-block tabBtn p-4 border-2 border-gray-200 rounded-full w-full py-6 text-2xl text-gray-600    hover:border-gray-300 "
+                            class="inline-block tabBtn p-4 border-2 border-gray-200 rounded-full w-full lg:py-6 md:py-4 py-2 sm:text-lg text-sm md:text-2xl text-gray-600    hover:border-gray-300 "
                             id="disease-tab" data-tabs-target="#disease" type="button" role="tab"
                             aria-controls="disease" aria-selected="false">Disease</button>
                     </li>
                     <li class="me-2" role="presentation">
                         <button
-                            class="inline-block tabBtn p-4 border-2 border-gray-200 rounded-full w-full py-6 text-2xl text-gray-600   hover:border-gray-300 "
+                            class="inline-block tabBtn p-4 border-2 border-gray-200 rounded-full w-full lg:py-6 md:py-4 py-2 sm:text-lg text-sm md:text-2xl text-gray-600   hover:border-gray-300 "
                             id="Consultancy-tab" data-tabs-target="#Consultancy" type="button" role="tab"
                             aria-controls="Consultancy" aria-selected="false">Consultancy</button>
                     </li>
@@ -47,7 +49,7 @@
                         {{-- @for ($i = 1; $i < 8; $i++) --}}
                         @foreach ($data['blogs'] as $blog)
                             <div data-modal-target="details-Modal" data-modal-toggle="details-Modal"
-                                class="transition detailBtn h-[430px] bg-white rounded-lg shadow hover:shadow-lg"
+                                class="transition detailBtn h-[430px] bg-white rounded-lg shadow hover:shadow-lg cursor-pointer"
                                 mediaTitle="{{ $blog->media_title }}" mediaAuthor="{{ $blog->media_author }}"
                                 mediaCategory="{{ $blog->category_name }}" mediaDate="{{ $blog->date }}"
                                 mediaDescription="{{ $blog->media_description }}" mediaId="{{ $blog->media_id }}"
@@ -76,8 +78,8 @@
 
                         @foreach ($data['diseases'] as $diseases)
                             <div data-modal-target="details-Modal" data-modal-toggle="details-Modal"
-                                class="transition detailBtn h-[430px] bg-white rounded-lg shadow hover:shadow-lg"
-                                mediaTitle="{{ $diseases->media_title }}" mediaAuthor="{{ $diseases->media_author }}"
+                                class="transition detailBtn h-[430px] bg-white rounded-lg shadow hover:shadow-lg cursor-pointer"
+                                mediaTitle="{{ $blog->media_title }}" mediaAuthor="{{ $diseases->media_author }}"
                                 mediaCategory="{{ $diseases->category_name }}" mediaDate="{{ $diseases->date }}"
                                 mediaDescription="{{ $diseases->media_description }}" mediaId="{{ $diseases->media_id }}"
                                 mediaImage="{{ $diseases->media_image ?? asset('assets/default-logo-req.png') }}">
@@ -105,7 +107,7 @@
 
                         @foreach ($data['consultancy'] as $consultancy)
                             <div data-modal-target="details-Modal" data-modal-toggle="details-Modal"
-                                class="transition detailBtn h-[430px] bg-white rounded-lg shadow hover:shadow-lg"
+                                class="transition detailBtn h-[430px] bg-white rounded-lg shadow hover:shadow-lg cursor-pointer"
                                 mediaTitle="{{ $consultancy->media_title }}"
                                 mediaAuthor="{{ $consultancy->media_author }}"
                                 mediaCategory="{{ $consultancy->category_name }}" mediaDate="{{ $consultancy->date }}"
@@ -143,7 +145,7 @@
 
         </div>
 
-        <section id="blogs" class="container py-10 mx-auto mt-20 xl:px-0">
+        {{-- <section id="blogs" class="container py-10 mx-auto mt-20 xl:px-0">
             <div class="px-4 mx-auto lg:px-8">
                 <!-- Header -->
                 <div class="flex items-center justify-between mb-8">
@@ -156,7 +158,7 @@
                         <div class="swiper-wrapper">
                             @foreach ($data['blogs'] as $media)
                                 <div class="swiper-slide">
-                                    <div class="transition h-[430px] bg-white rounded-lg shadow hover:shadow-lg">
+                                    <div class="transition bg-white rounded-lg shadow hover:shadow-lg cursor-pointer">
 
 
 
@@ -187,7 +189,7 @@
 
                 </div>
             </div>
-        </section>
+        </section> --}}
     </div>
     <button data-modal-target="details-Modal" data-modal-toggle="details-Modal"></button>
 

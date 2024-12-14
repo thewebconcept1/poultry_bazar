@@ -89,3 +89,9 @@ Route::match(['get', 'post'], '/logout', [UserController::class, 'logout']);
 Route::get('/',  [MediaController::class, 'homeData']);
 Route::get('/knowledgeCenter', [MediaController::class, 'knowledgeCenter']);
 Route::get('pendingMedia/{type?}', [MediaController::class, 'getMedia']);
+
+
+Route::get('privacy_policy', function(){
+
+    return view('landingPage.privacy_policy');
+});

@@ -69,7 +69,7 @@
         class="container sticky z-40 md:w-full w-[95%] mx-auto border-gray-200 rounded-full shadow-xl gradient-bg  top-1 dark:bg-gray-900">
         <div class="flex flex-wrap items-center justify-between w-full px-12 py-3 mx-auto xl:max-w-">
             <!-- Logo -->
-            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <a href="../" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="{{ asset('assets/icons/logowhite.png') }}" alt="">
             </a>
 
@@ -87,20 +87,20 @@
             <ul class="hidden md:flex gap-8 items-center">
 
                 <li class="relative ">
-                    <a href="{{ request()->is('knowledgeCenter') ? '../' : '#' }}"
-                        class=" {{ request()->is('knowledgeCenter') ? '' : 'nav-link' }}  relative text-white ">Home</a>
+                    <a href="{{ request()->is('knowledgeCenter') || request()->is('privacy_policy') ? '../' : '#' }}"
+                        class=" {{ request()->is('knowledgeCenter') || request()->is('privacy_policy') ? '' : 'nav-link' }}  relative text-white ">Home</a>
                 </li>
                 <li class="relative ">
-                    <a href=" {{ request()->is('knowledgeCenter') ? '../#services' : '#services' }}"
-                        class=" {{ request()->is('knowledgeCenter') ? '' : 'nav-link' }}  relative text-white ">Services</a>
+                    <a href=" {{ request()->is('knowledgeCenter') || request()->is('privacy_policy') ? '../#services' : '#services' }}"
+                        class=" {{ request()->is('knowledgeCenter') || request()->is('privacy_policy') ? '' : 'nav-link' }}  relative text-white ">Services</a>
                 </li>
                 <li class="relative ">
-                    <a href=" {{ request()->is('knowledgeCenter') ? '../#blogs' : '#blogs' }}"
-                        class="  {{ request()->is('knowledgeCenter') ? '' : 'nav-link' }}  relative text-white ">Blogs</a>
+                    <a href=" {{ request()->is('knowledgeCenter') || request()->is('privacy_policy') ? '../#blogs' : '#blogs' }}"
+                        class="  {{ request()->is('knowledgeCenter') || request()->is('privacy_policy') ? '' : 'nav-link' }}  relative text-white ">Blogs</a>
                 </li>
                 <li class="relative ">
                     <a href="../knowledgeCenter"
-                        class=" nav-link relative text-white active  {{ request()->is('knowledgeCenter') ? 'active' : '' }}">Knowledge
+                        class="  relative text-white   {{ request()->is('knowledgeCenter')  ? 'nav-link active' : '' }}">Knowledge
                         Center</a>
                 </li>
                 <li>
@@ -126,16 +126,16 @@
                 <ul class="flex flex-col px-4 space-y-4">
 
                     <li class="relative">
-                        <a href=" {{ request()->is('knowledgeCenter') ? '../#' : '#services' }}"
-                            class="px-3 py-2 text-white  {{ request()->is('knowledgeCenter') ? '' : 'nav-link' }}">Home</a>
+                        <a href=" {{ request()->is('knowledgeCenter') || request()->is('privacy_policy') ? '../#' : '#services' }}"
+                            class="px-3 py-2 text-white  {{ request()->is('knowledgeCenter') || request()->is('privacy_policy') ? '' : 'nav-link' }}">Home</a>
                     </li>
                     <li class="relative">
                         <a href="{{ request()->is('knowledgeCenter') ? '../#services' : '#services' }}"
-                            class="px-3 py-2 text-white  {{ request()->is('knowledgeCenter') ? '' : 'nav-link' }}">Services</a>
+                            class="px-3 py-2 text-white  {{ request()->is('knowledgeCenter') || request()->is('privacy_policy') ? '' : 'nav-link' }}">Services</a>
                     </li>
                     <li class="relative">
                         <a href="{{ request()->is('knowledgeCenter') ? '../#blogs' : '#blogs' }}"
-                            class="px-3 py-2 text-white  {{ request()->is('knowledgeCenter') ? '' : 'nav-link' }}">Blogs</a>
+                            class="px-3 py-2 text-white  {{ request()->is('knowledgeCenter') || request()->is('privacy_policy') ? '' : 'nav-link' }}">Blogs</a>
                     </li>
                     <li class="relative">
                         <a href="../knowledgeCenter"
@@ -164,7 +164,7 @@
                             <li><a href="mailto:admin@poul3y.com" class="hover:text-gray-700">admin@poul3y.com</a>
                             </li>
                             <li><a href="www.poul3y.com" class="hover:text-gray-700">www.poul3y.com</a></li>
-                            <li><a href="tel:+92 300 1234567" class="hover:text-gray-700">+92 300 1234567</a></li>
+                            <li><a href="tel:+92 300 1234567" class="hover:text-gray-700">+92 336 7716167</a></li>
                             <li><span class="hover:text-gray-700">Head office, Peshawar</span></li>
                         </ul>
                     </div>
@@ -246,15 +246,16 @@
                             <li><a href="#">
                                     <h2 class="mb-2 text-lg font-semibold text-customOrangeDark">Quick Links</h2>
                                 </a></li>
-                            <li><a href="#" class="hover:text-gray-700">Privacy Policy</a></li>
+                            <li><a href="../privacy_policy" class="hover:text-gray-700">Privacy Policy</a></li>
                             <li><a href="#" class="hover:text-gray-700">Terms & Conditions</a></li>
-                            <li><a href="#" class="hover:text-gray-700">Disclaimer</a></li>
+                            {{-- <li><a href="#" class="hover:text-gray-700">Disclaimer</a></li> --}}
                             <li><a href="/login" class="hover:text-gray-700">Get Access</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="flex flex-col items-center md:items-start lg:mt-10">
-                    <svg width="180" height="180" viewBox="0 0 220 220" fill="none"
+                    <a href="../">
+                        <svg width="180" height="180" viewBox="0 0 220 220" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <g filter="url(#filter0_d_1789_9187)">
                             <path
@@ -355,6 +356,7 @@
                             </linearGradient>
                         </defs>
                     </svg>
+                </a>
 
                     <div class="flex space-x-2">
                         <img src="{{ asset('assets/app and apple store.png') }}" alt="App Store and Google Play"
