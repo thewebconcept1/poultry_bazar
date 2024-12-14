@@ -620,7 +620,7 @@
                             @foreach ($medias as $media)
                                 <div class="swiper-slide">
                                    <a href="../knowledgeCenter">
-                                    <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
+                                    <div class="transition bg-white rounded-lg  h-[430px] shadow hover:shadow-lg">
 
 
 
@@ -636,10 +636,10 @@
                                                 <span class="mr-2">{{ $media->media_author }}</span> | <span
                                                     class="ml-2">{{ $media->date }}</span>
                                             </div>
-                                            <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ \Illuminate\Support\Str::limit($media->media_title, 25, '...') }}
+                                            <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ \Illuminate\Support\Str::limit($media->media_title, 45, '...') }}
                                             </h3>
                                             <p class="text-sm text-gray-600">
-                                                {{ \Illuminate\Support\Str::limit($media->media_description, 60, '...') }}
+                                                {{ \Illuminate\Support\Str::limit($media->media_description, 70, '...') }}
                                             </p>
                                         </div>
                                     </div>

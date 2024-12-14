@@ -47,7 +47,7 @@
                         {{-- @for ($i = 1; $i < 8; $i++) --}}
                         @foreach ($data['blogs'] as $blog)
                             <div data-modal-target="details-Modal" data-modal-toggle="details-Modal"
-                                class="transition detailBtn bg-white rounded-lg shadow hover:shadow-lg"
+                                class="transition detailBtn h-[430px] bg-white rounded-lg shadow hover:shadow-lg"
                                 mediaTitle="{{ $blog->media_title }}" mediaAuthor="{{ $blog->media_author }}"
                                 mediaCategory="{{ $blog->category_name }}" mediaDate="{{ $blog->date }}"
                                 mediaDescription="{{ $blog->media_description }}" mediaId="{{ $blog->media_id }}"
@@ -63,8 +63,8 @@
                                         <span class="mr-2">{{ $blog->media_author }}</span> | <span
                                             class="ml-2">{{ $blog->date }}</span>
                                     </div>
-                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">{{  \Illuminate\Support\Str::limit($blog->media_title, 25, '...')}}</h3>
-                                    <p class="text-sm text-gray-600">{{   Str::limit($blog->media_description, 80, '...') }}</p>
+                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">{{  \Illuminate\Support\Str::limit($blog->media_title, 45, '...')}}</h3>
+                                    <p class="text-sm text-gray-600 break-words">{{   Str::limit($blog->media_description, 70, '...') }}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -76,8 +76,8 @@
 
                         @foreach ($data['diseases'] as $diseases)
                             <div data-modal-target="details-Modal" data-modal-toggle="details-Modal"
-                                class="transition detailBtn bg-white rounded-lg shadow hover:shadow-lg"
-                                mediaTitle="{{ $blog->media_title }}" mediaAuthor="{{ $diseases->media_author }}"
+                                class="transition detailBtn h-[430px] bg-white rounded-lg shadow hover:shadow-lg"
+                                mediaTitle="{{ $diseases->media_title }}" mediaAuthor="{{ $diseases->media_author }}"
                                 mediaCategory="{{ $diseases->category_name }}" mediaDate="{{ $diseases->date }}"
                                 mediaDescription="{{ $diseases->media_description }}" mediaId="{{ $diseases->media_id }}"
                                 mediaImage="{{ $diseases->media_image ?? asset('assets/default-logo-req.png') }}">
@@ -92,8 +92,8 @@
                                         <span class="mr-2">{{ $diseases->media_author }}</span> | <span
                                             class="ml-2">{{ $diseases->date }}</span>
                                     </div>
-                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ \Illuminate\Support\Str::limit($diseases->media_title, 25, '...') }}</h3>
-                                    <p class="text-sm text-gray-600">{{   Str::limit($diseases->media_description, 80, '...') }}</p>
+                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ \Illuminate\Support\Str::limit($diseases->media_title, 45, '...') }}</h3>
+                                    <p class="text-sm text-gray-600">{{   Str::limit($diseases->media_description, 70, '...') }}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -105,7 +105,7 @@
 
                         @foreach ($data['consultancy'] as $consultancy)
                             <div data-modal-target="details-Modal" data-modal-toggle="details-Modal"
-                                class="transition detailBtn bg-white rounded-lg shadow hover:shadow-lg"
+                                class="transition detailBtn h-[430px] bg-white rounded-lg shadow hover:shadow-lg"
                                 mediaTitle="{{ $consultancy->media_title }}"
                                 mediaAuthor="{{ $consultancy->media_author }}"
                                 mediaCategory="{{ $consultancy->category_name }}" mediaDate="{{ $consultancy->date }}"
@@ -131,8 +131,8 @@
                                         <span class="mr-2">{{ $consultancy->media_author }}</span> | <span
                                             class="ml-2">{{ $consultancy->date }}</span>
                                     </div>
-                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">{{  \Illuminate\Support\Str::limit($consultancy->media_title, 25, '...') }}</h3>
-                                    <p class="text-sm text-gray-600">{{  Str::limit($consultancy->media_description, 80, '...') }}</p>
+                                    <h3 class="mb-2 text-lg font-semibold text-gray-800">{{  \Illuminate\Support\Str::limit($consultancy->media_title, 45, '...') }}</h3>
+                                    <p class="text-sm text-gray-600">{{  Str::limit($consultancy->media_description, 70, '...') }}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -148,7 +148,7 @@
                 <!-- Header -->
                 <div class="flex items-center justify-between mb-8">
                     <h2 class="pb-1 text-3xl font-bold text-customOrangeDark">Our Latest Blog Posts</h2>
-                    
+
                 </div>
 
                 <div class="py-4">
@@ -156,7 +156,7 @@
                         <div class="swiper-wrapper">
                             @foreach ($data['blogs'] as $media)
                                 <div class="swiper-slide">
-                                    <div class="transition bg-white rounded-lg shadow hover:shadow-lg">
+                                    <div class="transition h-[430px] bg-white rounded-lg shadow hover:shadow-lg">
 
 
 
@@ -172,10 +172,10 @@
                                                 <span class="mr-2">{{ $media->media_author }}</span> | <span
                                                     class="ml-2">{{ $media->date }}</span>
                                             </div>
-                                            <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ \Illuminate\Support\Str::limit($media->media_title, 25, '...') }}
+                                            <h3 class="mb-2 text-lg font-semibold text-gray-800">{{ \Illuminate\Support\Str::limit($media->media_title, 45, '...') }}
                                             </h3>
                                             <p class="text-sm text-gray-600">
-                                                {{ \Illuminate\Support\Str::limit($media->media_description, 60, '...') }}
+                                                {{ \Illuminate\Support\Str::limit($media->media_description, 70, '...') }}
                                             </p>
                                         </div>
                                     </div>
