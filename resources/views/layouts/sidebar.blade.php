@@ -474,7 +474,7 @@
                 </li>
             @endif
 
-            @if ($userRole === 'superadmin')
+            {{-- @if ($userRole === 'superadmin')
                 <li class="relative z-20">
                     <a href="../FAQs"
                         class="flex items-center py-2 px-4 text-gray-900 transition duration-200 rounded-full hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('FAQs') ? 'active gradient-bg text-white ' : '' }} ">
@@ -486,7 +486,7 @@
                         <span class="flex-1 ms-3 whitespace-nowrap">FAQs</span>
                     </a>
                 </li>
-            @endif
+            @endif --}}
             <li class="relative z-20">
                 <a href="../notification"
                     class="flex items-center py-2 px-4 text-gray-900 transition duration-200 rounded-full hover:text-white dark:text-white hover:bg-customOrangeDark dark:hover:bg-gray-700 group {{ request()->is('notification') ? 'active gradient-bg text-white ' : '' }} ">
