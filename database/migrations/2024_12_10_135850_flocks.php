@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('flocks', function(Blueprint $table) {
             $table->id('flock_id');
-            $table->id('flock_site_id');
+            $table->integer('flock_site_id');
             $table->integer('user_id');
             $table->string('flock_name');
             $table->text('flock_image')->nullable();
