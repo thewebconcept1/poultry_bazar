@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('flock_inventory', function(Blueprint $table) {
             $table->id('fi_id');
-            $table->id('flock_id');
+            $table->integer('flock_id');
             $table->integer('company_id');
             $table->integer('user_id');
             $table->longText('fi_detail');
