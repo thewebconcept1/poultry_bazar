@@ -17,7 +17,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/addQuery', [ApiController::class, 'addQuery']);
 
     Route::get('/getUser', [ApiController::class, 'getUser']);
+    Route::match(['get', 'post'], '/logout', [ApiController::class, 'logout']);
     Route::post('/updateUser', [ApiController::class, 'updateUser']);
+
+    // pos purchase
+    Route::post('/createPosPurchase', [ApiController::class, 'createPosPurchase']);
+    Route::get('/getPosPurchase', [ApiController::class, 'getPosPurchase']);
+    Route::post('/deletePosPurchase', [ApiController::class, 'deletePosPurchase']);
+    // pos purchase
 
     // product 
 
