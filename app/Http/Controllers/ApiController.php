@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\FAQ;
 use App\Models\Market;
 use App\Models\Media;
+use App\Models\PosPurchase;
 use App\Models\Queries;
 use App\Models\User;
 // use Illuminate\Container\Attributes\Auth;
@@ -21,13 +22,88 @@ class ApiController extends Controller
     // }
     // get Notifications
 
+    // delete pos purchase
+    public function deletePosPurchase(Request $request)
+    {
+        try {
+            $purchaseId = $request->input('purchase_id');
+            $posPurchase = PosPurchase::where('purchase_id', $purchaseId)->first();
+            $posPurchase->delete();
+
+            return response()->json(['success' => true, 'message' => 'Purchase deleted'], 200);
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    // delete pos purchase
+
+    // get pos purchase
+    public function getPosPurchase()
+    {
+        $user = Auth::user();
+        $posPurchase = PosPurchase::where('user_id', $user->id)->where('purchase_status', 1)->get();
+
+        return response()->json(['success' => true, 'data' => $posPurchase], 200);
+    }
+    // get pos purchase
+
+    // add pos purchase
+    public function createPosPurchase(Request $request)
+    {
+        try {
+            $user = Auth::user();
+            $purchaseId = $request->input('purchase_id');
+            $validatedData = $request->validate([
+                'product_id' => 'required|integer',
+                'supplier_name' => 'nullable|string',
+                'purchase_date' => 'required|date',
+                'purchase_weight_quantity' => 'required|numeric',
+                'purchase_rate' => 'required|numeric',
+                'purchase_amount' => 'required|numeric',
+                'purchase_comments' => 'nullable|string',
+            ]);
+
+            $validatedData['purchase_date'] = date('Y-m-d', strtotime($validatedData['purchase_date']));
+
+            if ($purchaseId != null) {
+                $recentPurchase = PosPurchase::where('purchase_id', $purchaseId)->first();
+                $recentPurchase->update([
+                    'user_id' => $user->id,
+                    'product_id' => $validatedData['product_id'],
+                    'supplier_name' => $validatedData['supplier_name'],
+                    'purchase_date' => $validatedData['purchase_date'],
+                    'purchase_weight_quantity' => $validatedData['purchase_weight_quantity'],
+                    'purchase_rate' => $validatedData['purchase_rate'],
+                    'purchase_amount' => $validatedData['purchase_amount'],
+                    'purchase_comments' => $validatedData['purchase_comments'],
+                ]);
+
+                return response()->json(['success' => true, 'message' => 'Purchase updated'], 200);
+            } else {
+                $posPurchase = PosPurchase::create([
+                    'user_id' => $user->id,
+                    'product_id' => $validatedData['product_id'],
+                    'supplier_name' => $validatedData['supplier_name'],
+                    'purchase_date' => $validatedData['purchase_date'],
+                    'purchase_weight_quantity' => $validatedData['purchase_weight_quantity'],
+                    'purchase_rate' => $validatedData['purchase_rate'],
+                    'purchase_amount' => $validatedData['purchase_amount'],
+                    'purchase_comments' => $validatedData['purchase_comments'],
+                ]);
+                return response()->json(['success' => true, 'message' => 'Purchase added'], 200);
+            }
+        } catch (\Exception $e) {
+            return $this->errorResponse($e);
+        }
+    }
+    // add pos purchase
+
     // get FAQs
     public function getFAQs()
     {
         $FAQs = FAQ::get();
 
         return response()->json(['success' => true, 'data' => $FAQs], 200);
-
     }
     // get FAQs
 
@@ -77,10 +153,19 @@ class ApiController extends Controller
     {
         $user = Auth::user();
 
-        return response()->json(['success' => true, 'data' => $user , 'company' => $user->company, 'modules' => $user->modules], 200);
-
+        return response()->json(['success' => true, 'data' => $user, 'company' => $user->company, 'modules' => $user->modules], 200);
     }
     // get User
+
+    // logout
+    public function logout()
+    {
+        Auth::user()->tokens()->delete();
+
+        return response()->json(['success' => true, 'message' => 'Logged out successfully'], 200);
+    }
+    // logout
+    
     // login
     public function login(Request $request)
     {
