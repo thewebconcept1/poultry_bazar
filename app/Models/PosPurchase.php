@@ -24,4 +24,9 @@ class PosPurchase extends Model
 
     public $timestamps = true;
 
+    public function product()
+    {
+        return $this->belongsTo(Products::class, 'product_id');
+    }
+
 }
