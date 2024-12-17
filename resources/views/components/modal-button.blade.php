@@ -11,7 +11,7 @@
          fill="currentFill" />
         </svg>
         <p><span class=" text-white font-semibold z-30" id="uploadProgress"> </span></p>
-     </div>
+    </div>
      <div id="btnText" class="">
          {{ $title }}
      </div>
