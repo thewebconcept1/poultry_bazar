@@ -41,7 +41,7 @@ class ApiController extends Controller
     public function getPosPurchase()
     {
         $user = Auth::user();
-        $posPurchase = PosPurchase::where('user_id', $user->id)->where('purchase_status', 1)->get();
+        $posPurchase = PosPurchase::with('product')->where('user_id', $user->id)->where('purchase_status', 1)->get();
 
         return response()->json(['success' => true, 'data' => $posPurchase], 200);
     }
