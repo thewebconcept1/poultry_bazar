@@ -4,7 +4,9 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Flock\FlockController;
+use App\Http\Controllers\Flock\FlockUserController;
 use App\Http\Controllers\Flock\SitesController;
+use App\Http\Controllers\Flock\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
@@ -63,9 +65,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     // flocks api's
     Route::post('/addSite', [SitesController::class, 'insert']);
-    
+
     Route::controller(FlockController::class)->group(function () {
         Route::post('/addFlock', 'insertFlock');
+    });
+    Route::controller(FlockUserController::class)->group(function () {
+        Route::post('/addWorker', 'insertUser');
     });
 
 });
