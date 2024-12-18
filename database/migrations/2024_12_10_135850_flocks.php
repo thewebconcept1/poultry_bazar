@@ -19,11 +19,11 @@ return new class extends Migration
             $table->text('flock_image')->nullable();
             $table->string('farmer_name')->nullable();
             $table->text('flock_color')->nullable();
-            $table->integer('flock_supervisor_user_id');
-            $table->integer('flock_accountant_user_id');
-            $table->integer('flock_assistant_user_id');
-            $table->integer('flock_expense');
-            $table->integer('flock_revenue');
+            $table->integer('flock_supervisor_user_id')->nullable();
+            $table->integer('flock_accountant_user_id')->nullable();
+            $table->integer('flock_assistant_user_id')->nullable();
+            $table->integer('flock_expense')->nullable();
+            $table->integer('flock_revenue')->nullable();
             $table->timestamps();
         });
     }

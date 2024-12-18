@@ -3,6 +3,8 @@
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\Flock\FlockController;
+use App\Http\Controllers\Flock\SitesController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
@@ -26,7 +28,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/deletePosPurchase', [ApiController::class, 'deletePosPurchase']);
     // pos purchase
 
-    // product 
+    // product
 
     Route::controller(ProductController::class)->group(function () {
         Route::post('/addProduct',  'addProduct');
@@ -57,6 +59,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::controller(CompanyController::class)->group(function () {
         Route::post('/addCompany', 'addCompany');
         Route::post('/updateCompany/{company_id}', 'updateCompany');
+    });
+
+    // flocks api's
+    Route::post('/addSite', [SitesController::class, 'insert']);
+    
+    Route::controller(FlockController::class)->group(function () {
+        Route::post('/addFlock', 'insertFlock');
     });
 
 });

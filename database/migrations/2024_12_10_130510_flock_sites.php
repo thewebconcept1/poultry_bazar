@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('site_name');
             $table->text('site_manager')->nullable();
             $table->bigInteger('site_phone')->nullable();
-            $table->text('site_loction')->nullable();
+            $table->text('site_location')->nullable();
             $table->timestamp('site_closing_date')->nullable();
             $table->timestamps();
         });

@@ -147,6 +147,10 @@ class ProductController extends Controller
             if (!$product) {
                 return response()->json(['success' => false, 'message' => 'product not found'], 422);
             }
+            if ($product) {
+                ProductVariations::where('product_id', $product->id)->update(['variation_status' => 0]);
+            }
+            
             $product->product_status  = 0;
             $product->update();
             return response()->json(['success' => true, 'message' => 'Product delete successfully'], 200);
@@ -211,7 +215,7 @@ class ProductController extends Controller
             if (!$variation) {
                 return response()->json(['success' => false, 'message' => 'Variation not found'], 404);
             }
-            
+
             if ($request->hasFile('variation_image')) {
                 $image = $request->file('variation_image');
                 if ($variation->variation_image && file_exists(public_path($variation->variation_image))) {
@@ -224,7 +228,7 @@ class ProductController extends Controller
                 $variation->variation_image = $request->variation_image;
             }
 
-            $variation->product_id = $request['product_id'] ??  $variation->product_id ;
+            $variation->product_id = $request['product_id'] ??  $variation->product_id;
             $variation->product_name = $request['product_name'] ?? $variation->product_name;
             $variation->variation_name = $request['variation_name'] ?? $variation->variation_name;
             $variation->variation_sale_rate = $request['variation_sale_rate'] ?? $variation->variation_sale_rate;
