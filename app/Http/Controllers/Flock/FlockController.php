@@ -72,7 +72,7 @@ class FlockController extends Controller
 
             // $validatedData = $request->validate([
             //     'flock_id' => 'required|exists:flock_details,flock_id',
-            //     $type => 'required|Array', 
+            //     $type => 'required|Array',
             // ]);
 
             // $data = json_encode($validatedData[$type], true);

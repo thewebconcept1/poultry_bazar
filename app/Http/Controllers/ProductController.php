@@ -66,7 +66,6 @@ class ProductController extends Controller
                 'product_description'  => 'nullable',
                 'product_image'  => 'nullable',
                 'product_unit'  => 'required',
-                'product_purchase_rate'  => 'required',
                 'product_sale_rate'  => 'required',
                 'product_stock'  => 'required',
             ]);
@@ -85,7 +84,7 @@ class ProductController extends Controller
                 'product_sec_name' => $validatedData['product_sec_name'],
                 'product_description' => $validatedData['product_description'],
                 'product_unit' => $validatedData['product_unit'],
-                'product_purchase_rate' => $validatedData['product_purchase_rate'],
+                'product_purchase_rate' => $request['product_purchase_rate'],
                 'product_sale_rate' => $validatedData['product_sale_rate'],
                 'product_stock' => $validatedData['product_stock'],
                 'product_image' => $imageFullPath,
@@ -150,7 +149,7 @@ class ProductController extends Controller
             if ($product) {
                 ProductVariations::where('product_id', $product->id)->update(['variation_status' => 0]);
             }
-            
+
             $product->product_status  = 0;
             $product->update();
             return response()->json(['success' => true, 'message' => 'Product delete successfully'], 200);
