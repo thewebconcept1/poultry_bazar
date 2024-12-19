@@ -224,9 +224,9 @@ class ProductController extends Controller
                 $imagePath = $image->store('variation_images', 'public');
                 $variation->variation_image = 'storage/' . $imagePath;
             }
-            if ($request->has('variation_image')) {
-                $variation->variation_image = $request->variation_image;
-            }
+            // if ($request->has('variation_image')) {
+            //     $variation->variation_image = $request->variation_image;
+            // }
 
             $variation->product_id = $request['product_id'] ??  $variation->product_id;
             $variation->product_name = $request['product_name'] ?? $variation->product_name;
