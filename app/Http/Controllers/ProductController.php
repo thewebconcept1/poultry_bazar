@@ -196,9 +196,9 @@ class ProductController extends Controller
                 $imagePath = $image->store('product_images', 'public');
                 $product->product_image = 'storage/' . $imagePath;
             }
-            if ($request->has('product_image')) {
-                $product->product_image = $request->product_image;
-            }
+            // if ($request->has('product_image')) {
+            //     $product->product_image = $request->product_image;
+            // }
 
             $product->update();
 
