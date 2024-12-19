@@ -296,8 +296,8 @@ class MediaController extends Controller
 
         // return response()->json($media);
 
-        $marketRates = Market::select('market_name', 'market_rate')->where('market_status', 1)->take(4)->get();
- 
+        $marketRates = Market::select('market_name', 'market_rate' , 'market_doc')->where('market_status', 1)->take(4)->get();
+
     $marketCount = Market::where('market_status', 1)->count();
 
 
