@@ -4,13 +4,14 @@ namespace App\Models\Flock;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Details extends Model
+class FlockDetails extends Model
 {
     protected $table = 'flock_details';
 
     protected $primaryKey = 'fd__id';
 
     protected $fillable = [
+        'flock_id',
         'fd_bedding',
         'fd_brooder_fuel',
         'fd_doc',
