@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Flock;
 
 use App\Http\Controllers\Controller;
 use App\Models\Flock\Flock;
+use App\Models\Flock\FlockDetails;
 use App\Models\User;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,8 +58,6 @@ class FlockUserController extends Controller
                 $flock->{$roleToFieldMap[$validatedData['role']]} = $user->id;
             }
             $flock->save();
-
-
             return response()->json(['success' => true, 'message' => 'Worker add successfully'], 400);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
