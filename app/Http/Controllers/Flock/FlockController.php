@@ -85,13 +85,17 @@ class FlockController extends Controller
 
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
-        }
+        } 
     }
 
     public function getSiteFlocks($site_id)
     {
         $flocks = Flock::where('flock_site_id', $site_id)->get();
-        return response()->json(['success' => true, 'message'=>  "Flocks get successfully" , 'flocks' => $flocks], 200);
+        if(!$flocks){
 
+            return response()->json(['success' => false, 'message' =>  "site not found"], 200);
+
+        }
+        return response()->json(['success' => true, 'message' =>  "Flocks get successfully", 'flocks' => $flocks], 200);
     }
 }

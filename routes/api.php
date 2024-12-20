@@ -70,10 +70,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::controller(FlockController::class)->group(function () {
         Route::post('/addFlock', 'insertFlock');
         Route::post('/addDetails/{type}', 'insertDetails');
+        Route::get('/getFlock/{site_id}', 'getSiteFlocks');
     });
     Route::controller(FlockUserController::class)->group(function () {
         Route::post('/addWorker', 'insertUser');
-        Route::get('/getFlock/{site_id}', 'getSiteFlocks');
     });
 
 });
