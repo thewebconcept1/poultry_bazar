@@ -92,6 +92,6 @@ class FlockController extends Controller
     {
         $flocks = Flock::where('flock_site_id', $site_id)->get();
         return response()->json(['success' => true, 'message'=>  "Flocks get successfully" , 'flocks' => $flocks], 200);
-        
+
     }
 }
