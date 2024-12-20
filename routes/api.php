@@ -73,7 +73,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
     Route::controller(FlockUserController::class)->group(function () {
         Route::post('/addWorker', 'insertUser');
-        Route::post('/getFlock/{site_id}', 'getSiteFlocks');
+        Route::get('/getFlock/{site_id}', 'getSiteFlocks');
     });
 
 });
