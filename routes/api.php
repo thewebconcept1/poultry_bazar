@@ -65,6 +65,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     // flocks api's
     Route::post('/addSite', [SitesController::class, 'insert']);
+    Route::get('/getSites', [SitesController::class, 'getSites']);
 
     Route::controller(FlockController::class)->group(function () {
         Route::post('/addFlock', 'insertFlock');
