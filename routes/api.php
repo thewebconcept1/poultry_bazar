@@ -74,6 +74,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
     Route::controller(FlockUserController::class)->group(function () {
         Route::post('/addWorker', 'insertUser');
+        Route::get('/getWorkers', 'getUserWorkers');
     });
 
 });
