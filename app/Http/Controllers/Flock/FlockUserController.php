@@ -16,51 +16,83 @@ class FlockUserController extends Controller
     {
 
         try {
-            $userId = Auth::user()->id;
-            $validatedData = $request->validate([
-                'flock_id' => 'required',
-                'role' => 'required|in:fl_supervisor,fl_accountant,fl_assistant',
-                'name' => 'required',
-                'email' => 'required',
-                'phone' => 'nullable',
-                'address' => 'nullable',
-                'image' => 'nullable|image',
-            ]);
-            if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $imagePath = $image->store('user_images', 'public');
-                $imageFullPath = 'storage/' . $imagePath;
+            if ($request['worker_id']) {
+
+                $validatedData = $request([
+                    'worker_id' => 'required',
+                    'flock_id' => 'required|integer|exists:flocks,id',
+                    'role' => 'required|in:fl_supervisor,fl_accountant,fl_assistant',
+
+                ]);
+
+                $flock = Flock::find($validatedData['flock_id']);
+                $roleToFieldMap = [
+                    'fl_supervisor' => 'flock_supervisor_user_id',
+                    'fl_accountant' => 'flock_accountant_user_id',
+                    'fl_assistant' => 'flock_assistant_user_id',
+                ];
+
+                if (isset($roleToFieldMap[$validatedData['role']])) {
+                    $flock->{$roleToFieldMap[$validatedData['role']]} = $validatedData['worker_id'];
+                }
+                $flock->save();
             } else {
-                $imageFullPath = null;
-            }
-            $flock = Flock::find($validatedData['flock_id']);
-            if (!$flock) {
-                return response()->json(['success' => false, 'message' => 'Flock not found'], 400);
-            }
 
-            $user = User::Create([
-                'added_user_id' => $userId,
-                'name' =>  $validatedData['name'],
-                'user_role' =>  $validatedData['role'],
-                'email' => $validatedData['email'],
-                'user_phone' => $validatedData['phone'],
-                'address' => $validatedData['address'],
-                'password' => "12345678",
-                'user_image' => $imageFullPath,
-            ]);
-            $roleToFieldMap = [
-                'fl_supervisor' => 'flock_supervisor_user_id',
-                'fl_accountant' => 'flock_accountant_user_id',
-                'fl_assistant' => 'flock_assistant_user_id',
-            ];
+                $userId = Auth::user()->id;
+                $validatedData = $request->validate([
+                    'flock_id' => 'required|integer|exists:flocks,id',
+                    'role' => 'required|in:fl_supervisor,fl_accountant,fl_assistant',
+                    'name' => 'required',
+                    'email' => 'required|unique:user,email',
+                    'phone' => 'nullable',
+                    'address' => 'nullable',
+                    'image' => 'nullable|image',
+                ]);
+                if ($request->hasFile('image')) {
+                    $image = $request->file('image');
+                    $imagePath = $image->store('user_images', 'public');
+                    $imageFullPath = 'storage/' . $imagePath;
+                } else {
+                    $imageFullPath = null;
+                }
+                $flock = Flock::find($validatedData['flock_id']);
+                if (!$flock) {
+                    return response()->json(['success' => false, 'message' => 'Flock not found'], 400);
+                }
 
-            if (isset($roleToFieldMap[$validatedData['role']])) {
-                $flock->{$roleToFieldMap[$validatedData['role']]} = $user->id;
+                $user = User::Create([
+                    'added_user_id' => $userId,
+                    'name' =>  $validatedData['name'],
+                    'user_role' =>  $validatedData['role'],
+                    'email' => $validatedData['email'],
+                    'user_phone' => $validatedData['phone'],
+                    'address' => $validatedData['address'],
+                    'password' => "12345678",
+                    'user_image' => $imageFullPath,
+                ]);
+                $roleToFieldMap = [
+                    'fl_supervisor' => 'flock_supervisor_user_id',
+                    'fl_accountant' => 'flock_accountant_user_id',
+                    'fl_assistant' => 'flock_assistant_user_id',
+                ];
+
+                if (isset($roleToFieldMap[$validatedData['role']])) {
+                    $flock->{$roleToFieldMap[$validatedData['role']]} = $user->id;
+                }
+                $flock->save();
             }
-            $flock->save();
-            return response()->json(['success' => true, 'message' => 'Worker add successfully'], 400);
+            return response()->json(['success' => true, 'message' => 'Worker add successfully'], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
         }
+    }
+
+    public function getUserWorkers()
+    {
+        $userId = Auth::user()->id;
+
+        $roles = ['fl_supervisor', 'fl_accountant', 'fl_assistant'];
+        $workers = User::whereIn('user_role', $roles)->where('added_user_id', $userId)->get();
+        return response()->json(['success' => true, 'message' => 'Worker get successful', 'workers' => $workers], 200);
     }
 }
