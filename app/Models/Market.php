@@ -32,4 +32,9 @@ class Market extends Model
         return $value ? asset($value) : null;
     }
 
+    public function marketHistory()
+    {
+        return $this->hasMany(MarketHistory::class, 'market_id', 'market_id');
+    }
+
 }
