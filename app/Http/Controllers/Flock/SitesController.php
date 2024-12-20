@@ -36,4 +36,10 @@ class SitesController extends Controller
             return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
         }
     }
+
+    public function getSites(){
+    $userId = Auth::user()->id;
+    $sites = Sites::Where('user_id' , $userId)->get();
+    return response()->json(['success' => true, 'data' => $sites] , 200);
+    }
 }
