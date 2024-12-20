@@ -92,7 +92,13 @@ class FlockUserController extends Controller
         $userId = Auth::user()->id;
 
         $roles = ['fl_supervisor', 'fl_accountant', 'fl_assistant'];
-        $workers = User::whereIn('user_role', $roles)->where('added_user_id', $userId)->get();
-        return response()->json(['success' => true, 'message' => 'Worker get successful', 'workers' => $workers], 200);
+        $workers = User::select('id' , 'name' , 'email' , 'user_image' ,'user_phone' , 'address' , 'user_role' )->whereIn('user_role', $roles)->where('added_user_id', $userId)->get();
+        $allWorkers = [
+            'supervisors' => $workers->where('user_role', 'fl_supervisor')->values(),
+            'accountants' => $workers->where('user_role', 'fl_accountant')->values(),
+            'assistants' => $workers->where('user_role', 'fl_assistant')->values(),
+        ];
+
+        return response()->json(['success' => true, 'message' => 'Worker get successful', 'workers' => $allWorkers], 200);
     }
 }
