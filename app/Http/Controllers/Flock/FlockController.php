@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Flock;
 use App\Http\Controllers\Controller;
 use App\Models\Flock\Flock;
 use App\Models\Flock\FlockDetails;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Stmt\Catch_;
@@ -85,16 +86,40 @@ class FlockController extends Controller
 
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
-        } 
+        }
     }
 
     public function getSiteFlocks($site_id)
     {
         $flocks = Flock::where('flock_site_id', $site_id)->get();
-        if(!$flocks){
-
+        if (!$flocks) {
             return response()->json(['success' => false, 'message' =>  "site not found"], 200);
+        }
 
+        $allUserIds = $flocks->pluck('flock_supervisor_user_id')->merge($flocks->pluck('flock_accountant_user_id'))->merge($flocks->pluck('flock_assistant_user_id'))->filter()
+            ->unique();
+        $users = User::select('id', 'name', 'user_role' , 'user_image')->whereIn('id', $allUserIds)->get()->keyBy('id');
+        foreach ($flocks as $flock) {
+            $created_at = $flock->created_at;
+            $flock->days = abs(floor($created_at ? now()->diffInDays($created_at) : 0));
+            $flock->total_birds = 0;
+            $flock->doc_birds = 0;
+            $flock->dead_birds = 0;
+
+
+            $flock->total_feed = 0;
+            $flock->purchase_feed = 0;
+            $flock->consumed_feed = 0;
+
+
+            $flock->daily_water = 0;
+            $flock->weekly_water = 0;
+            $flock->total_water = 0;
+
+
+            $flock->supervisor = $users->get($flock->flock_supervisor_user_id);
+            $flock->accountant = $users->get($flock->flock_accountant_user_id);
+            $flock->assistant = $users->get($flock->flock_assistant_user_id);
         }
         return response()->json(['success' => true, 'message' =>  "Flocks get successfully", 'flocks' => $flocks], 200);
     }
