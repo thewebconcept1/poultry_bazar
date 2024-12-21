@@ -26,6 +26,9 @@ class FlockUserController extends Controller
                 ]);
 
                 $flock = Flock::find($validatedData['flock_id']);
+                if (!$flock) {
+                    return response()->json(['success' => false, 'message' => 'Flock not found'], 400);
+                }
                 $roleToFieldMap = [
                     'fl_supervisor' => 'flock_supervisor_user_id',
                     'fl_accountant' => 'flock_accountant_user_id',
