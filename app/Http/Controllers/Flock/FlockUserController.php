@@ -40,7 +40,7 @@ class FlockUserController extends Controller
 
                 $userId = Auth::user()->id;
                 $validatedData = $request->validate([
-                    'flock_id' => 'required|integer|exists:flocks,id',
+                    'flock_id' => 'required|integer|exists:flocks,flock_id',
                     'role' => 'required|in:fl_supervisor,fl_accountant,fl_assistant',
                     'name' => 'required',
                     'email' => 'required|unique:user,email',
