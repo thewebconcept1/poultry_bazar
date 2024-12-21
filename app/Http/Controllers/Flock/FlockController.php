@@ -98,9 +98,13 @@ class FlockController extends Controller
 
         $allUserIds = $flocks->pluck('flock_supervisor_user_id')->merge($flocks->pluck('flock_accountant_user_id'))->merge($flocks->pluck('flock_assistant_user_id'))->filter()
             ->unique();
-        $users = User::select('id', 'name', 'user_role' , 'user_image')->whereIn('id', $allUserIds)->get()->keyBy('id');
+        $users = User::select('id', 'name', 'user_role', 'user_image')->whereIn('id', $allUserIds)->get()->keyBy('id');
         foreach ($flocks as $flock) {
             $created_at = $flock->created_at;
+            if (isset($flock->flock_image)) {
+
+                $flock->flock_image = url($flock->flock_image);
+            }
             $flock->days = abs(floor($created_at ? now()->diffInDays($created_at) : 0));
             $flock->total_birds = 0;
             $flock->doc_birds = 0;
