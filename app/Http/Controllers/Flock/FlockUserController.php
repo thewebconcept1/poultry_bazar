@@ -43,7 +43,7 @@ class FlockUserController extends Controller
                     'flock_id' => 'required|integer|exists:flocks,flock_id',
                     'role' => 'required|in:fl_supervisor,fl_accountant,fl_assistant',
                     'name' => 'required',
-                    'email' => 'required|unique:user,email',
+                    'email' => 'required|unique:users,email',
                     'phone' => 'nullable',
                     'address' => 'nullable',
                     'image' => 'nullable|image',
