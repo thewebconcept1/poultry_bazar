@@ -16,19 +16,18 @@ class FlockUserController extends Controller
     {
 
         try {
-            if ($request['worker_id']) {
-
-                $validatedData = $request([
+            if ($request->input('worker_id')) {
+                $validatedData = $request->validate([
                     'worker_id' => 'required',
                     'flock_id' => 'required|integer|exists:flocks,flock_id',
                     'role' => 'required|in:fl_supervisor,fl_accountant,fl_assistant',
-
                 ]);
 
                 $flock = Flock::find($validatedData['flock_id']);
                 if (!$flock) {
                     return response()->json(['success' => false, 'message' => 'Flock not found'], 400);
                 }
+
                 $roleToFieldMap = [
                     'fl_supervisor' => 'flock_supervisor_user_id',
                     'fl_accountant' => 'flock_accountant_user_id',
@@ -38,7 +37,10 @@ class FlockUserController extends Controller
                 if (isset($roleToFieldMap[$validatedData['role']])) {
                     $flock->{$roleToFieldMap[$validatedData['role']]} = $validatedData['worker_id'];
                 }
+
                 $flock->save();
+
+                return response()->json(['success' => true, 'message' => 'Flock updated successfully']);
             } else {
 
                 $userId = Auth::user()->id;
@@ -83,8 +85,8 @@ class FlockUserController extends Controller
                     $flock->{$roleToFieldMap[$validatedData['role']]} = $user->id;
                 }
                 $flock->save();
+                return response()->json(['success' => true, 'message' => 'Worker add successfully'], 200);
             }
-            return response()->json(['success' => true, 'message' => 'Worker add successfully'], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
         }
