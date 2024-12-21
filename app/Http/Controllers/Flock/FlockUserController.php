@@ -20,7 +20,7 @@ class FlockUserController extends Controller
 
                 $validatedData = $request([
                     'worker_id' => 'required',
-                    'flock_id' => 'required|integer|exists:flocks,id',
+                    'flock_id' => 'required|integer|exists:flocks,flock_id',
                     'role' => 'required|in:fl_supervisor,fl_accountant,fl_assistant',
 
                 ]);
@@ -72,7 +72,7 @@ class FlockUserController extends Controller
                 ]);
                 $roleToFieldMap = [
                     'fl_supervisor' => 'flock_supervisor_user_id',
-                    'fl_accountant' => 'flock_accountant_user_id',
+                    'fl_accounta    nt' => 'flock_accountant_user_id',
                     'fl_assistant' => 'flock_assistant_user_id',
                 ];
 
@@ -92,7 +92,11 @@ class FlockUserController extends Controller
         $userId = Auth::user()->id;
 
         $roles = ['fl_supervisor', 'fl_accountant', 'fl_assistant'];
-        $workers = User::select('id' , 'name' , 'email' , 'user_image' ,'user_phone' , 'address' , 'user_role' )->whereIn('user_role', $roles)->where('added_user_id', $userId)->get();
+        $workers = User::select('id', 'name', 'email', 'user_image', 'user_phone', 'address', 'user_role')->whereIn('user_role', $roles)->where('added_user_id', $userId)->get();
+        foreach ($workers as $worker) {
+            $worker->user_image = $worker->user_image ? url($worker->user_image) : null;
+        }
+
         $allWorkers = [
             'supervisors' => $workers->where('user_role', 'fl_supervisor')->values(),
             'accountants' => $workers->where('user_role', 'fl_accountant')->values(),
