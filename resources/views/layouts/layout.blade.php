@@ -12,6 +12,9 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ asset('assets/default-logo-1.png') }}" type="image/x-icon">
+    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+
+
     <style>
         #loading {
             position: fixed;
@@ -49,7 +52,7 @@
         </div>
     </div>
 
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
     <script src="{{ asset('javascript/jquery.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('javascript/canvas.js') }}"></script>
@@ -57,11 +60,11 @@
     <script src="{{ asset('javascript/script.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
-    @php
-        $pending_media_count = App\Models\Media::where('media_status', 2)->get()->count();
-    @endphp
-    $('#pendingMediaCount').text({{$pending_media_count}});
-    
+        @php
+            $pending_media_count = App\Models\Media::where('media_status', 2)->get()->count();
+        @endphp
+        $('#pendingMediaCount').text({{ $pending_media_count }});
+
         $(window).on('load', function() {
             $('#loading').hide();
         })

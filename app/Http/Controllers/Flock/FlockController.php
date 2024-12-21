@@ -89,9 +89,13 @@ class FlockController extends Controller
         }
     }
 
-    public function getSiteFlocks($site_id)
+    public function getSiteFlocks($site_id = null)
     {
-        $flocks = Flock::where('flock_site_id', $site_id)->get();
+        if (isset($site_id)) {
+            $flocks = Flock::where('flock_site_id', $site_id)->get();
+        } else {
+            $flocks = Flock::all();
+        }
         if (!$flocks) {
             return response()->json(['success' => false, 'message' =>  "site not found"], 200);
         }
@@ -100,8 +104,8 @@ class FlockController extends Controller
             ->unique();
         $users = User::select('id', 'name', 'user_role', 'user_image')->whereIn('id', $allUserIds)->get()->keyBy('id');
 
-        foreach($users as $user){
-            if(isset( $user->user_image)){
+        foreach ($users as $user) {
+            if (isset($user->user_image)) {
                 $user->user_image = url($user->user_image);
             }
         }
@@ -130,7 +134,6 @@ class FlockController extends Controller
             $flock->supervisor = $users->get($flock->flock_supervisor_user_id);
             $flock->accountant = $users->get($flock->flock_accountant_user_id);
             $flock->assistant = $users->get($flock->flock_assistant_user_id);
-            
         }
         return response()->json(['success' => true, 'message' =>  "Flocks get successfully", 'flocks' => $flocks], 200);
     }
