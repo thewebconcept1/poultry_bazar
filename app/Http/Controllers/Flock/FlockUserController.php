@@ -75,7 +75,7 @@ class FlockUserController extends Controller
                 ]);
                 $roleToFieldMap = [
                     'fl_supervisor' => 'flock_supervisor_user_id',
-                    'fl_accounta    nt' => 'flock_accountant_user_id',
+                    'fl_accountant' => 'flock_accountant_user_id',
                     'fl_assistant' => 'flock_assistant_user_id',
                 ];
 
