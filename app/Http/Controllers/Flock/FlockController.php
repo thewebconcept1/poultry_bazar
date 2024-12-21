@@ -99,6 +99,12 @@ class FlockController extends Controller
         $allUserIds = $flocks->pluck('flock_supervisor_user_id')->merge($flocks->pluck('flock_accountant_user_id'))->merge($flocks->pluck('flock_assistant_user_id'))->filter()
             ->unique();
         $users = User::select('id', 'name', 'user_role', 'user_image')->whereIn('id', $allUserIds)->get()->keyBy('id');
+
+        foreach($users as $user){
+            if(isset( $user->user_image)){
+                $user->user_image = url($user->user_image);
+            }
+        }
         foreach ($flocks as $flock) {
             $created_at = $flock->created_at;
             if (isset($flock->flock_image)) {
@@ -124,6 +130,7 @@ class FlockController extends Controller
             $flock->supervisor = $users->get($flock->flock_supervisor_user_id);
             $flock->accountant = $users->get($flock->flock_accountant_user_id);
             $flock->assistant = $users->get($flock->flock_assistant_user_id);
+            
         }
         return response()->json(['success' => true, 'message' =>  "Flocks get successfully", 'flocks' => $flocks], 200);
     }

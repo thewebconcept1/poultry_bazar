@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class MarketController extends Controller
 {
-    
+
     // delete market history
     public function deleteMarketHistory(Request $request)
     {
