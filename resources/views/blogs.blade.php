@@ -145,12 +145,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-4">
-                        {{-- <x-textarea type="text" id="mediaDescription" name="media_description"
-                            label="Blog Description" placeholder="Blog Description"></x-textarea> --}}
-                            <div id="editor" class=" w-full  block mb-1 text-sm font-medium text-gray-900 mediaContent" style="height:120px"  ></div>
-                            <textarea name="media_description" id="mediaDescription" style="display: none;"></textarea>
-
+                    <div class="mt-2">
+                        <x-textarea type="text" id="mediaDescription" name="media_description"
+                            label="Blog Description" placeholder="Blog Description"></x-textarea>
                     </div>
                     <div class="mt-4">
                         <x-modal-button :title="'Add Blog'"></x-modal-button>
@@ -199,30 +196,8 @@
         </x-modal>
     </div>
 @endsection
-<script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
 @section('js')
    <script>
-     document.addEventListener('DOMContentLoaded', function () {
-        // Initialize Quill.js
-        var quill = new Quill('#editor', {
-            theme: 'snow',
-            modules: {
-                toolbar: [
-                    ['bold', 'italic', 'underline', 'strike'], // Text formatting
-                    ['link'], // Media options
-                    [{ 'list': 'ordered' }, { 'list': 'bullet' }], // Lists
-                    [{ 'header': [1, 2, 3, false] }], // Headings
-                ]
-            }
-        });
-
-        // Update hidden textarea with Quill content
-        var hiddenInput = document.getElementById('mediaDescription');
-        quill.on('text-change', function () {
-            hiddenInput.value = quill.root.innerHTML;
-        });
-
-    });
         function viewData() {
 
             $('.viewModalBtn').click(function() {
@@ -250,7 +225,7 @@
                 $('#mediaTitle').val(mediaDetails.attr('mediaTitle'));
                 $('#mediaAuthor').val(mediaDetails.attr('mediaAuthor'));
                 $('#categoryId').val(mediaDetails.attr('mediaCategoryId')).trigger('change');
-                $('#mediaContent').text(mediaDetails.attr('mediaDescription'));
+                $('#mediaDescription').val(mediaDetails.attr('mediaDescription'));
                 let fileImg = $('#blog-modal .file-preview');
                 fileImg.removeClass('hidden').attr('src', mediaDetails.attr('mediaImage'));
 

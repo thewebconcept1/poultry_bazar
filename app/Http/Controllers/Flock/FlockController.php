@@ -68,7 +68,7 @@ class FlockController extends Controller
             $flock_detail->$type = json_encode($updatedData);
             $flock_detail->save();
 
-            return response()->json(['success' => true, 'message' => 'Flock details updated successfully', 'data' => $updatedData], 200);
+            return response()->json(['success' => true, 'message' => 'Flock details add successfully', 'data' => $updatedData], 200);
 
 
             // $validatedData = $request->validate([
@@ -136,5 +136,31 @@ class FlockController extends Controller
             $flock->assistant = $users->get($flock->flock_assistant_user_id);
         }
         return response()->json(['success' => true, 'message' =>  "Flocks get successfully", 'flocks' => $flocks], 200);
+    }
+
+    public function insertMortality(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'flock_id' => 'required|exists:flock_details,flock_id',
+
+            ]);
+
+            $newData = $validatedData[$type];
+
+            $flock_detail = FlockDetails::where('flock_id', $validatedData['flock_id'])->first();
+
+            $existingData = json_decode($flock_detail->fd_mortality, true) ?? [];
+
+            $updatedData = array_merge($existingData, $newData);
+
+            $flock_detail->fd_mortality = json_encode($updatedData);
+            $flock_detail->save();
+
+            return response()->json(['success' => true, 'message' => 'Flock details add successfully', 'data' => $updatedData], 200);
+
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
+        }
     }
 }
