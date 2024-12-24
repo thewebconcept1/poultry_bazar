@@ -59,9 +59,15 @@ class FlockController extends Controller
 
             $newData = $validatedData[$type];
 
+            // Normalize `newData` to remove numeric keys
+            $newData = array_values($newData);
+
             $flock_detail = FlockDetails::where('flock_id', $validatedData['flock_id'])->first();
 
             $existingData = json_decode($flock_detail->$type, true) ?? [];
+
+            // Normalize `existingData` to remove numeric keys
+            $existingData = array_values($existingData);
 
             $updatedData = array_merge($existingData, $newData);
 
@@ -69,6 +75,7 @@ class FlockController extends Controller
             $flock_detail->save();
 
             return response()->json(['success' => true, 'message' => 'Flock details add successfully', 'data' => $updatedData], 200);
+
 
 
             // $validatedData = $request->validate([
