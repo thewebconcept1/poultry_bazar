@@ -110,4 +110,36 @@ class FlockUserController extends Controller
 
         return response()->json(['success' => true, 'message' => 'Worker get successful', 'workers' => $allWorkers], 200);
     }
+
+    public function deleteUser(Request $request ){
+        try {
+
+            $validatedData = $request->validate([
+                'id' => 'required|integer|exists:users,id',
+                'flock_id' => 'required|integer|exists:flocks,flock_id',
+            ]);
+            $user = User::find($validatedData['id']);
+            $userRole = $user->user_role;
+
+            $flock = Flock::where('flock_id', $validatedData['flock_id'])->first();
+            $roleToFieldMap = [
+                'fl_supervisor' => 'flock_supervisor_user_id',
+                'fl_accountant' => 'flock_accountant_user_id',
+                'fl_assistant' => 'flock_assistant_user_id',
+            ];
+            if (array_key_exists($userRole, $roleToFieldMap)) {
+                $fieldToUpdate = $roleToFieldMap[$userRole];
+                $flock->$fieldToUpdate = null; // Update the column to null
+                $flock->save(); // Save the changes
+            }
+
+            $user->user_status = "0";
+            $user->save();
+
+            return response()->json(['success' => true, 'message' => 'User deleted successfully'], 200);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
+        }
+
+    }
 }

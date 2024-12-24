@@ -170,4 +170,9 @@ class FlockController extends Controller
             return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
         }
     }
+
+    public function getFlockDetails($type){
+        $data = FlockDetails::select('flock_id', $type)->get();
+
+    }
 }

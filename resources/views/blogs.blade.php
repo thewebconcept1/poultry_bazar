@@ -164,7 +164,7 @@
                         <!-- Image Placeholder -->
 
                         <img class="w-40 h-40 bg-black object-contain" id="dImage"
-                            src="{{ asset('assets/Surface 3 png.png') }}" alt="">
+                                src="{{ asset('assets/Surface 3 png.png') }}" alt="">
 
 
                         <!-- Text Details -->
