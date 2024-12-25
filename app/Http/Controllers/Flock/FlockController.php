@@ -134,7 +134,7 @@ class FlockController extends Controller
             return response()->json(['success' => false, 'message' =>  "site not found"], 200);
         }
 
-        $allUserIds = $flocks->pluck('flock_supervisor_user_id')->merge($flocks->pluc   k('flock_accountant_user_id'))->merge($flocks->pluck('flock_assistant_user_id'))->filter()
+        $allUserIds = $flocks->pluck('flock_supervisor_user_id')->merge($flocks->pluck('flock_accountant_user_id'))->merge($flocks->pluck('flock_assistant_user_id'))->filter()
             ->unique();
         $users = User::select('id', 'name', 'user_role', 'user_image', 'email')->whereIn('id', $allUserIds)->get()->keyBy('id');
 
