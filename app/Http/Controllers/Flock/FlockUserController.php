@@ -118,7 +118,7 @@ class FlockUserController extends Controller
                 'worker_id' => 'required|integer|exists:users,id',
                 'flock_id' => 'required|integer|exists:flocks,flock_id',
             ]);
-            $user = User::find($validatedData['id']);
+            $user = User::find($validatedData['worker_id']);
             $userRole = $user->user_role;
 
             $flock = Flock::where('flock_id', $validatedData['flock_id'])->first();
