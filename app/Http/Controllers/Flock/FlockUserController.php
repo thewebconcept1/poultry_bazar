@@ -115,7 +115,7 @@ class FlockUserController extends Controller
         try {
 
             $validatedData = $request->validate([
-                'id' => 'required|integer|exists:users,id',
+                'worker_id' => 'required|integer|exists:users,id',
                 'flock_id' => 'required|integer|exists:flocks,flock_id',
             ]);
             $user = User::find($validatedData['id']);
