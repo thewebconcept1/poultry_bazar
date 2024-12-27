@@ -82,6 +82,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 });
 Route::get('/getMarkets', [ApiController::class, 'getMarkets']);
+Route::post('/getMarketHistory', [ApiController::class, 'getMarketHistory']);
 Route::post('/getMarketRates', [ApiController::class, 'getMarketRates']);
 Route::get('/getMedia/{type?}', [ApiController::class, 'getMedia']);
 Route::post('/register', [ApiController::class, 'register']);
