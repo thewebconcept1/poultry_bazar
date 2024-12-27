@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FAQ;
 use App\Models\Market;
+use App\Models\MarketHistory;
 use App\Models\Media;
 use App\Models\PosPurchase;
 use App\Models\Queries;
@@ -304,6 +305,41 @@ class ApiController extends Controller
         }
     }
     // get market rates
+
+    // get market history
+    public function getMarketHistory(Request $request)
+    {
+        try {
+            $validatedData = $request->validate([
+                'marketId' => 'required|integer',
+                'filterBy' => 'nullable|string|in:daily,weekly,monthly',
+            ]);
+
+            $query = MarketHistory::where('market_id', $validatedData['marketId']);
+
+            if (isset($validatedData['filterBy'])) {
+                switch ($validatedData['filterBy']) {
+                    case 'daily':
+                        $query->whereDate('created_at', now()->toDateString());
+                        break;
+                    case 'weekly':
+                        $query->whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()]);
+                        break;
+                    case 'monthly':
+                        $query->whereMonth('created_at', now()->month)
+                              ->whereYear('created_at', now()->year);
+                        break;
+                }
+            }
+
+            $marketHistory = $query->get();
+
+            return response()->json(['success' => true, 'data' => $marketHistory], 200);
+        } catch (\Throwable $e) {
+            $this->errorResponse($e);
+        }
+    }
+    // get market history
 
     // get markets
     public function getMarkets()
