@@ -22,6 +22,7 @@ class Media extends Model
         'media_author',
         'media_status',
         'media_type',
+        'media_subtitle',
     ];
 
     public $timestamps = false;
