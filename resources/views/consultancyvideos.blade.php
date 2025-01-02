@@ -170,6 +170,10 @@
                                     </x-slot>
                                 </x-select>
                             </div>
+                            <div class="mt-2">
+                                <label for="media_subtitle">Add Thumbnail</label>
+                                <input type="file" name="media_subtitle" id="media_subtitle">
+                            </div>
                         </div>
                     </div>
                     <div class="mt-2">
