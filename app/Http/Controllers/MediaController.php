@@ -192,6 +192,22 @@ class MediaController extends Controller
                     $media->media_image = $imageFullPath;
                 }
 
+                if ($request->hasFile('media_subtitle')) {
+                    // Get the path of the image from the animal record
+                    $subtitleImagePath = public_path($media->media_subtitle); // Get the full image path
+
+                    // Delete the image file if it exists
+                    if (!empty($media->media_subtitle) && file_exists($subtitleImagePath)) {
+                        unlink($subtitleImagePath); // Delete the image from the file system
+                    }
+
+                    $subtitleImage = $request->file('media_subtitle');
+                    // Store the image in the 'animal_images' folder and get the file path
+                    $subtitleImagePath = $subtitleImage->store('media_images', 'public'); // stored in 'storage/app/public/animal_images'
+                    $subtitleImageFullPath = 'storage/' . $subtitleImagePath;
+                    $media->media_subtitle = $subtitleImageFullPath;
+                }
+
                 $media->category_id = $validatedData['category_id'];
                 $media->media_title = $validatedData['media_title'];
                 $media->media_description = $validatedData['media_description'];
@@ -212,6 +228,15 @@ class MediaController extends Controller
                     $imageFullPath = null;
                 }
 
+                if($request->hasFile('media_subtitle')){
+                    $subtitleImage = $request->file('media_subtitle');
+                    // Store the image in the 'animal_images' folder and get the file path
+                    $subtitleImagePath = $subtitleImage->store('media_images', 'public'); // stored in 'storage/app/public/animal_images'
+                    $subtitleImageFullPath = 'storage/' . $subtitleImagePath;
+                } else {
+                    $subtitleImageFullPath = null;
+                }
+
                 $media = Media::create([
                     'added_user_id' => $user['id'],
                     'category_id' => $validatedData['category_id'],
@@ -220,6 +245,7 @@ class MediaController extends Controller
                     'media_author' => $validatedData['media_author'],
                     'media_type' => $validatedData['media_type'],
                     'media_image' => $imageFullPath,
+                    'media_subtitle' => $subtitleImageFullPath,
                     'media_status' => $user['user_role'] == 'superadmin' ? 1 : 2,
                 ]);
 
