@@ -37,4 +37,9 @@ class Media extends Model
         return $value ? asset($value) : null;
     }
 
+    public function getMediaSubtitleAttribute($value)
+    {
+        return $value ? asset($value) : null;
+    }
+
 }
