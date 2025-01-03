@@ -59,6 +59,7 @@
     <script type="text/javascript" src="{{ asset('DataTables/DataTables-1.13.8/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('javascript/script.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
     <script>
         @php
             $pending_media_count = App\Models\Media::where('media_status', 2)->get()->count();

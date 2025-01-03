@@ -265,7 +265,7 @@ class FlockController extends Controller
             $flocks = Flock::where('flock_supervisor_user_id', $user->id)->get();
         } elseif ($user_role == 'fl_accountant') {
             $flocks = Flock::where('flock_accountant_user_id', $user->id)->get();
-        } elseif ($user_role == 'fl_assistant') {
+        } elseif ($user_role == 'fl_assist  ant') {
             $flocks = Flock::where('flock_assistant_user_id', $user->id)->get();
         } elseif ($user_role == 'appuser') {
             $flocks = Flock::where('user_id', $user->id)->get();

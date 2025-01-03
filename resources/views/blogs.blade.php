@@ -10,7 +10,7 @@
         $userRole = session('user_details')['user_role'];
 
     @endphp
-        <button data-modal-target='view-modal' data-modal-toggle='view-modal'></button>
+    <button data-modal-target='view-modal' data-modal-toggle='view-modal'></button>
 
     <div class="w-full pt-10 min-h-[88vh] gradient-border  rounded-lg">
         <div class="flex justify-between px-5">
@@ -18,12 +18,12 @@
             @if ($userRole === 'superadmin' || isset($privileges['Blogs']['add']))
                 <button id="addModalBtn" data-modal-target="blog-modal" data-modal-toggle="blog-modal"
                     class="px-5 py-3 font-semibold text-white rounded-full shadow-md gradient-bg">Add New</button>
-                    @else
-                    <button data-modal-target="blog-modal" data-modal-toggle="blog-modal"></button>
+            @else
+                <button data-modal-target="blog-modal" data-modal-toggle="blog-modal"></button>
             @endif
         </div>
         @php
-            $headers = ['Sr.' , 'Image', 'Title', 'Description', 'Category', 'Date', 'Author', 'Action'];
+            $headers = ['Sr.', 'Image', 'Title', 'Description', 'Category', 'Date', 'Author', 'Action'];
         @endphp
 
         <x-table :headers="$headers">
@@ -34,9 +34,10 @@
                         {{-- <td class="whitespace-nowrap">{{ $data->added_username  }}</td> --}}
                         {{-- <td>{{ $username =App\Models\User::select('name')->where('id' , $data->added_user_id)->first();  }}</td> --}}
                         <td><img class="h-16 w-16 object-cover  bg-customOrangeDark rounded-full "
-                                src="{{ $data->media_image ??  asset('assets/default-logo-1.png') }}" alt='Blog Image'></td>
+                                src="{{ $data->media_image ?? asset('assets/default-logo-1.png') }}" alt='Blog Image'></td>
                         <td class='text-xs xl:text-[15px]'>{{ $data->media_title }}</td>
-                        <td class='text-xs xl:text-[15px] min-w-[280px]'>{{ \Illuminate\Support\Str::limit($data->media_description, 60, '...') }}</td>
+                        <td class='text-xs xl:text-[15px] min-w-[280px]'>
+                            {{ \Illuminate\Support\Str::limit($data->media_description, 60, '...') }}</td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->category_name }}</td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->date }} </td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->media_author }}</td>
@@ -67,12 +68,11 @@
                                     </button>
                                 @endif
 
-                                <button
-                                    mediaTitle="{{ $data->media_title }}" mediaAuthor="{{ $data->media_author }}"
+                                <button mediaTitle="{{ $data->media_title }}" mediaAuthor="{{ $data->media_author }}"
                                     mediaCategory="{{ $data->category_name }}" mediaCategoryId={{ $data->category_id }}
                                     mediaDate="{{ $data->date }}" mediaDescription="{{ $data->media_description }}"
                                     mediaId="{{ $data->media_id }}"
-                                    mediaImage="{{  $data->media_image ??  asset('assets/default-logo-req.png') }}"
+                                    mediaImage="{{ $data->media_image ?? asset('assets/default-logo-req.png') }}"
                                     class="viewModalBtn">
                                     <svg width='37' height='36' viewBox='0 0 37 36' fill='none'
                                         xmlns='http://www.w3.org/2000/svg'>
@@ -122,15 +122,16 @@
                             <div class="mt-2">
                                 {{-- <x-input id="mediaAuthor" label="Blog Author" placeholder="Enter Blog Author"
                                     name='media_author' type="text"></x-input> --}}
-                                  <div class="w-full">
-                                        <label for="mediaAuthor"
-                                            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Blog Author</label>
-                                        <input type="text" name="media_author" id="mediaAuthor"
-                                            placeholder="Enter Blog Author"
-                                            class=" border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-customOrangeDark focus:border-customOrangeDark block w-full p-2.5"
-                                            required value="{{ session('user_details')['name'] }}" readonly />
-                                    </div>
-                                
+                                <div class="w-full">
+                                    <label for="mediaAuthor"
+                                        class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Blog
+                                        Author</label>
+                                    <input type="text" name="media_author" id="mediaAuthor"
+                                        placeholder="Enter Blog Author"
+                                        class=" border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-customOrangeDark focus:border-customOrangeDark block w-full p-2.5"
+                                        required value="{{ session('user_details')['name'] }}" readonly />
+                                </div>
+
                             </div>
                             <div class="mt-2">
                                 <x-select id="categoryId" name="category_id" label="Blog Category">
@@ -146,8 +147,19 @@
                         </div>
                     </div>
                     <div class="mt-2">
-                        <x-textarea type="text" id="mediaDescription" name="media_description"
-                            label="Blog Description" placeholder="Blog Description"></x-textarea>
+                        {{-- <x-textarea type="text" id="mediaDescription" name="media_description"
+                            label="Blog Description" placeholder="Blog Description"></x-textarea> --}}
+
+                        <div>
+                            <label for="description"
+                                class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Blog
+                                Description</label>
+                            <div id="editor"
+                                class="quill-editor border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-customOrangeDark focus:border-customOrangeDark block w-full p-2.5 h-[86px]">
+                            </div>
+                            <textarea name="media_description" id="content" style="display: none;"></textarea>
+                        </div>
+
                     </div>
                     <div class="mt-4">
                         <x-modal-button :title="'Add Blog'"></x-modal-button>
@@ -164,7 +176,7 @@
                         <!-- Image Placeholder -->
 
                         <img class="w-40 h-40 bg-black object-contain" id="dImage"
-                                src="{{ asset('assets/Surface 3 png.png') }}" alt="">
+                            src="{{ asset('assets/Surface 3 png.png') }}" alt="">
 
 
                         <!-- Text Details -->
@@ -197,7 +209,36 @@
     </div>
 @endsection
 @section('js')
-   <script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Quill.js
+            var quill = new Quill('#editor', {
+                theme: 'snow',
+                modules: {
+                    toolbar: [
+                        ['bold', 'italic', 'underline', 'strike'], // Text formatting
+                        ['link'], // Media options
+                        [{
+                            'list': 'ordered'
+                        }, {
+                            'list': 'bullet'
+                        }], // Lists
+                        [{
+                            'header': [1, 2, 3, false]
+                        }] // Headings
+                    ]
+                }
+            });
+
+            // Update hidden textarea with Quill content
+            var hiddenInput = document.getElementById('content');
+            quill.on('text-change', function() {
+                hiddenInput.value = quill.root.innerHTML;
+            });
+
+
+        });
+
         function viewData() {
 
             $('.viewModalBtn').click(function() {
