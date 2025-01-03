@@ -37,7 +37,7 @@
                                 src="{{ $data->media_image ?? asset('assets/default-logo-1.png') }}" alt='Blog Image'></td>
                         <td class='text-xs xl:text-[15px]'>{{ $data->media_title }}</td>
                         <td class='text-xs xl:text-[15px] min-w-[280px]'>
-                            {{ \Illuminate\Support\Str::limit($data->media_description, 60, '...') }}</td>
+                            {!! \Illuminate\Support\Str::limit($data->media_description, 60, '...') !!}</td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->category_name }}</td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->date }} </td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->media_author }}</td>
@@ -247,7 +247,7 @@
                 $('#dAuthor').text($(this).attr('mediaAuthor'));
                 $('#dCategory').text($(this).attr('mediaCategory'));
                 $('#dDate').text($(this).attr('mediaDate'));
-                $('#dDescription').text($(this).attr('mediaDescription'));
+                $('#dDescription').html($(this).attr('mediaDescription'));
                 $('#dImage').attr('src', $(this).attr('mediaImage'));
 
             });
@@ -266,7 +266,12 @@
                 $('#mediaTitle').val(mediaDetails.attr('mediaTitle'));
                 $('#mediaAuthor').val(mediaDetails.attr('mediaAuthor'));
                 $('#categoryId').val(mediaDetails.attr('mediaCategoryId')).trigger('change');
-                $('#mediaDescription').val(mediaDetails.attr('mediaDescription'));
+
+                var newData = mediaDetails.attr('mediaDescription');
+                $('#editor .ql-editor').html(newData); // Update Quill editor content
+                $('#content').val(newData); // Sync hidden textarea
+
+
                 let fileImg = $('#blog-modal .file-preview');
                 fileImg.removeClass('hidden').attr('src', mediaDetails.attr('mediaImage'));
 
@@ -285,6 +290,8 @@
             $('#blog-modal #btnText').text("Add");
             let fileImg = $('#blog-modal .file-preview');
             fileImg.addClass('hidden');
+            $('#editor .ql-editor').html('');
+            $('#content').val('');
 
         })
 

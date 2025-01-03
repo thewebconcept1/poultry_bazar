@@ -42,7 +42,7 @@
                         </td>
                         <td class='text-xs xl:text-[15px]'>{{ $data->media_title }}</td>
                         <td class='text-xs xl:text-[15px] min-w-[280px]'>
-                            {{ \Illuminate\Support\Str::limit($data->media_description, 60, '...') }}</td>
+                            {!! \Illuminate\Support\Str::limit($data->media_description, 60, '...') !!}</td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->category_name }}</td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->date }} </td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->media_author }}</td>
@@ -122,7 +122,7 @@
                             <div class="relative flex items-center justify-center w-full h-full" id="VideoUploader">
                                 <label
                                     class="file-upload-label flex flex-col relative items-center justify-center w-full h-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
-                                    
+
                                     <div class="file-upload-content flex flex-col items-center justify-center pt-5 pb-6">
                                         <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
@@ -139,7 +139,7 @@
                                         accept="video/*" onchange="previewFile(event)" />
                                     <video id="" autoplay muted controls
                                         class="file-preview absolute top-0 left-0 w-full h-full hidden bg-customOrangeDark rounded-lg"></video>
-                                   
+
                                 </label>
                             </div>
                         </div>
@@ -177,8 +177,17 @@
                         </div>
                     </div>
                     <div class="mt-2">
-                        <x-textarea type="text" id="mediaDescription" name="media_description"
-                            label="Consultancy Description" placeholder="Consultancy Description"></x-textarea>
+                        {{-- <x-textarea type="text" id="mediaDescription" name="media_description"
+                            label="Consultancy Description" placeholder="Consultancy Description"></x-textarea> --}}
+                        <div>
+                            <label for="description"
+                                class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Consultancy
+                                Description</label>
+                            <div id="editor"
+                                class="quill-editor border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-customOrangeDark focus:border-customOrangeDark block w-full p-2.5 h-[86px]">
+                            </div>
+                            <textarea name="media_description" id="content" style="display: none;"></textarea>
+                        </div>
                     </div>
                     <div class="mt-4">
                         <x-modal-button :title="'Add Consultancy'"></x-modal-button>
@@ -229,6 +238,34 @@
 @endsection
 @section('js')
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Quill.js
+            var quill = new Quill('#editor', {
+                theme: 'snow',
+                modules: {
+                    toolbar: [
+                        ['bold', 'italic', 'underline', 'strike'], // Text formatting
+                        ['link'], // Media options
+                        [{
+                            'list': 'ordered'
+                        }, {
+                            'list': 'bullet'
+                        }], // Lists
+                        [{
+                            'header': [1, 2, 3, false]
+                        }] // Headings
+                    ]
+                }
+            });
+
+            // Update hidden textarea with Quill content
+            var hiddenInput = document.getElementById('content');
+            quill.on('text-change', function() {
+                hiddenInput.value = quill.root.innerHTML;
+            });
+
+
+        });
         $('#VideoUploader .file-preview').click(function() {
             $('#videoLabel').click();
 
@@ -242,7 +279,7 @@
                 $('#dAuthor').text($(this).attr('mediaAuthor'));
                 $('#dCategory').text($(this).attr('mediaCategory'));
                 $('#dDate').text($(this).attr('mediaDate'));
-                $('#dDescription').text($(this).attr('mediaDescription'));
+                $('#dDescription').html($(this).attr('mediaDescription'));
                 $('#dImage').attr('src', $(this).attr('mediaImage'));
 
             });
@@ -262,6 +299,10 @@
                 $('#mediaAuthor').val(mediaDetails.attr('mediaAuthor'));
                 $('#categoryId').val(mediaDetails.attr('mediaCategoryId')).trigger('change');
                 $('#mediaDescription').val(mediaDetails.attr('mediaDescription'));
+
+                var newData = mediaDetails.attr('mediaDescription');
+                $('#editor .ql-editor').html(newData); // Update Quill editor content
+                $('#content').val(newData); // Sync hidden textarea
                 let fileImg = $('#consultancy-modal .file-preview');
                 fileImg.removeClass('hidden').attr('src', mediaDetails.attr('mediaImage'));
 
@@ -280,6 +321,9 @@
             $('#consultancy-modal #btnText').text("Add");
             let fileImg = $('#consultancy-modal .file-preview');
             fileImg.addClass('hidden');
+
+            $('#editor .ql-editor').html('');
+            $('#content').val('');
 
         })
 

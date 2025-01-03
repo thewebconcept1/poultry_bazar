@@ -36,7 +36,7 @@
                         <td><img class="h-16 w-16 object-cover  bg-customOrangeDark rounded-full "
                             src="{{ $data->media_image ??  asset('assets/default-logo-1.png') }}" alt='Disease Image'></td>
                         <td class='text-xs xl:text-[15px]'>{{ $data->media_title }}</td>
-                        <td class='text-xs xl:text-[15px] min-w-[280px]'>{{ \Illuminate\Support\Str::limit($data->media_description, 60, '...') }}</td>
+                        <td class='text-xs xl:text-[15px] min-w-[280px]'>{!! \Illuminate\Support\Str::limit($data->media_description, 60, '...') !!}</td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->category_name }}</td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->date }} </td>
                         <td class='text-sm xl:text-[15px] whitespace-nowrap'>{{ $data->media_author }}</td>
@@ -145,8 +145,17 @@
                         </div>
                     </div>
                     <div class="mt-2">
-                        <x-textarea type="text" id="mediaDescription" name="media_description"
-                            label="Diseases Description" placeholder="Diseases Description"></x-textarea>
+                        {{-- <x-textarea type="text" id="mediaDescription" name="media_description"
+                            label="Diseases Description" placeholder="Diseases Description"></x-textarea> --}}
+                            <div>
+                                <label for="description"
+                                    class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Diseases
+                                    Description</label>
+                                <div id="editor"
+                                    class="quill-editor border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-customOrangeDark focus:border-customOrangeDark block w-full p-2.5 h-[86px]">
+                                </div>
+                                <textarea name="media_description" id="content" style="display: none;"></textarea>
+                            </div>
                     </div>
                     <div class="mt-4">
                         <x-modal-button :title="'Add Diseases'"></x-modal-button>
@@ -198,6 +207,35 @@
 
 @section('js')
     <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Quill.js
+            var quill = new Quill('#editor', {
+                theme: 'snow',
+                modules: {
+                    toolbar: [
+                        ['bold', 'italic', 'underline', 'strike'], // Text formatting
+                        ['link'], // Media options
+                        [{
+                            'list': 'ordered'
+                        }, {
+                            'list': 'bullet'
+                        }], // Lists
+                        [{
+                            'header': [1, 2, 3, false]
+                        }] // Headings
+                    ]
+                }
+            });
+
+            // Update hidden textarea with Quill content
+            var hiddenInput = document.getElementById('content');
+            quill.on('text-change', function() {
+                hiddenInput.value = quill.root.innerHTML;
+            });
+
+
+        });
+
         function viewData() {
 
             $('.viewModalBtn').click(function() {
@@ -206,7 +244,7 @@
                 $('#dAuthor').text($(this).attr('mediaAuthor'));
                 $('#dCategory').text($(this).attr('mediaCategory'));
                 $('#dDate').text($(this).attr('mediaDate'));
-                $('#dDescription').text($(this).attr('mediaDescription'));
+                $('#dDescription').html($(this).attr('mediaDescription'));
                 $('#dImage').attr('src', $(this).attr('mediaImage'));
 
             });
@@ -225,7 +263,12 @@
                 $('#mediaTitle').val(mediaDetails.attr('mediaTitle'));
                 $('#mediaAuthor').val(mediaDetails.attr('mediaAuthor'));
                 $('#categoryId').val(mediaDetails.attr('mediaCategoryId')).trigger('change');
-                $('#mediaDescription').val(mediaDetails.attr('mediaDescription'));
+
+                var newData = mediaDetails.attr('mediaDescription');
+                $('#editor .ql-editor').html(newData); // Update Quill editor content
+                $('#content').val(newData); // Sync hidden textarea
+
+
                 let fileImg = $('#diseases-modal .file-preview');
                 fileImg.removeClass('hidden').attr('src', mediaDetails.attr('mediaImage'));
 
@@ -244,7 +287,8 @@
             $('#diseases-modal #btnText').text("Add");
             let fileImg = $('#diseases-modal .file-preview');
             fileImg.addClass('hidden');
-
+            $('#editor .ql-editor').html('');
+            $('#content').val('');
         })
 
 

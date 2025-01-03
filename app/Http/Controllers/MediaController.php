@@ -65,6 +65,7 @@ class MediaController extends Controller
                 $media = Media::where('added_user_id', $user['id'])->where('media_type', $type)->where('media_status', 1)->get();
                 $categories = Category::where('category_status', 1)->get();
                 foreach ($media as $blog) {
+                    $blog->media_description = json_decode($blog->media_description);
                     $blog->date = Carbon::parse($blog->created_at)->format('M d, Y');
                     $category = $categories->firstWhere('category_id', $blog->category_id);
                     $blog->category_name = $category ? $category->category_name : null;
@@ -74,6 +75,7 @@ class MediaController extends Controller
                 $media = Media::where('added_user_id', $user['id'])->where('media_type', $type)->where('media_status', 1)->get();
                 $categories = Category::where('category_status', 1)->where('category_type', $type)->get();
                 foreach ($media as $diseases) {
+                    $diseases->media_description = json_decode($diseases->media_description);
                     $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
                     $category = $categories->firstWhere('category_id', $diseases->category_id);
                     $diseases->category_name = $category ? $category->category_name : null;
@@ -83,6 +85,7 @@ class MediaController extends Controller
                 $media = Media::where('added_user_id', $user['id'])->where('media_type', $type)->where('media_status', 1)->get();
                 $categories = Category::where('category_status', 1)->where('category_type', $type)->get();
                 foreach ($media as $diseases) {
+                    $diseases->media_description = json_decode($diseases->media_description);
                     $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
                     $category = $categories->firstWhere('category_id', $diseases->category_id);
                     $diseases->category_name = $category ? $category->category_name : null;
@@ -92,6 +95,7 @@ class MediaController extends Controller
                 $media = Media::where('media_status', 2)->get();
                 $categories = Category::where('category_status', 1)->get();
                 foreach ($media as $diseases) {
+                    $diseases->media_description = json_decode($diseases->media_description);
                     $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
                     $category = $categories->firstWhere('category_id', $diseases->category_id);
                     $diseases->category_name = $category ? $category->category_name : null;
@@ -105,6 +109,7 @@ class MediaController extends Controller
                 $media = Media::where('media_type', $type)->where('media_status', 1)->get();
                 $categories = Category::where('category_status', 1)->get();
                 foreach ($media as $blog) {
+                    $blog->media_description = json_decode($blog->media_description);
                     $blog->date = Carbon::parse($blog->created_at)->format('M d, Y');
                     $category = $categories->firstWhere('category_id', $blog->category_id);
                     $blog->category_name = $category ? $category->category_name : null;
@@ -117,6 +122,7 @@ class MediaController extends Controller
                 $media = Media::where('media_type', $type)->where('media_status', 1)->get();
                 $categories = Category::where('category_status', 1)->where('category_type', $type)->get();
                 foreach ($media as $diseases) {
+                    $diseases->media_description = json_decode($diseases->media_description);
                     $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
                     $category = $categories->firstWhere('category_id', $diseases->category_id);
                     $diseases->category_name = $category ? $category->category_name : null;
@@ -129,6 +135,7 @@ class MediaController extends Controller
                 $media = Media::where('media_type', $type)->where('media_status', 1)->get();
                 $categories = Category::where('category_status', 1)->where('category_type', $type)->get();
                 foreach ($media as $diseases) {
+                    $diseases->media_description = json_decode($diseases->media_description);
                     $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
                     $category = $categories->firstWhere('category_id', $diseases->category_id);
                     $diseases->category_name = $category ? $category->category_name : null;
@@ -141,6 +148,7 @@ class MediaController extends Controller
                 $media = Media::where('media_status', 2)->get();
                 $categories = Category::where('category_status', 1)->get();
                 foreach ($media as $diseases) {
+                    $diseases->media_description = json_decode($diseases->media_description);
                     $diseases->date = Carbon::parse($diseases->created_at)->format('M d, Y');
                     $category = $categories->firstWhere('category_id', $diseases->category_id);
                     $diseases->category_name = $category ? $category->category_name : null;
@@ -210,7 +218,7 @@ class MediaController extends Controller
 
                 $media->category_id = $validatedData['category_id'];
                 $media->media_title = $validatedData['media_title'];
-                $media->media_description = $validatedData['media_description'];
+                $media->media_description = json_encode($validatedData['media_description']);
                 $media->media_author = $validatedData['media_author'];
                 $media->media_type = $validatedData['media_type'];
                 $media->media_status = $user['user_role'] == 'superadmin' ? 1 : 2;
@@ -241,7 +249,7 @@ class MediaController extends Controller
                     'added_user_id' => $user['id'],
                     'category_id' => $validatedData['category_id'],
                     'media_title' => $validatedData['media_title'],
-                    'media_description' => $validatedData['media_description'],
+                    'media_description' => json_encode($validatedData['media_description']),
                     'media_author' => $validatedData['media_author'],
                     'media_type' => $validatedData['media_type'],
                     'media_image' => $imageFullPath,
